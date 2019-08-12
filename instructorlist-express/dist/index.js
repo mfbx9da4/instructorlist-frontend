@@ -28,7 +28,7 @@ express_1.default()
     .get('*', (req, res) => {
     console.log('here', req.url);
     let body = preact_render_to_string_1.render(preact_1.h(ssr_bundle_1.default, { url: req.url }));
-    console.log('body', body);
+    console.log('body', req.url, body);
     res.setHeader('Content-Type', 'text/html');
     res.end(template.replace(RGX, body));
 })

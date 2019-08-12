@@ -33,7 +33,7 @@ express()
   .get('*', (req, res) => {
     console.log('here', req.url)
     let body = render(h(App, { url: req.url }))
-    console.log('body', body)
+    console.log('body', req.url, body)
     res.setHeader('Content-Type', 'text/html')
     res.end(template.replace(RGX, body))
   })
