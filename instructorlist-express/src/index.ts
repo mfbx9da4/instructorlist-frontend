@@ -1,16 +1,16 @@
-import sirv from 'serve-static'
+import serve from 'serve-static'
 import express from 'express'
 import { h } from 'preact'
 import { basename } from 'path'
 import { readFileSync } from 'fs'
 import createCompression from 'compression'
 import { render } from 'preact-render-to-string'
-import bundle from '../../instructorlist-preact/build/ssr-build/ssr-bundle'
+// @ts-ignore
+import App from '../../instructorlist-preact/build/ssr-build/ssr-bundle'
 import { Response } from 'express-serve-static-core'
 
 const compression = createCompression()
 
-const App = bundle.default
 const { PORT = 3000 } = process.env
 
 const RGX = /<div id="app"[^>]*>.*?(?=<script)/i
@@ -29,13 +29,14 @@ function setHeaders(res: Response, file: string) {
 
 express()
   .use(compression)
-  .use(sirv('../instructorlist-preact/build', { setHeaders }))
+  .use(serve('../instructorlist-preact/build', { setHeaders }))
   .get('*', (req, res) => {
+    console.log('here', req.url)
     let body = render(h(App, { url: req.url }))
     console.log('body', body)
     res.setHeader('Content-Type', 'text/html')
     res.end(template.replace(RGX, body))
   })
   .listen(PORT, () => {
-    console.log(`> Running on http://localhost:${PORT}`)
+    console.log(`🐎 Running on http://localhost:${PORT}`)
   })
