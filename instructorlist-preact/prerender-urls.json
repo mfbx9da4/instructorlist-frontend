@@ -4,6 +4,10 @@
     "title": "Homepage"
   },
   {
+    "url": "/shell",
+    "title": "Home"
+  },
+  {
     "url": "/profile",
     "title": "Profile"
   }

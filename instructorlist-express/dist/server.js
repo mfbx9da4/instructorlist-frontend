@@ -5,8 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const serve_static_1 = __importDefault(require("serve-static"));
 const express_1 = __importDefault(require("express"));
+const path_1 = __importDefault(require("path"));
 const preact_1 = require("preact");
-const path_1 = require("path");
+const path_2 = require("path");
 const fs_1 = require("fs");
 const compression_1 = __importDefault(require("compression"));
 const preact_render_to_string_1 = require("preact-render-to-string");
@@ -21,13 +22,13 @@ function getCredentials() {
     return credentials;
 }
 const compression = compression_1.default();
-const BUILD_LOCATION = `../instructorlist-preact/build`;
+const BUILD_LOCATION = path_1.default.resolve('../instructorlist-preact/build');
 const { PORT = 3000 } = process.env;
 const RGX = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i;
 const home = fs_1.readFileSync(`${BUILD_LOCATION}/index.html`, 'utf8');
 const profile = fs_1.readFileSync(`${BUILD_LOCATION}/profile/index.html`, 'utf8');
 function setHeaders(res, file) {
-    let cache = path_1.basename(file) === 'service-worker.js'
+    let cache = path_2.basename(file) === 'service-worker.js'
         ? 'private,no-cache'
         : 'public,max-age=31536000,immutable';
     return res.setHeader('Cache-Control', cache); // don't cache service worker file
@@ -41,11 +42,11 @@ const ssr = (template) => (req, res) => {
 };
 const app = express_1.default()
     .use(compression)
-    .get('/shell.html', (req, res) => {
-    console.log('shell.html', home.indexOf('src="/bundle.'));
-    res.setHeader('Content-Type', 'text/html');
-    res.end(home);
-})
+    // .get('/shell.html', (req, res) => {
+    //   console.log('shell.html', home.indexOf('src="/bundle.'))
+    //   res.setHeader('Content-Type', 'text/html')
+    //   res.end(home)
+    // })
     .get('/', ssr(home))
     .get('/profile/', ssr(profile))
     .get('/profile/:user', ssr(profile))

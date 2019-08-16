@@ -1,5 +1,6 @@
 import serve from 'serve-static'
 import express, { Request, Response } from 'express'
+import path from 'path'
 import { h } from 'preact'
 import { basename } from 'path'
 import { readFileSync } from 'fs'
@@ -18,7 +19,7 @@ function getCredentials(): { key: string; cert: string } {
 }
 
 const compression = createCompression()
-const BUILD_LOCATION = `../instructorlist-preact/build`
+const BUILD_LOCATION = path.resolve('../instructorlist-preact/build')
 
 const { PORT = 3000 } = process.env
 
@@ -44,11 +45,11 @@ const ssr = (template: string) => (req: Request, res: Response) => {
 
 const app = express()
   .use(compression)
-  .get('/shell.html', (req, res) => {
-    console.log('shell.html', home.indexOf('src="/bundle.'))
-    res.setHeader('Content-Type', 'text/html')
-    res.end(home)
-  })
+  // .get('/shell.html', (req, res) => {
+  //   console.log('shell.html', home.indexOf('src="/bundle.'))
+  //   res.setHeader('Content-Type', 'text/html')
+  //   res.end(home)
+  // })
   .get('/', ssr(home))
   .get('/profile/', ssr(profile))
   .get('/profile/:user', ssr(profile))

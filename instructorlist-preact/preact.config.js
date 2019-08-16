@@ -16,6 +16,7 @@ export default (config, env) => {
     new InjectManifest({
       swSrc: swPath,
       swDest: swName,
+      globPatterns: ['offline.html', 'shell.html'],
     }),
   )
 }
