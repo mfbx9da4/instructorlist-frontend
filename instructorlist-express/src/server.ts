@@ -7,12 +7,15 @@ import createCompression from 'compression'
 import { render } from 'preact-render-to-string'
 // @ts-ignore
 import App from '../../instructorlist-preact/build/ssr-build/ssr-bundle'
-const privateKey = readFileSync('sslcert/server.key', 'utf8')
-const certificate = readFileSync('sslcert/server.crt', 'utf8')
 var http = require('http')
 var https = require('https')
 
-var credentials = { key: privateKey, cert: certificate }
+function getCredentials(): { key: string; cert: string } {
+  const privateKey = readFileSync('sslcert/server.key', 'utf8')
+  const certificate = readFileSync('sslcert/server.crt', 'utf8')
+  var credentials = { key: privateKey, cert: certificate }
+  return credentials
+}
 
 const compression = createCompression()
 const BUILD_LOCATION = `../instructorlist-preact/build`
@@ -59,7 +62,8 @@ const app = express()
 app.set('trust proxy', true)
 
 var httpServer = http.createServer(app)
-var httpsServer = https.createServer(credentials, app)
-
 httpServer.listen(PORT, () => console.log(`🎠 http://localhost:${PORT}`))
-httpsServer.listen(443, () => console.log(`🐎 https://localhost`))
+if (process.env.NODE_ENV !== 'production') {
+  var httpsServer = https.createServer(getCredentials(), app)
+  httpsServer.listen(443, () => console.log(`🐎 https://localhost`))
+}

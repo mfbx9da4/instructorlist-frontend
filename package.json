@@ -2,8 +2,9 @@
   "name": "instructorlist-frontend",
   "version": "1.0.0",
   "description": "",
-  "main": "node instructorlist-express/dist/server.js",
+  "main": "instructorlist-express/dist/server.js",
   "scripts": {
+    "start": "node ./instructorlist-express/dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

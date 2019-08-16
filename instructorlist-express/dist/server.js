@@ -12,11 +12,14 @@ const compression_1 = __importDefault(require("compression"));
 const preact_render_to_string_1 = require("preact-render-to-string");
 // @ts-ignore
 const ssr_bundle_1 = __importDefault(require("../../instructorlist-preact/build/ssr-build/ssr-bundle"));
-const privateKey = fs_1.readFileSync('sslcert/server.key', 'utf8');
-const certificate = fs_1.readFileSync('sslcert/server.crt', 'utf8');
 var http = require('http');
 var https = require('https');
-var credentials = { key: privateKey, cert: certificate };
+function getCredentials() {
+    const privateKey = fs_1.readFileSync('sslcert/server.key', 'utf8');
+    const certificate = fs_1.readFileSync('sslcert/server.crt', 'utf8');
+    var credentials = { key: privateKey, cert: certificate };
+    return credentials;
+}
 const compression = compression_1.default();
 const BUILD_LOCATION = `../instructorlist-preact/build`;
 const { PORT = 3000 } = process.env;
@@ -54,6 +57,8 @@ const app = express_1.default()
 });
 app.set('trust proxy', true);
 var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
 httpServer.listen(PORT, () => console.log(`🎠 http://localhost:${PORT}`));
-httpsServer.listen(443, () => console.log(`🐎 https://localhost`));
+if (process.env.NODE_ENV !== 'production') {
+    var httpsServer = https.createServer(getCredentials(), app);
+    httpsServer.listen(443, () => console.log(`🐎 https://localhost`));
+}
