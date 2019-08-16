@@ -36,7 +36,6 @@ function setHeaders(res: Response, file: string) {
 
 const ssr = (template: string) => (req: Request, res: Response) => {
   let body = render(h(App, { url: req.url }))
-  body += '<div>Using SSR AMP</div>'
   res.setHeader('Content-Type', 'text/html')
   const out = template.replace(RGX, body)
   console.log('ssr', req.url, out.indexOf('src="/bundle.'))
