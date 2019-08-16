@@ -34,6 +34,7 @@ function setHeaders(res, file) {
 }
 const ssr = (template) => (req, res) => {
     let body = preact_render_to_string_1.render(preact_1.h(ssr_bundle_1.default, { url: req.url }));
+    body += '<div>Using SSR AMP</div>';
     res.setHeader('Content-Type', 'text/html');
     const out = template.replace(RGX, body);
     console.log('ssr', req.url, out.indexOf('src="/bundle.'));
