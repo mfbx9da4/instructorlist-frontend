@@ -1,0 +1,19 @@
+{
+  "name": "instructorlist-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node instructorlist-express/dist/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfbx9da4/instructorlist-frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mfbx9da4/instructorlist-frontend/issues"
+  },
+  "homepage": "https://github.com/mfbx9da4/instructorlist-frontend#readme"
+}
