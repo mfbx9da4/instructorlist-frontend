@@ -7,7 +7,6 @@ const Header = () => {
 
   return (
     <header class={style.header}>
-      <h1>Preact App</h1>
       <h1>{isSSR ? 'SSR Amp Page' : 'PWA'}</h1>
       <nav>
         <Link activeClassName={style.active} href="/">
