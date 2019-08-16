@@ -1,11 +1,11 @@
 {
   "name": "instructorlist-express",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon dist/index",
-    "start": "node dist/index"
+    "dev": "nodemon dist/server",
+    "start": "node dist/server"
   },
   "devDependencies": {
     "preact-cli": "^2.0.0"

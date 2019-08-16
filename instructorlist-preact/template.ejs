@@ -46,7 +46,7 @@
         <script defer src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
         <script>window.fetch||document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
         <script id='end-amp-content'></script>
-        <amp-install-serviceworker src="/sw.js"
+        <amp-install-serviceworker src="/service-worker.js"
             data-iframe-src="https://amp.dev/sw.html"
             layout="nodisplay"
             data-no-service-worker-fallback-url-match=".*"
