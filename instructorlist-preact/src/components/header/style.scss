@@ -1,0 +1,64 @@
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: var(--header-height);
+  padding: 0;
+  background: white;
+  border-bottom: 1px solid var(--off-white);
+  z-index: 50;
+}
+
+.header h1 {
+  float: left;
+  margin: 0;
+  padding: 0 15px;
+  font-size: 24px;
+  line-height: var(--header-height);
+  font-weight: bold;
+  a {
+    color: var(--brand-blue);
+    text-decoration: none;
+    &:visited,
+    &:active {
+      color: var(--brand-blue);
+    }
+  }
+}
+
+.header nav {
+  float: right;
+  font-size: 100%;
+}
+
+.header nav a {
+  display: inline-block;
+  height: var(--header-height);
+  line-height: var(--header-height);
+  min-width: 50px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0);
+  text-decoration: none;
+  color: #fff;
+  will-change: background-color;
+}
+
+.header nav a:hover,
+.header nav a:active {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.header nav a.active {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.header nav a.menuIcon {
+  background: url('../../assets/images/chevron.svg') no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transform: rotate(90deg);
+  background-size: 2rem;
+  height: var(--header-height);
+  width: var(--header-height);
+}

@@ -7,17 +7,17 @@ const Header = () => {
 
   return (
     <header class={style.header}>
-      <h1>{isSSR ? 'SSR Amp Page' : 'PWA'}</h1>
-      <nav>
+      <h1>
         <Link activeClassName={style.active} href="/">
-          Home
+          instructorlist {isSSR && '⚡'}
         </Link>
-        <Link activeClassName={style.active} href="/profile">
-          Me
-        </Link>
-        <Link activeClassName={style.active} href="/profile/john">
-          John
-        </Link>
+      </h1>
+      <nav>
+        <Link
+          className={style.menuIcon}
+          activeClassName={style.active}
+          href="/menu"
+        />
       </nav>
     </header>
   )

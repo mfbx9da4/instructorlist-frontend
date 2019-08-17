@@ -42,11 +42,6 @@ const ssr = (template) => (req, res) => {
 };
 const app = express_1.default()
     .use(compression)
-    // .get('/shell.html', (req, res) => {
-    //   console.log('shell.html', home.indexOf('src="/bundle.'))
-    //   res.setHeader('Content-Type', 'text/html')
-    //   res.end(home)
-    // })
     .get('/', ssr(home))
     .get('/profile/', ssr(profile))
     .get('/profile/:user', ssr(profile))

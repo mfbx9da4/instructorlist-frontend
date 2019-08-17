@@ -1,0 +1,44 @@
+.search {
+  flex: 1;
+  flex-direction: column;
+}
+
+.listItem {
+  flex: 1;
+  justify-content: space-around;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--off-white);
+  .listItemAction,
+  .listItemMain,
+  .listItemAside {
+    flex-direction: column;
+  }
+}
+
+.dayWrapper {
+  justify-content: center;
+  flex: 1;
+  height: 5rem;
+  align-items: center;
+  font-weight: 600;
+  border-bottom: 1px solid var(--off-white);
+}
+
+.leftArrow {
+  background: url('../../assets/images/chevron.svg') no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transform: rotate(180deg);
+  background-size: 1.2rem;
+  height: 5rem;
+  width: 5rem;
+}
+
+.rightArrow {
+  background: url('../../assets/images/chevron.svg') no-repeat;
+  background-position: center;
+  cursor: pointer;
+  background-size: 1.2rem;
+  height: 5rem;
+  width: 5rem;
+}

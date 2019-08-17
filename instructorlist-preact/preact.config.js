@@ -1,4 +1,5 @@
 import criticalCssPlugin from 'preact-cli-plugin-critical-css'
+var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const { InjectManifest } = require('workbox-webpack-plugin')
 const path = require('path')
 
@@ -12,6 +13,7 @@ export default (config, env) => {
   // Workbox
   const swName = 'service-worker.js'
   const swPath = path.join('src', swName)
+  config.plugins.unshift(new CaseSensitivePathsPlugin())
   config.plugins.push(
     new InjectManifest({
       swSrc: swPath,

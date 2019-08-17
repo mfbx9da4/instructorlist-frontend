@@ -45,11 +45,6 @@ const ssr = (template: string) => (req: Request, res: Response) => {
 
 const app = express()
   .use(compression)
-  // .get('/shell.html', (req, res) => {
-  //   console.log('shell.html', home.indexOf('src="/bundle.'))
-  //   res.setHeader('Content-Type', 'text/html')
-  //   res.end(home)
-  // })
   .get('/', ssr(home))
   .get('/profile/', ssr(profile))
   .get('/profile/:user', ssr(profile))
