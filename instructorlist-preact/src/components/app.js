@@ -31,6 +31,12 @@ export default class App extends Component {
           <Search path="/search/filters" />
           <Profile path="/profile/" user="me" />
           <Profile path="/profile/:user" />
+          <div
+            style="justify-content: center; align-items: center; flex: 1; height: 100vh;"
+            default
+          >
+            404 Not Found
+          </div>
         </Router>
       </div>
     )

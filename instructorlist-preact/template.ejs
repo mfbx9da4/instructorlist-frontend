@@ -44,7 +44,7 @@
         <%= htmlWebpackPlugin.options.ssr({
             url: '/'
         }) %>
-        <%if (htmlWebpackPlugin.options.url === '/shell') { %>
+        <%if (htmlWebpackPlugin.options.url === '/shell' || htmlWebpackPlugin.options.config['_'][0] === 'watch') { %>
             <script defer src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
             <script>window.fetch||document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
         <% } %>
@@ -53,7 +53,7 @@
             data-iframe-src="https://amp.dev/sw.html"
             layout="nodisplay"
             data-no-service-worker-fallback-url-match=".*"
-            data-no-service-worker-fallback-shell-url="/shell.html">
+            data-no-service-worker-fallback-shell-url="/shell/index.html">
         </amp-install-serviceworker>
     </body>
 </html>

@@ -2,20 +2,75 @@
   flex: 1;
   flex-direction: column;
 }
+.listItems {
+  flex-direction: column;
+}
 
 .listItemWrapper {
+  margin-top: 1rem;
   flex: 1;
   border-bottom: 1px solid var(--off-white);
   .listItem {
     flex: 1;
-    justify-content: space-around;
-    padding: 2rem 0;
+    justify-content: space-between;
     max-width: var(--mobile-width);
     margin: 0 auto;
     .listItemAction,
     .listItemMain,
     .listItemAside {
       flex-direction: column;
+    }
+
+    .listItemAction {
+      .itemActionLink {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
+
+    .listItemAside {
+      .startTime {
+        color: var(--grey);
+        padding: 1rem 1rem 1rem 0;
+      }
+      .price {
+        font-weight: bold;
+      }
+    }
+
+    .listItemMain {
+      .tag {
+        color: var(--brand-blue);
+        font-weight: bold;
+        padding: 1rem 1rem 1rem 0;
+        font-size: 1.5rem;
+      }
+      .title {
+        font-weight: bold;
+        font-size: 1.7rem;
+        padding-bottom: 0.8rem;
+      }
+      .venue {
+        font-weight: bold;
+        font-size: 1.4rem;
+        color: var(--grey);
+        flex-direction: column;
+        padding-bottom: 0.8rem;
+      }
+      .instructor {
+        align-items: center;
+        padding: 2rem 0;
+        font-weight: bold;
+
+        img {
+          height: 3.5rem;
+          border-radius: 50px;
+          border: 1px solid var(--off-white);
+          margin-right: 2rem;
+        }
+      }
     }
   }
 }

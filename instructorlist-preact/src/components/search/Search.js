@@ -7,6 +7,23 @@ export default class Search extends Component {
     now: dayjs(),
     classes: [
       {
+        id: 1,
+        instructor: {
+          name: 'Alexander Smith',
+          avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
+        },
+        title: 'Introduction to Bachata',
+        price: 12,
+        tags: ['bachata'],
+        startTime: '07:30',
+        duration: 'Alexander Smith',
+        venue: {
+          area: 'Covent Garden',
+          name: 'Pineapple Dance Studios',
+        },
+      },
+      {
+        id: 2,
         instructor: {
           name: 'Alexander Smith',
           avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
@@ -43,15 +60,46 @@ export default class Search extends Component {
             <div className={style.listItemWrapper}>
               <div className={style.listItem}>
                 <div className={style.listItemAside}>
-                  <div>{item.startTime}</div>
-                  <div>{item.price}</div>
+                  <div className={style.startTime}>{item.startTime}</div>
+                  <div className={style.price}>£{item.price}</div>
                 </div>
                 <div className={style.listItemMain}>
-                  <div>{item.title}</div>
-                  <div>{item.instructor.name}</div>
+                  <div className={style.tags}>
+                    {item.tags.map((x, i) => (
+                      <a
+                        className={style.tag}
+                        key={i}
+                        href={`/search/tag/${x}`}
+                      >
+                        #{x}
+                      </a>
+                    ))}
+                  </div>
+                  <div className={style.title}>{item.title}</div>
+                  <div className={style.venue}>
+                    <div>{item.venue.name}</div>
+                    <div>{item.venue.area}</div>
+                  </div>
+                  <div className={style.instructor}>
+                    <img
+                      className={style.instructorAvatar}
+                      alt={item.instructor.name}
+                      src={item.instructor.avatar}
+                    >
+                      {item.instructor.avatar}
+                    </img>
+                    <div className={style.instructorName}>
+                      {item.instructor.name}
+                    </div>
+                  </div>
                 </div>
                 <div className={style.listItemAction}>
-                  <div className={style.rightArrow} />
+                  <a
+                    className={style.itemActionLink}
+                    href={`/classes/${item.id}`}
+                  >
+                    <span className={style.rightArrow} />
+                  </a>
                 </div>
               </div>
             </div>

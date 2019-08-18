@@ -3,7 +3,13 @@ var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const { GenerateSW } = require('workbox-webpack-plugin')
 const path = require('path')
 
+function isSSRBundle() {
+  return config.output.filename === 'ssr-bundle.js'
+}
+
 export default (config, env, helpers) => {
+  console.log('config', config.output)
+
   // Remove Critical CSS plugin
   criticalCssPlugin(config, env, {})
 
