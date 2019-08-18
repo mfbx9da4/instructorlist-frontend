@@ -53,6 +53,7 @@
   --button-border: var(--grey60);
 
   --header-height: 7.5rem;
+  --mobile-width: 37.5rem;
 }
 
 html,

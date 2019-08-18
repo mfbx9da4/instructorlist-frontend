@@ -7,8 +7,8 @@
     "start": "per-env",
     "start:production": "npm run -s serve",
     "start:development": "npm run -s dev",
-    "build": "preact build --template template.ejs ",
-    "serve": "preact build --template template.ejs && preact serve",
+    "build": "preact build --json --template template.ejs ",
+    "serve": "preact build --json --template template.ejs && preact serve",
     "dev": "preact watch --https --template template.ejs ",
     "lint": "eslint src",
     "test": "jest"

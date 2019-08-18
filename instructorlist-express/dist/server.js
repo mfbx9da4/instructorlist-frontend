@@ -24,19 +24,24 @@ function getCredentials() {
 const compression = compression_1.default();
 const BUILD_LOCATION = path_1.default.resolve('../instructorlist-preact/build');
 const { PORT = 3000 } = process.env;
-const RGX = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i;
+const rgxAmpScripts = /<script id="start-amp-scripts"[^>]*>.*?(?=<script id="end-amp-scripts")/i;
+const rgxContent = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i;
 const home = fs_1.readFileSync(`${BUILD_LOCATION}/index.html`, 'utf8');
 const profile = fs_1.readFileSync(`${BUILD_LOCATION}/profile/index.html`, 'utf8');
+const search = fs_1.readFileSync(`${BUILD_LOCATION}/search/index.html`, 'utf8');
 function setHeaders(res, file) {
     let cache = path_2.basename(file) === 'service-worker.js'
         ? 'private,no-cache'
         : 'public,max-age=31536000,immutable';
     return res.setHeader('Cache-Control', cache); // don't cache service worker file
 }
-const ssr = (template) => (req, res) => {
+const ssr = (template, isAmp = true) => (req, res) => {
     let body = preact_render_to_string_1.render(preact_1.h(ssr_bundle_1.default, { url: req.url }));
     res.setHeader('Content-Type', 'text/html');
-    const out = template.replace(RGX, body);
+    let out = template.replace(rgxContent, body);
+    if (!isAmp) {
+        out.replace(rgxAmpScripts, '');
+    }
     console.log('ssr', req.url, out.indexOf('src="/bundle.'));
     res.end(out);
 };
@@ -49,7 +54,7 @@ const app = express_1.default()
     .get('*', (req, res) => {
     console.log('ERROR: should_not_be_here', req.url);
     res.setHeader('Content-Type', 'text/html');
-    res.end(home);
+    res.end(ssr(home, false)(req, res));
 });
 app.set('trust proxy', true);
 var httpServer = http.createServer(app);

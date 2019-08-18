@@ -4,8 +4,17 @@ workbox.setConfig({
   debug: true,
 })
 
+// Only cache the shell html. ie don't cache AMP pages
+let precacheManifest = self.__precacheManifest.filter(
+  x =>
+    x.url.indexOf('/shell/index.html') === 0 ||
+    x.url.indexOf('/index.html') === -1,
+)
+
+console.log('precacheManifest', precacheManifest)
+
 // Register for precache
-workbox.precaching.precacheAndRoute(self.__precacheManifest)
+workbox.precaching.precacheAndRoute(precacheManifest)
 
 workbox.routing.registerRoute(
   /(.*)service-worker\.js/,

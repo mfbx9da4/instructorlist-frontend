@@ -1,11 +1,15 @@
 [
   {
     "url": "/",
-    "title": "Homepage"
+    "title": "Instructorlist"
   },
   {
     "url": "/shell",
-    "title": "Home"
+    "title": "Instructorlist"
+  },
+  {
+    "url": "/search",
+    "title": "Search"
   },
   {
     "url": "/profile",

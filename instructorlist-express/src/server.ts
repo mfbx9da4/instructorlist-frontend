@@ -23,9 +23,11 @@ const BUILD_LOCATION = path.resolve('../instructorlist-preact/build')
 
 const { PORT = 3000 } = process.env
 
-const RGX = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i
+const rgxAmpScripts = /<script id="start-amp-scripts"[^>]*>.*?(?=<script id="end-amp-scripts")/i
+const rgxContent = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i
 const home = readFileSync(`${BUILD_LOCATION}/index.html`, 'utf8')
 const profile = readFileSync(`${BUILD_LOCATION}/profile/index.html`, 'utf8')
+const search = readFileSync(`${BUILD_LOCATION}/search/index.html`, 'utf8')
 
 function setHeaders(res: Response, file: string) {
   let cache =
@@ -35,10 +37,16 @@ function setHeaders(res: Response, file: string) {
   return res.setHeader('Cache-Control', cache) // don't cache service worker file
 }
 
-const ssr = (template: string) => (req: Request, res: Response) => {
+const ssr = (template: string, isAmp: boolean = true) => (
+  req: Request,
+  res: Response,
+) => {
   let body = render(h(App, { url: req.url }))
   res.setHeader('Content-Type', 'text/html')
-  const out = template.replace(RGX, body)
+  let out = template.replace(rgxContent, body)
+  if (!isAmp) {
+    out.replace(rgxAmpScripts, '')
+  }
   console.log('ssr', req.url, out.indexOf('src="/bundle.'))
   res.end(out)
 }
@@ -52,7 +60,7 @@ const app = express()
   .get('*', (req, res) => {
     console.log('ERROR: should_not_be_here', req.url)
     res.setHeader('Content-Type', 'text/html')
-    res.end(home)
+    res.end(ssr(home, false)(req, res))
   })
 
 app.set('trust proxy', true)

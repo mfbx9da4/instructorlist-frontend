@@ -3,15 +3,20 @@
   flex-direction: column;
 }
 
-.listItem {
+.listItemWrapper {
   flex: 1;
-  justify-content: space-around;
-  padding: 2rem 0;
   border-bottom: 1px solid var(--off-white);
-  .listItemAction,
-  .listItemMain,
-  .listItemAside {
-    flex-direction: column;
+  .listItem {
+    flex: 1;
+    justify-content: space-around;
+    padding: 2rem 0;
+    max-width: var(--mobile-width);
+    margin: 0 auto;
+    .listItemAction,
+    .listItemMain,
+    .listItemAside {
+      flex-direction: column;
+    }
   }
 }
 
