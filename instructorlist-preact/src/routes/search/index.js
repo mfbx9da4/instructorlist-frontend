@@ -2,9 +2,9 @@ import { h } from 'preact'
 import style from './style'
 import Search from '../../components/search/Search'
 
-const SearchPage = () => (
+const SearchPage = props => (
   <div class={style.search}>
-    <Search />
+    <Search {...props} />
   </div>
 )
 

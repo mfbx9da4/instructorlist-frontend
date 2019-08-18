@@ -1,6 +1,7 @@
 import { h, Component } from 'preact'
 import style from './style'
 import dayjs from 'dayjs'
+import Filters from '../../components/filters/Filters'
 
 export default class Search extends Component {
   state = {
@@ -104,6 +105,19 @@ export default class Search extends Component {
               </div>
             </div>
           ))}
+        </div>
+        <Filters active={this.props.url === '/search/filters'} />
+        <div className={style.filtersButtonWrapper}>
+          <div className={style.filtersButtonContainer}>
+            <a href={`/search/filters`} className={style.filtersButton}>
+              <div className={style.filterIcon} />
+              Filters
+            </a>
+            <a href={`/search/map-view`} className={style.filtersButton}>
+              <div className={`${style.filterIcon} ${style.mapIcon}`} />
+              Map View
+            </a>
+          </div>
         </div>
       </div>
     )

@@ -75,6 +75,42 @@
   }
 }
 
+.filtersButtonWrapper {
+  position: fixed;
+  width: 100%;
+  bottom: 4rem;
+  justify-content: center;
+
+  .filtersButtonContainer {
+    border: 1px solid var(--off-white);
+    background: white;
+    border-radius: 1rem;
+
+    a.filtersButton {
+      display: flex;
+      padding: 1rem 2rem;
+      color: var(--off-black);
+      font-weight: bold;
+      align-items: center;
+      &:not(:last-child) {
+        border-right: 1px solid var(--off-white);
+      }
+      .filterIcon {
+        margin-right: 1rem;
+        background: url('../../assets/images/filters.svg') no-repeat;
+        background-position: center;
+        cursor: pointer;
+        background-size: 3rem;
+        height: 3rem;
+        width: 3rem;
+      }
+      .mapIcon {
+        background: url('../../assets/images/map.svg') no-repeat;
+      }
+    }
+  }
+}
+
 .dayWrapper {
   justify-content: center;
   flex: 1;
