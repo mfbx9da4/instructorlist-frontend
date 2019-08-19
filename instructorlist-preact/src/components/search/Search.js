@@ -86,9 +86,7 @@ export default class Search extends Component {
                       className={style.instructorAvatar}
                       alt={item.instructor.name}
                       src={item.instructor.avatar}
-                    >
-                      {item.instructor.avatar}
-                    </img>
+                    />
                     <div className={style.instructorName}>
                       {item.instructor.name}
                     </div>

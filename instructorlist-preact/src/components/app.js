@@ -21,8 +21,13 @@ export default class App extends Component {
   }
 
   render() {
+    const { url } = this.props
     return (
-      <div id="app">
+      <div
+        id="app"
+        className={`${url && url.indexOf('filters') > -1 ? 'blur' : ''}`}
+      >
+        {url}
         <Header />
         <Router url={this.props.url} onChange={this.handleRoute}>
           <Home path="/" />
@@ -31,6 +36,7 @@ export default class App extends Component {
           <Search path="/search/filters" />
           <Profile path="/profile/" user="me" />
           <Profile path="/profile/:user" />
+
           <div
             style="justify-content: center; align-items: center; flex: 1; height: 100vh;"
             default

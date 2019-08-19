@@ -6,7 +6,11 @@ const Header = () => {
   const isSSR = typeof window === 'undefined'
 
   return (
-    <header class={style.header}>
+    <header
+      className={`${style.header} ${
+        location.href.indexOf('/filters') > -1 ? 'blur' : ''
+      }`}
+    >
       <h1>
         <Link activeClassName={style.active} href="/">
           instructorlist {isSSR && '⚡'}

@@ -13,7 +13,7 @@
   .listItem {
     flex: 1;
     justify-content: space-between;
-    max-width: var(--mobile-width);
+    max-width: 60rem;
     margin: 0 auto;
     .listItemAction,
     .listItemMain,
@@ -31,6 +31,7 @@
     }
 
     .listItemAside {
+      padding: 0 1rem;
       .startTime {
         color: var(--grey);
         padding: 1rem 1rem 1rem 0;
@@ -41,6 +42,7 @@
     }
 
     .listItemMain {
+      flex: 1;
       .tag {
         color: var(--brand-blue);
         font-weight: bold;

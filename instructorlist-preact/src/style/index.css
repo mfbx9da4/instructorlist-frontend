@@ -86,3 +86,12 @@ div {
 a {
   text-decoration: none;
 }
+
+button {
+  outline: none;
+  border: none;
+}
+
+.blur {
+  filter: blur(0.5rem);
+}
