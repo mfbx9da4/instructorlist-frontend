@@ -7,9 +7,7 @@ const Header = () => {
 
   return (
     <header
-      className={`${style.header} ${
-        location.href.indexOf('/filters') > -1 ? 'blur' : ''
-      }`}
+      className={`${style.header} `}
     >
       <h1>
         <Link activeClassName={style.active} href="/">

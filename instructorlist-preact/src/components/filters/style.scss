@@ -34,3 +34,41 @@
     }
   }
 }
+
+.section {
+  flex-direction: column;
+  padding: 1rem 2rem;
+  .sectionHeader {
+    .sectionTitle {
+      padding: 2rem;
+      font-weight: bold;
+    }
+  }
+  .checkBoxesContainer {
+    flex-wrap: wrap;
+    .checkBox {
+      padding: 1rem 2rem;
+      width: 50%;
+      .label {
+        width: 70%;
+      }
+      .tick {
+        width: 30%;
+        background: url('../../assets/images/tick.svg') no-repeat;
+        background-position: center;
+        cursor: pointer;
+        background-size: 1.2rem;
+        height: 2rem;
+        width: 2rem;
+        opacity: 0;
+      }
+      &.active {
+        color: var(--brand-blue);
+        font-weight: bold;
+        .tick {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

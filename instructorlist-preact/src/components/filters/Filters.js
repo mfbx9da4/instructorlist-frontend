@@ -6,7 +6,27 @@ export default class Filters extends Component {
   state = {
     activities: [
       {
-        name: 'capoeira',
+        name: 'Capoeira',
+        on: false,
+      },
+      {
+        name: 'Ballet',
+        on: false,
+      },
+      {
+        name: 'Hip Hop',
+        on: false,
+      },
+      {
+        name: 'Break Dance',
+        on: false,
+      },
+      {
+        name: 'Salsa',
+        on: true,
+      },
+      {
+        name: 'Tap',
         on: false,
       },
     ],
@@ -39,16 +59,18 @@ export default class Filters extends Component {
           <div className={style.section}>
             <div className={style.sectionHeader}>
               <div className={style.sectionTitle}>ACTIVITIES</div>
-              <div className={style.checkBoxesContainer}>
-                {this.state.activities.map(x => {
-                  return (
-                    <div className={style.checkBox}>
-                      <div className={style.label}>{x.name}</div>
-                      <div className={style.tick}>{x.on ? 'ON' : 'OFF'}</div>
-                    </div>
-                  )
-                })}
-              </div>
+            </div>
+            <div className={style.checkBoxesContainer}>
+              {this.state.activities.map(x => {
+                return (
+                  <div
+                    className={`${style.checkBox} ${x.on ? style.active : ''}`}
+                  >
+                    <div className={style.label}>{x.name}</div>
+                    <div className={`${style.tick}`} />
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
