@@ -41,7 +41,7 @@ const ssr = (template: string, isAmp: boolean = true) => (
   req: Request,
   res: Response,
 ) => {
-  let body = render(h(App, { url: req.url }))
+  let body = render(h(App, { url: req.url, ssrData: { a: 123 } }))
   res.setHeader('Content-Type', 'text/html')
   let out = template.replace(rgxContent, body)
   if (!isAmp) {
@@ -54,6 +54,7 @@ const ssr = (template: string, isAmp: boolean = true) => (
 const app = express()
   .use(compression)
   .get('/', ssr(home))
+  .get('/search/', ssr(search))
   .get('/profile/', ssr(profile))
   .get('/profile/:user', ssr(profile))
   .use(serve(BUILD_LOCATION, { setHeaders }))

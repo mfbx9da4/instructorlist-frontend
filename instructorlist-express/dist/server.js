@@ -36,7 +36,7 @@ function setHeaders(res, file) {
     return res.setHeader('Cache-Control', cache); // don't cache service worker file
 }
 const ssr = (template, isAmp = true) => (req, res) => {
-    let body = preact_render_to_string_1.render(preact_1.h(ssr_bundle_1.default, { url: req.url }));
+    let body = preact_render_to_string_1.render(preact_1.h(ssr_bundle_1.default, { url: req.url, ssrData: { a: 123 } }));
     res.setHeader('Content-Type', 'text/html');
     let out = template.replace(rgxContent, body);
     if (!isAmp) {
@@ -48,6 +48,7 @@ const ssr = (template, isAmp = true) => (req, res) => {
 const app = express_1.default()
     .use(compression)
     .get('/', ssr(home))
+    .get('/search/', ssr(search))
     .get('/profile/', ssr(profile))
     .get('/profile/:user', ssr(profile))
     .use(serve_static_1.default(BUILD_LOCATION, { setHeaders }))

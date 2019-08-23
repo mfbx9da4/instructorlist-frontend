@@ -1,7 +1,10 @@
 import { h, Component } from 'preact'
 import style from './style'
 import dayjs from 'dayjs'
-import Filters from '../../components/filters/Filters'
+import Filters from '../filters/Filters'
+import { route } from 'preact-router'
+console.log('search')
+import isSSR from '../../utils/is-ssr'
 
 export default class Search extends Component {
   state = {
@@ -42,10 +45,30 @@ export default class Search extends Component {
     ],
   }
 
+  constructor(props) {
+    super(props)
+    console.log('props', props)
+  }
+
   componentDidMount() {
     this.setState({
       now: dayjs(),
     })
+  }
+
+  simulateToFiltersUrl = () => {
+    if (isSSR()) {
+      return this.props.url.replace('/search', '/search/filters')
+    }
+    return (
+      location.pathname.replace('/search', '/search/filters') + location.search
+    )
+  }
+
+  routeToFilters = event => {
+    event.preventDefault()
+    event.stopPropagation()
+    route(this.simulateToFiltersUrl())
   }
 
   render() {
@@ -104,10 +127,17 @@ export default class Search extends Component {
             </div>
           ))}
         </div>
-        <Filters active={this.props.url === '/search/filters'} />
+        <Filters
+          {...this.props}
+          active={this.props.path === '/search/filters'}
+        />
         <div className={style.filtersButtonWrapper}>
           <div className={style.filtersButtonContainer}>
-            <a href={`/search/filters`} className={style.filtersButton}>
+            <a
+              href={this.simulateToFiltersUrl()}
+              onClick={this.routeToFilters}
+              className={style.filtersButton}
+            >
               <div className={style.filterIcon} />
               Filters
             </a>

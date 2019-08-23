@@ -1,17 +1,15 @@
 import { h } from 'preact'
 import { Link } from 'preact-router/match'
 import style from './style'
+console.log('header')
+import isSSR from '../../utils/is-ssr'
 
 const Header = () => {
-  const isSSR = typeof window === 'undefined'
-
   return (
-    <header
-      className={`${style.header} `}
-    >
+    <header className={`${style.header} `}>
       <h1>
         <Link activeClassName={style.active} href="/">
-          instructorlist {isSSR && '⚡'}
+          instructorlist {isSSR() && '⚡'}
         </Link>
       </h1>
       <nav>

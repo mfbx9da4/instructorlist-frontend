@@ -7,6 +7,8 @@ import Header from './header'
 import Home from '../routes/home'
 import Search from '../routes/search'
 import Profile from '../routes/profile'
+console.log('app')
+import isSSR from '../utils/is-ssr'
 
 export default class App extends Component {
   /** Gets fired when the route changes.
@@ -21,13 +23,9 @@ export default class App extends Component {
   }
 
   render() {
-    const { url } = this.props
+    console.log('this.props app', this.props, isSSR())
     return (
-      <div
-        id="app"
-        className={`${url && url.indexOf('filters') > -1 ? 'blur' : ''}`}
-      >
-        {url}
+      <div id="app" className={``}>
         <Header />
         <Router url={this.props.url} onChange={this.handleRoute}>
           <Home path="/" />
@@ -36,6 +34,8 @@ export default class App extends Component {
           <Search path="/search/filters" />
           <Profile path="/profile/" user="me" />
           <Profile path="/profile/:user" />
+
+          <pre>{JSON.stringify(this.props.ssrData)}</pre>
 
           <div
             style="justify-content: center; align-items: center; flex: 1; height: 100vh;"

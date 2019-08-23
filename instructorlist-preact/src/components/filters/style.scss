@@ -24,7 +24,6 @@
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
-    margin-bottom: 2rem;
 
     .button {
       color: gray;
@@ -37,24 +36,30 @@
 
 .section {
   flex-direction: column;
-  padding: 1rem 2rem;
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
+  border-bottom: solid var(--off-white) 1px;
   .sectionHeader {
     .sectionTitle {
-      padding: 2rem;
+      padding: 1.6rem;
       font-weight: bold;
     }
   }
+
   .checkBoxesContainer {
     flex-wrap: wrap;
     .checkBox {
-      padding: 1rem 2rem;
+      display: flex;
+      cursor: pointer;
+      color: var(--off-black);
+      padding: 1.6rem;
       width: 50%;
       .label {
         width: 70%;
       }
       .tick {
         width: 30%;
-        background: url('../../assets/images/tick.svg') no-repeat;
+        background: url('../../assets/images/tick-blue.svg') no-repeat;
         background-position: center;
         cursor: pointer;
         background-size: 1.2rem;
