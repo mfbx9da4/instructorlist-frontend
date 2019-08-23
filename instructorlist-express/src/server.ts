@@ -6,17 +6,11 @@ import { basename } from 'path'
 import { readFileSync } from 'fs'
 import createCompression from 'compression'
 import { render } from 'preact-render-to-string'
+import { exec } from './preact-router-clone'
+import http from 'http'
+import https from 'https'
 // @ts-ignore
 import App from '../../instructorlist-preact/build/ssr-build/ssr-bundle'
-var http = require('http')
-var https = require('https')
-
-function getCredentials(): { key: string; cert: string } {
-  const privateKey = readFileSync('sslcert/server.key', 'utf8')
-  const certificate = readFileSync('sslcert/server.crt', 'utf8')
-  var credentials = { key: privateKey, cert: certificate }
-  return credentials
-}
 
 const compression = createCompression()
 const BUILD_LOCATION = path.resolve('../instructorlist-preact/build')
@@ -29,6 +23,13 @@ const home = readFileSync(`${BUILD_LOCATION}/index.html`, 'utf8')
 const profile = readFileSync(`${BUILD_LOCATION}/profile/index.html`, 'utf8')
 const search = readFileSync(`${BUILD_LOCATION}/search/index.html`, 'utf8')
 
+function getCredentials(): { key: string; cert: string } {
+  const privateKey = readFileSync('sslcert/server.key', 'utf8')
+  const certificate = readFileSync('sslcert/server.crt', 'utf8')
+  var credentials = { key: privateKey, cert: certificate }
+  return credentials
+}
+
 function setHeaders(res: Response, file: string) {
   let cache =
     basename(file) === 'service-worker.js'
@@ -37,17 +38,47 @@ function setHeaders(res: Response, file: string) {
   return res.setHeader('Cache-Control', cache) // don't cache service worker file
 }
 
-const ssr = (template: string, isAmp: boolean = true) => (
+type PageType = {
+  path: string
+  component: {
+    getInitialProps: ((arg0: unknown) => Promise<{}>) | undefined
+  }
+}
+
+type PageMatch = { match: any; page: PageType }
+
+function matchPage(url: string, pages: Array<PageType>): PageMatch | undefined {
+  for (let page of pages) {
+    const { path, component, ...rest } = page
+    const match = exec(url, page.path, rest)
+    if (match) {
+      return { match, page }
+    }
+  }
+}
+
+const ssr = (template: string, isAmp: boolean = true) => async (
   req: Request,
   res: Response,
 ) => {
-  let body = render(h(App, { url: req.url, ssrData: { a: 123 } }))
+  const url = req.url
+  let matched = matchPage(url, App.pages)
+  let ssrData = {}
+  if (matched) {
+    let { match, page } = matched
+    if (page.component.getInitialProps) {
+      ssrData = await page.component.getInitialProps(match)
+      console.log('ssrData', ssrData)
+    }
+  }
+
+  let body = render(h(App, { url, ssrData }))
   res.setHeader('Content-Type', 'text/html')
   let out = template.replace(rgxContent, body)
   if (!isAmp) {
     out.replace(rgxAmpScripts, '')
   }
-  console.log('ssr', req.url, out.indexOf('src="/bundle.'))
+  console.log('ssr', url, out.indexOf('src="/bundle.'))
   res.end(out)
 }
 

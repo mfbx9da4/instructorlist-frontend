@@ -1,8 +1,9 @@
 import { h } from 'preact'
 import { Link } from 'preact-router/match'
 import style from './style'
-console.log('header')
 import isSSR from '../../utils/is-ssr'
+// const isSSR = () => true
+console.log('header')
 
 const Header = () => {
   return (

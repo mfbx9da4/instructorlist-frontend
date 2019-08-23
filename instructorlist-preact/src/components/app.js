@@ -1,5 +1,5 @@
 import { h, Component } from 'preact'
-import { Router } from 'preact-router'
+import { Router, subscribers } from 'preact-router'
 
 import Header from './header'
 
@@ -7,8 +7,38 @@ import Header from './header'
 import Home from '../routes/home'
 import Search from '../routes/search'
 import Profile from '../routes/profile'
-console.log('app')
 import isSSR from '../utils/is-ssr'
+
+const listen = (...args) => console.log('listen', ...args)
+subscribers.push(listen)
+
+const pages = [
+  {
+    component: Home,
+    path: '/',
+  },
+  {
+    component: Search,
+    path: '/search/',
+  },
+  {
+    component: Search,
+    path: '/search/map/',
+  },
+  {
+    component: Search,
+    path: '/search/filters',
+  },
+  {
+    component: Profile,
+    path: '/profile/',
+    user: 'me',
+  },
+  {
+    component: Profile,
+    path: '/profile/:user',
+  },
+]
 
 export default class App extends Component {
   /** Gets fired when the route changes.
@@ -22,21 +52,15 @@ export default class App extends Component {
     this.currentUrl = e.url
   }
 
-  render() {
-    console.log('this.props app', this.props, isSSR())
+  render({ url }) {
     return (
-      <div id="app" className={``}>
+      <div id="app">
         <Header />
-        <Router url={this.props.url} onChange={this.handleRoute}>
-          <Home path="/" />
-          <Search path="/search/" />
-          <Search path="/search/map" />
-          <Search path="/search/filters" />
-          <Profile path="/profile/" user="me" />
-          <Profile path="/profile/:user" />
-
-          <pre>{JSON.stringify(this.props.ssrData)}</pre>
-
+        <Router url={url} onChange={this.handleRoute}>
+          {pages.map(x => {
+            const { component: Component, ...rest } = x
+            return <Component {...rest} {...this.props} />
+          })}
           <div
             style="justify-content: center; align-items: center; flex: 1; height: 100vh;"
             default
@@ -44,7 +68,16 @@ export default class App extends Component {
             404 Not Found
           </div>
         </Router>
+        {isSSR() && (
+          <div>
+            <pre>JSON.stringify(this.props.ssrData)</pre>
+            <pre>{JSON.stringify(this.props.ssrData)}</pre>
+          </div>
+        )}
       </div>
     )
   }
 }
+
+App.pages = pages
+App.Router = Router

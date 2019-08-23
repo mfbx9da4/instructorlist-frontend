@@ -10,4 +10,13 @@ const Home = () => (
   </div>
 )
 
+Home.getInitialProps = () => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      console.log('get some props')
+      resolve({ rgeat: 1 })
+    }, 300)
+  })
+}
+
 export default Home

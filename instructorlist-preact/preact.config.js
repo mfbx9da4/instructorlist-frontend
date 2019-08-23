@@ -35,6 +35,9 @@ export default (config, env, helpers) => {
       exclude: [/^(?!shell).*index\.html$/],
       // PWA routing ie single page app
       navigateFallback: '/shell/index.html',
+      navigateFallbackBlacklist: [
+        /*\.js.*/
+      ],
     }),
   )
 }

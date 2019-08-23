@@ -3,6 +3,7 @@ import { route } from 'preact-router'
 import style from './style'
 console.log('filters')
 import isSSR from '../../utils/is-ssr'
+// const isSSR = () => true
 
 function routeWithQuery(newPath) {
   if (history.pushState) {
