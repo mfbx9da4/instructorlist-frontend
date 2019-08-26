@@ -82,10 +82,12 @@ body {
 
 div {
   display: flex;
+  /* padding: 1.6rem; */
 }
 
 a {
   text-decoration: none;
+  color: var(--off-black);
 }
 
 button {
@@ -96,4 +98,23 @@ button {
 
 .blur {
   filter: blur(0.5rem);
+}
+
+.rightArrow {
+  background: url('../assets/images/chevron.svg') no-repeat;
+  background-position: center;
+  cursor: pointer;
+  background-size: 1.2rem;
+  height: 5rem;
+  width: 5rem;
+}
+
+.leftArrow {
+  background: url('../assets/images/chevron.svg') no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transform: rotate(180deg);
+  background-size: 1.2rem;
+  height: 5rem;
+  width: 5rem;
 }

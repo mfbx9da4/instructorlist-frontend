@@ -1,0 +1,86 @@
+.classDetailWrapper {
+  flex: 1;
+  flex-direction: column;
+  padding: var(--header-height) 0;
+}
+
+.heroImage {
+  height: 120px;
+  flex: 1;
+  position: relative;
+  background: var(--off-white);
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+  .timeLabel {
+    position: absolute;
+    bottom: 1.6rem;
+    left: 1.6rem;
+    background: rgba(255, 255, 255, 1);
+    padding: 1rem 1rem;
+    border-radius: 4px;
+  }
+}
+
+.main {
+  padding: 2rem;
+  flex-direction: column;
+  .mainTitle {
+    font-size: 3rem;
+  }
+  .address {
+    color: var(--grey);
+    margin-bottom: 2rem;
+  }
+  .description {
+    color: var(--grey);
+  }
+}
+
+.instructor {
+  border-bottom: 1px solid var(--off-white);
+  border-top: 1px solid var(--off-white);
+  padding: 1.6rem;
+  .instructorAvatar {
+    margin-right: 1.6rem;
+  }
+  .instructorMain {
+    flex: 1;
+    flex-direction: column;
+    .instructorDescription {
+      color: var(--grey);
+    }
+  }
+  .instructorAction {
+  }
+}
+
+.footer {
+  position: fixed;
+  flex-direction: column;
+  background: white;
+  bottom: 0;
+  flex: 1;
+  width: 100%;
+  padding: 1.6rem;
+  border-top: 1px solid gainsboro;
+  .button {
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    flex: 1;
+    background: var(--brand-blue);
+    padding: 1.6rem;
+    .price {
+      font-weight: bold;
+    }
+    .priceLabel {
+      font-size: 1.3rem;
+    }
+  }
+}

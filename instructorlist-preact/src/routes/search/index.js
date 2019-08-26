@@ -9,3 +9,11 @@ const SearchPage = props => (
 )
 
 export default SearchPage
+
+SearchPage.getInitialProps = () => {
+  return new Promise(async resolve => {
+    let res = await fetch('http://localhost:8000/api/classes')
+    console.log('res', res)
+    resolve(res)
+  })
+}

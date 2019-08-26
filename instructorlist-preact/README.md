@@ -23,4 +23,14 @@ For detailed explanation on how things work, checkout the [CLI Readme](https://g
 
 Todo:
 
-- Find a way to remove bundle from prerender but include it if the url is shell
+- Day url filter
+- Backend filter by url params
+- Class view
+- Connect ENV to backend
+- Map view
+- AMP ready
+- Deploy
+- Add classes
+- Menu
+- Home page
+- Post Ad

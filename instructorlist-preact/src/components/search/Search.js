@@ -3,23 +3,47 @@ import style from './style'
 import dayjs from 'dayjs'
 import Filters from '../filters/Filters'
 import { route } from 'preact-router'
-console.log('search')
 import isSSR from '../../utils/is-ssr'
+import { getFiltersFromUrl } from '../../utils/getFiltersFromUrl'
+import { getUrlQueryParameters } from '../../utils/getUrlQueryParameters'
+
+window.dayjs = dayjs
+
+const timeToMinutes = time => {
+  const [a, b] = time.split(':')
+  return parseInt(a) * 60 + parseInt(b)
+}
+
+const getFilterCount = filters =>
+  typeof filters === 'object'
+    ? Object.keys(filters).filter(key => key !== 'day').length
+    : 0
+const filters = getFiltersFromUrl(location.href) || {}
+const filterCount = getFilterCount(filters)
+console.log('filters', filters)
+filters.day = filters.day || dayjs().format('YYYY-MM-DD')
+
+async function ajax(...args) {
+  let res
+  res = await fetch(...args)
+  return await res.json()
+}
 
 export default class Search extends Component {
-  state = {
-    now: dayjs(),
+  static defaultProps = {
     classes: [
       {
         id: 1,
-        instructor: {
-          name: 'Alexander Smith',
-          avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
-        },
+        instructors: [
+          {
+            full_name: 'Alexander Smith',
+            avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
+          },
+        ],
         title: 'Introduction to Bachata',
         price: 12,
-        tags: ['bachata'],
-        startTime: '07:30',
+        categories: [{ name: 'bachata' }],
+        start_time: '07:30',
         duration: 'Alexander Smith',
         venue: {
           area: 'Covent Garden',
@@ -28,14 +52,16 @@ export default class Search extends Component {
       },
       {
         id: 2,
-        instructor: {
-          name: 'Alexander Smith',
-          avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
-        },
+        instructors: [
+          {
+            full_name: 'Alexander Smith',
+            avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
+          },
+        ],
         title: 'Introduction to Bachata',
         price: 12,
-        tags: ['bachata'],
-        startTime: '07:30',
+        categories: [{ name: 'bachata' }],
+        start_time: '07:30',
         duration: 'Alexander Smith',
         venue: {
           area: 'Covent Garden',
@@ -48,12 +74,67 @@ export default class Search extends Component {
   constructor(props) {
     super(props)
     console.log('props', props)
+    this.state = {
+      day: dayjs(filters.day),
+      filters,
+      filterCount,
+      _classes: props.data.state.search || props.classes,
+      classes: props.data.state.search || props.classes,
+    }
   }
 
   componentDidMount() {
-    this.setState({
-      now: dayjs(),
+    this.doSearch()
+  }
+
+  doSearch = async () => {
+    let { day, ...filters } = this.state.filters
+    let res = await this.props.data.getSearch(filters)
+    console.log('res', res)
+    this.setState(
+      {
+        _classes: res.results,
+      },
+      this.updateClasses,
+    )
+  }
+
+  updateClasses = () => {
+    const day = dayjs(this.state.day).day()
+    const classes = this.state._classes.filter(item => {
+      if (item.day !== day) return false
+      let matchedACategory = false
+      let hasCategories = false
+
+      // Basic search
+      for (const key in this.state.filters) {
+        if (this.state.filters.hasOwnProperty(key)) {
+          const filter = this.state.filters[key]
+          if (filter.type === 'time') {
+            const start = timeToMinutes(item.start_time)
+            const end = timeToMinutes(item.end_time)
+            const fStart = parseInt(key)
+            const filterDuration = 3 * 60
+            const fEnd = fStart + filterDuration
+            if (end < fStart || start > fEnd) return false
+          } else if (filter.type === 'category' && !matchedACategory) {
+            hasCategories = true
+            for (let i = 0; i < item.categories.length; i++) {
+              const category = item.categories[i]
+              console.log('category', category, filter)
+              if (category.name.toLowerCase() === key.toLowerCase()) {
+                matchedACategory = true
+              }
+            }
+          }
+        }
+      }
+
+      if (!matchedACategory && hasCategories) return false
+      return true
     })
+    console.log('classes', classes)
+    this.setState({ classes })
   }
 
   simulateToFiltersUrl = () => {
@@ -65,37 +146,67 @@ export default class Search extends Component {
     )
   }
 
+  onDone = filters => {
+    const { day } = filters
+    this.setState(
+      {
+        filters,
+        filterCount: getFilterCount(filters),
+        day: dayjs(day),
+      },
+      this.updateClasses,
+    )
+  }
+
   routeToFilters = event => {
     event.preventDefault()
     event.stopPropagation()
     route(this.simulateToFiltersUrl())
   }
 
-  render() {
+  addDay = x => {
+    let { day, filters } = this.state
+    console.log('day', day)
+    day = dayjs(day).add(x, 'day')
+    filters.day = dayjs(day).format('YYYY-MM-DD')
+    this.setState({ day, filters }, this.updateClasses)
+    route(`/search/?i=${JSON.stringify(filters)}`)
+  }
+
+  render({}, { filterCount }) {
     return (
       <div className={style.search}>
         <div className={style.dayWrapper}>
-          <div className={style.leftArrow} />
-          <div>{this.state.now.format('dddd D MMM').toUpperCase()}</div>
-          <div className={style.rightArrow} />
+          <div onClick={() => this.addDay(-1)} className="leftArrow" />
+          <div>{this.state.day.format('dddd D MMM').toUpperCase()}</div>
+          <div onClick={() => this.addDay(1)} className="rightArrow" />
         </div>
         <div className={style.listItems}>
-          {this.state.classes.map(item => (
+          {this.state.classes.length === 0 && (
             <div className={style.listItemWrapper}>
               <div className={style.listItem}>
                 <div className={style.listItemAside}>
-                  <div className={style.startTime}>{item.startTime}</div>
+                  <div className={style.price}>No Classes found.</div>
+                </div>
+              </div>
+            </div>
+          )}
+          {this.state.classes.map(item => (
+            <a className={style.listItemWrapper} href={`/classes/${item.id}`}>
+              <div className={style.listItem}>
+                <div className={style.listItemAside}>
+                  <div className={style.startTime}>{item.start_time}</div>
                   <div className={style.price}>£{item.price}</div>
                 </div>
                 <div className={style.listItemMain}>
-                  <div className={style.tags}>
-                    {item.tags.map((x, i) => (
+                  <div className={style.categories}>
+                    {item.categories.map((x, i) => (
                       <a
-                        className={style.tag}
+                        className={style.category}
                         key={i}
-                        href={`/search/tag/${x}`}
+                        href={`/search/category/${x}`}
                       >
-                        #{x}
+                        #{x.name.toLowerCase()}
                       </a>
                     ))}
                   </div>
@@ -104,31 +215,37 @@ export default class Search extends Component {
                     <div>{item.venue.name}</div>
                     <div>{item.venue.area}</div>
                   </div>
-                  <div className={style.instructor}>
-                    <img
-                      className={style.instructorAvatar}
-                      alt={item.instructor.name}
-                      src={item.instructor.avatar}
-                    />
-                    <div className={style.instructorName}>
-                      {item.instructor.name}
+                  {item.instructors[0] && (
+                    <div className={style.instructor}>
+                      <img
+                        className={style.instructorAvatar}
+                        alt={item.instructors[0].name}
+                        src={
+                          item.instructors[0].avatar ||
+                          `https://api.adorable.io/avatars/60/${item.instructors[0].email}.png`
+                        }
+                      />
+                      <div className={style.instructorName}>
+                        {item.instructors[0].name}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
                 <div className={style.listItemAction}>
                   <a
                     className={style.itemActionLink}
                     href={`/classes/${item.id}`}
                   >
-                    <span className={style.rightArrow} />
+                    <span className="rightArrow" />
                   </a>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
         <Filters
           {...this.props}
+          onDone={this.onDone}
           active={this.props.path === '/search/filters'}
         />
         <div className={style.filtersButtonWrapper}>
@@ -140,6 +257,9 @@ export default class Search extends Component {
             >
               <div className={style.filterIcon} />
               Filters
+              {filterCount > 0 && (
+                <div className={style.filterCount}>{filterCount}</div>
+              )}
             </a>
             <a href={`/search/map-view`} className={style.filtersButton}>
               <div className={`${style.filterIcon} ${style.mapIcon}`} />

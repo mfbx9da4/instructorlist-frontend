@@ -1,129 +1,52 @@
 import { h, Component } from 'preact'
 import { route } from 'preact-router'
 import style from './style'
-console.log('filters')
 import isSSR from '../../utils/is-ssr'
-// const isSSR = () => true
-
-function routeWithQuery(newPath) {
-  if (history.pushState) {
-    let path = window.location.protocol + '//' + window.location.host + newPath
-    window.history.pushState({ path }, '', path)
-  }
-}
-
-class RouteNavigationListener {
-  constructor() {
-    this.listeners = {}
-    if (typeof addEventListener === 'function') {
-      addEventListener('popstate', x => {
-        this.emit(x)
-      })
-      addEventListener('pushstate', x => {
-        this.emit(x)
-      })
-    }
-  }
-  addListener = listener => {
-    this.listeners[listener] = listener
-  }
-
-  emit = (...args) => {
-    Object.values(this.listeners).map(x => x(...args))
-  }
-
-  removeListener = listener => {
-    delete this.listeners[listener]
-  }
-}
-
-function getUrlQueryParameters(url) {
-  var question = url.indexOf('?')
-  var hash = url.indexOf('#')
-  if (hash === -1 && question === -1) return {}
-  if (hash === -1) hash = url.length
-  var query =
-    question === -1 || hash === question + 1
-      ? url.substring(hash)
-      : url.substring(question + 1, hash)
-  var result = {}
-  query.split('&').forEach(function(part) {
-    if (!part) return
-    part = part.split('+').join(' ') // replace every + with space, regexp-free version
-    var eq = part.indexOf('=')
-    var key = eq > -1 ? part.substr(0, eq) : part
-    var val = eq > -1 ? decodeURIComponent(part.substr(eq + 1)) : ''
-    var from = key.indexOf('[')
-    if (from === -1) result[decodeURIComponent(key)] = val
-    else {
-      var to = key.indexOf(']', from)
-      var index = decodeURIComponent(key.substring(from + 1, to))
-      key = decodeURIComponent(key.substring(0, from))
-      if (!result[key]) result[key] = []
-      if (!index) result[key].push(val)
-      else result[key][index] = val
-    }
-  })
-  return result
-}
-
-function getFiltersFromUrl(url) {
-  let params = getUrlQueryParameters(url)
-  let out = {}
-  if (params.i) {
-    try {
-      out = JSON.parse(params.i)
-    } catch (e) {
-      console.error('Failed to parse query filters')
-    }
-  }
-  return out
-}
-
-const listener = new RouteNavigationListener()
+import { getFiltersFromUrl } from '../../utils/getFiltersFromUrl'
+import { getUrlQueryParameters } from '../../utils/getUrlQueryParameters'
+import { routeWithQuery } from '../../utils/routeWithQuery'
+import dayjs from 'dayjs'
 
 export default class Filters extends Component {
   constructor(props) {
     super(props)
 
-    listener.addListener(this.onRoute)
-
     let activities = {
       capoeira: {
         name: 'capoeira',
         label: 'Capoeira',
-        type: 'activity',
+        type: 'category',
       },
       ballet: {
         name: 'ballet',
         label: 'Ballet',
-        type: 'activity',
+        type: 'category',
       },
       hip_hop: {
         name: 'hip_hop',
         label: 'Hip Hop',
-        type: 'activity',
+        type: 'category',
       },
       break_dance: {
         name: 'break_dance',
         label: 'Break Dance',
-        type: 'activity',
+        type: 'category',
       },
       salsa: {
         name: 'salsa',
         label: 'Salsa',
-        type: 'activity',
+        type: 'category',
       },
       tap: {
         name: 'tap',
         label: 'Tap',
-        type: 'activity',
+        type: 'category',
       },
     }
 
     const url = isSSR() ? props.url : location.href
     const filters = getFiltersFromUrl(url)
-    console.log('filters', filters)
+    filters.day = filters.day || dayjs().format()
 
     const simulateToggle = {}
     for (const key in activities) {
@@ -211,7 +134,20 @@ export default class Filters extends Component {
     event.preventDefault()
     event.stopPropagation()
     const path = this.simulateBackToSearchUrl()
-    console.log('path', path)
+    if (this.props.onDone) {
+      this.props.onDone(this.state.filters)
+    }
+    route(path)
+  }
+
+  onReset = event => {
+    event.preventDefault()
+    event.stopPropagation()
+    const path = '/search'
+    this.setState({ filters: { day: dayjs().format() } })
+    if (this.props.onDone) {
+      this.props.onDone({})
+    }
     route(path)
   }
 
@@ -224,7 +160,7 @@ export default class Filters extends Component {
       >
         <div className={style.filters}>
           <div className={style.header}>
-            <a href={'/search'} className={style.button}>
+            <a href={'/search'} onClick={this.onReset} className={style.button}>
               Reset
             </a>
             <div className={style.title}>FILTERS</div>

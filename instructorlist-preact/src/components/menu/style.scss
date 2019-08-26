@@ -1,0 +1,48 @@
+.menuWrapper {
+  position: fixed;
+  background: white;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  overflow-x: hidden;
+  transition: all 0.4s;
+  z-index: 100;
+  justify-content: center;
+  &.close {
+    top: -100%;
+    height: 0;
+  }
+}
+
+.menu {
+  max-width: 60rem;
+  flex: 1;
+  flex-direction: column;
+
+  .header {
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: bold;
+
+    .button {
+      color: gray;
+      font-weight: bold;
+      padding: 2rem;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.section {
+  flex-direction: column;
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
+  .sectionHeader {
+    .sectionTitle {
+      padding: 1.6rem;
+      font-weight: bold;
+    }
+  }
+}
+
+// /search, /class, /teacher, /activities

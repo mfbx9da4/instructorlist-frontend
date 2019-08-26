@@ -4,13 +4,17 @@
 }
 .listItems {
   flex-direction: column;
+  margin-bottom: 30rem;
 }
 
 .listItemWrapper {
   margin-top: 1rem;
   flex: 1;
   border-bottom: 1px solid var(--off-white);
+  display: flex;
+
   .listItem {
+    cursor: pointer;
     flex: 1;
     justify-content: space-between;
     max-width: 60rem;
@@ -43,7 +47,7 @@
 
     .listItemMain {
       flex: 1;
-      .tag {
+      .category {
         color: var(--brand-blue);
         font-weight: bold;
         padding: 1rem 1rem 1rem 0;
@@ -71,6 +75,8 @@
           border-radius: 50px;
           border: 1px solid var(--off-white);
           margin-right: 2rem;
+          max-width: 3.5rem;
+          font-size: 0.1rem;
         }
       }
     }
@@ -87,6 +93,7 @@
     border: 1px solid var(--off-white);
     background: white;
     border-radius: 1rem;
+    box-shadow: 0px 0px 1rem 1px #e9e9e9;
 
     a.filtersButton {
       display: flex;
@@ -94,6 +101,7 @@
       color: var(--off-black);
       font-weight: bold;
       align-items: center;
+      justify-content: center;
       &:not(:last-child) {
         border-right: 1px solid var(--off-white);
       }
@@ -106,6 +114,19 @@
         height: 3rem;
         width: 3rem;
       }
+      .filterCount {
+        background: var(--brand-blue);
+        color: white;
+        font-weight: bold;
+        height: 3rem;
+        width: 3rem;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        border-radius: 50%;
+        margin-left: 1rem;
+        font-size: 1.3rem;
+      }
       .mapIcon {
         background: url('../../assets/images/map.svg') no-repeat;
       }
@@ -115,28 +136,8 @@
 
 .dayWrapper {
   justify-content: center;
-  flex: 1;
   height: 5rem;
   align-items: center;
   font-weight: 600;
   border-bottom: 1px solid var(--off-white);
-}
-
-.leftArrow {
-  background: url('../../assets/images/chevron.svg') no-repeat;
-  background-position: center;
-  cursor: pointer;
-  transform: rotate(180deg);
-  background-size: 1.2rem;
-  height: 5rem;
-  width: 5rem;
-}
-
-.rightArrow {
-  background: url('../../assets/images/chevron.svg') no-repeat;
-  background-position: center;
-  cursor: pointer;
-  background-size: 1.2rem;
-  height: 5rem;
-  width: 5rem;
 }
