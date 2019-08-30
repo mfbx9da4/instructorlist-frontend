@@ -37,6 +37,7 @@
     "node-sass": "^4.12.0",
     "per-env": "^1.0.2",
     "preact-cli": "^2.1.0",
+    "preact-cli-plugin-async": "^2.0.0",
     "preact-cli-plugin-critical-css": "^0.1.0",
     "preact-render-spy": "^1.2.1",
     "sass-loader": "^7.2.0"

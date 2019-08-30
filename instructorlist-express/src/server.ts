@@ -11,6 +11,7 @@ import http from 'http'
 import https from 'https'
 // @ts-ignore
 import App from '../../instructorlist-preact/build/ssr-build/ssr-bundle'
+require('isomorphic-fetch')
 
 const compression = createCompression()
 const BUILD_LOCATION = path.resolve('../instructorlist-preact/build')

@@ -3,10 +3,12 @@ import style from './style'
 import ClassDetail from '../../components/classdetail/ClassDetail'
 
 ClassDetail.getInitialProps = ({ id }) => {
-  return new Promise(async resolve => {
-    const res = await fetch(`http://localhost:8000/api/classes/${id}`)
-    const json = await res.json()
-    return resolve(json)
+  return new Promise(resolve => {
+    fetch(`https://instructorlist-django.herokuapp.com/api/classes/${id}`).then(
+      res => {
+        res.json().then(json => resolve(json))
+      },
+    )
   })
 }
 

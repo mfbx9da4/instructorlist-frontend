@@ -10,10 +10,9 @@ const SearchPage = props => (
 
 export default SearchPage
 
-SearchPage.getInitialProps = () => {
-  return new Promise(async resolve => {
-    let res = await fetch('http://localhost:8000/api/classes')
-    console.log('res', res)
-    resolve(res)
-  })
+SearchPage.getInitialProps = async () => {
+  let res = await fetch(
+    'https://instructorlist-django.herokuapp.com/api/classes',
+  )
+  return res.json()
 }

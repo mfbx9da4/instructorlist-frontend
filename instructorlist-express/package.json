@@ -16,6 +16,7 @@
     "@types/serve-static": "^1.13.2",
     "compression": "^1.7.1",
     "express": "^4.17.1",
+    "isomorphic-fetch": "^2.2.1",
     "preact": "^8.2.1",
     "preact-compat": "^3.17.0",
     "preact-render-to-string": "^3.7.0",

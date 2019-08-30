@@ -27,6 +27,7 @@ const http_1 = __importDefault(require("http"));
 const https_1 = __importDefault(require("https"));
 // @ts-ignore
 const ssr_bundle_1 = __importDefault(require("../../instructorlist-preact/build/ssr-build/ssr-bundle"));
+require('isomorphic-fetch');
 const compression = compression_1.default();
 const BUILD_LOCATION = path_1.default.resolve('../instructorlist-preact/build');
 const { PORT = 3000 } = process.env;

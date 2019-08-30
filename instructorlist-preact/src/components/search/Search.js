@@ -5,28 +5,10 @@ import Filters from '../filters/Filters'
 import { route } from 'preact-router'
 import isSSR from '../../utils/is-ssr'
 import { getFiltersFromUrl } from '../../utils/getFiltersFromUrl'
-import { getUrlQueryParameters } from '../../utils/getUrlQueryParameters'
-
-window.dayjs = dayjs
 
 const timeToMinutes = time => {
   const [a, b] = time.split(':')
   return parseInt(a) * 60 + parseInt(b)
-}
-
-const getFilterCount = filters =>
-  typeof filters === 'object'
-    ? Object.keys(filters).filter(key => key !== 'day').length
-    : 0
-const filters = getFiltersFromUrl(location.href) || {}
-const filterCount = getFilterCount(filters)
-console.log('filters', filters)
-filters.day = filters.day || dayjs().format('YYYY-MM-DD')
-
-async function ajax(...args) {
-  let res
-  res = await fetch(...args)
-  return await res.json()
 }
 
 export default class Search extends Component {
@@ -74,6 +56,15 @@ export default class Search extends Component {
   constructor(props) {
     super(props)
     console.log('props', props)
+
+    const getFilterCount = filters =>
+      typeof filters === 'object'
+        ? Object.keys(filters).filter(key => key !== 'day').length
+        : 0
+    const filters = getFiltersFromUrl(props.url || location.href) || {}
+    const filterCount = getFilterCount(filters)
+    console.log('filters', filters)
+    filters.day = filters.day || dayjs().format('YYYY-MM-DD')
     this.state = {
       day: dayjs(filters.day),
       filters,
@@ -191,57 +182,61 @@ export default class Search extends Component {
               </div>
             </div>
           )}
-          {this.state.classes.map(item => (
-            <a className={style.listItemWrapper} href={`/classes/${item.id}`}>
-              <div className={style.listItem}>
-                <div className={style.listItemAside}>
-                  <div className={style.startTime}>{item.start_time}</div>
-                  <div className={style.price}>£{item.price}</div>
-                </div>
-                <div className={style.listItemMain}>
-                  <div className={style.categories}>
-                    {item.categories.map((x, i) => (
-                      <a
-                        className={style.category}
-                        key={i}
-                        href={`/search/category/${x}`}
-                      >
-                        #{x.name.toLowerCase()}
-                      </a>
-                    ))}
+          {this.state.classes.length &&
+            this.state.classes.map(item => (
+              <div
+                className={style.listItemWrapper}
+                href={`/classes/${item.id}`}
+              >
+                <div className={style.listItem}>
+                  <div className={style.listItemAside}>
+                    <div className={style.startTime}>{item.start_time}</div>
+                    <div className={style.price}>£{item.price}</div>
                   </div>
-                  <div className={style.title}>{item.title}</div>
-                  <div className={style.venue}>
-                    <div>{item.venue.name}</div>
-                    <div>{item.venue.area}</div>
-                  </div>
-                  {item.instructors[0] && (
-                    <div className={style.instructor}>
-                      <img
-                        className={style.instructorAvatar}
-                        alt={item.instructors[0].name}
-                        src={
-                          item.instructors[0].avatar ||
-                          `https://api.adorable.io/avatars/60/${item.instructors[0].email}.png`
-                        }
-                      />
-                      <div className={style.instructorName}>
-                        {item.instructors[0].name}
-                      </div>
+                  <div className={style.listItemMain}>
+                    <div className={style.categories}>
+                      {item.categories.map((x, i) => (
+                        <a
+                          className={style.category}
+                          key={i}
+                          href={`/search/category/${x}`}
+                        >
+                          #{x.name.toLowerCase()}
+                        </a>
+                      ))}
                     </div>
-                  )}
-                </div>
-                <div className={style.listItemAction}>
-                  <a
-                    className={style.itemActionLink}
-                    href={`/classes/${item.id}`}
-                  >
-                    <span className="rightArrow" />
-                  </a>
+                    <div className={style.title}>{item.title}</div>
+                    <div className={style.venue}>
+                      <div>{item.venue.name}</div>
+                      <div>{item.venue.area}</div>
+                    </div>
+                    {item.instructors[0] && (
+                      <div className={style.instructor}>
+                        <img
+                          className={style.instructorAvatar}
+                          alt={item.instructors[0].name}
+                          src={
+                            item.instructors[0].avatar ||
+                            `https://api.adorable.io/avatars/60/${item.instructors[0].email}.png`
+                          }
+                        />
+                        <div className={style.instructorName}>
+                          {item.instructors[0].name}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div className={style.listItemAction}>
+                    <a
+                      className={style.itemActionLink}
+                      href={`/classes/${item.id}`}
+                    >
+                      <span className="rightArrow" />
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-          ))}
+            ))}
         </div>
         <Filters
           {...this.props}

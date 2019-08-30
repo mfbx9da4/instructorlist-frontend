@@ -35,11 +35,13 @@
             "image": [
                 "thumbnail1.jpg"
             ],
-            "datePublished": "2015-02-05T08:00:00+08:00"
+            "datePublished": "2015-02-05T08:00:00+08:00",
+            "htmlWebpackPlugin.options.url": "<%= htmlWebpackPlugin.options.url %>",
+            "htmlWebpackPlugin.options.config['_']": "<%= htmlWebpackPlugin.options.config['_'] %>",
             }
         </script>
         <!-- Disable AMP InVisible -->
-        <%if (!htmlWebpackPlugin.options.url === '/shell' && !htmlWebpackPlugin.options.config['_'][0] === 'watch') { %>
+        <%if (htmlWebpackPlugin.options.url !== '/shell' && htmlWebpackPlugin.options.config['_'][0] !== 'watch') { %>
             <script id="start-amp-scripts" type="application/ld+json"></script>
             <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-mo z-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
             <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
