@@ -12,6 +12,12 @@
   flex: 1;
   border-bottom: 1px solid var(--off-white);
   display: flex;
+  position: relative;
+  .listItemLink {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
 
   .listItem {
     cursor: pointer;

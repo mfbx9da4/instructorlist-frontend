@@ -1,6 +1,6 @@
 const isDev =
   typeof window !== 'undefined' && location.href.indexOf('localhost') > -1
-const endpoint = isDev
+const endpoint = false
   ? 'http://localhost:8000'
   : 'https://instructorlist-django.herokuapp.com'
 

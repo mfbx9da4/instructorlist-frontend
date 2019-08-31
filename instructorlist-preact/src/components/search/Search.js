@@ -11,66 +11,66 @@ const timeToMinutes = time => {
   return parseInt(a) * 60 + parseInt(b)
 }
 
-export default class Search extends Component {
-  static defaultProps = {
-    classes: [
-      {
-        id: 1,
-        instructors: [
-          {
-            full_name: 'Alexander Smith',
-            avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
-          },
-        ],
-        title: 'Introduction to Bachata',
-        price: 12,
-        categories: [{ name: 'bachata' }],
-        start_time: '07:30',
-        duration: 'Alexander Smith',
-        venue: {
-          area: 'Covent Garden',
-          name: 'Pineapple Dance Studios',
+const defaultProps = {
+  classes: [
+    {
+      id: 1,
+      instructors: [
+        {
+          full_name: 'Alexander Smith',
+          avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
         },
+      ],
+      title: 'Introduction to Bachata',
+      price: 12,
+      categories: [{ name: 'bachata' }],
+      start_time: '07:30',
+      duration: 'Alexander Smith',
+      venue: {
+        area: 'Covent Garden',
+        name: 'Pineapple Dance Studios',
       },
-      {
-        id: 2,
-        instructors: [
-          {
-            full_name: 'Alexander Smith',
-            avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
-          },
-        ],
-        title: 'Introduction to Bachata',
-        price: 12,
-        categories: [{ name: 'bachata' }],
-        start_time: '07:30',
-        duration: 'Alexander Smith',
-        venue: {
-          area: 'Covent Garden',
-          name: 'Pineapple Dance Studios',
+    },
+    {
+      id: 2,
+      instructors: [
+        {
+          full_name: 'Alexander Smith',
+          avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
         },
+      ],
+      title: 'Introduction to Bachata',
+      price: 12,
+      categories: [{ name: 'bachata' }],
+      start_time: '07:30',
+      duration: 'Alexander Smith',
+      venue: {
+        area: 'Covent Garden',
+        name: 'Pineapple Dance Studios',
       },
-    ],
-  }
+    },
+  ],
+}
 
+export default class Search extends Component {
   constructor(props) {
     super(props)
     console.log('props', props)
-
     const getFilterCount = filters =>
       typeof filters === 'object'
         ? Object.keys(filters).filter(key => key !== 'day').length
         : 0
     const filters = getFiltersFromUrl(props.url || location.href) || {}
     const filterCount = getFilterCount(filters)
-    console.log('filters', filters)
     filters.day = filters.day || dayjs().format('YYYY-MM-DD')
+    const allClasses = props.data.state.search || defaultProps.classes
+    console.log('constructed with filters', filters, allClasses)
     this.state = {
       day: dayjs(filters.day),
       filters,
       filterCount,
-      _classes: props.data.state.search || props.classes,
-      classes: props.data.state.search || props.classes,
+      allClasses: allClasses,
+      classes: this.doLocalSearch(allClasses),
     }
   }
 
@@ -81,18 +81,18 @@ export default class Search extends Component {
   doSearch = async () => {
     let { day, ...filters } = this.state.filters
     let res = await this.props.data.getSearch(filters)
-    console.log('res', res)
+    console.log('gotSearch', res.results)
     this.setState(
       {
-        _classes: res.results,
+        allClasses: res.results,
       },
-      this.updateClasses,
+      this.doLocalSearch,
     )
   }
 
-  updateClasses = () => {
+  doLocalSearch = (allClasses = this.state.allClasses) => {
     const day = dayjs(this.state.day).day()
-    const classes = this.state._classes.filter(item => {
+    const classes = allClasses.filter(item => {
       if (item.day !== day) return false
       let matchedACategory = false
       let hasCategories = false
@@ -126,6 +126,7 @@ export default class Search extends Component {
     })
     console.log('classes', classes)
     this.setState({ classes })
+    return classes
   }
 
   simulateToFiltersUrl = () => {
@@ -145,7 +146,7 @@ export default class Search extends Component {
         filterCount: getFilterCount(filters),
         day: dayjs(day),
       },
-      this.updateClasses,
+      this.doLocalSearch,
     )
   }
 
@@ -160,7 +161,7 @@ export default class Search extends Component {
     console.log('day', day)
     day = dayjs(day).add(x, 'day')
     filters.day = dayjs(day).format('YYYY-MM-DD')
-    this.setState({ day, filters }, this.updateClasses)
+    this.setState({ day, filters }, this.doLocalSearch)
     route(`/search/?i=${JSON.stringify(filters)}`)
   }
 
@@ -184,10 +185,11 @@ export default class Search extends Component {
           )}
           {this.state.classes.length &&
             this.state.classes.map(item => (
-              <div
-                className={style.listItemWrapper}
-                href={`/classes/${item.id}`}
-              >
+              <div className={style.listItemWrapper}>
+                <a
+                  className={style.listItemLink}
+                  href={`/classes/${item.id}`}
+                ></a>
                 <div className={style.listItem}>
                   <div className={style.listItemAside}>
                     <div className={style.startTime}>{item.start_time}</div>
