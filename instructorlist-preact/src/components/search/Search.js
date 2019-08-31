@@ -56,12 +56,8 @@ export default class Search extends Component {
   constructor(props) {
     super(props)
     console.log('props', props)
-    const getFilterCount = filters =>
-      typeof filters === 'object'
-        ? Object.keys(filters).filter(key => key !== 'day').length
-        : 0
     const filters = getFiltersFromUrl(props.url || location.href) || {}
-    const filterCount = getFilterCount(filters)
+    const filterCount = this.getFilterCount(filters)
     filters.day = filters.day || dayjs().format('YYYY-MM-DD')
     const allClasses = props.data.state.classes || defaultProps.classes
     console.log('constructed with filters', filters, allClasses)
@@ -77,6 +73,11 @@ export default class Search extends Component {
   componentDidMount() {
     this.doSearch()
   }
+
+  getFilterCount = filters =>
+    typeof filters === 'object'
+      ? Object.keys(filters).filter(key => key !== 'day').length
+      : 0
 
   doSearch = async () => {
     console.log('do searc')
@@ -108,9 +109,10 @@ export default class Search extends Component {
           if (filter.type === 'time') {
             const start = timeToMinutes(item.start_time)
             const end = timeToMinutes(item.end_time)
-            const fStart = parseInt(key)
+            const fStart = parseInt(key) * 60
             const filterDuration = 3 * 60
             const fEnd = fStart + filterDuration
+            console.log('start, end, fStart, fEnd', start, end, fStart, fEnd)
             if (end < fStart || start > fEnd) return false
           } else if (filter.type === 'category' && !matchedACategory) {
             hasCategories = true
@@ -147,7 +149,7 @@ export default class Search extends Component {
     this.setState(
       {
         filters,
-        filterCount: getFilterCount(filters),
+        filterCount: this.getFilterCount(filters),
         day: dayjs(day),
       },
       this.doLocalSearch,
