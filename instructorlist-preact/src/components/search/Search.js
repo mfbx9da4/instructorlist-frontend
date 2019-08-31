@@ -63,7 +63,7 @@ export default class Search extends Component {
     const filters = getFiltersFromUrl(props.url || location.href) || {}
     const filterCount = getFilterCount(filters)
     filters.day = filters.day || dayjs().format('YYYY-MM-DD')
-    const allClasses = props.data.state.search || defaultProps.classes
+    const allClasses = props.data.state.classes || defaultProps.classes
     console.log('constructed with filters', filters, allClasses)
     this.state = {
       day: dayjs(filters.day),
@@ -79,8 +79,11 @@ export default class Search extends Component {
   }
 
   doSearch = async () => {
+    console.log('do searc')
     let { day, ...filters } = this.state.filters
+    await this.setState({ isLoading: true })
     let res = await this.props.data.getSearch(filters)
+    await this.setState({ isLoading: false })
     console.log('gotSearch', res.results)
     this.setState(
       {
@@ -91,6 +94,7 @@ export default class Search extends Component {
   }
 
   doLocalSearch = (allClasses = this.state.allClasses) => {
+    console.log('allClasses', allClasses)
     const day = dayjs(this.state.day).day()
     const classes = allClasses.filter(item => {
       if (item.day !== day) return false
@@ -173,23 +177,35 @@ export default class Search extends Component {
           <div>{this.state.day.format('dddd D MMM').toUpperCase()}</div>
           <div onClick={() => this.addDay(1)} className="rightArrow" />
         </div>
-        <div className={style.listItems}>
-          {this.state.classes.length === 0 && (
-            <div className={style.listItemWrapper}>
-              <div className={style.listItem}>
-                <div className={style.listItemAside}>
-                  <div className={style.price}>No Classes found.</div>
-                </div>
-              </div>
+        {!this.state.isLoading && this.state.classes.length === 0 && (
+          <div className={style.infoWrapper}>
+            <div className={style.infoMessage}>
+              <div className={`shrug ${style.infoIcon}`}></div>
+              <div className={style.title}>NO CLASSES FOUND</div>
             </div>
-          )}
+          </div>
+        )}
+        {this.state.isLoading && this.state.classes.length === 0 && (
+          <div className={style.infoWrapper}>
+            <div className={style.infoMessage}>
+              <div className={`cow ${style.infoIcon}`}></div>
+              <div className={style.title}>Loading classes</div>
+            </div>
+          </div>
+        )}
+        <div className={style.listItems}>
           {this.state.classes.length &&
             this.state.classes.map(item => (
-              <div className={style.listItemWrapper}>
-                <a
-                  className={style.listItemLink}
-                  href={`/classes/${item.id}`}
-                ></a>
+              <div
+                onClick={() => route(`/classes/${item.id}`)}
+                className={style.listItemWrapper}
+              >
+                {isSSR() && (
+                  <a
+                    className={style.listItemLink}
+                    href={`/classes/${item.id}`}
+                  ></a>
+                )}
                 <div className={style.listItem}>
                   <div className={style.listItemAside}>
                     <div className={style.startTime}>{item.start_time}</div>

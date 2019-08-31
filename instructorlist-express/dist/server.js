@@ -44,7 +44,7 @@ function getCredentials() {
 }
 function setHeaders(res, file) {
     let cache = path_2.basename(file) === 'service-worker.js'
-        ? 'private,no-cache'
+        ? 'private,no-cache,no-store,must-revalidate,proxy-revalidate'
         : 'public,max-age=31536000,immutable';
     return res.setHeader('Cache-Control', cache); // don't cache service worker file
 }
@@ -79,6 +79,10 @@ const ssr = (template, isAmp = true) => async (req, res) => {
 };
 const app = express_1.default()
     .use(compression)
+    .use((req, res, next) => {
+    console.log('req.url', req.url);
+    next();
+})
     .get('/', ssr(home))
     .get('/search/', ssr(search))
     .get('/profile/', ssr(profile))

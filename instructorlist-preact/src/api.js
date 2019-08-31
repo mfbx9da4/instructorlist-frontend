@@ -5,7 +5,7 @@ const endpoint = false
   : 'https://instructorlist-django.herokuapp.com'
 
 const initial = {
-  classes: {},
+  classes: [],
   search: null,
 }
 
@@ -16,9 +16,18 @@ export default class DataService {
 
   getSearch = async (filters = {}) => {
     if (this.state.search) return this.state.search
-    let res = await fetch(
-      `${endpoint}/api/search/?i=${JSON.stringify(filters)}`,
-    )
+    const url = `${endpoint}/api/search/?i=${JSON.stringify(filters)}`
+    let res
+    console.log('start')
+    try {
+      res = await fetch(url)
+    } catch (e) {
+      res = {
+        ok: false,
+        data: { message: 'You are offline' },
+      }
+    }
+    console.log('fetched')
     if (res.ok) {
       const json = await res.json()
       this.state.search = json

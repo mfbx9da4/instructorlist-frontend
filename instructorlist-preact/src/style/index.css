@@ -42,6 +42,7 @@
   --grey90: #1f2432;
   */
 
+  --light-blue: hsla(228, 100%, 95%, 1);
   --brand-blue: rgba(25, 72, 255, 1);
   --aqua: rgba(18, 190, 199, 1);
   --off-white: hsl(0, 0%, 91%);
@@ -117,4 +118,22 @@ button {
   background-size: 1.2rem;
   height: 5rem;
   width: 5rem;
+}
+
+.shrug {
+  background: url('../assets/images/shrug.svg') no-repeat;
+  background-position: center;
+  cursor: pointer;
+  background-size: 12rem;
+  height: 12rem;
+  width: 12rem;
+}
+
+.cow {
+  background: url('../assets/images/cow.svg') no-repeat;
+  background-position: center;
+  cursor: pointer;
+  background-size: 12rem;
+  height: 12rem;
+  width: 12rem;
 }

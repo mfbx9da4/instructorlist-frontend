@@ -34,7 +34,7 @@ function getCredentials(): { key: string; cert: string } {
 function setHeaders(res: Response, file: string) {
   let cache =
     basename(file) === 'service-worker.js'
-      ? 'private,no-cache'
+      ? 'private,no-cache,no-store,must-revalidate,proxy-revalidate'
       : 'public,max-age=31536000,immutable'
   return res.setHeader('Cache-Control', cache) // don't cache service worker file
 }
@@ -85,6 +85,10 @@ const ssr = (template: string, isAmp: boolean = true) => async (
 
 const app = express()
   .use(compression)
+  .use((req, res, next) => {
+    console.log('req.url', req.url)
+    next()
+  })
   .get('/', ssr(home))
   .get('/search/', ssr(search))
   .get('/profile/', ssr(profile))
