@@ -37,33 +37,38 @@ export default class ClassDetail extends Component {
     const instructor = item.instructors[0]
     const profile = instructor.profile || { bio: '' }
     return (
-      <div className={style.classDetailWrapper}>
-        {/* <pre>{JSON.stringify(item, null, 2)}</pre> */}
-        <div className={style.classHero}>
-          <div className={style.heroImage}>
-            <img src={item.hero_image_url} alt={item.title} />
-            <div className={style.timeLabel}>
-              {item.start_time} {item.date}
-            </div>
-          </div>
-        </div>
-        <div className={style.main}>
-          <div className={style.mainTitle}>{item.title}</div>
-          <div className={style.address}>
-            {item.venue.name} {item.venue.area}
-          </div>
-          <div className={style.instructor}>
-            <div className={style.instructorAvatar}>
-              <img src={profile.profile_image_url} alt={instructor.name} />
-            </div>
-            <div className={style.instructorMain}>
-              <div className={style.instructorName}>{instructor.name}</div>
-              <div className={style.instructorDescription}>
-                {profile.bio.substring(0, 50)}
+      <div>
+        <div className={style.classDetailWrapper}>
+          {/* <pre>{JSON.stringify(item, null, 2)}</pre> */}
+          <div className={style.classHero}>
+            <div className={style.heroImage}>
+              <img
+                src={item.hero_image_url || '/assets/images/class.jpeg'}
+                alt={item.title}
+              />
+              <div className={style.timeLabel}>
+                {item.start_time} {item.date}
               </div>
             </div>
-            <div className={style.instructorAction}>
-              <div className="rightArrow"></div>
+          </div>
+          <div className={style.main}>
+            <div className={style.mainTitle}>{item.title}</div>
+            <div className={style.address}>
+              {item.venue.name} {item.venue.area}
+            </div>
+            <div className={style.instructor}>
+              <div className={style.instructorAvatar}>
+                <img src={profile.profile_image_url} alt={instructor.name} />
+              </div>
+              <div className={style.instructorMain}>
+                <div className={style.instructorName}>{instructor.name}</div>
+                <div className={style.instructorDescription}>
+                  {profile.bio.substring(0, 50)}
+                </div>
+              </div>
+              <div className={style.instructorAction}>
+                <div className="rightArrow"></div>
+              </div>
             </div>
           </div>
         </div>

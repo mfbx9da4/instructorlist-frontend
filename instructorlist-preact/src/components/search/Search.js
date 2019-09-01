@@ -5,68 +5,49 @@ import Filters from '../filters/Filters'
 import { route } from 'preact-router'
 import isSSR from '../../utils/is-ssr'
 import { getFiltersFromUrl } from '../../utils/getFiltersFromUrl'
+import { classNames } from '../../utils/classNames'
 
 const timeToMinutes = time => {
   const [a, b] = time.split(':')
   return parseInt(a) * 60 + parseInt(b)
 }
 
-const defaultProps = {
-  classes: [
-    {
-      id: 1,
-      instructors: [
-        {
-          full_name: 'Alexander Smith',
-          avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
-        },
-      ],
-      title: 'Introduction to Bachata',
-      price: 12,
-      categories: [{ name: 'bachata' }],
-      start_time: '07:30',
-      duration: 'Alexander Smith',
-      venue: {
-        area: 'Covent Garden',
-        name: 'Pineapple Dance Studios',
-      },
-    },
-    {
-      id: 2,
-      instructors: [
-        {
-          full_name: 'Alexander Smith',
-          avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
-        },
-      ],
-      title: 'Introduction to Bachata',
-      price: 12,
-      categories: [{ name: 'bachata' }],
-      start_time: '07:30',
-      duration: 'Alexander Smith',
-      venue: {
-        area: 'Covent Garden',
-        name: 'Pineapple Dance Studios',
-      },
-    },
-  ],
+if (!isSSR()) window.dayjs = dayjs
+
+function parseDate(day) {
+  // Required as parsing date is different on server
+  if (day && day.length) {
+    const split = day.split('-')
+    if (split.length === 3) {
+      const year = parseInt(split[0])
+      const month = parseInt(split[1]) - 1
+      const day = parseInt(split[2]) - 1
+      return dayjs()
+        .set('day', day)
+        .set('month', month)
+        .set('year', year)
+    }
+  }
+  return dayjs()
 }
 
 export default class Search extends Component {
   constructor(props) {
     super(props)
-    console.log('props', props)
+    console.log('constructor_props', props)
     const filters = getFiltersFromUrl(props.url || location.href) || {}
     const filterCount = this.getFilterCount(filters)
+    console.log('filters.day , dayjs().)', filters.day, dayjs())
     filters.day = filters.day || dayjs().format('YYYY-MM-DD')
-    const allClasses = props.data.state.classes || defaultProps.classes
-    console.log('constructed with filters', filters, allClasses)
+    const day = parseDate(filters.day)
+    const allClasses = props.data.state.classes
+    console.log('constructed with filters', filters.day, day, filters)
     this.state = {
-      day: dayjs(filters.day),
+      day,
       filters,
       filterCount,
       allClasses: allClasses,
-      classes: this.doLocalSearch(allClasses),
+      classes: this.doLocalSearch(allClasses, day),
     }
   }
 
@@ -94,11 +75,15 @@ export default class Search extends Component {
     )
   }
 
-  doLocalSearch = (allClasses = this.state.allClasses) => {
-    console.log('allClasses', allClasses)
-    const day = dayjs(this.state.day).day()
+  doLocalSearch = (
+    allClasses = this.state.allClasses,
+    day = this.state.day,
+  ) => {
+    console.log('dolocal search')
+    const dayFilter = dayjs(day).day()
+    console.log('day', day, this.state.day)
     const classes = allClasses.filter(item => {
-      if (item.day !== day) return false
+      if (item.day !== dayFilter) return false
       let matchedACategory = false
       let hasCategories = false
 
@@ -108,12 +93,11 @@ export default class Search extends Component {
           const filter = this.state.filters[key]
           if (filter.type === 'time') {
             const start = timeToMinutes(item.start_time)
-            const end = timeToMinutes(item.end_time)
             const fStart = parseInt(key) * 60
             const filterDuration = 3 * 60
             const fEnd = fStart + filterDuration
-            console.log('start, end, fStart, fEnd', start, end, fStart, fEnd)
-            if (end < fStart || start > fEnd) return false
+            console.log('start, fStart, fEnd', start, fStart, fEnd)
+            if (start < fStart || start > fEnd) return false
           } else if (filter.type === 'category' && !matchedACategory) {
             hasCategories = true
             for (let i = 0; i < item.categories.length; i++) {
@@ -127,6 +111,11 @@ export default class Search extends Component {
         }
       }
 
+      console.log(
+        'matchedACategory , hasCategories',
+        matchedACategory,
+        hasCategories,
+      )
       if (!matchedACategory && hasCategories) return false
       return true
     })
@@ -164,7 +153,6 @@ export default class Search extends Component {
 
   addDay = x => {
     let { day, filters } = this.state
-    console.log('day', day)
     day = dayjs(day).add(x, 'day')
     filters.day = dayjs(day).format('YYYY-MM-DD')
     this.setState({ day, filters }, this.doLocalSearch)
@@ -179,24 +167,32 @@ export default class Search extends Component {
           <div>{this.state.day.format('dddd D MMM').toUpperCase()}</div>
           <div onClick={() => this.addDay(1)} className="rightArrow" />
         </div>
-        {!this.state.isLoading && this.state.classes.length === 0 && (
-          <div className={style.infoWrapper}>
-            <div className={style.infoMessage}>
-              <div className={`shrug ${style.infoIcon}`}></div>
-              <div className={style.title}>NO CLASSES FOUND</div>
-            </div>
+        <div
+          className={classNames({
+            [style.infoWrapper]: true,
+            hide: this.state.isLoading || this.state.classes.length !== 0,
+          })}
+        >
+          <div className={style.infoMessage}>
+            <div className={`shrug ${style.infoIcon}`}></div>
+            <div className={style.title}>No classes found</div>
           </div>
-        )}
-        {this.state.isLoading && this.state.classes.length === 0 && (
-          <div className={style.infoWrapper}>
-            <div className={style.infoMessage}>
-              <div className={`cow ${style.infoIcon}`}></div>
-              <div className={style.title}>Loading classes</div>
-            </div>
-          </div>
-        )}
+        </div>
+        <div
+          className={classNames({
+            [style.infoWrapper]: true,
+            hide: !this.state.isLoading || this.state.classes.length !== 0,
+          })}
+        >
+          <img
+            width="85"
+            height="119"
+            src="/assets/images/dancing.gif"
+            alt="loading"
+          />
+        </div>
         <div className={style.listItems}>
-          {this.state.classes.length &&
+          {this.state.classes &&
             this.state.classes.map(item => (
               <div
                 onClick={() => route(`/classes/${item.id}`)}

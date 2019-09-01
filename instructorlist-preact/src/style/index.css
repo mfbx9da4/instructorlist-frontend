@@ -84,6 +84,7 @@ body {
 div {
   display: flex;
   /* padding: 1.6rem; */
+  transition: all 0.3s;
 }
 
 a {
@@ -136,4 +137,14 @@ button {
   background-size: 12rem;
   height: 12rem;
   width: 12rem;
+}
+
+.hide {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.hide * {
+  display: none;
 }

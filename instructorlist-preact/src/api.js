@@ -4,14 +4,38 @@ const endpoint = false
   ? 'http://localhost:8000'
   : 'https://instructorlist-django.herokuapp.com'
 
-const initial = {
-  classes: [],
+const defaultClass = {
+  id: 1,
+  instructors: [
+    {
+      full_name: 'Alexander Smith',
+      avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
+    },
+  ],
+  title: 'Introduction to Bachata',
+  price: 12,
+  categories: [{ name: 'bachata' }],
+  start_time: '07:30',
+  duration: 'Alexander Smith',
+  venue: {
+    area: 'Covent Garden',
+    name: 'Pineapple Dance Studios',
+  },
+}
+
+const prerenderState = {
+  classes: [defaultClass],
   search: null,
 }
 
 export default class DataService {
-  constructor(initialState = initial) {
-    this.state = initialState
+  constructor(initialState) {
+    if (initialState) {
+      this.state = initialState
+    } else {
+      this.state = prerenderState
+      this.wasInitialized = true
+    }
   }
 
   getSearch = async (filters = {}) => {

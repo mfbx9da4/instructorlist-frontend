@@ -4,32 +4,37 @@
 
 ```bash
 # install dependencies
-npm install
+yarn install
 
 # serve with hot reload at localhost:8080
-npm run dev
+yarn dev
 
 # build for production with minification
-npm run build
+yarn build
 
 # test the production build locally
-npm run serve
+yarn serve
 
 # run tests with jest and preact-render-spy
-npm run test
+yarn test
 ```
 
 For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
 
+## Deploy
+
+```
+gcloud app deploy --version 20190831t105002
+```
+
 Todo:
 
-- Day url filter
-- Backend filter by url params
-- Class view
-- Connect ENV to backend
+- Day url filter [done]
+- Backend filter by url params [done] ish
+- Connect ENV to backend [done]
 - Map view
 - AMP ready
-- Deploy
+- Class view
 - Add classes
 - Menu
 - Home page

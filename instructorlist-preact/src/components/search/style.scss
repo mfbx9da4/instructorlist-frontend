@@ -2,12 +2,15 @@
   flex: 1;
   flex-direction: column;
 }
+
 .listItems {
   flex-direction: column;
   margin-bottom: 30rem;
 }
 
 .infoWrapper {
+  position: fixed;
+  top: 30%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -117,9 +120,10 @@
 
 .filtersButtonWrapper {
   position: fixed;
-  width: 100%;
   bottom: 4rem;
   justify-content: center;
+  left: 50%;
+  transform: translateX(-50%);
 
   .filtersButtonContainer {
     border: 1px solid var(--off-white);
