@@ -17,11 +17,7 @@ export default class ClassDetail extends Component {
     super(props)
     console.log('props', props)
     this.state = {
-      item: {
-        title: 'hey',
-        venue: {},
-        instructors: [{ profile: { bio: '' } }],
-      },
+      item: this.props.data.state.classes[props.matches.id],
     }
   }
 
@@ -34,6 +30,7 @@ export default class ClassDetail extends Component {
   }
 
   render({}, { item }) {
+    console.log('item', item)
     const instructor = item.instructors[0]
     const profile = instructor.profile || { bio: '' }
     return (
@@ -46,8 +43,15 @@ export default class ClassDetail extends Component {
                 src={item.hero_image_url || '/assets/images/class.jpeg'}
                 alt={item.title}
               />
+              <a
+                onClick={this.onBack}
+                href="/search"
+                className={`${style.back}`}
+              >
+                <div className="leftArrow"></div>
+              </a>
               <div className={style.timeLabel}>
-                {item.start_time} {item.date}
+                {dayToDayString[item.day]} {item.start_time}
               </div>
             </div>
           </div>
@@ -56,20 +60,52 @@ export default class ClassDetail extends Component {
             <div className={style.address}>
               {item.venue.name} {item.venue.area}
             </div>
-            <div className={style.instructor}>
-              <div className={style.instructorAvatar}>
-                <img src={profile.profile_image_url} alt={instructor.name} />
+            <a
+              href=""
+              target="_blank"
+              className={style.well}
+              style={{ borderTop: '1px solid var(--off-white)' }}
+            >
+              <div className={style.wellIcon}>
+                <div className="directions"></div>
               </div>
-              <div className={style.instructorMain}>
-                <div className={style.instructorName}>{instructor.name}</div>
-                <div className={style.instructorDescription}>
+              <div className={style.wellMain}>
+                <div className={style.wellName}>{item.venue.name}</div>
+                <div className={style.wellDescription}>
+                  {item.venue.address_line_1}, {item.venue.postcode}
+                </div>
+              </div>
+              <div className={style.wellAction}>
+                <div className="rightArrow"></div>
+              </div>
+            </a>
+            <a className={style.well} href={`${profile.slug}`}>
+              <div className={style.wellIcon}>
+                <img
+                  className={style.instructorAvatar}
+                  src={
+                    profile.profile_image_url ||
+                    `https://api.adorable.io/avatars/60/${instructor.email}.png`
+                  }
+                  alt={instructor.name}
+                />
+              </div>
+              <div className={style.wellMain}>
+                <div className={style.wellName}>{instructor.name}</div>
+                <div className={style.wellDescription}>
                   {profile.bio.substring(0, 50)}
                 </div>
               </div>
-              <div className={style.instructorAction}>
+              <div className={style.wellAction}>
                 <div className="rightArrow"></div>
               </div>
-            </div>
+            </a>
+            {item.description && (
+              <div className={style.section}>
+                <div className={style.title}>About</div>
+                <div className={style.description}>{item.description}</div>
+              </div>
+            )}
           </div>
         </div>
         <div className={style.footer}>

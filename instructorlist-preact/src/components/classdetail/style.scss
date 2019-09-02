@@ -17,6 +17,13 @@
     height: 100%;
     position: absolute;
   }
+  .back {
+    background: white;
+    position: absolute;
+    top: 1.6rem;
+    left: 1.6rem;
+    border-radius: 50%;
+  }
   .timeLabel {
     position: absolute;
     bottom: 1.6rem;
@@ -28,8 +35,11 @@
 }
 
 .main {
-  padding: 2rem;
+  padding: 2rem 0;
   flex-direction: column;
+  > div {
+    padding-left: 2rem;
+  }
   .mainTitle {
     font-size: 3rem;
   }
@@ -42,21 +52,36 @@
   }
 }
 
-.instructor {
-  border-bottom: 1px solid var(--off-white);
-  border-top: 1px solid var(--off-white);
-  padding: 1.6rem;
-  .instructorAvatar {
-    margin-right: 1.6rem;
+.section {
+  padding: 2rem;
+  .title {
+    font-weight: bold;
   }
-  .instructorMain {
+}
+
+.instructorAvatar {
+  width: 5rem;
+  border-radius: 50%;
+}
+.well {
+  border-bottom: 1px solid var(--off-white);
+  padding: 1.6rem;
+  display: flex;
+  align-items: center;
+  .wellIcon {
+    margin-right: 1.6rem;
+    align-self: flex-start;
+  }
+  .wellMain {
     flex: 1;
     flex-direction: column;
-    .instructorDescription {
+    .wellDescription {
       color: var(--grey);
     }
   }
-  .instructorAction {
+  .wellAction {
+    flex-direction: column;
+    justify-content: center;
   }
 }
 
@@ -84,6 +109,7 @@
     max-width: 50rem;
     .price {
       font-weight: bold;
+      font-size: 2rem;
     }
     .priceLabel {
       font-size: 1.3rem;

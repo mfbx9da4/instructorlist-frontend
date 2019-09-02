@@ -82,7 +82,7 @@ export default class Search extends Component {
     console.log('dolocal search')
     const dayFilter = dayjs(day).day()
     console.log('day', day, this.state.day)
-    const classes = allClasses.filter(item => {
+    const classes = Object.values(allClasses).filter(item => {
       if (item.day !== dayFilter) return false
       let matchedACategory = false
       let hasCategories = false
@@ -151,21 +151,37 @@ export default class Search extends Component {
     route(this.simulateToFiltersUrl())
   }
 
-  addDay = x => {
-    let { day, filters } = this.state
-    day = dayjs(day).add(x, 'day')
-    filters.day = dayjs(day).format('YYYY-MM-DD')
+  addDay = x => e => {
+    e.preventDefault()
+    e.stopPropagation()
+    let { day: _day, filters: _filters } = this.state
+    const { day, filters, url } = this.simulateAddDayUrl(x, _day, _filters)
     this.setState({ day, filters }, this.doLocalSearch)
-    route(`/search/?i=${JSON.stringify(filters)}`)
+    route(url)
   }
 
-  render({}, { filterCount }) {
+  simulateAddDayUrl = (x, day, filters = {}) => {
+    day = dayjs(day).add(x, 'day')
+    filters.day = dayjs(day).format('YYYY-MM-DD')
+    const url = `/search/?i=${JSON.stringify(filters)}`
+    return { day, filters, url }
+  }
+
+  render({}, { day, filters, filterCount }) {
     return (
       <div className={style.search}>
         <div className={style.dayWrapper}>
-          <div onClick={() => this.addDay(-1)} className="leftArrow" />
+          <a
+            href={this.simulateAddDayUrl(-1, day, filters)}
+            onClick={this.addDay(-1)}
+            className="leftArrow"
+          />
           <div>{this.state.day.format('dddd D MMM').toUpperCase()}</div>
-          <div onClick={() => this.addDay(1)} className="rightArrow" />
+          <a
+            href={(this.simulateAddDayUrl(1), day, filters)}
+            onClick={this.addDay(1)}
+            className="rightArrow"
+          />
         </div>
         <div
           className={classNames({
@@ -190,6 +206,7 @@ export default class Search extends Component {
             src="/assets/images/dancing.gif"
             alt="loading"
           />
+          <div>Loading</div>
         </div>
         <div className={style.listItems}>
           {this.state.classes &&

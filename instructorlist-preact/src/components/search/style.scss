@@ -119,6 +119,7 @@
 }
 
 .filtersButtonWrapper {
+  width: fit-content;
   position: fixed;
   bottom: 4rem;
   justify-content: center;
@@ -165,6 +166,8 @@
       }
       .mapIcon {
         background: url('../../assets/images/map.svg') no-repeat;
+        background-position: center;
+        background-size: 3rem;
       }
     }
   }

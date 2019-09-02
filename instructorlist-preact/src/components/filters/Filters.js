@@ -3,7 +3,6 @@ import { route } from 'preact-router'
 import style from './style'
 import isSSR from '../../utils/is-ssr'
 import { getFiltersFromUrl } from '../../utils/getFiltersFromUrl'
-import { getUrlQueryParameters } from '../../utils/getUrlQueryParameters'
 import { routeWithQuery } from '../../utils/routeWithQuery'
 import dayjs from 'dayjs'
 

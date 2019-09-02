@@ -48,6 +48,7 @@
 
   .checkBoxesContainer {
     flex-wrap: wrap;
+    transition: all 0.2s;
     .checkBox {
       display: flex;
       cursor: pointer;
