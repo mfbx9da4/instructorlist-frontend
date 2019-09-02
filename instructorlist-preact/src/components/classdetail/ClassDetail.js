@@ -31,6 +31,7 @@ export default class ClassDetail extends Component {
 
   render({}, { item }) {
     console.log('item', item)
+    if (!item) return <div>Class not found</div>
     const instructor = item.instructors[0]
     const profile = instructor.profile || { bio: '' }
     return (

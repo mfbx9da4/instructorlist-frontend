@@ -172,13 +172,13 @@ export default class Search extends Component {
       <div className={style.search}>
         <div className={style.dayWrapper}>
           <a
-            href={this.simulateAddDayUrl(-1, day, filters)}
+            href={this.simulateAddDayUrl(-1, day, filters).url}
             onClick={this.addDay(-1)}
             className="leftArrow"
           />
           <div>{this.state.day.format('dddd D MMM').toUpperCase()}</div>
           <a
-            href={(this.simulateAddDayUrl(1), day, filters)}
+            href={(this.simulateAddDayUrl(1), day, filters).url}
             onClick={this.addDay(1)}
             className="rightArrow"
           />

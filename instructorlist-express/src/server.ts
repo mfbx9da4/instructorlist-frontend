@@ -62,9 +62,9 @@ const ssr = (template: string, isAmp: boolean = true) => async (
   req: Request,
   res: Response,
 ) => {
+  let ssrData = {}
   const url = req.url
   let matched = matchPage(url, App.pages)
-  let ssrData = {}
   if (matched) {
     let { match, page } = matched
     if (page.component.getInitialProps) {
@@ -91,6 +91,7 @@ const app = express()
   })
   .get('/', ssr(home))
   .get('/search/', ssr(search))
+  .get('/shell/index.html', ssr(search, false))
   .get('/profile/', ssr(profile))
   .get('/profile/:user', ssr(profile))
   .use(serve(BUILD_LOCATION, { setHeaders }))
