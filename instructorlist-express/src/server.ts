@@ -16,7 +16,7 @@ require('isomorphic-fetch')
 const compression = createCompression()
 const BUILD_LOCATION = path.resolve('../instructorlist-preact/build')
 
-const { PORT = 3000 } = process.env
+const { PORT = 80 } = process.env
 
 const rgxAmpScripts = /<script id="start-amp-scripts"[^>]*>.*?(?=<script id="end-amp-scripts")/i
 const rgxContent = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i
