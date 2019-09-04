@@ -62,7 +62,11 @@ export default class ClassDetail extends Component {
               {item.venue.name} {item.venue.area}
             </div>
             <a
-              href=""
+              href={
+                item.venue.google_maps_url
+                  ? item.venue.google_maps_url
+                  : `https://www.google.co.uk/maps/dir/${item.venue.address_line_1} ${postcode}`
+              }
               target="_blank"
               className={style.well}
               style={{ borderTop: '1px solid var(--off-white)' }}
