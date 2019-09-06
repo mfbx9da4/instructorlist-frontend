@@ -82,12 +82,14 @@ export default class App extends Component {
           </div>
         </Router>
         {isSSR() && (
-          <details style={{ padding: '2rem' }}>
-            <summary>ssrData</summary>
-            <pre style={{ whiteSpace: 'pre-wrap' }}>
-              {JSON.stringify(this.props.ssrData, null, 2)}
-            </pre>
-          </details>
+          <div>
+            <details style={{ padding: '2rem' }}>
+              <summary>ssrData</summary>
+              <pre style={{ whiteSpace: 'pre-wrap' }}>
+                {JSON.stringify(this.props.ssrData, null, 2)}
+              </pre>
+            </details>
+          </div>
         )}
       </div>
     )

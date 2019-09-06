@@ -21,6 +21,7 @@
   ],
   "devDependencies": {
     "@types/node-sass": "^4.11.0",
+    "@types/react": "^16.9.2",
     "babel-eslint": "^10.0.2",
     "case-sensitive-paths-webpack-plugin": "^2.2.0",
     "eslint": "^4.9.0",
@@ -41,7 +42,8 @@
     "preact-cli-plugin-async": "^2.0.0",
     "preact-cli-plugin-critical-css": "^0.1.0",
     "preact-render-spy": "^1.2.1",
-    "sass-loader": "^7.2.0"
+    "sass-loader": "^7.2.0",
+    "typings-for-css-modules-loader": "^1.7.0"
   },
   "dependencies": {
     "dayjs": "^1.8.15",

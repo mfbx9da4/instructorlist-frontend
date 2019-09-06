@@ -1,16 +1,9 @@
 import { h, Component } from 'preact'
 import { route } from 'preact-router'
 import style from './style'
-
-const dayToDayString = {
-  1: 'MON',
-  2: 'TUE',
-  3: 'WED',
-  4: 'THU',
-  5: 'FRI',
-  6: 'SAT',
-  7: 'SUN',
-}
+import Payment from '../payment/Payment'
+import FooterButton from '../footerbutton/FooterButton'
+import { dayToDayString } from '../../constants'
 
 export default class ClassDetail extends Component {
   constructor(props) {
@@ -18,6 +11,7 @@ export default class ClassDetail extends Component {
     console.log('props', props)
     this.state = {
       item: this.props.data.state.classes[props.matches.id],
+      showPayment: true,
     }
   }
 
@@ -38,13 +32,22 @@ export default class ClassDetail extends Component {
     route('/search/')
   }
 
-  render({}, { item }) {
+  hidePayment = e => {
+    this.setState({ showPayment: false })
+  }
+
+  render({}, { item, showPayment }) {
     console.log('item', item)
     if (!item) return <div>Class not found</div>
     const instructor = item.instructors[0]
     const profile = instructor.profile || { bio: '' }
     return (
       <div>
+        <Payment
+          show={showPayment}
+          onClose={this.hidePayment}
+          item={item}
+        ></Payment>
         <div className={style.classDetailWrapper}>
           <div className={style.classHero}>
             <div className={style.heroImage}>
@@ -60,7 +63,8 @@ export default class ClassDetail extends Component {
                 <div className="leftArrow"></div>
               </a>
               <div className={style.timeLabel}>
-                {dayToDayString[item.day]} {item.start_time}
+                {dayToDayString[item.day].toUpperCase()} {item.start_time} -{' '}
+                {item.end_time}
               </div>
             </div>
           </div>
@@ -121,12 +125,10 @@ export default class ClassDetail extends Component {
             )}
           </div>
         </div>
-        <div className={style.footer}>
-          <div className={style.button}>
-            <div className={style.price}>£{item.price}</div>
-            <div className={style.priceLabel}>Book now</div>
-          </div>
-        </div>
+        <FooterButton onClick={() => this.setState({ showPayment: true })}>
+          <div>£{item.price}</div>
+          <div className={style.priceLabel}>Book now</div>
+        </FooterButton>
       </div>
     )
   }

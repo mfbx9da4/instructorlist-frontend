@@ -63,7 +63,8 @@ body {
   width: 100%;
   padding: 0;
   margin: 0;
-  font-family: 'Fira Sans', 'Helvetica Neue', arial, sans-serif;
+  font-family: 'Mark Simonson - Proxima Nova Regular', 'Helvetica Neue', arial,
+    sans-serif;
   font-size: 10px;
   font-weight: 400;
   color: #444;
@@ -156,4 +157,15 @@ button {
 
 .hide * {
   display: none;
+}
+
+input {
+  padding: 1rem;
+  font-size: 1.6rem;
+  border-radius: 3px;
+  border: 1px solid var(--off-white);
+}
+
+.hr {
+  border-bottom: 1px solid var(--off-white);
 }

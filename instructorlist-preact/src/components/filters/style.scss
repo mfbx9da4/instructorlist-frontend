@@ -48,8 +48,8 @@
 
   .checkBoxesContainer {
     flex-wrap: wrap;
-    transition: all 0.2s;
     .checkBox {
+      transition: all 0s;
       display: flex;
       cursor: pointer;
       color: var(--off-black);
