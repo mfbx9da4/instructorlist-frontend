@@ -11,6 +11,8 @@ import http from 'http'
 import https from 'https'
 // @ts-ignore
 import App from '../../instructorlist-preact/build/ssr-build/ssr-bundle'
+
+// Polyfill Fetch for SSR
 require('isomorphic-fetch')
 
 const compression = createCompression()
@@ -103,9 +105,9 @@ const app = express()
 
 app.set('trust proxy', true)
 
-var httpServer = http.createServer(app)
+const httpServer = http.createServer(app)
 httpServer.listen(PORT, () => console.log(`🎠 http://localhost:${PORT}`))
 if (process.env.NODE_ENV !== 'production') {
-  var httpsServer = https.createServer(getCredentials(), app)
+  const httpsServer = https.createServer(getCredentials(), app)
   httpsServer.listen(443, () => console.log(`🐎 https://localhost`))
 }

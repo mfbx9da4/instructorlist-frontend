@@ -212,13 +212,13 @@ export default class Search extends Component {
           {this.state.classes &&
             this.state.classes.map(item => (
               <div
-                onClick={() => route(`/classes/${item.id}`)}
+                onClick={() => route(`/classes/${item.id}?i=1`)}
                 className={style.listItemWrapper}
               >
                 {isSSR() && (
                   <a
                     className={style.listItemLink}
-                    href={`/classes/${item.id}`}
+                    href={`/classes/${item.id}?i=1`}
                   ></a>
                 )}
                 <div className={style.listItem}>

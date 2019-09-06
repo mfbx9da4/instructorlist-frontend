@@ -29,6 +29,15 @@ export default class ClassDetail extends Component {
     })
   }
 
+  onBack = e => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (this.props.i) {
+      return window.history.back()
+    }
+    route('/search/')
+  }
+
   render({}, { item }) {
     console.log('item', item)
     if (!item) return <div>Class not found</div>
@@ -37,7 +46,6 @@ export default class ClassDetail extends Component {
     return (
       <div>
         <div className={style.classDetailWrapper}>
-          {/* <pre>{JSON.stringify(item, null, 2)}</pre> */}
           <div className={style.classHero}>
             <div className={style.heroImage}>
               <img
@@ -65,7 +73,7 @@ export default class ClassDetail extends Component {
               href={
                 item.venue.google_maps_url
                   ? item.venue.google_maps_url
-                  : `https://www.google.co.uk/maps/dir/${item.venue.address_line_1} ${postcode}`
+                  : `https://www.google.co.uk/maps/dir//${item.venue.address_line_1} ${item.venue.postcode}`
               }
               target="_blank"
               className={style.well}
