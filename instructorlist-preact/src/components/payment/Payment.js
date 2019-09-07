@@ -4,12 +4,8 @@ import style from './style'
 import classNames from '../../utils/classNames'
 import FooterButton from '../footerbutton/FooterButton'
 import { dayToDayString } from '../../constants'
-import scriptjs from 'scriptjs'
 import StripeForm from '../stripeform/StripeForm'
 
-async function loadStripe() {
-  await new Promise(resolve => scriptjs('https://js.stripe.com/v3/', resolve))
-}
 
 export default class Payment extends Component {
   constructor(props) {
