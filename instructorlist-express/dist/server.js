@@ -26,11 +26,12 @@ const preact_router_clone_1 = require("./preact-router-clone");
 const http_1 = __importDefault(require("http"));
 const https_1 = __importDefault(require("https"));
 // @ts-ignore
-const ssr_bundle_1 = __importDefault(require("../../instructorlist-preact/build/ssr-build/ssr-bundle"));
+const ssr_bundle_1 = __importDefault(require("../frontend-build-copy/ssr-build/ssr-bundle"));
+// Polyfill Fetch for SSR
 require('isomorphic-fetch');
 const compression = compression_1.default();
-const BUILD_LOCATION = path_1.default.resolve('../instructorlist-preact/build');
-const { PORT = 3000 } = process.env;
+const BUILD_LOCATION = path_1.default.resolve('./frontend-build-copy');
+const { PORT = 80 } = process.env;
 const rgxAmpScripts = /<script id="start-amp-scripts"[^>]*>.*?(?=<script id="end-amp-scripts")/i;
 const rgxContent = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i;
 const home = fs_1.readFileSync(`${BUILD_LOCATION}/index.html`, 'utf8');
@@ -58,9 +59,9 @@ function matchPage(url, pages) {
     }
 }
 const ssr = (template, isAmp = true) => async (req, res) => {
+    let ssrData = {};
     const url = req.url;
     let matched = matchPage(url, ssr_bundle_1.default.pages);
-    let ssrData = {};
     if (matched) {
         let { match, page } = matched;
         if (page.component.getInitialProps) {
@@ -85,6 +86,7 @@ const app = express_1.default()
 })
     .get('/', ssr(home))
     .get('/search/', ssr(search))
+    .get('/shell/index.html', ssr(search, false))
     .get('/profile/', ssr(profile))
     .get('/profile/:user', ssr(profile))
     .use(serve_static_1.default(BUILD_LOCATION, { setHeaders }))
@@ -94,9 +96,9 @@ const app = express_1.default()
     res.end(ssr(home, false)(req, res));
 });
 app.set('trust proxy', true);
-var httpServer = http_1.default.createServer(app);
+const httpServer = http_1.default.createServer(app);
 httpServer.listen(PORT, () => console.log(`🎠 http://localhost:${PORT}`));
 if (process.env.NODE_ENV !== 'production') {
-    var httpsServer = https_1.default.createServer(getCredentials(), app);
+    const httpsServer = https_1.default.createServer(getCredentials(), app);
     httpsServer.listen(443, () => console.log(`🐎 https://localhost`));
 }

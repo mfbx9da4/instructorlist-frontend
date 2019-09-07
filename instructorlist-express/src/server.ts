@@ -10,13 +10,13 @@ import { exec } from './preact-router-clone'
 import http from 'http'
 import https from 'https'
 // @ts-ignore
-import App from '../../instructorlist-preact/build/ssr-build/ssr-bundle'
+import App from '../frontend-build-copy/ssr-build/ssr-bundle'
 
 // Polyfill Fetch for SSR
 require('isomorphic-fetch')
 
 const compression = createCompression()
-const BUILD_LOCATION = path.resolve('../instructorlist-preact/build')
+const BUILD_LOCATION = path.resolve('./frontend-build-copy')
 
 const { PORT = 80 } = process.env
 
