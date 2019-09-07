@@ -1,6 +1,19 @@
 :root {
-  /*
+  --light-blue: hsla(228, 100%, 95%, 1);
+  --brand-blue: rgba(25, 72, 255, 1);
+  --aqua: rgba(18, 190, 199, 1);
+  --lightest: hsl(0, 0%, 99%);
+  --off-white: hsl(0, 0%, 91%);
+  --grey: hsl(0, 0%, 50%);
+  --off-black: hsl(0, 0%, 20%);
 
+  --font-color-default: var(--off-black);
+  --background-active: var(--grey60);
+  --button-border: var(--grey60);
+
+  --header-height: 7.5rem;
+  --mobile-width: 37.5rem;
+  /*
   --red0: #fbe5e2;
   --red1: #f29f97;
   --red2: #e74c3c;
@@ -41,20 +54,6 @@
   --grey80: #1c1f29;
   --grey90: #1f2432;
   */
-
-  --light-blue: hsla(228, 100%, 95%, 1);
-  --brand-blue: rgba(25, 72, 255, 1);
-  --aqua: rgba(18, 190, 199, 1);
-  --off-white: hsl(0, 0%, 91%);
-  --grey: hsl(0, 0%, 50%);
-  --off-black: hsl(0, 0%, 20%);
-
-  --font-color-default: var(--off-black);
-  --background-active: var(--grey60);
-  --button-border: var(--grey60);
-
-  --header-height: 7.5rem;
-  --mobile-width: 37.5rem;
 }
 
 html,
@@ -82,9 +81,9 @@ body {
   flex-direction: column;
 }
 
-div {
+div,
+form {
   display: flex;
-  /* padding: 1.6rem; */
   transition: all 0.3s;
 }
 
@@ -168,4 +167,50 @@ input {
 
 .hr {
   border-bottom: 1px solid var(--off-white);
+}
+
+input,
+.StripeElement {
+  display: block;
+  height: 4rem;
+
+  margin-bottom: 2rem;
+  padding: 1rem 1.2rem;
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
+  border: 1px solid var(--off-white);
+  transition: all 0.3s;
+}
+
+#payment-request-button {
+  padding: 0;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+}
+
+input:focus,
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+  outline: 0;
+}
+
+input.invalid,
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.bottom {
+  margin-bottom: 7.5rem;
+}
+
+.errorContainer {
+  padding: 1rem;
+  background: #fbbc03;
+  color: white;
+  font-weight: bold;
 }

@@ -670,7 +670,23 @@ module.exports = {"search":"search__2fBVV"};
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"classDetailWrapper":"classDetailWrapper__2T8mX","heroImage":"heroImage__Qr4BU","back":"back__1aQJI","timeLabel":"timeLabel__1dmWn","main":"main__ieBPs","mainTitle":"mainTitle__3QRdT","address":"address__teZVQ","description":"description__25Gbt","section":"section__1vexu","title":"title__gjFEQ","instructorAvatar":"instructorAvatar__25zFg","well":"well__372E6","wellIcon":"wellIcon__3hDcb","wellMain":"wellMain__1JhNM","wellDescription":"wellDescription__1PEH9","wellAction":"wellAction__3j7JB","footer":"footer__3RKaw","button":"button__2dfGd","price":"price__3saRb","priceLabel":"priceLabel__3dyS3"};
+module.exports = {"classDetailWrapper":"classDetailWrapper__2T8mX","heroImage":"heroImage__Qr4BU","back":"back__1aQJI","timeLabel":"timeLabel__1dmWn","main":"main__ieBPs","mainTitle":"mainTitle__3QRdT","address":"address__teZVQ","description":"description__25Gbt","section":"section__1vexu","title":"title__gjFEQ","instructorAvatar":"instructorAvatar__25zFg","well":"well__372E6","wellIcon":"wellIcon__3hDcb","wellMain":"wellMain__1JhNM","wellDescription":"wellDescription__1PEH9","wellAction":"wellAction__3j7JB","priceLabel":"priceLabel__3dyS3"};
+
+/***/ }),
+
+/***/ "Dnk9":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"footer":"footer__YnoJr","hide":"hide__3aVn4","disabled":"disabled__gp8z1","button":"button__2PQ5O"};
+
+/***/ }),
+
+/***/ "GjWG":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"formContainer":"formContainer__1XJ08"};
 
 /***/ }),
 
@@ -1421,13 +1437,13 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
             'div',
             {
               onClick: function onClick() {
-                return Object(preact_router_es["route"])('/classes/' + item.id);
+                return Object(preact_router_es["route"])('/classes/' + item.id + '?i=1');
               },
               className: components_search_style_default.a.listItemWrapper
             },
             is_ssr() && Object(preact_min["h"])('a', {
               className: components_search_style_default.a.listItemLink,
-              href: '/classes/' + item.id
+              href: '/classes/' + item.id + '?i=1'
             }),
             Object(preact_min["h"])(
               'div',
@@ -1738,6 +1754,926 @@ var class_page_style_default = /*#__PURE__*/__webpack_require__.n(class_page_sty
 var classdetail_style = __webpack_require__("6hN1");
 var classdetail_style_default = /*#__PURE__*/__webpack_require__.n(classdetail_style);
 
+// EXTERNAL MODULE: ./components/payment/style.scss
+var payment_style = __webpack_require__("Mmjd");
+var payment_style_default = /*#__PURE__*/__webpack_require__.n(payment_style);
+
+// EXTERNAL MODULE: ./components/footerbutton/style.scss
+var footerbutton_style = __webpack_require__("Dnk9");
+var footerbutton_style_default = /*#__PURE__*/__webpack_require__.n(footerbutton_style);
+
+// CONCATENATED MODULE: ./components/footerbutton/FooterButton.js
+
+
+function FooterButton__objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
+function FooterButton__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function FooterButton__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function FooterButton__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var FooterButton_FooterButton = function (_Component) {
+  FooterButton__inherits(FooterButton, _Component);
+
+  function FooterButton() {
+    var _temp, _this, _ret;
+
+    FooterButton__classCallCheck(this, FooterButton);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = FooterButton__possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.onClick = function (e) {
+      if (_this.props.disabled) {
+        return e.preventDefault();
+      }
+      _this.props.onClick(e);
+    }, _temp), FooterButton__possibleConstructorReturn(_this, _ret);
+  }
+
+  FooterButton.prototype.render = function render(_ref, _ref2) {
+    var _classNames;
+
+    var children = _ref.children,
+        disabled = _ref.disabled,
+        hide = _ref.hide;
+
+    FooterButton__objectDestructuringEmpty(_ref2);
+
+    return Object(preact_min["h"])(
+      'div',
+      {
+        className: utils_classNames((_classNames = {}, _classNames[footerbutton_style_default.a.footer] = true, _classNames[footerbutton_style_default.a.disabled] = disabled, _classNames[footerbutton_style_default.a.hide] = hide, _classNames))
+      },
+      Object(preact_min["h"])(
+        'button',
+        { className: footerbutton_style_default.a.button, onClick: this.onClick, type: 'submit' },
+        children
+      )
+    );
+  };
+
+  return FooterButton;
+}(preact_min["Component"]);
+
+
+// CONCATENATED MODULE: ./constants.js
+var dayToDayString = {
+  1: 'Mon',
+  2: 'Tue',
+  3: 'Wed',
+  4: 'Thu',
+  5: 'Fri',
+  6: 'Sat',
+  7: 'Sun'
+};
+// EXTERNAL MODULE: ../node_modules/scriptjs/dist/script.js
+var script = __webpack_require__("Os0n");
+var script_default = /*#__PURE__*/__webpack_require__.n(script);
+
+// EXTERNAL MODULE: ./components/stripeform/style.scss
+var stripeform_style = __webpack_require__("GjWG");
+var stripeform_style_default = /*#__PURE__*/__webpack_require__.n(stripeform_style);
+
+// CONCATENATED MODULE: ./utils/convertArrayToObject.js
+function convertArrayToObject(array, key) {
+  if (!Array.isArray(array)) throw new Error('First argument must be array');
+  return array.reduce(function (prev, acc) {
+    acc[prev[key]] = prev;
+    return acc;
+  });
+}
+// EXTERNAL MODULE: external "vm"
+var external__vm_ = __webpack_require__("aGyC");
+var external__vm__default = /*#__PURE__*/__webpack_require__.n(external__vm_);
+
+// CONCATENATED MODULE: ./api.js
+function api__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+var isDev = typeof window !== 'undefined' && location.href.indexOf('localhost') > -1;
+var BASE_URL = isDev ? 'http://localhost:8000' : 'https://instructorlist-django.herokuapp.com';
+
+var defaultClass = {
+  id: 1,
+  instructors: [{
+    full_name: 'Alexander Smith',
+    avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png'
+  }],
+  title: 'Introduction to Bachata',
+  price: 12,
+  categories: [{ name: 'bachata' }],
+  start_time: '07:30',
+  duration: 'Alexander Smith',
+  venue: {
+    area: 'Covent Garden',
+    name: 'Pineapple Dance Studios'
+  }
+};
+
+var prerenderState = {
+  classes: { 1: defaultClass }
+};
+
+var api_DataService = function DataService(initialState) {
+  var _this = this;
+
+  api__classCallCheck(this, DataService);
+
+  this.getAllClasses = function () {
+    return new Promise(function ($return, $error) {
+      var classes;
+      classes = _this.state.classes;
+
+      if (classes) return $return(classes);
+      return Promise.resolve(_this.getSearch()).then(function ($await_4) {
+        try {
+          return $return(_this.state.classes);
+        } catch ($boundEx) {
+          return $error($boundEx);
+        }
+      }, $error);
+    });
+  };
+
+  this.getSearch = function () {
+    var $args = arguments;return new Promise(function ($return, $error) {
+      var filters, url, res, json;
+      filters = $args.length > 0 && $args[0] !== undefined ? $args[0] : {};
+
+      if (!_this.hasPrerenderData || _this.state.search) return $return(_this.state.search);
+      url = BASE_URL + '/api/search/?i=' + JSON.stringify(filters);
+      res = void 0;
+      var $Try_1_Post = function () {
+        try {
+          if (res.ok) {
+            return Promise.resolve(res.json()).then(function ($await_5) {
+              try {
+                json = $await_5;
+                _this.state.search = json;
+                _this.state.classes = convertArrayToObject(json.results, 'id');
+                _this.state.categories = json.categories;
+                _this.state.venues = json.venues;
+                _this.hasPrerenderData = false;
+                return $return(json);
+              } catch ($boundEx) {
+                return $error($boundEx);
+              }
+            }, $error);
+          }
+          return $return(res);
+        } catch ($boundEx) {
+          return $error($boundEx);
+        }
+      };var $Try_1_Catch = function (e) {
+        try {
+          res = {
+            ok: false,
+            data: { message: 'You are offline' }
+          };
+          return $Try_1_Post();
+        } catch ($boundEx) {
+          return $error($boundEx);
+        }
+      };try {
+        return Promise.resolve(fetch(url)).then(function ($await_6) {
+          try {
+            res = $await_6;
+            return $Try_1_Post();
+          } catch ($boundEx) {
+            return $Try_1_Catch($boundEx);
+          }
+        }, $Try_1_Catch);
+      } catch (e) {
+        $Try_1_Catch(e)
+      }
+    });
+  };
+
+  this.getClass = function (id) {
+    return new Promise(function ($return, $error) {
+      var res, json;
+
+      if (id in _this.state.classes && !_this.hasPrerenderData) {
+        return $return(_this.state.classes[id]);
+      }
+      return Promise.resolve(fetch(BASE_URL + '/api/classes/' + id)).then(function ($await_7) {
+        try {
+          res = $await_7;
+          if (res.ok) {
+            return Promise.resolve(res.json()).then(function ($await_8) {
+              try {
+                json = $await_8;
+                _this.state.classes[id] = json;
+                return $return(json);
+              } catch ($boundEx) {
+                return $error($boundEx);
+              }
+            }, $error);
+          }
+          return $return(res);
+        } catch ($boundEx) {
+          return $error($boundEx);
+        }
+      }.bind(this), $error);
+    });
+  };
+
+  if (initialState) {
+    this.state = initialState;
+  } else {
+    this.hasPrerenderData = true;
+    this.state = prerenderState;
+  }
+};
+
+
+// CONCATENATED MODULE: ./components/stripeform/StripeForm.js
+
+
+function StripeForm__objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
+function StripeForm__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function StripeForm__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function StripeForm__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+
+
+function loadStripe() {
+  return new Promise(function ($return, $error) {
+    return Promise.resolve(new Promise(function (resolve) {
+      return script_default()('https://js.stripe.com/v3/', resolve);
+    })).then(function ($await_4) {
+      try {
+        return $return();
+      } catch ($boundEx) {
+        return $error($boundEx);
+      }
+    }, $error);
+  });
+}
+
+var StripeForm__ref = Object(preact_min["h"])('div', { id: 'cc-form' });
+
+var StripeElement = function (_Component) {
+  StripeForm__inherits(StripeElement, _Component);
+
+  function StripeElement() {
+    StripeForm__classCallCheck(this, StripeElement);
+
+    return StripeForm__possibleConstructorReturn(this, _Component.apply(this, arguments));
+  }
+
+  StripeElement.prototype.shouldComponentUpdate = function shouldComponentUpdate() {
+    return false;
+  };
+
+  StripeElement.prototype.componentDidMount = function componentDidMount() {
+    this.props.card.mount('#cc-form');
+  };
+
+  StripeElement.prototype.render = function render() {
+    return StripeForm__ref;
+  };
+
+  return StripeElement;
+}(preact_min["Component"]);
+
+var StripeForm__ref2 = Object(preact_min["h"])('div', { id: 'payment-request-button' });
+
+var StripePaymentRequestButton = function (_Component2) {
+  StripeForm__inherits(StripePaymentRequestButton, _Component2);
+
+  function StripePaymentRequestButton() {
+    var _temp, _this2, _ret;
+
+    StripeForm__classCallCheck(this, StripePaymentRequestButton);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this2 = StripeForm__possibleConstructorReturn(this, _Component2.call.apply(_Component2, [this].concat(args))), _this2), _this2.mount = function () {
+      return new Promise(function ($return, $error) {
+        var result;
+        return Promise.resolve(_this2.props.paymentRequest.canMakePayment()).then(function ($await_5) {
+          try {
+            result = $await_5;
+            if (result) {
+              _this2.props.prButton.mount('#payment-request-button');
+            } else {
+              document.getElementById('payment-request-button').style.display = 'none';
+            }
+            _this2.props.paymentRequest.on('paymentmethod', _this2.props.onPaymentMethod);
+            return $return();
+          } catch ($boundEx) {
+            return $error($boundEx);
+          }
+        }, $error);
+      });
+    }, _temp), StripeForm__possibleConstructorReturn(_this2, _ret);
+  }
+
+  StripePaymentRequestButton.prototype.componentDidMount = function componentDidMount() {
+    this.mount();
+  };
+
+  StripePaymentRequestButton.prototype.render = function render() {
+    return StripeForm__ref2;
+  };
+
+  return StripePaymentRequestButton;
+}(preact_min["Component"]);
+
+var _ref9 = Object(preact_min["h"])(
+  'div',
+  null,
+  'Loading stripe'
+);
+
+var StripeForm_StripeForm = function (_Component3) {
+  StripeForm__inherits(StripeForm, _Component3);
+
+  function StripeForm(props) {
+    StripeForm__classCallCheck(this, StripeForm);
+
+    var _this3 = StripeForm__possibleConstructorReturn(this, _Component3.call(this, props));
+
+    _this3.onSubmit = function (e) {
+      return new Promise(function ($return, $error) {
+        console.log('onstripesubmit');
+        return $return(_this3.onSubmitCard(e));
+      });
+    };
+
+    _this3.onSubmitCard = function (e) {
+      return new Promise(function ($return, $error) {
+        var res, billingDetails, response;
+        return Promise.resolve(_this3.stripe.createPaymentMethod('card', _this3.state.card)).then(function ($await_6) {
+          try {
+            res = $await_6;
+            console.log('res', res);
+            billingDetails = res.billingDetails;
+
+            _this3.setState({ billingDetails: billingDetails });
+            return Promise.resolve(_this3.confirm('method', {
+              payment_method_id: res.paymentMethod.id,
+              amount: _this3.getAmount()
+            })).then(function ($await_7) {
+              try {
+                response = $await_7;
+
+                if (response.error) {
+                  // Show error from server on payment form
+                  return $return(response);
+                } else if (response.requires_action) {
+                  return $return(_this3.handleAction(response));
+                }
+                return $return();
+              } catch ($boundEx) {
+                return $error($boundEx);
+              }
+            }, $error);
+          } catch ($boundEx) {
+            return $error($boundEx);
+          }
+        }, $error);
+      });
+    };
+
+    _this3.handleAction = function (response) {
+      return new Promise(function ($return, $error) {
+        var res, body, _response;
+
+        return Promise.resolve(_this3.stripe.handleCardAction(response.payment_intent_client_secret)).then(function ($await_8) {
+          try {
+            res = $await_8;
+
+            if (res.error) {
+              // Show error from Stripe.js in payment form
+              console.log('errorAction', res.error);
+              return $return(res.error);
+            } else {
+              body = {
+                payment_intent_id: res.paymentIntent.id,
+                amount: _this3.getAmount()
+              };
+              return Promise.resolve(_this3.confirm('intent', body)).then(function ($await_9) {
+                try {
+                  _response = $await_9;
+                  console.log('response', _response);
+                  return $return(_response);
+                } catch ($boundEx) {
+                  return $error($boundEx);
+                }
+              }, $error);
+            }
+            return $return();
+          } catch ($boundEx) {
+            return $error($boundEx);
+          }
+        }.bind(this), $error);
+      });
+    };
+
+    _this3.confirm = function (type, body) {
+      return new Promise(function ($return, $error) {
+        var response, confirmed;
+
+        console.log('body', body);
+        return Promise.resolve(fetch(BASE_URL + '/api/payment-' + type + '/confirm/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        })).then(function ($await_10) {
+          try {
+            response = $await_10;
+
+            return Promise.resolve(response.json()).then(function ($await_11) {
+              try {
+                confirmed = $await_11;
+                console.log('confirmed', confirmed);
+                return $return(confirmed);
+              } catch ($boundEx) {
+                return $error($boundEx);
+              }
+            }, $error);
+          } catch ($boundEx) {
+            return $error($boundEx);
+          }
+        }, $error);
+      });
+    };
+
+    _this3.onSubmitCard1 = function (e) {
+      return new Promise(function ($return, $error) {
+        var _ref3, client_secret, res;
+
+        return Promise.resolve(_this3.getClientSecret()).then(function ($await_12) {
+          try {
+            _ref3 = $await_12, client_secret = _ref3.client_secret;
+
+            console.log('clientSecret', client_secret);
+            return Promise.resolve(_this3.stripe.handleCardSetup(client_secret, _this3.state.card, {})).then(function ($await_13) {
+              try {
+                res = $await_13;
+                if (res.error) return $return(res);
+                return $return(_this3.onSuccessfulCardSetup(res));
+              } catch ($boundEx) {
+                return $error($boundEx);
+              }
+            }, $error);
+          } catch ($boundEx) {
+            return $error($boundEx);
+          }
+        }, $error);
+      });
+    };
+
+    _this3.getAmount = function () {
+      return parseFloat(_this3.props.amount) * 100;
+    };
+
+    _this3.onError = function (err) {
+      _this3.props.onError(err);
+    };
+
+    _this3.getClientSecret = function () {
+      return new Promise(function ($return, $error) {
+        var res;
+        return Promise.resolve(fetch(BASE_URL + '/api/intent/' + _this3.getAmount() + '/')).then(function ($await_14) {
+          try {
+            res = $await_14;
+            console.log('res', res);
+            if (res.ok) {
+              return $return(res.json());
+            }
+            console.log('err', res);
+            return $return(res);
+          } catch ($boundEx) {
+            return $error($boundEx);
+          }
+        }, $error);
+      });
+    };
+
+    _this3.onPaymentMethod = function (ev) {
+      return new Promise(function ($return, $error) {
+        var _ref4, client_secret, _ref5, confirmError, paymentIntent, _ref6, error;
+
+        return Promise.resolve(_this3.getClientSecret()).then(function ($await_15) {
+          try {
+            _ref4 = $await_15, client_secret = _ref4.client_secret;
+            return Promise.resolve(_this3.stripe.confirmPaymentIntent(client_secret, {
+              payment_method: ev.paymentMethod.id
+            })).then(function ($await_16) {
+              try {
+                _ref5 = $await_16, confirmError = _ref5.error, paymentIntent = _ref5.paymentIntent;
+
+
+                if (confirmError) {
+                  // Report to the browser that the payment failed, prompting it to
+                  // re-show the payment interface, or show an error message and close
+                  // the payment interface.
+                  ev.complete('fail');
+                  return $If_2.call(this);
+                } else {
+                  // Report to the browser that the confirmation was successful, prompting
+                  // it to close the browser payment method collection interface.
+                  ev.complete('success');
+                  // Let Stripe.js handle the rest of the payment flow.
+                  return Promise.resolve(_this3.stripe.handleCardPayment(clientSecret)).then(function ($await_17) {
+                    try {
+                      _ref6 = $await_17, error = _ref6.error;
+
+                      if (error) {
+                        // The payment failed -- ask your customer for a new payment method.
+                        console.log('The payment failed -- ask your customer for a new payment method.');
+                      } else {
+                        // The payment has succeeded.
+                        console.log('The payment has succeeded.');
+                      }
+                      return $If_2.call(this);
+                    } catch ($boundEx) {
+                      return $error($boundEx);
+                    }
+                  }.bind(this), $error);
+                }
+
+                function $If_2() {
+                  return $return();
+                }
+              } catch ($boundEx) {
+                return $error($boundEx);
+              }
+            }.bind(this), $error);
+          } catch ($boundEx) {
+            return $error($boundEx);
+          }
+        }.bind(this), $error);
+      });
+    };
+
+    _this3.state = {
+      loadingStripe: true,
+      responses: []
+    };
+    _this3.props.onSubmit(_this3.onSubmit);
+    return _this3;
+  }
+
+  StripeForm.prototype.componentDidMount = function componentDidMount() {
+    return new Promise(function ($return, $error) {
+      var card, paymentRequest, prButton;
+
+      if (!('Stripe' in window)) {
+        return Promise.resolve(loadStripe()).then(function ($await_18) {
+          try {
+            return $If_3.call(this);
+          } catch ($boundEx) {
+            return $error($boundEx);
+          }
+        }.bind(this), $error);
+      }
+
+      function $If_3() {
+        this.setState({ loadingStripe: false });
+        // TODO: get from env
+        this.stripe = window.Stripe('pk_test_i0mT0MQhBYOTm3kcHw73xILH');
+        this.elements = this.stripe.elements();
+        card = this.elements.create('card', { hidePostalCode: true });
+        paymentRequest = this.stripe.paymentRequest({
+          country: 'GB',
+          currency: 'gbp',
+          total: {
+            label: 'Class price',
+            amount: this.getAmount()
+          },
+          requestPayerName: true,
+          requestPayerEmail: true
+        });
+        prButton = this.elements.create('paymentRequestButton', {
+          paymentRequest: paymentRequest
+        });
+        this.setState({ card: card, prButton: prButton, paymentRequest: paymentRequest });
+        return $return();
+      }
+
+      return $If_3.call(this);
+    }.bind(this));
+  };
+
+  StripeForm.prototype.render = function render(_ref7, _ref8) {
+    var res = _ref8.res;
+
+    StripeForm__objectDestructuringEmpty(_ref7);
+
+    return Object(preact_min["h"])(
+      'div',
+      null,
+      this.state.loadingStripe ? _ref9 : Object(preact_min["h"])(
+        'div',
+        { className: stripeform_style_default.a.formContainer },
+        Object(preact_min["h"])(StripePaymentRequestButton, {
+          paymentRequest: this.state.paymentRequest,
+          prButton: this.state.prButton,
+          onPaymentMethod: this.onPaymentMethod
+        }),
+        Object(preact_min["h"])(StripeElement, { card: this.state.card }),
+        Object(preact_min["h"])(
+          'pre',
+          null,
+          JSON.stringify(res, null, 2)
+        )
+      )
+    );
+  };
+
+  return StripeForm;
+}(preact_min["Component"]);
+
+
+// CONCATENATED MODULE: ./components/payment/Payment.js
+
+
+function Payment__objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
+function Payment__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function Payment__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function Payment__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+
+
+function Payment_loadStripe() {
+  return new Promise(function ($return, $error) {
+    return Promise.resolve(new Promise(function (resolve) {
+      return script_default()('https://js.stripe.com/v3/', resolve);
+    })).then(function ($await_2) {
+      try {
+        return $return();
+      } catch ($boundEx) {
+        return $error($boundEx);
+      }
+    }, $error);
+  });
+}
+
+var Payment__ref3 = Object(preact_min["h"])(
+  'div',
+  null,
+  'Class not found'
+);
+
+var Payment__ref4 = Object(preact_min["h"])('div', null);
+
+var Payment__ref5 = Object(preact_min["h"])('div', { className: 'hr' });
+
+var _ref6 = Object(preact_min["h"])('div', { className: 'hr' });
+
+var Payment__ref7 = Object(preact_min["h"])('div', { className: 'hr' });
+
+var Payment__ref8 = Object(preact_min["h"])('div', { className: 'bottom' });
+
+var Payment__ref9 = Object(preact_min["h"])(
+  'div',
+  null,
+  'Pay now'
+);
+
+var Payment_Payment = function (_Component) {
+  Payment__inherits(Payment, _Component);
+
+  function Payment(props) {
+    Payment__classCallCheck(this, Payment);
+
+    var _this = Payment__possibleConstructorReturn(this, _Component.call(this, props));
+
+    _this.onChange = function () {
+      return function () {};
+    };
+
+    _this.onSubmit = function (e) {
+      return new Promise(function ($return, $error) {
+        var res;
+
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('onsubmit');
+        if (!_this.state.stripeToken) {
+          return Promise.resolve(_this.stripeSubmit(e)).then(function ($await_3) {
+            try {
+              res = $await_3;
+              console.log('res2', res);
+              if (res.error) {
+                _this.setState({ error: res.error.message });
+              }
+              // TODO: set valid stripe token
+              return $If_1.call(this);
+            } catch ($boundEx) {
+              return $error($boundEx);
+            }
+          }.bind(this), $error);
+        }
+
+        function $If_1() {
+          return $return();
+        }
+
+        return $If_1.call(this);
+      });
+    };
+
+    _this.state = {
+      formIsValid: false,
+      stripeToken: null
+    };
+    return _this;
+  }
+
+  Payment.prototype.render = function render(_ref, _ref2) {
+    var _classNames,
+        _this2 = this;
+
+    var item = _ref.item,
+        show = _ref.show;
+
+    Payment__objectDestructuringEmpty(_ref2);
+
+    if (!item) return Payment__ref3;
+    return Object(preact_min["h"])(
+      'div',
+      null,
+      Object(preact_min["h"])(
+        'form',
+        {
+          className: utils_classNames((_classNames = {}, _classNames[payment_style_default.a.paymentWrapper] = true, _classNames[payment_style_default.a.close] = !show, _classNames))
+        },
+        Object(preact_min["h"])(
+          'div',
+          { className: payment_style_default.a.paymentMain },
+          Object(preact_min["h"])(
+            'div',
+            { className: payment_style_default.a.paymentHeader },
+            Object(preact_min["h"])('div', {
+              className: 'leftArrow ' + payment_style_default.a.back,
+              onClick: this.props.onClose
+            }),
+            Object(preact_min["h"])(
+              'div',
+              { className: payment_style_default.a.title },
+              'Checkout'
+            ),
+            Payment__ref4
+          ),
+          Payment__ref5,
+          Object(preact_min["h"])(
+            'div',
+            { className: payment_style_default.a.section },
+            Object(preact_min["h"])(
+              'div',
+              { className: payment_style_default.a.classTitle },
+              item.title
+            ),
+            Object(preact_min["h"])(
+              'div',
+              { className: payment_style_default.a.time },
+              dayToDayString[item.day],
+              ' ',
+              item.start_time,
+              ' - ',
+              item.end_time
+            ),
+            Object(preact_min["h"])(
+              'div',
+              { className: payment_style_default.a.location },
+              item.venue.name,
+              ' - ',
+              item.venue.area
+            )
+          ),
+          _ref6,
+          Object(preact_min["h"])(
+            'div',
+            { className: payment_style_default.a.section },
+            Object(preact_min["h"])(
+              'div',
+              { className: payment_style_default.a.titleContainer },
+              Object(preact_min["h"])(
+                'div',
+                { className: payment_style_default.a.title },
+                'Total'
+              ),
+              Object(preact_min["h"])(
+                'div',
+                { className: payment_style_default.a.titleAside },
+                '\xA3',
+                parseFloat(item.price).toFixed(2)
+              )
+            ),
+            item.extra_fee && Object(preact_min["h"])(
+              'div',
+              { className: payment_style_default.a.extra },
+              'Please note this studio will charge you an additional',
+              Object(preact_min["h"])(
+                'div',
+                { className: payment_style_default.a.strong },
+                '\xA3',
+                item.extra_fee,
+                ' studio entry fee'
+              ),
+              'upon arrival.'
+            )
+          ),
+          Payment__ref7,
+          Object(preact_min["h"])(
+            'div',
+            { className: payment_style_default.a.section },
+            Object(preact_min["h"])(
+              'div',
+              { className: payment_style_default.a.titleContainer },
+              Object(preact_min["h"])(
+                'div',
+                { className: payment_style_default.a.title },
+                'Payment'
+              )
+            ),
+            this.state.error && Object(preact_min["h"])(
+              'div',
+              { className: 'errorContainer' },
+              Object(preact_min["h"])(
+                'div',
+                { className: 'errorContainer_message' },
+                this.state.error
+              )
+            ),
+            Object(preact_min["h"])(
+              'div',
+              { className: payment_style_default.a.paymentForm },
+              Object(preact_min["h"])(
+                'div',
+                { className: payment_style_default.a.inputContainer },
+                Object(preact_min["h"])('input', {
+                  type: 'text',
+                  className: payment_style_default.a.input,
+                  placeholder: 'Phone number',
+                  onChange: this.onChange('phone')
+                })
+              ),
+              show && Object(preact_min["h"])(StripeForm_StripeForm, {
+                amount: item.price,
+                onSubmit: function onSubmit(onStripeSubmit) {
+                  _this2.stripeSubmit = onStripeSubmit;
+                }
+              })
+            )
+          ),
+          Payment__ref8
+        ),
+        Object(preact_min["h"])(
+          FooterButton_FooterButton,
+          {
+            hide: !show
+            // disabled={!this.state.formIsValid}
+            , onClick: this.onSubmit
+          },
+          Payment__ref9
+        )
+      )
+    );
+  };
+
+  return Payment;
+}(preact_min["Component"]);
+
+
 // CONCATENATED MODULE: ./components/classdetail/ClassDetail.js
 
 
@@ -1753,15 +2689,8 @@ function ClassDetail__inherits(subClass, superClass) { if (typeof superClass !==
 
 
 
-var dayToDayString = {
-  1: 'MON',
-  2: 'TUE',
-  3: 'WED',
-  4: 'THU',
-  5: 'FRI',
-  6: 'SAT',
-  7: 'SUN'
-};
+
+
 
 var ClassDetail__ref3 = Object(preact_min["h"])(
   'div',
@@ -1773,9 +2702,9 @@ var ClassDetail__ref4 = Object(preact_min["h"])('div', { className: 'leftArrow' 
 
 var ClassDetail__ref5 = Object(preact_min["h"])('div', { className: 'directions' });
 
-var _ref6 = Object(preact_min["h"])('div', { className: 'rightArrow' });
+var ClassDetail__ref6 = Object(preact_min["h"])('div', { className: 'rightArrow' });
 
-var _ref7 = Object(preact_min["h"])('div', { className: 'rightArrow' });
+var ClassDetail__ref7 = Object(preact_min["h"])('div', { className: 'rightArrow' });
 
 var ClassDetail_ClassDetail = function (_Component) {
   ClassDetail__inherits(ClassDetail, _Component);
@@ -1785,9 +2714,22 @@ var ClassDetail_ClassDetail = function (_Component) {
 
     var _this = ClassDetail__possibleConstructorReturn(this, _Component.call(this, props));
 
-    console.log('props', props);
+    _this.onBack = function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (_this.props.i) {
+        return window.history.back();
+      }
+      Object(preact_router_es["route"])('/search/');
+    };
+
+    _this.hidePayment = function (e) {
+      _this.setState({ showPayment: false });
+    };
+
     _this.state = {
-      item: _this.props.data.state.classes[props.matches.id]
+      item: _this.props.data.state.classes[props.matches.id],
+      showPayment: true
     };
     return _this;
   }
@@ -1798,7 +2740,6 @@ var ClassDetail_ClassDetail = function (_Component) {
       return Promise.resolve(this.props.data.getClass(this.props.matches.id)).then(function ($await_1) {
         try {
           res = $await_1;
-          console.log('res', res);
           this.setState({
             item: res
           });
@@ -1811,17 +2752,24 @@ var ClassDetail_ClassDetail = function (_Component) {
   };
 
   ClassDetail.prototype.render = function render(_ref, _ref2) {
-    var item = _ref2.item;
+    var _this2 = this;
+
+    var item = _ref2.item,
+        showPayment = _ref2.showPayment;
 
     ClassDetail__objectDestructuringEmpty(_ref);
 
-    console.log('item', item);
     if (!item) return ClassDetail__ref3;
     var instructor = item.instructors[0];
     var profile = instructor.profile || { bio: '' };
     return Object(preact_min["h"])(
       'div',
       null,
+      Object(preact_min["h"])(Payment_Payment, {
+        show: showPayment,
+        onClose: this.hidePayment,
+        item: item
+      }),
       Object(preact_min["h"])(
         'div',
         { className: classdetail_style_default.a.classDetailWrapper },
@@ -1847,9 +2795,12 @@ var ClassDetail_ClassDetail = function (_Component) {
             Object(preact_min["h"])(
               'div',
               { className: classdetail_style_default.a.timeLabel },
-              dayToDayString[item.day],
+              dayToDayString[item.day].toUpperCase(),
               ' ',
-              item.start_time
+              item.start_time,
+              ' -',
+              ' ',
+              item.end_time
             )
           )
         ),
@@ -1871,7 +2822,7 @@ var ClassDetail_ClassDetail = function (_Component) {
           Object(preact_min["h"])(
             'a',
             {
-              href: '',
+              href: item.venue.google_maps_url ? item.venue.google_maps_url : 'https://www.google.co.uk/maps/dir//' + item.venue.address_line_1 + ' ' + item.venue.postcode,
               target: '_blank',
               className: classdetail_style_default.a.well,
               style: { borderTop: '1px solid var(--off-white)' }
@@ -1900,7 +2851,7 @@ var ClassDetail_ClassDetail = function (_Component) {
             Object(preact_min["h"])(
               'div',
               { className: classdetail_style_default.a.wellAction },
-              _ref6
+              ClassDetail__ref6
             )
           ),
           Object(preact_min["h"])(
@@ -1932,7 +2883,7 @@ var ClassDetail_ClassDetail = function (_Component) {
             Object(preact_min["h"])(
               'div',
               { className: classdetail_style_default.a.wellAction },
-              _ref7
+              ClassDetail__ref7
             )
           ),
           item.description && Object(preact_min["h"])(
@@ -1952,22 +2903,20 @@ var ClassDetail_ClassDetail = function (_Component) {
         )
       ),
       Object(preact_min["h"])(
-        'div',
-        { className: classdetail_style_default.a.footer },
+        FooterButton_FooterButton,
+        { onClick: function onClick() {
+            return _this2.setState({ showPayment: true });
+          } },
         Object(preact_min["h"])(
           'div',
-          { className: classdetail_style_default.a.button },
-          Object(preact_min["h"])(
-            'div',
-            { className: classdetail_style_default.a.price },
-            '\xA3',
-            item.price
-          ),
-          Object(preact_min["h"])(
-            'div',
-            { className: classdetail_style_default.a.priceLabel },
-            'Book now'
-          )
+          null,
+          '\xA3',
+          item.price
+        ),
+        Object(preact_min["h"])(
+          'div',
+          { className: classdetail_style_default.a.priceLabel },
+          'Book now'
         )
       )
     );
@@ -2131,163 +3080,6 @@ var profile_Profile = function (_Component) {
 }(preact_min["Component"]);
 
 
-// CONCATENATED MODULE: ./utils/convertArrayToObject.js
-function convertArrayToObject(array, key) {
-  if (!Array.isArray(array)) throw new Error('First argument must be array');
-  return array.reduce(function (prev, acc) {
-    acc[prev[key]] = prev;
-    return acc;
-  });
-}
-// EXTERNAL MODULE: external "vm"
-var external__vm_ = __webpack_require__("aGyC");
-var external__vm__default = /*#__PURE__*/__webpack_require__.n(external__vm_);
-
-// CONCATENATED MODULE: ./api.js
-function api__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-var isDev = typeof window !== 'undefined' && location.href.indexOf('localhost') > -1;
-var endpoint = false ? 'http://localhost:8000' : 'https://instructorlist-django.herokuapp.com';
-
-var defaultClass = {
-  id: 1,
-  instructors: [{
-    full_name: 'Alexander Smith',
-    avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png'
-  }],
-  title: 'Introduction to Bachata',
-  price: 12,
-  categories: [{ name: 'bachata' }],
-  start_time: '07:30',
-  duration: 'Alexander Smith',
-  venue: {
-    area: 'Covent Garden',
-    name: 'Pineapple Dance Studios'
-  }
-};
-
-var prerenderState = {
-  classes: { 1: defaultClass }
-};
-
-var api_DataService = function DataService(initialState) {
-  var _this = this;
-
-  api__classCallCheck(this, DataService);
-
-  this.getAllClasses = function () {
-    return new Promise(function ($return, $error) {
-      var classes;
-      classes = _this.state.classes;
-
-      if (classes) return $return(classes);
-      return Promise.resolve(_this.getSearch()).then(function ($await_4) {
-        try {
-          return $return(_this.state.classes);
-        } catch ($boundEx) {
-          return $error($boundEx);
-        }
-      }, $error);
-    });
-  };
-
-  this.getSearch = function () {
-    var $args = arguments;return new Promise(function ($return, $error) {
-      var filters, url, res, json;
-      filters = $args.length > 0 && $args[0] !== undefined ? $args[0] : {};
-
-      if (!_this.hasPrerenderData || _this.state.search) return $return(_this.state.search);
-      url = endpoint + '/api/search/?i=' + JSON.stringify(filters);
-      res = void 0;
-      console.log('start');
-      var $Try_1_Post = function () {
-        try {
-          console.log('fetched');
-          if (res.ok) {
-            return Promise.resolve(res.json()).then(function ($await_5) {
-              try {
-                json = $await_5;
-                _this.state.search = json;
-                _this.state.classes = convertArrayToObject(json.results, 'id');
-                _this.state.categories = json.categories;
-                _this.state.venues = json.venues;
-                _this.hasPrerenderData = false;
-                return $return(json);
-              } catch ($boundEx) {
-                return $error($boundEx);
-              }
-            }, $error);
-          }
-          return $return(res);
-        } catch ($boundEx) {
-          return $error($boundEx);
-        }
-      };var $Try_1_Catch = function (e) {
-        try {
-          res = {
-            ok: false,
-            data: { message: 'You are offline' }
-          };
-          return $Try_1_Post();
-        } catch ($boundEx) {
-          return $error($boundEx);
-        }
-      };try {
-        return Promise.resolve(fetch(url)).then(function ($await_6) {
-          try {
-            res = $await_6;
-            return $Try_1_Post();
-          } catch ($boundEx) {
-            return $Try_1_Catch($boundEx);
-          }
-        }, $Try_1_Catch);
-      } catch (e) {
-        $Try_1_Catch(e)
-      }
-    });
-  };
-
-  this.getClass = function (id) {
-    return new Promise(function ($return, $error) {
-      var res, json;
-
-      if (id in _this.state.classes && !_this.hasPrerenderData) {
-        return $return(_this.state.classes[id]);
-      }
-      return Promise.resolve(fetch(endpoint + '/api/classes/' + id)).then(function ($await_7) {
-        try {
-          res = $await_7;
-          if (res.ok) {
-            return Promise.resolve(res.json()).then(function ($await_8) {
-              try {
-                json = $await_8;
-                _this.state.classes[id] = json;
-                return $return(json);
-              } catch ($boundEx) {
-                return $error($boundEx);
-              }
-            }, $error);
-          }
-          return $return(res);
-        } catch ($boundEx) {
-          return $error($boundEx);
-        }
-      }.bind(this), $error);
-    });
-  };
-
-  if (initialState) {
-    this.state = initialState;
-  } else {
-    this.hasPrerenderData = true;
-    this.state = prerenderState;
-  }
-};
-
-
 // CONCATENATED MODULE: ./components/app.js
 var app__extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -2403,13 +3195,17 @@ var app_App = function (_Component) {
         app__ref3
       ),
       is_ssr() && Object(preact_min["h"])(
-        'details',
-        { style: { padding: '2rem' } },
-        app__ref4,
+        'div',
+        null,
         Object(preact_min["h"])(
-          'pre',
-          { style: { whiteSpace: 'pre-wrap' } },
-          JSON.stringify(this.props.ssrData, null, 2)
+          'details',
+          { style: { padding: '2rem' } },
+          app__ref4,
+          Object(preact_min["h"])(
+            'pre',
+            { style: { whiteSpace: 'pre-wrap' } },
+            JSON.stringify(this.props.ssrData, null, 2)
+          )
         )
       )
     );
@@ -2640,6 +3436,151 @@ if (typeof window !== 'undefined') {
     }, render: function render() {} });var j = { h: e, createElement: e, cloneElement: o, createRef: L, Component: U, render: S, rerender: i, options: M }; true ? module.exports = j : self.preact = j;
 }();
 //# sourceMappingURL=preact.min.js.map
+
+/***/ }),
+
+/***/ "Mmjd":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"paymentWrapper":"paymentWrapper__1x25b","close":"close__1l-EC","paymentMain":"paymentMain__2L3VM","paymentHeader":"paymentHeader__3BZWN","back":"back__1GJnh","title":"title__1Os6k","section":"section__2SSUU","time":"time__IA1AL","classTitle":"classTitle__2boOm","titleContainer":"titleContainer__O_OAw","extra":"extra__ktVQ8","strong":"strong__ved2L","paymentForm":"paymentForm__TFqeV","inputContainer":"inputContainer__13SbB"};
+
+/***/ }),
+
+/***/ "Os0n":
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  * $script.js JS loader & dependency manager
+  * https://github.com/ded/script.js
+  * (c) Dustin Diaz 2014 | License MIT
+  */
+
+(function (name, definition) {
+  if (typeof module != 'undefined' && module.exports) module.exports = definition();else if (true) !(__WEBPACK_AMD_DEFINE_FACTORY__ = (definition),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));else this[name] = definition();
+})('$script', function () {
+  var doc = document,
+      head = doc.getElementsByTagName('head')[0],
+      s = 'string',
+      f = false,
+      push = 'push',
+      readyState = 'readyState',
+      onreadystatechange = 'onreadystatechange',
+      list = {},
+      ids = {},
+      delay = {},
+      scripts = {},
+      scriptpath,
+      urlArgs;
+
+  function every(ar, fn) {
+    for (var i = 0, j = ar.length; i < j; ++i) {
+      if (!fn(ar[i])) return f;
+    }return 1;
+  }
+  function each(ar, fn) {
+    every(ar, function (el) {
+      fn(el);
+      return 1;
+    });
+  }
+
+  function $script(paths, idOrDone, optDone) {
+    paths = paths[push] ? paths : [paths];
+    var idOrDoneIsDone = idOrDone && idOrDone.call,
+        done = idOrDoneIsDone ? idOrDone : optDone,
+        id = idOrDoneIsDone ? paths.join('') : idOrDone,
+        queue = paths.length;
+    function loopFn(item) {
+      return item.call ? item() : list[item];
+    }
+    function callback() {
+      if (! --queue) {
+        list[id] = 1;
+        done && done();
+        for (var dset in delay) {
+          every(dset.split('|'), loopFn) && !each(delay[dset], loopFn) && (delay[dset] = []);
+        }
+      }
+    }
+    setTimeout(function () {
+      each(paths, function loading(path, force) {
+        if (path === null) return callback();
+
+        if (!force && !/^https?:\/\//.test(path) && scriptpath) {
+          path = path.indexOf('.js') === -1 ? scriptpath + path + '.js' : scriptpath + path;
+        }
+
+        if (scripts[path]) {
+          if (id) ids[id] = 1;
+          return scripts[path] == 2 ? callback() : setTimeout(function () {
+            loading(path, true);
+          }, 0);
+        }
+
+        scripts[path] = 1;
+        if (id) ids[id] = 1;
+        create(path, callback);
+      });
+    }, 0);
+    return $script;
+  }
+
+  function create(path, fn) {
+    var el = doc.createElement('script'),
+        loaded;
+    el.onload = el.onerror = el[onreadystatechange] = function () {
+      if (el[readyState] && !/^c|loade/.test(el[readyState]) || loaded) return;
+      el.onload = el[onreadystatechange] = null;
+      loaded = 1;
+      scripts[path] = 2;
+      fn();
+    };
+    el.async = 1;
+    el.src = urlArgs ? path + (path.indexOf('?') === -1 ? '?' : '&') + urlArgs : path;
+    head.insertBefore(el, head.lastChild);
+  }
+
+  $script.get = create;
+
+  $script.order = function (scripts, id, done) {
+    (function callback(s) {
+      s = scripts.shift();
+      !scripts.length ? $script(s, id, done) : $script(s, callback);
+    })();
+  };
+
+  $script.path = function (p) {
+    scriptpath = p;
+  };
+  $script.urlArgs = function (str) {
+    urlArgs = str;
+  };
+  $script.ready = function (deps, ready, req) {
+    deps = deps[push] ? deps : [deps];
+    var missing = [];
+    !each(deps, function (dep) {
+      list[dep] || missing[push](dep);
+    }) && every(deps, function (dep) {
+      return list[dep];
+    }) ? ready() : !function (key) {
+      delay[key] = delay[key] || [];
+      delay[key][push](ready);
+      req && req(missing);
+    }(deps.join('|'));
+    return $script;
+  };
+
+  $script.done = function (idOrDone) {
+    $script([null], idOrDone);
+  };
+
+  return $script;
+});
 
 /***/ }),
 

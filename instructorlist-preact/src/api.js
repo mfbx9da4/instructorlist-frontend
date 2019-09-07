@@ -3,7 +3,7 @@ import { runInThisContext } from 'vm'
 
 const isDev =
   typeof window !== 'undefined' && location.href.indexOf('localhost') > -1
-const endpoint = false
+export const BASE_URL = isDev
   ? 'http://localhost:8000'
   : 'https://instructorlist-django.herokuapp.com'
 
@@ -49,9 +49,8 @@ export default class DataService {
 
   getSearch = async (filters = {}) => {
     if (!this.hasPrerenderData || this.state.search) return this.state.search
-    const url = `${endpoint}/api/search/?i=${JSON.stringify(filters)}`
+    const url = `${BASE_URL}/api/search/?i=${JSON.stringify(filters)}`
     let res
-    console.log('start')
     try {
       res = await fetch(url)
     } catch (e) {
@@ -60,7 +59,6 @@ export default class DataService {
         data: { message: 'You are offline' },
       }
     }
-    console.log('fetched')
     if (res.ok) {
       const json = await res.json()
       this.state.search = json
@@ -77,7 +75,7 @@ export default class DataService {
     if (id in this.state.classes && !this.hasPrerenderData) {
       return this.state.classes[id]
     }
-    let res = await fetch(`${endpoint}/api/classes/${id}`)
+    let res = await fetch(`${BASE_URL}/api/classes/${id}`)
     if (res.ok) {
       const json = await res.json()
       this.state.classes[id] = json

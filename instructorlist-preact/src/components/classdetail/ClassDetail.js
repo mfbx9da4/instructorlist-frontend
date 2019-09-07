@@ -8,7 +8,6 @@ import { dayToDayString } from '../../constants'
 export default class ClassDetail extends Component {
   constructor(props) {
     super(props)
-    console.log('props', props)
     this.state = {
       item: this.props.data.state.classes[props.matches.id],
       showPayment: true,
@@ -17,7 +16,6 @@ export default class ClassDetail extends Component {
 
   async componentDidMount() {
     let res = await this.props.data.getClass(this.props.matches.id)
-    console.log('res', res)
     this.setState({
       item: res,
     })
@@ -37,7 +35,6 @@ export default class ClassDetail extends Component {
   }
 
   render({}, { item, showPayment }) {
-    console.log('item', item)
     if (!item) return <div>Class not found</div>
     const instructor = item.instructors[0]
     const profile = instructor.profile || { bio: '' }
