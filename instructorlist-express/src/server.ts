@@ -25,6 +25,7 @@ const rgxContent = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i
 const home = readFileSync(`${BUILD_LOCATION}/index.html`, 'utf8')
 const profile = readFileSync(`${BUILD_LOCATION}/profile/index.html`, 'utf8')
 const search = readFileSync(`${BUILD_LOCATION}/search/index.html`, 'utf8')
+const shell = readFileSync(`${BUILD_LOCATION}/shell/index.html`, 'utf8')
 
 function getCredentials(): { key: string; cert: string } {
   const privateKey = readFileSync('sslcert/server.key', 'utf8')
@@ -64,6 +65,7 @@ const ssr = (template: string, isAmp: boolean = true) => async (
   req: Request,
   res: Response,
 ) => {
+  console.log('template, isAmp', isAmp, template)
   let ssrData = {}
   const url = req.url
   let matched = matchPage(url, App.pages)
@@ -74,14 +76,15 @@ const ssr = (template: string, isAmp: boolean = true) => async (
       console.log('ssrData', ssrData)
     }
   }
-
   let body = render(h(App, { url, ssrData }))
   res.setHeader('Content-Type', 'text/html')
+  console.log('template.indexOf', template.indexOf('src="/bundle.'))
   let out = template.replace(rgxContent, body)
+  console.log('template.indexOf', out.indexOf('src="/bundle.'))
   if (!isAmp) {
     out.replace(rgxAmpScripts, '')
   }
-  console.log('ssr', url, out.indexOf('src="/bundle.'))
+  console.log('is AMP', url, out.indexOf('src="/bundle.'))
   res.end(out)
 }
 
@@ -93,7 +96,7 @@ const app = express()
   })
   .get('/', ssr(home))
   .get('/search/', ssr(search))
-  .get('/shell/index.html', ssr(search, false))
+  .get('/shell/index.html', ssr(shell, false))
   .get('/profile/', ssr(profile))
   .get('/profile/:user', ssr(profile))
   .use(serve(BUILD_LOCATION, { setHeaders }))

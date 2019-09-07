@@ -15,9 +15,7 @@
     "preact-cli": "^2.0.0"
   },
   "husky": {
-    "hooks": {
-      "pre-push": "cp -r ../instructorlist-preact/build ./frontend-build-copy"
-    }
+    "hooks": {}
   },
   "dependencies": {
     "@types/compression": "^1.0.0",

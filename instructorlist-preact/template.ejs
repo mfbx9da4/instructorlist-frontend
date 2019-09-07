@@ -59,11 +59,11 @@
         <%= htmlWebpackPlugin.options.ssr({
             url: '/'
         }) %>
+        <script id="end-amp-content" type="application/ld+json"></script>
         <%if (htmlWebpackPlugin.options.url === '/shell' || htmlWebpackPlugin.options.config['_'][0] === 'watch') { %>
             <script defer src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
             <script>window.fetch||document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
         <% } %>
-        <script id="end-amp-content" type="application/ld+json"></script>
         <!--
         -->
         <amp-install-serviceworker src="/service-worker.js"
