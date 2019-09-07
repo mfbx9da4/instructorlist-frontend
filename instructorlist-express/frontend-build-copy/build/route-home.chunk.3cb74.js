@@ -1,0 +1,2 @@
+webpackJsonp([3],{ZAL5:function(e){e.exports={home:"home__MseGd"}},"iOg+":function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=n("KM04"),c=(n.n(o),n("ZAL5")),r=n.n(c),u=Object(o.h)("h1",null,"Home"),i=Object(o.h)("p",null,"Go to ",Object(o.h)("a",{href:"/search/"},"search"),"."),s=function(){return Object(o.h)("div",{class:r.a.home},u,i)};s.getInitialProps=function(){return new Promise(function(e){setTimeout(function(){e({rgeat:1})},300)})},t.default=s}});
+//# sourceMappingURL=route-home.chunk.3cb74.js.map

@@ -2714,7 +2714,7 @@ var ClassDetail_ClassDetail = function (_Component) {
 
     _this.state = {
       item: _this.props.data.state.classes[props.matches.id],
-      showPayment: true
+      showPayment: false
     };
     return _this;
   }
