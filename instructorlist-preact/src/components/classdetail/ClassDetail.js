@@ -10,7 +10,7 @@ export default class ClassDetail extends Component {
     super(props)
     this.state = {
       item: this.props.data.state.classes[props.matches.id],
-      showPayment: true,
+      showPayment: false,
     }
   }
 
