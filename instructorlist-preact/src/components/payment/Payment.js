@@ -5,37 +5,107 @@ import classNames from '../../utils/classNames'
 import FooterButton from '../footerbutton/FooterButton'
 import { dayToDayString } from '../../constants'
 import StripeForm from '../stripeform/StripeForm'
-
+import { BASE_URL } from '../../api'
 
 export default class Payment extends Component {
   constructor(props) {
     super(props)
     this.state = {
       formIsValid: false,
-      stripeToken: null,
+      paymentMethod: null,
+      errors: {},
+      values: {},
     }
   }
 
-  onChange = () => () => {}
+  onChange = name => e => {
+    this.setState({
+      values: {
+        [name]: e.target.value,
+      },
+    })
+  }
+
+  validateValues = () => {
+    const { values } = this.state
+    if (!('phone_number' in values)) {
+      return { phone_number: 'Phone is not valid' }
+    }
+    const phone = values['phone_number']
+    const split = phone.split('+')
+    if (split.length > 1) {
+      return { phone_number: 'Phone number must have only one "+"' }
+    }
+    const rest = split[0]
+    const isOnlyNumbers = /^\d+$/.test(rest)
+    if (!isOnlyNumbers) {
+      return { phone_number: 'Phone number must be made only of numbers' }
+    }
+    if (rest.length < 8) {
+      return { phone_number: 'Phone number is too short' }
+    }
+    return {}
+  }
+
   onSubmit = async e => {
     e.preventDefault()
     e.stopPropagation()
     console.log('onsubmit')
-    if (!this.state.stripeToken) {
+    this.setState({ isSubmitting: true })
+    this.setState({ errors: {}, error: false })
+
+    const errors = this.validateValues()
+    const error = errors.phone
+    if (errors.phone)
+      return this.setState({ isSubmitting: false, errors, error })
+
+    if (!this.state.paymentMethod) {
       let res = await this.stripeSubmit(e)
       console.log('res2', res)
       if (res.error) {
-        this.setState({ error: res.error.message })
+        return this.setState({ isSubmitting: false, error: res.error.message })
       }
-      // TODO: set valid stripe token
+      this.setState({ paymentMethod: res })
     }
+    let data = {
+      paymentMethod: this.state.paymentMethod,
+      start_time: this.props.item.start_time,
+      end_time: this.props.item.end_time,
+      class_attended: this.props.item.id,
+      venue: this.props.item.venue.id,
+      email: `${this.state.values.phone_number}@example.com`,
+      ...this.state.values,
+    }
+    console.log('data', data)
+    let res = await this.postBooking(data)
+    console.log('res', res)
+    if (!res.ok) {
+      return this.setState({
+        isSubmitting: false,
+        error: 'Error creating booking',
+      })
+    }
+    return this.setState({ isSubmitting: false, success: true })
   }
 
-  render({ item, show }, {}) {
+  postBooking = async data => {
+    let res = await fetch(`${BASE_URL}/api/bookings/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    return res.json()
+  }
+
+  render({ item, show }, { errors, values }) {
+    console.log('show', show)
     if (!item) return <div>Class not found</div>
     return (
       <div>
         <form
+          onSubmit={this.onSubmit}
           className={classNames({
             [style.paymentWrapper]: true,
             [style.close]: !show,
@@ -73,7 +143,7 @@ export default class Payment extends Component {
                 </div>
               </div>
               {item.extra_fee && (
-                <div className={style.extra}>
+                <div key="extra_fee" className={style.extra}>
                   Please note this studio will charge you an additional
                   <div className={style.strong}>
                     £{item.extra_fee} studio entry fee
@@ -89,32 +159,40 @@ export default class Payment extends Component {
               <div className={style.titleContainer}>
                 <div className={style.title}>Payment</div>
               </div>
-              {this.state.error && (
-                <div className="errorContainer">
-                  <div className="errorContainer_message">
-                    {this.state.error}
-                  </div>
+              <div className={`errorContainer ${this.state.error || 'hide'}`}>
+                <div className={`errorContainer_message`}>
+                  {this.state.error}
                 </div>
-              )}
+              </div>
 
               <div className={style.paymentForm}>
-                <div className={style.inputContainer}>
+                <div column className={style.inputContainer}>
+                  {/* <div
+                  // style={{}}
+                  // className={classNames({
+                  //   [style.hide]: !errors['phone'],
+                  // })}
+                  >
+                    {errors['phone'] || ''}
+                  </div> */}
                   <input
                     type="text"
                     className={style.input}
                     placeholder={'Phone number'}
-                    onChange={this.onChange('phone')}
+                    name="phone_number"
+                    key="phone_number"
+                    value={values['phone_number']}
+                    onChange={this.onChange('phone_number')}
                   />
                 </div>
 
-                {show && (
-                  <StripeForm
-                    amount={item.price}
-                    onSubmit={onStripeSubmit => {
-                      this.stripeSubmit = onStripeSubmit
-                    }}
-                  ></StripeForm>
-                )}
+                <StripeForm
+                  key="StripeForm"
+                  amount={item.price}
+                  onSubmit={onStripeSubmit => {
+                    this.stripeSubmit = onStripeSubmit
+                  }}
+                ></StripeForm>
               </div>
             </div>
             <div className="bottom"></div>

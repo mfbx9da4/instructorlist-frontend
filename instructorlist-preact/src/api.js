@@ -1,9 +1,7 @@
 import { convertArrayToObject } from './utils/convertArrayToObject'
-import { runInThisContext } from 'vm'
+import isDev from './utils/is-dev'
 
-const isDev =
-  typeof window !== 'undefined' && location.href.indexOf('localhost') > -1
-export const BASE_URL = isDev
+export const BASE_URL = isDev()
   ? 'http://localhost:8000'
   : 'https://instructorlist-django.herokuapp.com'
 

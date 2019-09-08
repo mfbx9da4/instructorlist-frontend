@@ -18,19 +18,23 @@ const pages = [
   },
   {
     component: Search,
-    path: '/search/',
+    path: '/search',
+  },
+  {
+    component: Search,
+    path: '/search/:date/map/',
+  },
+  {
+    component: Search,
+    path: '/search/:date/filters/',
+  },
+  {
+    component: Search,
+    path: '/search/:date/',
   },
   {
     component: ClassPage,
     path: '/classes/:id',
-  },
-  {
-    component: Search,
-    path: '/search/map/',
-  },
-  {
-    component: Search,
-    path: '/search/filters',
   },
   {
     component: Profile,
@@ -54,9 +58,6 @@ export default class App extends Component {
   /** Gets fired when the route changes.
    *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
    *	@param {string} event.url	The newly routed URL
-   * /search
-   * /search/map
-   * /search/filters
    */
   handleRoute = e => {
     this.currentUrl = e.url

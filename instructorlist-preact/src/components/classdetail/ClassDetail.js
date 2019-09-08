@@ -10,7 +10,7 @@ export default class ClassDetail extends Component {
     super(props)
     this.state = {
       item: this.props.data.state.classes[props.matches.id],
-      showPayment: false,
+      showPayment: true,
     }
   }
 
@@ -35,7 +35,18 @@ export default class ClassDetail extends Component {
   }
 
   render({}, { item, showPayment }) {
-    if (!item) return <div>Class not found</div>
+    if (!item)
+      return (
+        <div column flex jc="center" ai="center">
+          <img
+            width="85"
+            height="119"
+            src="/assets/images/dancing.gif"
+            alt="loading"
+          />
+          <div>Loading</div>
+        </div>
+      )
     const instructor = item.instructors[0]
     const profile = instructor.profile || { bio: '' }
     return (
@@ -123,8 +134,9 @@ export default class ClassDetail extends Component {
           </div>
         </div>
         <FooterButton onClick={() => this.setState({ showPayment: true })}>
-          <div>£{item.price}</div>
-          <div className={style.priceLabel}>Book now</div>
+          <div>
+            £{item.price} <div className={style.priceLabel}>Book now</div>
+          </div>
         </FooterButton>
       </div>
     )

@@ -21,9 +21,10 @@ function parseDate(day) {
     if (split.length === 3) {
       const year = parseInt(split[0])
       const month = parseInt(split[1]) - 1
-      const day = parseInt(split[2]) - 1
+      const date = parseInt(split[2])
+      console.log('year, month, date', year, month, date)
       return dayjs()
-        .set('day', day)
+        .set('date', date)
         .set('month', month)
         .set('year', year)
     }
@@ -34,25 +35,25 @@ function parseDate(day) {
 export default class Search extends Component {
   constructor(props) {
     super(props)
-    console.log('constructor_props', props)
+    console.log('constructor_props', props.date)
     const filters = getFiltersFromUrl(props.url || location.href) || {}
     const filterCount = this.getFilterCount(filters)
-    console.log('filters.day , dayjs().)', filters.day, dayjs())
-    filters.day = filters.day || dayjs().format('YYYY-MM-DD')
-    const day = parseDate(filters.day)
+    // || dayjs().format('YYYY-MM-DD')
+    const day = parseDate(props.date)
+    console.log('url day', props.date, day.format('dddd D MMM'))
     const allClasses = props.data.state.classes
-    console.log('constructed with filters', filters.day, day, filters)
+    console.log('constructed with filters', filters)
     this.state = {
       day,
       filters,
       filterCount,
-      allClasses: allClasses,
+      allClasses,
       classes: this.doLocalSearch(allClasses, day),
     }
   }
 
-  componentDidMount() {
-    this.doSearch()
+  async componentDidMount() {
+    await this.doSearch()
   }
 
   getFilterCount = filters =>
@@ -62,13 +63,14 @@ export default class Search extends Component {
 
   doSearch = async () => {
     console.log('do searc')
-    let { day, ...filters } = this.state.filters
+    let { filters, day } = this.state
     await this.setState({ isLoading: true })
     let res = await this.props.data.getSearch(filters)
     await this.setState({ isLoading: false })
     console.log('gotSearch', res.results)
     this.setState(
       {
+        day: day || parseDate(this.props.date),
         allClasses: res.results,
       },
       this.doLocalSearch,
@@ -79,9 +81,8 @@ export default class Search extends Component {
     allClasses = this.state.allClasses,
     day = this.state.day,
   ) => {
-    console.log('dolocal search')
-    const dayFilter = dayjs(day).day()
-    console.log('day', day, this.state.day)
+    if (!day.isValid()) console.error('Invalid Date')
+    const dayFilter = day.day()
     const classes = Object.values(allClasses).filter(item => {
       if (item.day !== dayFilter) return false
       let matchedACategory = false
@@ -125,21 +126,39 @@ export default class Search extends Component {
   }
 
   simulateToFiltersUrl = () => {
-    if (isSSR()) {
-      return this.props.url.replace('/search', '/search/filters')
-    }
-    return (
-      location.pathname.replace('/search', '/search/filters') + location.search
+    // a = '/search/8392-23-4/'
+    // const split = a.split('/')
+    // if (split.length)
+    // a = '/search?'
+    // a = '/search'
+
+    // "/search".replace(new RegExp(`(\/search\/?(${day})?)`), `/search/2019-09-08/filters`)
+
+    // https://localhost:8080/search/2019-09-23/?i={}
+    const day = this.state.day.format('YYYY-MM-DD')
+    const rgx = new RegExp(`(\/search\/?(${day})?)\/?`)
+    'https://localhost:8080/search/2019-09-23/?i={}'.replace(
+      new RegExp(`(\/search\/?(${day})?)\/?`),
+      `/search/2019-09-08/filters`,
     )
+    const newPath = `/search/${day}/filters`
+    if (isSSR()) {
+      return this.props.url.replace(rgx, newPath)
+    }
+    console.log(
+      'location.pathname.replace(rgx, newPath) + location.search',
+      location.pathname,
+      newPath,
+      location.pathname.replace(rgx, newPath) + location.search,
+    )
+    return location.pathname.replace(rgx, newPath) + location.search
   }
 
   onDone = filters => {
-    const { day } = filters
     this.setState(
       {
         filters,
         filterCount: this.getFilterCount(filters),
-        day: dayjs(day),
       },
       this.doLocalSearch,
     )
@@ -148,7 +167,7 @@ export default class Search extends Component {
   routeToFilters = event => {
     event.preventDefault()
     event.stopPropagation()
-    route(this.simulateToFiltersUrl())
+    return route(this.simulateToFiltersUrl())
   }
 
   addDay = x => e => {
@@ -162,8 +181,8 @@ export default class Search extends Component {
 
   simulateAddDayUrl = (x, day, filters = {}) => {
     day = dayjs(day).add(x, 'day')
-    filters.day = dayjs(day).format('YYYY-MM-DD')
-    const url = `/search/?i=${JSON.stringify(filters)}`
+    const dayString = dayjs(day).format('YYYY-MM-DD')
+    const url = `/search/${dayString}/?i=${JSON.stringify(filters)}`
     return { day, filters, url }
   }
 
@@ -274,7 +293,7 @@ export default class Search extends Component {
         <Filters
           {...this.props}
           onDone={this.onDone}
-          active={this.props.path === '/search/filters'}
+          active={this.props.path.indexOf('/search/:date/filters') === 0}
         />
         <div className={style.filtersButtonWrapper}>
           <div className={style.filtersButtonContainer}>

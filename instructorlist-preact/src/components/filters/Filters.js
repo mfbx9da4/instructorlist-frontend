@@ -4,48 +4,55 @@ import style from './style'
 import isSSR from '../../utils/is-ssr'
 import { getFiltersFromUrl } from '../../utils/getFiltersFromUrl'
 import { routeWithQuery } from '../../utils/routeWithQuery'
-import dayjs from 'dayjs'
+
+let activities = {
+  capoeira: {
+    name: 'capoeira',
+    label: 'Capoeira',
+    type: 'category',
+  },
+  ballet: {
+    name: 'ballet',
+    label: 'Ballet',
+    type: 'category',
+  },
+  hip_hop: {
+    name: 'hip_hop',
+    label: 'Hip Hop',
+    type: 'category',
+  },
+  break_dance: {
+    name: 'break_dance',
+    label: 'Break Dance',
+    type: 'category',
+  },
+  salsa: {
+    name: 'salsa',
+    label: 'Salsa',
+    type: 'category',
+  },
+  tap: {
+    name: 'tap',
+    label: 'Tap',
+    type: 'category',
+  },
+}
+
+// TODO: fix day
+// Needs to redirect correctly - add as param to routing
+// Remove day from filters
+// On done just replace filters
+// Search doesn't update filters?
+// What about Location? - shared state between all three components
+// Keep filters state in search - update from any other
+//
 
 export default class Filters extends Component {
   constructor(props) {
     super(props)
 
-    let activities = {
-      capoeira: {
-        name: 'capoeira',
-        label: 'Capoeira',
-        type: 'category',
-      },
-      ballet: {
-        name: 'ballet',
-        label: 'Ballet',
-        type: 'category',
-      },
-      hip_hop: {
-        name: 'hip_hop',
-        label: 'Hip Hop',
-        type: 'category',
-      },
-      break_dance: {
-        name: 'break_dance',
-        label: 'Break Dance',
-        type: 'category',
-      },
-      salsa: {
-        name: 'salsa',
-        label: 'Salsa',
-        type: 'category',
-      },
-      tap: {
-        name: 'tap',
-        label: 'Tap',
-        type: 'category',
-      },
-    }
-
     const url = isSSR() ? props.url : location.href
     const filters = getFiltersFromUrl(url)
-    filters.day = filters.day || dayjs().format()
 
     const simulateToggle = {}
     for (const key in activities) {
@@ -118,6 +125,7 @@ export default class Filters extends Component {
     event.stopPropagation()
     event.preventDefault()
     let { filters: prevFilters } = this.state
+    console.log('prevFilters', prevFilters)
     const { path, filters } = this.simulateToggleUrl(x, prevFilters)
     this.setState({ filters }, () => {
       return routeWithQuery(path)
@@ -133,6 +141,7 @@ export default class Filters extends Component {
     event.preventDefault()
     event.stopPropagation()
     const path = this.simulateBackToSearchUrl()
+    console.log('path', path)
     if (this.props.onDone) {
       this.props.onDone(this.state.filters)
     }
@@ -143,7 +152,7 @@ export default class Filters extends Component {
     event.preventDefault()
     event.stopPropagation()
     const path = '/search'
-    this.setState({ filters: { day: dayjs().format() } })
+    this.setState({ filters: {} })
     if (this.props.onDone) {
       this.props.onDone({})
     }
@@ -193,6 +202,7 @@ export default class Filters extends Component {
           </div>
 
           <div className={style.section}>
+            <pre>{JSON.stringify(filters, null, 2)}</pre>
             <div className={style.sectionHeader}>
               <div className={style.sectionTitle}>ACTIVITIES</div>
             </div>

@@ -87,6 +87,22 @@ form {
   transition: all 0.3s;
 }
 
+div[flex] {
+  flex: 1;
+}
+
+div[column] {
+  flex-direction: column;
+}
+
+div[jc='center'] {
+  justify-content: center;
+}
+
+div[ai='center'] {
+  align-items: center;
+}
+
 a {
   text-decoration: none;
   color: var(--off-black);
