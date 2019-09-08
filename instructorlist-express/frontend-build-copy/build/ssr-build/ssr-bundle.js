@@ -1006,8 +1006,48 @@ function Filters__inherits(subClass, superClass) { if (typeof superClass !== "fu
 
 
 
+var Filters_activities = {
+  capoeira: {
+    name: 'capoeira',
+    label: 'Capoeira',
+    type: 'category'
+  },
+  ballet: {
+    name: 'ballet',
+    label: 'Ballet',
+    type: 'category'
+  },
+  hip_hop: {
+    name: 'hip_hop',
+    label: 'Hip Hop',
+    type: 'category'
+  },
+  break_dance: {
+    name: 'break_dance',
+    label: 'Break Dance',
+    type: 'category'
+  },
+  salsa: {
+    name: 'salsa',
+    label: 'Salsa',
+    type: 'category'
+  },
+  tap: {
+    name: 'tap',
+    label: 'Tap',
+    type: 'category'
+  }
 
-var Filters_Filters = (Filters__temp = _class = function (_Component) {
+  // TODO: fix day
+  // Needs to redirect correctly - add as param to routing
+  // Remove day from filters
+  // On done just replace filters
+  // Search doesn't update filters?
+  // What about Location? - shared state between all three components
+  // Keep filters state in search - update from any other
+  //
+
+};var Filters_Filters = (Filters__temp = _class = function (_Component) {
   Filters__inherits(Filters, _Component);
 
   function Filters(props) {
@@ -1017,52 +1057,18 @@ var Filters_Filters = (Filters__temp = _class = function (_Component) {
 
     Filters__initialiseProps.call(_this);
 
-    var activities = {
-      capoeira: {
-        name: 'capoeira',
-        label: 'Capoeira',
-        type: 'category'
-      },
-      ballet: {
-        name: 'ballet',
-        label: 'Ballet',
-        type: 'category'
-      },
-      hip_hop: {
-        name: 'hip_hop',
-        label: 'Hip Hop',
-        type: 'category'
-      },
-      break_dance: {
-        name: 'break_dance',
-        label: 'Break Dance',
-        type: 'category'
-      },
-      salsa: {
-        name: 'salsa',
-        label: 'Salsa',
-        type: 'category'
-      },
-      tap: {
-        name: 'tap',
-        label: 'Tap',
-        type: 'category'
-      }
-    };
-
     var url = is_ssr() ? props.url : location.href;
     var filters = getFiltersFromUrl(url);
-    filters.day = filters.day || dayjs_min_default()().format();
 
     var simulateToggle = {};
-    for (var key in activities) {
-      simulateToggle[key] = _this.simulateToggleUrl(activities[key], filters).path;
+    for (var key in Filters_activities) {
+      simulateToggle[key] = _this.simulateToggleUrl(Filters_activities[key], filters).path;
     }
 
     _this.state = {
       filters: filters,
       simulateToggle: simulateToggle,
-      activities: activities,
+      activities: Filters_activities,
       times: [{
         name: '06',
         label: '6am to 9am',
@@ -1170,6 +1176,11 @@ var Filters_Filters = (Filters__temp = _class = function (_Component) {
           'div',
           { className: filters_style_default.a.section },
           Object(preact_min["h"])(
+            'pre',
+            null,
+            JSON.stringify(filters, null, 2)
+          ),
+          Object(preact_min["h"])(
             'div',
             { className: filters_style_default.a.sectionHeader },
             Object(preact_min["h"])(
@@ -1230,6 +1241,8 @@ var Filters_Filters = (Filters__temp = _class = function (_Component) {
       event.preventDefault();
       var prevFilters = _this3.state.filters;
 
+      console.log('prevFilters', prevFilters);
+
       var _simulateToggleUrl = _this3.simulateToggleUrl(x, prevFilters),
           path = _simulateToggleUrl.path,
           filters = _simulateToggleUrl.filters;
@@ -1249,6 +1262,7 @@ var Filters_Filters = (Filters__temp = _class = function (_Component) {
     event.preventDefault();
     event.stopPropagation();
     var path = _this3.simulateBackToSearchUrl();
+    console.log('path', path);
     if (_this3.props.onDone) {
       _this3.props.onDone(_this3.state.filters);
     }
@@ -1259,7 +1273,7 @@ var Filters_Filters = (Filters__temp = _class = function (_Component) {
     event.preventDefault();
     event.stopPropagation();
     var path = '/search';
-    _this3.setState({ filters: { day: dayjs_min_default()().format() } });
+    _this3.setState({ filters: {} });
     if (_this3.props.onDone) {
       _this3.props.onDone({});
     }
@@ -1283,8 +1297,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var Search__class, Search__temp, Search__initialiseProps;
 
 
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function Search__objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
 
@@ -1320,8 +1332,9 @@ function parseDate(day) {
     if (split.length === 3) {
       var year = parseInt(split[0]);
       var month = parseInt(split[1]) - 1;
-      var _day2 = parseInt(split[2]) - 1;
-      return dayjs_min_default()().set('day', _day2).set('month', month).set('year', year);
+      var date = parseInt(split[2]);
+      console.log('year, month, date', year, month, date);
+      return dayjs_min_default()().set('date', date).set('month', month).set('year', year);
     }
   }
   return dayjs_min_default()();
@@ -1352,14 +1365,14 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
 
     Search__initialiseProps.call(_this);
 
-    console.log('constructor_props', props);
+    console.log('constructor_props', props.date);
     var filters = getFiltersFromUrl(props.url || location.href) || {};
     var filterCount = _this.getFilterCount(filters);
-    console.log('filters.day , dayjs().)', filters.day, dayjs_min_default()());
-    filters.day = filters.day || dayjs_min_default()().format('YYYY-MM-DD');
-    var day = parseDate(filters.day);
+    // || dayjs().format('YYYY-MM-DD')
+    var day = parseDate(props.date);
+    console.log('url day', props.date, day.format('dddd D MMM'));
     var allClasses = props.data.state.classes;
-    console.log('constructed with filters', filters.day, day, filters);
+    console.log('constructed with filters', filters);
     _this.state = {
       day: day,
       filters: filters,
@@ -1371,7 +1384,15 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
   }
 
   Search.prototype.componentDidMount = function componentDidMount() {
-    this.doSearch();
+    return new Promise(function ($return, $error) {
+      return Promise.resolve(this.doSearch()).then(function ($await_1) {
+        try {
+          return $return();
+        } catch ($boundEx) {
+          return $error($boundEx);
+        }
+      }, $error);
+    }.bind(this));
   };
 
   Search.prototype.render = function render(_ref, _ref2) {
@@ -1534,7 +1555,7 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
       ),
       Object(preact_min["h"])(Filters_Filters, _extends({}, this.props, {
         onDone: this.onDone,
-        active: this.props.path === '/search/filters'
+        active: this.props.path.indexOf('/search/:date/filters') === 0
       })),
       Object(preact_min["h"])(
         'div',
@@ -1580,19 +1601,20 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
 
   this.doSearch = function () {
     return new Promise(function ($return, $error) {
-      var _state$filters, day, filters, res;
+      var _state, filters, day, res;
 
       console.log('do searc');
-      _state$filters = _this2.state.filters, day = _state$filters.day, filters = _objectWithoutProperties(_state$filters, ['day']);
-      return Promise.resolve(_this2.setState({ isLoading: true })).then(function ($await_1) {
+      _state = _this2.state, filters = _state.filters, day = _state.day;
+      return Promise.resolve(_this2.setState({ isLoading: true })).then(function ($await_2) {
         try {
-          return Promise.resolve(_this2.props.data.getSearch(filters)).then(function ($await_2) {
+          return Promise.resolve(_this2.props.data.getSearch(filters)).then(function ($await_3) {
             try {
-              res = $await_2;
-              return Promise.resolve(_this2.setState({ isLoading: false })).then(function ($await_3) {
+              res = $await_3;
+              return Promise.resolve(_this2.setState({ isLoading: false })).then(function ($await_4) {
                 try {
                   console.log('gotSearch', res.results);
                   _this2.setState({
+                    day: day || parseDate(_this2.props.date),
                     allClasses: res.results
                   }, _this2.doLocalSearch);
                   return $return();
@@ -1615,9 +1637,8 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
     var allClasses = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _this2.state.allClasses;
     var day = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _this2.state.day;
 
-    console.log('dolocal search');
-    var dayFilter = dayjs_min_default()(day).day();
-    console.log('day', day, _this2.state.day);
+    if (!day.isValid()) console.error('Invalid Date');
+    var dayFilter = day.day();
     var classes = Object.values(allClasses).filter(function (item) {
       if (item.day !== dayFilter) return false;
       var matchedACategory = false;
@@ -1657,35 +1678,46 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
   };
 
   this.simulateToFiltersUrl = function () {
+    // a = '/search/8392-23-4/'
+    // const split = a.split('/')
+    // if (split.length)
+    // a = '/search?'
+    // a = '/search'
+
+    // "/search".replace(new RegExp(`(\/search\/?(${day})?)`), `/search/2019-09-08/filters`)
+
+    // https://localhost:8080/search/2019-09-23/?i={}
+    var day = _this2.state.day.format('YYYY-MM-DD');
+    var rgx = new RegExp('(/search/?(' + day + ')?)/?');
+    'https://localhost:8080/search/2019-09-23/?i={}'.replace(new RegExp('(/search/?(' + day + ')?)/?'), '/search/2019-09-08/filters');
+    var newPath = '/search/' + day + '/filters';
     if (is_ssr()) {
-      return _this2.props.url.replace('/search', '/search/filters');
+      return _this2.props.url.replace(rgx, newPath);
     }
-    return location.pathname.replace('/search', '/search/filters') + location.search;
+    console.log('location.pathname.replace(rgx, newPath) + location.search', location.pathname, newPath, location.pathname.replace(rgx, newPath) + location.search);
+    return location.pathname.replace(rgx, newPath) + location.search;
   };
 
   this.onDone = function (filters) {
-    var day = filters.day;
-
     _this2.setState({
       filters: filters,
-      filterCount: _this2.getFilterCount(filters),
-      day: dayjs_min_default()(day)
+      filterCount: _this2.getFilterCount(filters)
     }, _this2.doLocalSearch);
   };
 
   this.routeToFilters = function (event) {
     event.preventDefault();
     event.stopPropagation();
-    Object(preact_router_es["route"])(_this2.simulateToFiltersUrl());
+    return Object(preact_router_es["route"])(_this2.simulateToFiltersUrl());
   };
 
   this.addDay = function (x) {
     return function (e) {
       e.preventDefault();
       e.stopPropagation();
-      var _state = _this2.state,
-          _day = _state.day,
-          _filters = _state.filters;
+      var _state2 = _this2.state,
+          _day = _state2.day,
+          _filters = _state2.filters;
 
       var _simulateAddDayUrl = _this2.simulateAddDayUrl(x, _day, _filters),
           day = _simulateAddDayUrl.day,
@@ -1701,8 +1733,8 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
     var filters = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
     day = dayjs_min_default()(day).add(x, 'day');
-    filters.day = dayjs_min_default()(day).format('YYYY-MM-DD');
-    var url = '/search/?i=' + JSON.stringify(filters);
+    var dayString = dayjs_min_default()(day).format('YYYY-MM-DD');
+    var url = '/search/' + dayString + '/?i=' + JSON.stringify(filters);
     return { day: day, filters: filters, url: url };
   };
 }, Search__temp);
@@ -1823,7 +1855,15 @@ var FooterButton_FooterButton = function (_Component) {
 }(preact_min["Component"]);
 
 
+// CONCATENATED MODULE: ./utils/is-dev.js
+var isDev = function isDev() {
+  return typeof window !== 'undefined' && location.href.indexOf('localhost') > -1;
+};
+/* harmony default export */ var is_dev = (isDev);
 // CONCATENATED MODULE: ./constants.js
+
+
+
 var dayToDayString = {
   1: 'Mon',
   2: 'Tue',
@@ -1833,6 +1873,8 @@ var dayToDayString = {
   6: 'Sat',
   7: 'Sun'
 };
+
+var STRIPE_KEY = is_dev() ? 'pk_test_i0mT0MQhBYOTm3kcHw73xILH' : 'pk_test_i0mT0MQhBYOTm3kcHw73xILH';
 // EXTERNAL MODULE: ./components/stripeform/style.scss
 var stripeform_style = __webpack_require__("GjWG");
 var stripeform_style_default = /*#__PURE__*/__webpack_require__.n(stripeform_style);
@@ -1849,18 +1891,13 @@ function convertArrayToObject(array, key) {
     return acc;
   });
 }
-// EXTERNAL MODULE: external "vm"
-var external__vm_ = __webpack_require__("aGyC");
-var external__vm__default = /*#__PURE__*/__webpack_require__.n(external__vm_);
-
 // CONCATENATED MODULE: ./api.js
 function api__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 
 
 
-var isDev = typeof window !== 'undefined' && location.href.indexOf('localhost') > -1;
-var BASE_URL = isDev ? 'http://localhost:8000' : 'https://instructorlist-django.herokuapp.com';
+var BASE_URL = is_dev() ? 'http://localhost:8000' : 'https://instructorlist-django.herokuapp.com';
 
 var defaultClass = {
   id: 1,
@@ -2042,6 +2079,7 @@ var StripeElement = function (_Component) {
   }
 
   StripeElement.prototype.shouldComponentUpdate = function shouldComponentUpdate() {
+    // Important so that Stripe elements can be found by stripe Lib
     return false;
   };
 
@@ -2095,6 +2133,11 @@ var StripePaymentRequestButton = function (_Component2) {
     this.mount();
   };
 
+  StripePaymentRequestButton.prototype.shouldComponentUpdate = function shouldComponentUpdate() {
+    // Important so that Stripe elements can be found by stripe Lib
+    return false;
+  };
+
   StripePaymentRequestButton.prototype.render = function render() {
     return StripeForm__ref2;
   };
@@ -2102,7 +2145,7 @@ var StripePaymentRequestButton = function (_Component2) {
   return StripePaymentRequestButton;
 }(preact_min["Component"]);
 
-var _ref9 = Object(preact_min["h"])(
+var _ref8 = Object(preact_min["h"])(
   'div',
   null,
   'Loading stripe'
@@ -2116,6 +2159,50 @@ var StripeForm_StripeForm = function (_Component3) {
 
     var _this3 = StripeForm__possibleConstructorReturn(this, _Component3.call(this, props));
 
+    _this3.registerStripeElements = function () {
+      return new Promise(function ($return, $error) {
+        var card, prButton, paymentRequest;
+
+        if (!('Stripe' in window)) {
+          _this3.setState({ loadingStripe: true });
+          return Promise.resolve(loadStripe()).then(function ($await_6) {
+            try {
+              return $If_1.call(this);
+            } catch ($boundEx) {
+              return $error($boundEx);
+            }
+          }.bind(this), $error);
+        }
+
+        function $If_1() {
+          _this3.setState({ loadingStripe: false });
+          // TODO: get from env
+          _this3.stripe = window.Stripe(STRIPE_KEY);
+          _this3.elements = _this3.stripe.elements();
+          card = _this3.elements.create('card', { hidePostalCode: true });
+          prButton = void 0, paymentRequest = void 0;
+          // const paymentRequest = this.stripe.paymentRequest({
+          //   country: 'GB',
+          //   currency: 'gbp',
+          //   total: {
+          //     label: 'Class price',
+          //     amount: this.getAmount(),
+          //   },
+          //   requestPayerName: true,
+          //   requestPayerEmail: true,
+          // })
+          // const prButton = this.elements.create('paymentRequestButton', {
+          //   paymentRequest,
+          // })
+          console.log('card', card);
+          _this3.setState({ card: card, prButton: prButton, paymentRequest: paymentRequest });
+          return $return();
+        }
+
+        return $If_1.call(this);
+      });
+    };
+
     _this3.onSubmit = function (e) {
       return new Promise(function ($return, $error) {
         console.log('onstripesubmit');
@@ -2126,27 +2213,69 @@ var StripeForm_StripeForm = function (_Component3) {
     _this3.onSubmitCard = function (e) {
       return new Promise(function ($return, $error) {
         var res, billingDetails, response;
-        return Promise.resolve(_this3.stripe.createPaymentMethod('card', _this3.state.card)).then(function ($await_6) {
+        return Promise.resolve(_this3.stripe.createPaymentMethod('card', _this3.state.card)).then(function ($await_7) {
           try {
-            res = $await_6;
-            console.log('res', res);
+            res = $await_7;
+            if (res.error) return $return(res);
             billingDetails = res.billingDetails;
 
             _this3.setState({ billingDetails: billingDetails });
             return Promise.resolve(_this3.confirm('method', {
               payment_method_id: res.paymentMethod.id,
               amount: _this3.getAmount()
-            })).then(function ($await_7) {
+            })).then(function ($await_8) {
               try {
-                response = $await_7;
+                response = $await_8;
 
-                if (response.error) {
-                  // Show error from server on payment form
-                  return $return(response);
-                } else if (response.requires_action) {
-                  return $return(_this3.handleAction(response));
+                if (response.requires_action) {
+                  return Promise.resolve(_this3.handleAction(response)).then(function ($await_9) {
+                    try {
+                      return $If_2.call(this);
+                    } catch ($boundEx) {
+                      return $error($boundEx);
+                    }
+                  }.bind(this), $error);
                 }
-                return $return();
+
+                function $If_2() {
+                  return $return(res);
+                }
+
+                return $If_2.call(this);
+              } catch ($boundEx) {
+                return $error($boundEx);
+              }
+            }.bind(this), $error);
+          } catch ($boundEx) {
+            return $error($boundEx);
+          }
+        }.bind(this), $error);
+      });
+    };
+
+    _this3.handleAction = function (response) {
+      return new Promise(function ($return, $error) {
+        var res, body, confirmationRes;
+        return Promise.resolve(_this3.stripe.handleCardAction(response.payment_intent_client_secret)).then(function ($await_10) {
+          try {
+            res = $await_10;
+
+            console.log('actiionres', res);
+
+            if (res.error) {
+              // Show error from Stripe.js in payment form
+              console.log('errorAction', res.error);
+              return $return(res);
+            }
+            body = {
+              payment_intent_id: res.paymentIntent.id,
+              amount: _this3.getAmount()
+            };
+            return Promise.resolve(_this3.confirm('intent', body)).then(function ($await_11) {
+              try {
+                confirmationRes = $await_11;
+                console.log('confirmationRes', confirmationRes);
+                return $return(res);
               } catch ($boundEx) {
                 return $error($boundEx);
               }
@@ -2155,41 +2284,6 @@ var StripeForm_StripeForm = function (_Component3) {
             return $error($boundEx);
           }
         }, $error);
-      });
-    };
-
-    _this3.handleAction = function (response) {
-      return new Promise(function ($return, $error) {
-        var res, body, _response;
-
-        return Promise.resolve(_this3.stripe.handleCardAction(response.payment_intent_client_secret)).then(function ($await_8) {
-          try {
-            res = $await_8;
-
-            if (res.error) {
-              // Show error from Stripe.js in payment form
-              console.log('errorAction', res.error);
-              return $return(res.error);
-            } else {
-              body = {
-                payment_intent_id: res.paymentIntent.id,
-                amount: _this3.getAmount()
-              };
-              return Promise.resolve(_this3.confirm('intent', body)).then(function ($await_9) {
-                try {
-                  _response = $await_9;
-                  console.log('response', _response);
-                  return $return(_response);
-                } catch ($boundEx) {
-                  return $error($boundEx);
-                }
-              }, $error);
-            }
-            return $return();
-          } catch ($boundEx) {
-            return $error($boundEx);
-          }
-        }.bind(this), $error);
       });
     };
 
@@ -2204,40 +2298,15 @@ var StripeForm_StripeForm = function (_Component3) {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(body)
-        })).then(function ($await_10) {
+        })).then(function ($await_12) {
           try {
-            response = $await_10;
+            response = $await_12;
 
-            return Promise.resolve(response.json()).then(function ($await_11) {
+            return Promise.resolve(response.json()).then(function ($await_13) {
               try {
-                confirmed = $await_11;
+                confirmed = $await_13;
                 console.log('confirmed', confirmed);
                 return $return(confirmed);
-              } catch ($boundEx) {
-                return $error($boundEx);
-              }
-            }, $error);
-          } catch ($boundEx) {
-            return $error($boundEx);
-          }
-        }, $error);
-      });
-    };
-
-    _this3.onSubmitCard1 = function (e) {
-      return new Promise(function ($return, $error) {
-        var _ref3, client_secret, res;
-
-        return Promise.resolve(_this3.getClientSecret()).then(function ($await_12) {
-          try {
-            _ref3 = $await_12, client_secret = _ref3.client_secret;
-
-            console.log('clientSecret', client_secret);
-            return Promise.resolve(_this3.stripe.handleCardSetup(client_secret, _this3.state.card, {})).then(function ($await_13) {
-              try {
-                res = $await_13;
-                if (res.error) return $return(res);
-                return $return(_this3.onSuccessfulCardSetup(res));
               } catch ($boundEx) {
                 return $error($boundEx);
               }
@@ -2278,16 +2347,16 @@ var StripeForm_StripeForm = function (_Component3) {
 
     _this3.onPaymentMethod = function (ev) {
       return new Promise(function ($return, $error) {
-        var _ref4, client_secret, _ref5, confirmError, paymentIntent, _ref6, error;
+        var _ref3, client_secret, _ref4, confirmError, paymentIntent, _ref5, error;
 
         return Promise.resolve(_this3.getClientSecret()).then(function ($await_15) {
           try {
-            _ref4 = $await_15, client_secret = _ref4.client_secret;
+            _ref3 = $await_15, client_secret = _ref3.client_secret;
             return Promise.resolve(_this3.stripe.confirmPaymentIntent(client_secret, {
               payment_method: ev.paymentMethod.id
             })).then(function ($await_16) {
               try {
-                _ref5 = $await_16, confirmError = _ref5.error, paymentIntent = _ref5.paymentIntent;
+                _ref4 = $await_16, confirmError = _ref4.error, paymentIntent = _ref4.paymentIntent;
 
 
                 if (confirmError) {
@@ -2295,15 +2364,15 @@ var StripeForm_StripeForm = function (_Component3) {
                   // re-show the payment interface, or show an error message and close
                   // the payment interface.
                   ev.complete('fail');
-                  return $If_2.call(this);
+                  return $If_3.call(this);
                 } else {
                   // Report to the browser that the confirmation was successful, prompting
                   // it to close the browser payment method collection interface.
                   ev.complete('success');
                   // Let Stripe.js handle the rest of the payment flow.
-                  return Promise.resolve(_this3.stripe.handleCardPayment(clientSecret)).then(function ($await_17) {
+                  return Promise.resolve(_this3.stripe.handleCardPayment(client_secret)).then(function ($await_17) {
                     try {
-                      _ref6 = $await_17, error = _ref6.error;
+                      _ref5 = $await_17, error = _ref5.error;
 
                       if (error) {
                         // The payment failed -- ask your customer for a new payment method.
@@ -2312,14 +2381,14 @@ var StripeForm_StripeForm = function (_Component3) {
                         // The payment has succeeded.
                         console.log('The payment has succeeded.');
                       }
-                      return $If_2.call(this);
+                      return $If_3.call(this);
                     } catch ($boundEx) {
                       return $error($boundEx);
                     }
                   }.bind(this), $error);
                 }
 
-                function $If_2() {
+                function $If_3() {
                   return $return();
                 }
               } catch ($boundEx) {
@@ -2333,6 +2402,7 @@ var StripeForm_StripeForm = function (_Component3) {
       });
     };
 
+    console.log('construct');
     _this3.state = {
       loadingStripe: true,
       responses: []
@@ -2341,64 +2411,52 @@ var StripeForm_StripeForm = function (_Component3) {
     return _this3;
   }
 
-  StripeForm.prototype.componentDidMount = function componentDidMount() {
+  StripeForm.prototype.componentDidUpdate = function componentDidUpdate() {
+    console.log('did update');
+  };
+
+  StripeForm.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    // Important so that Stripe elements can be found by stripe Lib
+    return nextState.loadingStripe === false && this.state.loadingStripe === true;
+  };
+
+  StripeForm.prototype.componentWillUnmount = function componentWillUnmount() {
     return new Promise(function ($return, $error) {
-      var card, paymentRequest, prButton;
-
-      if (!('Stripe' in window)) {
-        return Promise.resolve(loadStripe()).then(function ($await_18) {
-          try {
-            return $If_3.call(this);
-          } catch ($boundEx) {
-            return $error($boundEx);
-          }
-        }.bind(this), $error);
+      console.log('willunmoutn');
+      if (this.state.card) {
+        this.state.card.destroy();
       }
-
-      function $If_3() {
-        this.setState({ loadingStripe: false });
-        // TODO: get from env
-        this.stripe = window.Stripe('pk_test_i0mT0MQhBYOTm3kcHw73xILH');
-        this.elements = this.stripe.elements();
-        card = this.elements.create('card', { hidePostalCode: true });
-        paymentRequest = this.stripe.paymentRequest({
-          country: 'GB',
-          currency: 'gbp',
-          total: {
-            label: 'Class price',
-            amount: this.getAmount()
-          },
-          requestPayerName: true,
-          requestPayerEmail: true
-        });
-        prButton = this.elements.create('paymentRequestButton', {
-          paymentRequest: paymentRequest
-        });
-        this.setState({ card: card, prButton: prButton, paymentRequest: paymentRequest });
-        return $return();
-      }
-
-      return $If_3.call(this);
+      return $return();
     }.bind(this));
   };
 
-  StripeForm.prototype.render = function render(_ref7, _ref8) {
-    var res = _ref8.res;
+  StripeForm.prototype.componentDidMount = function componentDidMount() {
+    return new Promise(function ($return, $error) {
+      console.log('mount');
+      return Promise.resolve(this.registerStripeElements()).then(function ($await_18) {
+        try {
+          return $return();
+        } catch ($boundEx) {
+          return $error($boundEx);
+        }
+      }, $error);
+    }.bind(this));
+  };
 
-    StripeForm__objectDestructuringEmpty(_ref7);
+  StripeForm.prototype.render = function render(_ref6, _ref7) {
+    var res = _ref7.res,
+        loadingStripe = _ref7.loadingStripe;
 
+    StripeForm__objectDestructuringEmpty(_ref6);
+
+    console.log('rednder, loadingStripe', loadingStripe);
     return Object(preact_min["h"])(
       'div',
       null,
-      this.state.loadingStripe ? _ref9 : Object(preact_min["h"])(
+      loadingStripe ? _ref8 : Object(preact_min["h"])(
         'div',
-        { className: stripeform_style_default.a.formContainer },
-        Object(preact_min["h"])(StripePaymentRequestButton, {
-          paymentRequest: this.state.paymentRequest,
-          prButton: this.state.prButton,
-          onPaymentMethod: this.onPaymentMethod
-        }),
-        Object(preact_min["h"])(StripeElement, { card: this.state.card }),
+        { key: 'formContainer', className: stripeform_style_default.a.formContainer },
+        Object(preact_min["h"])(StripeElement, { key: 'card', card: this.state.card }),
         Object(preact_min["h"])(
           'pre',
           null,
@@ -2413,15 +2471,16 @@ var StripeForm_StripeForm = function (_Component3) {
 
 
 // CONCATENATED MODULE: ./components/payment/Payment.js
+var Payment__extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
-function Payment__objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
 
 function Payment__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function Payment__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function Payment__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -2441,13 +2500,13 @@ var Payment__ref4 = Object(preact_min["h"])('div', null);
 
 var Payment__ref5 = Object(preact_min["h"])('div', { className: 'hr' });
 
-var _ref6 = Object(preact_min["h"])('div', { className: 'hr' });
+var Payment__ref6 = Object(preact_min["h"])('div', { className: 'hr' });
 
 var Payment__ref7 = Object(preact_min["h"])('div', { className: 'hr' });
 
 var Payment__ref8 = Object(preact_min["h"])('div', { className: 'bottom' });
 
-var Payment__ref9 = Object(preact_min["h"])(
+var _ref9 = Object(preact_min["h"])(
   'div',
   null,
   'Pay now'
@@ -2461,26 +2520,61 @@ var Payment_Payment = function (_Component) {
 
     var _this = Payment__possibleConstructorReturn(this, _Component.call(this, props));
 
-    _this.onChange = function () {
-      return function () {};
+    _this.onChange = function (name) {
+      return function (e) {
+        var _values;
+
+        _this.setState({
+          values: (_values = {}, _values[name] = e.target.value, _values)
+        });
+      };
+    };
+
+    _this.validateValues = function () {
+      var values = _this.state.values;
+
+      if (!('phone_number' in values)) {
+        return { phone_number: 'Phone is not valid' };
+      }
+      var phone = values['phone_number'];
+      var split = phone.split('+');
+      if (split.length > 1) {
+        return { phone_number: 'Phone number must have only one "+"' };
+      }
+      var rest = split[0];
+      var isOnlyNumbers = /^\d+$/.test(rest);
+      if (!isOnlyNumbers) {
+        return { phone_number: 'Phone number must be made only of numbers' };
+      }
+      if (rest.length < 8) {
+        return { phone_number: 'Phone number is too short' };
+      }
+      return {};
     };
 
     _this.onSubmit = function (e) {
       return new Promise(function ($return, $error) {
-        var res;
+        var errors, error, _res, data, res;
 
         e.preventDefault();
         e.stopPropagation();
         console.log('onsubmit');
-        if (!_this.state.stripeToken) {
+        _this.setState({ isSubmitting: true });
+        _this.setState({ errors: {}, error: false });
+
+        errors = _this.validateValues();
+        error = errors.phone;
+        if (errors.phone) return $return(_this.setState({ isSubmitting: false, errors: errors, error: error }));
+
+        if (!_this.state.paymentMethod) {
           return Promise.resolve(_this.stripeSubmit(e)).then(function ($await_2) {
             try {
-              res = $await_2;
-              console.log('res2', res);
-              if (res.error) {
-                _this.setState({ error: res.error.message });
+              _res = $await_2;
+              console.log('res2', _res);
+              if (_res.error) {
+                return $return(_this.setState({ isSubmitting: false, error: _res.error.message }));
               }
-              // TODO: set valid stripe token
+              _this.setState({ paymentMethod: _res });
               return $If_1.call(this);
             } catch ($boundEx) {
               return $error($boundEx);
@@ -2489,16 +2583,61 @@ var Payment_Payment = function (_Component) {
         }
 
         function $If_1() {
-          return $return();
+          data = Payment__extends({
+            paymentMethod: _this.state.paymentMethod,
+            start_time: _this.props.item.start_time,
+            end_time: _this.props.item.end_time,
+            class_attended: _this.props.item.id,
+            venue: _this.props.item.venue.id,
+            email: _this.state.values.phone_number + '@example.com'
+          }, _this.state.values);
+          console.log('data', data);
+          return Promise.resolve(_this.postBooking(data)).then(function ($await_3) {
+            try {
+              res = $await_3;
+              console.log('res', res);
+              if (!res.ok) {
+                return $return(_this.setState({
+                  isSubmitting: false,
+                  error: 'Error creating booking'
+                }));
+              }
+              return $return(_this.setState({ isSubmitting: false, success: true }));
+            } catch ($boundEx) {
+              return $error($boundEx);
+            }
+          }, $error);
         }
 
         return $If_1.call(this);
       });
     };
 
+    _this.postBooking = function (data) {
+      return new Promise(function ($return, $error) {
+        var res;
+        return Promise.resolve(fetch(BASE_URL + '/api/bookings/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })).then(function ($await_4) {
+          try {
+            res = $await_4;
+            return $return(res.json());
+          } catch ($boundEx) {
+            return $error($boundEx);
+          }
+        }, $error);
+      });
+    };
+
     _this.state = {
       formIsValid: false,
-      stripeToken: null
+      paymentMethod: null,
+      errors: {},
+      values: {}
     };
     return _this;
   }
@@ -2509,9 +2648,10 @@ var Payment_Payment = function (_Component) {
 
     var item = _ref.item,
         show = _ref.show;
+    var errors = _ref2.errors,
+        values = _ref2.values;
 
-    Payment__objectDestructuringEmpty(_ref2);
-
+    console.log('show', show);
     if (!item) return Payment__ref3;
     return Object(preact_min["h"])(
       'div',
@@ -2519,6 +2659,7 @@ var Payment_Payment = function (_Component) {
       Object(preact_min["h"])(
         'form',
         {
+          onSubmit: this.onSubmit,
           className: utils_classNames((_classNames = {}, _classNames[payment_style_default.a.paymentWrapper] = true, _classNames[payment_style_default.a.close] = !show, _classNames))
         },
         Object(preact_min["h"])(
@@ -2564,7 +2705,7 @@ var Payment_Payment = function (_Component) {
               item.venue.area
             )
           ),
-          _ref6,
+          Payment__ref6,
           Object(preact_min["h"])(
             'div',
             { className: payment_style_default.a.section },
@@ -2585,7 +2726,7 @@ var Payment_Payment = function (_Component) {
             ),
             item.extra_fee && Object(preact_min["h"])(
               'div',
-              { className: payment_style_default.a.extra },
+              { key: 'extra_fee', className: payment_style_default.a.extra },
               'Please note this studio will charge you an additional',
               Object(preact_min["h"])(
                 'div',
@@ -2610,9 +2751,9 @@ var Payment_Payment = function (_Component) {
                 'Payment'
               )
             ),
-            this.state.error && Object(preact_min["h"])(
+            Object(preact_min["h"])(
               'div',
-              { className: 'errorContainer' },
+              { className: 'errorContainer ' + (this.state.error || 'hide') },
               Object(preact_min["h"])(
                 'div',
                 { className: 'errorContainer_message' },
@@ -2624,15 +2765,19 @@ var Payment_Payment = function (_Component) {
               { className: payment_style_default.a.paymentForm },
               Object(preact_min["h"])(
                 'div',
-                { className: payment_style_default.a.inputContainer },
+                { column: true, className: payment_style_default.a.inputContainer },
                 Object(preact_min["h"])('input', {
                   type: 'text',
                   className: payment_style_default.a.input,
                   placeholder: 'Phone number',
-                  onChange: this.onChange('phone')
+                  name: 'phone_number',
+                  key: 'phone_number',
+                  value: values['phone_number'],
+                  onChange: this.onChange('phone_number')
                 })
               ),
-              show && Object(preact_min["h"])(StripeForm_StripeForm, {
+              Object(preact_min["h"])(StripeForm_StripeForm, {
+                key: 'StripeForm',
                 amount: item.price,
                 onSubmit: function onSubmit(onStripeSubmit) {
                   _this2.stripeSubmit = onStripeSubmit;
@@ -2649,7 +2794,7 @@ var Payment_Payment = function (_Component) {
             // disabled={!this.state.formIsValid}
             , onClick: this.onSubmit
           },
-          Payment__ref9
+          _ref9
         )
       )
     );
@@ -2679,8 +2824,18 @@ function ClassDetail__inherits(subClass, superClass) { if (typeof superClass !==
 
 var ClassDetail__ref3 = Object(preact_min["h"])(
   'div',
-  null,
-  'Class not found'
+  { column: true, flex: true, jc: 'center', ai: 'center' },
+  Object(preact_min["h"])('img', {
+    width: '85',
+    height: '119',
+    src: '/assets/images/dancing.gif',
+    alt: 'loading'
+  }),
+  Object(preact_min["h"])(
+    'div',
+    null,
+    'Loading'
+  )
 );
 
 var ClassDetail__ref4 = Object(preact_min["h"])('div', { className: 'leftArrow' });
@@ -2714,7 +2869,7 @@ var ClassDetail_ClassDetail = function (_Component) {
 
     _this.state = {
       item: _this.props.data.state.classes[props.matches.id],
-      showPayment: false
+      showPayment: true
     };
     return _this;
   }
@@ -2896,12 +3051,13 @@ var ClassDetail_ClassDetail = function (_Component) {
           'div',
           null,
           '\xA3',
-          item.price
-        ),
-        Object(preact_min["h"])(
-          'div',
-          { className: classdetail_style_default.a.priceLabel },
-          'Book now'
+          item.price,
+          ' ',
+          Object(preact_min["h"])(
+            'div',
+            { className: classdetail_style_default.a.priceLabel },
+            'Book now'
+          )
         )
       )
     );
@@ -3070,7 +3226,7 @@ var app__extends = Object.assign || function (target) { for (var i = 1; i < argu
 
 
 
-function app__objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function app__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3096,16 +3252,19 @@ var pages = [{
   path: '/'
 }, {
   component: search,
-  path: '/search/'
+  path: '/search'
+}, {
+  component: search,
+  path: '/search/:date/map/'
+}, {
+  component: search,
+  path: '/search/:date/filters/'
+}, {
+  component: search,
+  path: '/search/:date/'
 }, {
   component: class_page,
   path: '/classes/:id'
-}, {
-  component: search,
-  path: '/search/map/'
-}, {
-  component: search,
-  path: '/search/filters'
 }, {
   component: profile_Profile,
   path: '/profile/',
@@ -3153,9 +3312,6 @@ var app_App = function (_Component) {
   /** Gets fired when the route changes.
    *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
    *	@param {string} event.url	The newly routed URL
-   * /search
-   * /search/map
-   * /search/filters
    */
 
 
@@ -3173,7 +3329,7 @@ var app_App = function (_Component) {
         { url: url, onChange: this.handleRoute },
         pages.map(function (x) {
           var Component = x.component,
-              rest = app__objectWithoutProperties(x, ['component']);
+              rest = _objectWithoutProperties(x, ['component']);
 
           return Object(preact_min["h"])(Component, app__extends({ data: _this2.state.data }, rest, _this2.props));
         }),
@@ -3445,13 +3601,6 @@ module.exports = {"profile":"profile__t2Dqz"};
 
 // removed by extract-text-webpack-plugin
 module.exports = {"home":"home__MseGd"};
-
-/***/ }),
-
-/***/ "aGyC":
-/***/ (function(module, exports) {
-
-module.exports = require("vm");
 
 /***/ }),
 
