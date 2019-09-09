@@ -4,13 +4,14 @@ import style from './style'
 import Payment from '../payment/Payment'
 import FooterButton from '../footerbutton/FooterButton'
 import { dayToDayString } from '../../constants'
+import isDev from '../../utils/is-dev'
 
 export default class ClassDetail extends Component {
   constructor(props) {
     super(props)
     this.state = {
       item: this.props.data.state.classes[props.matches.id],
-      showPayment: true,
+      showPayment: isDev(),
     }
   }
 
