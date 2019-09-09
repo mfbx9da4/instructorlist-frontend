@@ -2596,13 +2596,14 @@ var Payment_Payment = function (_Component) {
             try {
               res = $await_3;
               console.log('res', res);
-              if (!res.ok) {
+              if (res.error) {
                 return $return(_this.setState({
                   isSubmitting: false,
-                  error: 'Error creating booking'
+                  error: res.error.message
                 }));
               }
-              return $return(_this.setState({ isSubmitting: false, success: true }));
+              alert(res.code);
+              return $return(_this.setState({ isSubmitting: false, success: true, code: res.code }));
             } catch ($boundEx) {
               return $error($boundEx);
             }
@@ -2616,7 +2617,7 @@ var Payment_Payment = function (_Component) {
     _this.postBooking = function (data) {
       return new Promise(function ($return, $error) {
         var res;
-        return Promise.resolve(fetch(BASE_URL + '/api/bookings/', {
+        return Promise.resolve(fetch(BASE_URL + '/api/bookingsasdfad/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -2625,6 +2626,10 @@ var Payment_Payment = function (_Component) {
         })).then(function ($await_4) {
           try {
             res = $await_4;
+            console.log('res', res);
+            if (!res.ok) {
+              return $return({ error: { message: 'Issue making booking' } });
+            }
             return $return(res.json());
           } catch ($boundEx) {
             return $error($boundEx);
