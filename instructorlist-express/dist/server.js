@@ -106,3 +106,8 @@ if (process.env.NODE_ENV !== 'production') {
     const httpsServer = https_1.default.createServer(getCredentials(), app);
     httpsServer.listen(443, () => console.log(`🐎 https://localhost`));
 }
+const oneMinute = 1000 * 60;
+setInterval(() => {
+    fetch('https://instructorlist-django.herokuapp.com/api/');
+    fetch(`https://instructorlist-frontend.herokuapp.com/`);
+}, oneMinute * 4);

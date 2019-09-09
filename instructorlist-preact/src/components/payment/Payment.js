@@ -79,23 +79,28 @@ export default class Payment extends Component {
     console.log('data', data)
     let res = await this.postBooking(data)
     console.log('res', res)
-    if (!res.ok) {
+    if (res.error) {
       return this.setState({
         isSubmitting: false,
-        error: 'Error creating booking',
+        error: res.error.message,
       })
     }
-    return this.setState({ isSubmitting: false, success: true })
+    alert(res.code)
+    return this.setState({ isSubmitting: false, success: true, code: res.code })
   }
 
   postBooking = async data => {
-    let res = await fetch(`${BASE_URL}/api/bookings/`, {
+    let res = await fetch(`${BASE_URL}/api/bookingsasdfad/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     })
+    console.log('res', res)
+    if (!res.ok) {
+      return { error: { message: 'Issue making booking' } }
+    }
     return res.json()
   }
 
