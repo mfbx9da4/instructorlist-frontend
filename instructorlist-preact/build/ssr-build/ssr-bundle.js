@@ -2883,6 +2883,8 @@ var ClassDetail_ClassDetail = function (_Component) {
   ClassDetail.prototype.componentDidMount = function componentDidMount() {
     return new Promise(function ($return, $error) {
       var res;
+
+      console.log('did mount');
       return Promise.resolve(this.props.data.getClass(this.props.matches.id)).then(function ($await_1) {
         try {
           res = $await_1;
