@@ -16,6 +16,7 @@ export default class ClassDetail extends Component {
   }
 
   async componentDidMount() {
+    console.log('did mount')
     let res = await this.props.data.getClass(this.props.matches.id)
     this.setState({
       item: res,

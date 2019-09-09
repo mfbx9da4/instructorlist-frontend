@@ -76,7 +76,7 @@ const ssr = (template: string, isAmp: boolean = true) => async (
       console.log('ssrData', ssrData)
     }
   }
-  let body = render(h(App, { url, ssrData }))
+  let body = await render(h(App, { url, ssrData }))
   res.setHeader('Content-Type', 'text/html')
   console.log('template.indexOf', template.indexOf('src="/bundle.'))
   let out = template.replace(rgxContent, body)

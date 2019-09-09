@@ -71,7 +71,7 @@ const ssr = (template, isAmp = true) => async (req, res) => {
             console.log('ssrData', ssrData);
         }
     }
-    let body = preact_render_to_string_1.render(preact_1.h(ssr_bundle_1.default, { url, ssrData }));
+    let body = await preact_render_to_string_1.render(preact_1.h(ssr_bundle_1.default, { url, ssrData }));
     res.setHeader('Content-Type', 'text/html');
     console.log('template.indexOf', template.indexOf('src="/bundle.'));
     let out = template.replace(rgxContent, body);
