@@ -2827,6 +2827,7 @@ function ClassDetail__inherits(subClass, superClass) { if (typeof superClass !==
 
 
 
+
 var ClassDetail__ref3 = Object(preact_min["h"])(
   'div',
   { column: true, flex: true, jc: 'center', ai: 'center' },
@@ -2874,7 +2875,7 @@ var ClassDetail_ClassDetail = function (_Component) {
 
     _this.state = {
       item: _this.props.data.state.classes[props.matches.id],
-      showPayment: true
+      showPayment: is_dev()
     };
     return _this;
   }
