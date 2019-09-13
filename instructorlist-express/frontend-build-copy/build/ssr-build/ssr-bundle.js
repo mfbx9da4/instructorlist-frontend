@@ -1418,7 +1418,7 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
         Object(preact_min["h"])(
           'div',
           null,
-          this.state.day.format('dddd D MMM').toUpperCase()
+          this.formatSelectedDay()
         ),
         Object(preact_min["h"])('a', {
           href: (this.simulateAddDayUrl(1), day, filters).url,
@@ -1737,6 +1737,20 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
     var url = '/search/' + dayString + '/?i=' + JSON.stringify(filters);
     return { day: day, filters: filters, url: url };
   };
+
+  this.formatSelectedDay = function () {
+    var day = _this2.state.day;
+
+    var diff = dayjs_min_default()().diff('day', day);
+    if (diff === 0) {
+      return 'TODAY';
+    } else if (diff === 1) {
+      return 'TOMORROW';
+    } else if (diff === -1) {
+      return 'YESTERDAY';
+    }
+    return day.format('dddd D MMM').toUpperCase();
+  };
 }, Search__temp);
 
 // CONCATENATED MODULE: ./routes/search/index.js
@@ -1886,10 +1900,10 @@ var loadjs_umd_default = /*#__PURE__*/__webpack_require__.n(loadjs_umd);
 // CONCATENATED MODULE: ./utils/convertArrayToObject.js
 function convertArrayToObject(array, key) {
   if (!Array.isArray(array)) throw new Error('First argument must be array');
-  return array.reduce(function (prev, acc) {
-    acc[prev[key]] = prev;
+  return array.reduce(function (acc, cur) {
+    acc[cur[key]] = cur;
     return acc;
-  });
+  }, {});
 }
 // CONCATENATED MODULE: ./api.js
 function api__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2490,6 +2504,7 @@ function Payment__inherits(subClass, superClass) { if (typeof superClass !== "fu
 
 
 
+
 var Payment__ref3 = Object(preact_min["h"])(
   'div',
   null,
@@ -2574,7 +2589,7 @@ var Payment_Payment = function (_Component) {
               if (_res.error) {
                 return $return(_this.setState({ isSubmitting: false, error: _res.error.message }));
               }
-              _this.setState({ paymentMethod: _res });
+              _this.setState({ paymentMethod: _res.paymentMethod });
               return $If_1.call(this);
             } catch ($boundEx) {
               return $error($boundEx);
@@ -2584,7 +2599,8 @@ var Payment_Payment = function (_Component) {
 
         function $If_1() {
           data = Payment__extends({
-            paymentMethod: _this.state.paymentMethod,
+            payment_method_id: _this.state.paymentMethod.id,
+            date: _this.state.date.format('YYYY-MM-DD'),
             start_time: _this.props.item.start_time,
             end_time: _this.props.item.end_time,
             class_attended: _this.props.item.id,
@@ -2599,7 +2615,7 @@ var Payment_Payment = function (_Component) {
               if (res.error) {
                 return $return(_this.setState({
                   isSubmitting: false,
-                  error: res.error.message
+                  error: res.error.message || 'Issue making booking'
                 }));
               }
               alert(res.code);
@@ -2617,7 +2633,7 @@ var Payment_Payment = function (_Component) {
     _this.postBooking = function (data) {
       return new Promise(function ($return, $error) {
         var res;
-        return Promise.resolve(fetch(BASE_URL + '/api/bookingsasdfad/', {
+        return Promise.resolve(fetch(BASE_URL + '/api/bookings/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -2626,10 +2642,6 @@ var Payment_Payment = function (_Component) {
         })).then(function ($await_4) {
           try {
             res = $await_4;
-            console.log('res', res);
-            if (!res.ok) {
-              return $return({ error: { message: 'Issue making booking' } });
-            }
             return $return(res.json());
           } catch ($boundEx) {
             return $error($boundEx);
@@ -2647,6 +2659,10 @@ var Payment_Payment = function (_Component) {
     return _this;
   }
 
+  Payment.prototype.componentDidMount = function componentDidMount() {
+    this.setState({ date: dayjs_min_default()() });
+  };
+
   Payment.prototype.render = function render(_ref, _ref2) {
     var _classNames,
         _this2 = this;
@@ -2656,7 +2672,6 @@ var Payment_Payment = function (_Component) {
     var errors = _ref2.errors,
         values = _ref2.values;
 
-    console.log('show', show);
     if (!item) return Payment__ref3;
     return Object(preact_min["h"])(
       'div',
