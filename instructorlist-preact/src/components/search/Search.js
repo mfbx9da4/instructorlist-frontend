@@ -186,6 +186,19 @@ export default class Search extends Component {
     return { day, filters, url }
   }
 
+  formatSelectedDay = () => {
+    const { day } = this.state
+    const diff = dayjs().diff('day', day)
+    if (diff === 0) {
+      return 'TODAY'
+    } else if (diff === 1) {
+      return 'TOMORROW'
+    } else if (diff === -1) {
+      return 'YESTERDAY'
+    }
+    return day.format('dddd D MMM').toUpperCase()
+  }
+
   render({}, { day, filters, filterCount }) {
     return (
       <div className={style.search}>
@@ -195,7 +208,7 @@ export default class Search extends Component {
             onClick={this.addDay(-1)}
             className="leftArrow"
           />
-          <div>{this.state.day.format('dddd D MMM').toUpperCase()}</div>
+          <div>{this.formatSelectedDay()}</div>
           <a
             href={(this.simulateAddDayUrl(1), day, filters).url}
             onClick={this.addDay(1)}

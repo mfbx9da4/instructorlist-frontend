@@ -6,6 +6,7 @@ import FooterButton from '../footerbutton/FooterButton'
 import { dayToDayString } from '../../constants'
 import StripeForm from '../stripeform/StripeForm'
 import { BASE_URL } from '../../api'
+import dayjs from 'dayjs'
 
 export default class Payment extends Component {
   constructor(props) {
@@ -16,6 +17,10 @@ export default class Payment extends Component {
       errors: {},
       values: {},
     }
+  }
+
+  componentDidMount() {
+    this.setState({ date: dayjs() })
   }
 
   onChange = name => e => {
@@ -65,10 +70,11 @@ export default class Payment extends Component {
       if (res.error) {
         return this.setState({ isSubmitting: false, error: res.error.message })
       }
-      this.setState({ paymentMethod: res })
+      this.setState({ paymentMethod: res.paymentMethod })
     }
     let data = {
-      paymentMethod: this.state.paymentMethod,
+      payment_method_id: this.state.paymentMethod.id,
+      date: this.state.date.format('YYYY-MM-DD'),
       start_time: this.props.item.start_time,
       end_time: this.props.item.end_time,
       class_attended: this.props.item.id,
@@ -82,7 +88,7 @@ export default class Payment extends Component {
     if (res.error) {
       return this.setState({
         isSubmitting: false,
-        error: res.error.message,
+        error: res.error.message || 'Issue making booking',
       })
     }
     alert(res.code)
@@ -90,22 +96,17 @@ export default class Payment extends Component {
   }
 
   postBooking = async data => {
-    let res = await fetch(`${BASE_URL}/api/bookingsasdfad/`, {
+    let res = await fetch(`${BASE_URL}/api/bookings/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     })
-    console.log('res', res)
-    if (!res.ok) {
-      return { error: { message: 'Issue making booking' } }
-    }
     return res.json()
   }
 
   render({ item, show }, { errors, values }) {
-    console.log('show', show)
     if (!item) return <div>Class not found</div>
     return (
       <div>
