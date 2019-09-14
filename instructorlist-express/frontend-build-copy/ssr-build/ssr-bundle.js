@@ -2619,10 +2619,10 @@ var Payment_Payment = function (_Component) {
       }
       var phone = values['phone_number'];
       var split = phone.split('+');
-      if (split.length > 1) {
+      if (split.length > 2) {
         return { phone_number: 'Phone number must have only one "+"' };
       }
-      var rest = split[0];
+      var rest = split[1];
       var isOnlyNumbers = /^\d+$/.test(rest);
       if (!isOnlyNumbers) {
         return { phone_number: 'Phone number must be made only of numbers' };
@@ -2643,8 +2643,8 @@ var Payment_Payment = function (_Component) {
         _this.setState({ errors: {}, error: false });
 
         errors = _this.validateValues();
-        error = errors.phone;
-        if (errors.phone) return $return(_this.setState({ isSubmitting: false, errors: errors, error: error }));
+        error = errors.phone_number;
+        if (errors.phone_number) return $return(_this.setState({ isSubmitting: false, errors: errors, error: error }));
 
         if (!_this.state.paymentMethod) {
           return Promise.resolve(_this.stripeSubmit(e)).then(function ($await_2) {
@@ -2882,7 +2882,7 @@ var Payment_Payment = function (_Component) {
           Object(preact_min["h"])(
             'div',
             null,
-            isSubmitting ? _ref10 : 'Book'
+            isSubmitting ? _ref10 : 'Confirm booking'
           )
         )
       )
