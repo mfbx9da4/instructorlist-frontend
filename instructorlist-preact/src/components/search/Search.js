@@ -48,6 +48,7 @@ export default class Search extends Component {
       filters,
       filterCount,
       allClasses,
+      isOffline: false,
       classes: this.doLocalSearch(allClasses, day),
     }
   }
@@ -65,15 +66,21 @@ export default class Search extends Component {
     console.log('do searc')
     let { filters, day } = this.state
     await this.setState({ isLoading: true })
-    let res = await this.props.data.getSearch(filters)
-    await this.setState({ isLoading: false })
+    let res
+    try {
+      res = await this.props.data.getSearch(filters)
+    } catch (err) {
+      console.log('offline')
+      this.setState({ isOffline: true })
+    }
+    this.setState({ isLoading: false })
     console.log('gotSearch', res.results)
     this.setState(
       {
         day: day || parseDate(this.props.date),
         allClasses: res.results,
       },
-      this.doLocalSearch,
+      () => res.results && this.doLocalSearch(),
     )
   }
 
@@ -83,43 +90,46 @@ export default class Search extends Component {
   ) => {
     if (!day.isValid()) console.error('Invalid Date')
     const dayFilter = day.day()
-    const classes = Object.values(allClasses).filter(item => {
-      if (item.day !== dayFilter) return false
-      let matchedACategory = false
-      let hasCategories = false
+    let classes = []
+    if (allClasses) {
+      classes = Object.values(allClasses).filter(item => {
+        if (item.day !== dayFilter) return false
+        let matchedACategory = false
+        let hasCategories = false
 
-      // Basic search
-      for (const key in this.state.filters) {
-        if (this.state.filters.hasOwnProperty(key)) {
-          const filter = this.state.filters[key]
-          if (filter.type === 'time') {
-            const start = timeToMinutes(item.start_time)
-            const fStart = parseInt(key) * 60
-            const filterDuration = 3 * 60
-            const fEnd = fStart + filterDuration
-            console.log('start, fStart, fEnd', start, fStart, fEnd)
-            if (start < fStart || start > fEnd) return false
-          } else if (filter.type === 'category' && !matchedACategory) {
-            hasCategories = true
-            for (let i = 0; i < item.categories.length; i++) {
-              const category = item.categories[i]
-              console.log('category', category, filter)
-              if (category.name.toLowerCase() === key.toLowerCase()) {
-                matchedACategory = true
+        // Basic search
+        for (const key in this.state.filters) {
+          if (this.state.filters.hasOwnProperty(key)) {
+            const filter = this.state.filters[key]
+            if (filter.type === 'time') {
+              const start = timeToMinutes(item.start_time)
+              const fStart = parseInt(key) * 60
+              const filterDuration = 3 * 60
+              const fEnd = fStart + filterDuration
+              console.log('start, fStart, fEnd', start, fStart, fEnd)
+              if (start < fStart || start > fEnd) return false
+            } else if (filter.type === 'category' && !matchedACategory) {
+              hasCategories = true
+              for (let i = 0; i < item.categories.length; i++) {
+                const category = item.categories[i]
+                console.log('category', category, filter)
+                if (category.name.toLowerCase() === key.toLowerCase()) {
+                  matchedACategory = true
+                }
               }
             }
           }
         }
-      }
 
-      console.log(
-        'matchedACategory , hasCategories',
-        matchedACategory,
-        hasCategories,
-      )
-      if (!matchedACategory && hasCategories) return false
-      return true
-    })
+        console.log(
+          'matchedACategory , hasCategories',
+          matchedACategory,
+          hasCategories,
+        )
+        if (!matchedACategory && hasCategories) return false
+        return true
+      })
+    }
     console.log('classes', classes)
     this.setState({ classes })
     return classes
@@ -218,12 +228,26 @@ export default class Search extends Component {
         <div
           className={classNames({
             [style.infoWrapper]: true,
-            hide: this.state.isLoading || this.state.classes.length !== 0,
+            hide:
+              this.state.isLoading ||
+              this.state.classes.length !== 0 ||
+              this.state.isOffline,
           })}
         >
           <div className={style.infoMessage}>
             <div className={`shrug ${style.infoIcon}`}></div>
             <div className={style.title}>No classes found</div>
+          </div>
+        </div>
+        <div
+          className={classNames({
+            [style.infoWrapper]: true,
+            hide: !this.state.isOffline,
+          })}
+        >
+          <div className={style.infoMessage}>
+            <div className={`shrug ${style.infoIcon}`}></div>
+            <div className={style.title}>You are offline</div>
           </div>
         </div>
         <div

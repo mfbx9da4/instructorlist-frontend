@@ -7,6 +7,7 @@ import { dayToDayString } from '../../constants'
 import StripeForm from '../stripeform/StripeForm'
 import { BASE_URL } from '../../DataService'
 import dayjs from 'dayjs'
+import Loading from '../loading/Loading'
 
 export default class Payment extends Component {
   constructor(props) {
@@ -106,7 +107,7 @@ export default class Payment extends Component {
     return res.json()
   }
 
-  render({ item, show }, { errors, values }) {
+  render({ item, show }, { error, values, isSubmitting, paymentMethod }) {
     if (!item) return <div>Class not found</div>
     return (
       <div>
@@ -165,22 +166,12 @@ export default class Payment extends Component {
               <div className={style.titleContainer}>
                 <div className={style.title}>Payment</div>
               </div>
-              <div className={`errorContainer ${this.state.error || 'hide'}`}>
-                <div className={`errorContainer_message`}>
-                  {this.state.error}
-                </div>
+              <div className={`errorContainer ${error || 'hide'}`}>
+                <div className={`errorContainer_message`}>{error}</div>
               </div>
 
               <div className={style.paymentForm}>
                 <div column className={style.inputContainer}>
-                  {/* <div
-                  // style={{}}
-                  // className={classNames({
-                  //   [style.hide]: !errors['phone'],
-                  // })}
-                  >
-                    {errors['phone'] || ''}
-                  </div> */}
                   <input
                     type="text"
                     className={style.input}
@@ -191,6 +182,12 @@ export default class Payment extends Component {
                     onChange={this.onChange('phone_number')}
                   />
                 </div>
+
+                {paymentMethod && (
+                  <div key="paid">
+                    <div className="tick"></div> Paid!
+                  </div>
+                )}
 
                 <StripeForm
                   key="StripeForm"
@@ -209,7 +206,7 @@ export default class Payment extends Component {
             // disabled={!this.state.formIsValid}
             onClick={this.onSubmit}
           >
-            <div>Pay now</div>
+            <div>{isSubmitting ? <Loading></Loading> : 'Book'}</div>
           </FooterButton>
         </form>
       </div>
