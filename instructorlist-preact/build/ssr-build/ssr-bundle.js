@@ -682,6 +682,14 @@ module.exports = {"footer":"footer__YnoJr","hide":"hide__3aVn4","disabled":"disa
 
 /***/ }),
 
+/***/ "GNQB":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"ldsRing":"ldsRing__3x1W7"};
+
+/***/ }),
+
 /***/ "GjWG":
 /***/ (function(module, exports) {
 
@@ -1378,6 +1386,7 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
       filters: filters,
       filterCount: filterCount,
       allClasses: allClasses,
+      isOffline: false,
       classes: _this.doLocalSearch(allClasses, day)
     };
     return _this;
@@ -1385,7 +1394,7 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
 
   Search.prototype.componentDidMount = function componentDidMount() {
     return new Promise(function ($return, $error) {
-      return Promise.resolve(this.doSearch()).then(function ($await_1) {
+      return Promise.resolve(this.doSearch()).then(function ($await_2) {
         try {
           return $return();
         } catch ($boundEx) {
@@ -1396,7 +1405,7 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
   };
 
   Search.prototype.render = function render(_ref, _ref2) {
-    var _classNames, _classNames2;
+    var _classNames, _classNames2, _classNames3;
 
     var day = _ref2.day,
         filters = _ref2.filters,
@@ -1429,7 +1438,7 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
       Object(preact_min["h"])(
         'div',
         {
-          className: classNames((_classNames = {}, _classNames[components_search_style_default.a.infoWrapper] = true, _classNames.hide = this.state.isLoading || this.state.classes.length !== 0, _classNames))
+          className: classNames((_classNames = {}, _classNames[components_search_style_default.a.infoWrapper] = true, _classNames.hide = this.state.isLoading || this.state.classes.length !== 0 || this.state.isOffline, _classNames))
         },
         Object(preact_min["h"])(
           'div',
@@ -1445,7 +1454,23 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
       Object(preact_min["h"])(
         'div',
         {
-          className: classNames((_classNames2 = {}, _classNames2[components_search_style_default.a.infoWrapper] = true, _classNames2.hide = !this.state.isLoading || this.state.classes.length !== 0, _classNames2))
+          className: classNames((_classNames2 = {}, _classNames2[components_search_style_default.a.infoWrapper] = true, _classNames2.hide = !this.state.isOffline, _classNames2))
+        },
+        Object(preact_min["h"])(
+          'div',
+          { className: components_search_style_default.a.infoMessage },
+          Object(preact_min["h"])('div', { className: 'shrug ' + components_search_style_default.a.infoIcon }),
+          Object(preact_min["h"])(
+            'div',
+            { className: components_search_style_default.a.title },
+            'You are offline'
+          )
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        {
+          className: classNames((_classNames3 = {}, _classNames3[components_search_style_default.a.infoWrapper] = true, _classNames3.hide = !this.state.isLoading || this.state.classes.length !== 0, _classNames3))
         },
         _ref3,
         _ref4
@@ -1605,27 +1630,43 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
 
       console.log('do searc');
       _state = _this2.state, filters = _state.filters, day = _state.day;
-      return Promise.resolve(_this2.setState({ isLoading: true })).then(function ($await_2) {
+      return Promise.resolve(_this2.setState({ isLoading: true })).then(function ($await_3) {
         try {
-          return Promise.resolve(_this2.props.data.getSearch(filters)).then(function ($await_3) {
+          res = void 0;
+          var $Try_1_Post = function () {
             try {
-              res = $await_3;
-              return Promise.resolve(_this2.setState({ isLoading: false })).then(function ($await_4) {
-                try {
-                  console.log('gotSearch', res.results);
-                  _this2.setState({
-                    day: day || parseDate(_this2.props.date),
-                    allClasses: res.results
-                  }, _this2.doLocalSearch);
-                  return $return();
-                } catch ($boundEx) {
-                  return $error($boundEx);
-                }
-              }, $error);
+              _this2.setState({ isLoading: false });
+              console.log('gotSearch', res.results);
+              _this2.setState({
+                day: day || parseDate(_this2.props.date),
+                allClasses: res.results
+              }, function () {
+                return res.results && _this2.doLocalSearch();
+              });
+              return $return();
             } catch ($boundEx) {
               return $error($boundEx);
             }
-          }, $error);
+          };var $Try_1_Catch = function (err) {
+            try {
+              console.log('offline');
+              _this2.setState({ isOffline: true });
+              return $Try_1_Post();
+            } catch ($boundEx) {
+              return $error($boundEx);
+            }
+          };try {
+            return Promise.resolve(_this2.props.data.getSearch(filters)).then(function ($await_4) {
+              try {
+                res = $await_4;
+                return $Try_1_Post();
+              } catch ($boundEx) {
+                return $Try_1_Catch($boundEx);
+              }
+            }, $Try_1_Catch);
+          } catch (err) {
+            $Try_1_Catch(err)
+          }
         } catch ($boundEx) {
           return $error($boundEx);
         }
@@ -1639,39 +1680,42 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
 
     if (!day.isValid()) console.error('Invalid Date');
     var dayFilter = day.day();
-    var classes = Object.values(allClasses).filter(function (item) {
-      if (item.day !== dayFilter) return false;
-      var matchedACategory = false;
-      var hasCategories = false;
+    var classes = [];
+    if (allClasses) {
+      classes = Object.values(allClasses).filter(function (item) {
+        if (item.day !== dayFilter) return false;
+        var matchedACategory = false;
+        var hasCategories = false;
 
-      // Basic search
-      for (var key in _this2.state.filters) {
-        if (_this2.state.filters.hasOwnProperty(key)) {
-          var filter = _this2.state.filters[key];
-          if (filter.type === 'time') {
-            var start = timeToMinutes(item.start_time);
-            var fStart = parseInt(key) * 60;
-            var filterDuration = 3 * 60;
-            var fEnd = fStart + filterDuration;
-            console.log('start, fStart, fEnd', start, fStart, fEnd);
-            if (start < fStart || start > fEnd) return false;
-          } else if (filter.type === 'category' && !matchedACategory) {
-            hasCategories = true;
-            for (var i = 0; i < item.categories.length; i++) {
-              var category = item.categories[i];
-              console.log('category', category, filter);
-              if (category.name.toLowerCase() === key.toLowerCase()) {
-                matchedACategory = true;
+        // Basic search
+        for (var key in _this2.state.filters) {
+          if (_this2.state.filters.hasOwnProperty(key)) {
+            var filter = _this2.state.filters[key];
+            if (filter.type === 'time') {
+              var start = timeToMinutes(item.start_time);
+              var fStart = parseInt(key) * 60;
+              var filterDuration = 3 * 60;
+              var fEnd = fStart + filterDuration;
+              console.log('start, fStart, fEnd', start, fStart, fEnd);
+              if (start < fStart || start > fEnd) return false;
+            } else if (filter.type === 'category' && !matchedACategory) {
+              hasCategories = true;
+              for (var i = 0; i < item.categories.length; i++) {
+                var category = item.categories[i];
+                console.log('category', category, filter);
+                if (category.name.toLowerCase() === key.toLowerCase()) {
+                  matchedACategory = true;
+                }
               }
             }
           }
         }
-      }
 
-      console.log('matchedACategory , hasCategories', matchedACategory, hasCategories);
-      if (!matchedACategory && hasCategories) return false;
-      return true;
-    });
+        console.log('matchedACategory , hasCategories', matchedACategory, hasCategories);
+        if (!matchedACategory && hasCategories) return false;
+        return true;
+      });
+    }
     console.log('classes', classes);
     _this2.setState({ classes: classes });
     return classes;
@@ -2484,6 +2528,61 @@ var StripeForm_StripeForm = function (_Component3) {
 }(preact_min["Component"]);
 
 
+// EXTERNAL MODULE: ./components/loading/style.scss
+var loading_style = __webpack_require__("GNQB");
+var loading_style_default = /*#__PURE__*/__webpack_require__.n(loading_style);
+
+// CONCATENATED MODULE: ./components/loading/Loading.js
+
+
+function Loading__objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
+function Loading__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function Loading__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function Loading__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var Loading__ref3 = Object(preact_min["h"])('div', null);
+
+var Loading__ref4 = Object(preact_min["h"])('div', null);
+
+var Loading__ref5 = Object(preact_min["h"])('div', null);
+
+var Loading__ref6 = Object(preact_min["h"])('div', null);
+
+var Loading_Loading = function (_Component) {
+  Loading__inherits(Loading, _Component);
+
+  function Loading() {
+    Loading__classCallCheck(this, Loading);
+
+    return Loading__possibleConstructorReturn(this, _Component.apply(this, arguments));
+  }
+
+  Loading.prototype.render = function render(_ref, _ref2) {
+    Loading__objectDestructuringEmpty(_ref2);
+
+    Loading__objectDestructuringEmpty(_ref);
+
+    return Object(preact_min["h"])(
+      'div',
+      { 'class': loading_style_default.a.ldsRing },
+      Loading__ref3,
+      Loading__ref4,
+      Loading__ref5,
+      Loading__ref6
+    );
+  };
+
+  return Loading;
+}(preact_min["Component"]);
+
+
 // CONCATENATED MODULE: ./components/payment/Payment.js
 var Payment__extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -2494,6 +2593,7 @@ function Payment__classCallCheck(instance, Constructor) { if (!(instance instanc
 function Payment__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function Payment__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -2519,13 +2619,16 @@ var Payment__ref6 = Object(preact_min["h"])('div', { className: 'hr' });
 
 var Payment__ref7 = Object(preact_min["h"])('div', { className: 'hr' });
 
-var Payment__ref8 = Object(preact_min["h"])('div', { className: 'bottom' });
-
-var _ref9 = Object(preact_min["h"])(
+var Payment__ref8 = Object(preact_min["h"])(
   'div',
-  null,
-  'Pay now'
+  { key: 'paid' },
+  Object(preact_min["h"])('div', { className: 'tick' }),
+  ' Paid!'
 );
+
+var _ref9 = Object(preact_min["h"])('div', { className: 'bottom' });
+
+var _ref10 = Object(preact_min["h"])(Loading_Loading, null);
 
 var Payment_Payment = function (_Component) {
   Payment__inherits(Payment, _Component);
@@ -2669,8 +2772,10 @@ var Payment_Payment = function (_Component) {
 
     var item = _ref.item,
         show = _ref.show;
-    var errors = _ref2.errors,
-        values = _ref2.values;
+    var error = _ref2.error,
+        values = _ref2.values,
+        isSubmitting = _ref2.isSubmitting,
+        paymentMethod = _ref2.paymentMethod;
 
     if (!item) return Payment__ref3;
     return Object(preact_min["h"])(
@@ -2773,11 +2878,11 @@ var Payment_Payment = function (_Component) {
             ),
             Object(preact_min["h"])(
               'div',
-              { className: 'errorContainer ' + (this.state.error || 'hide') },
+              { className: 'errorContainer ' + (error || 'hide') },
               Object(preact_min["h"])(
                 'div',
                 { className: 'errorContainer_message' },
-                this.state.error
+                error
               )
             ),
             Object(preact_min["h"])(
@@ -2796,6 +2901,7 @@ var Payment_Payment = function (_Component) {
                   onChange: this.onChange('phone_number')
                 })
               ),
+              paymentMethod && Payment__ref8,
               Object(preact_min["h"])(StripeForm_StripeForm, {
                 key: 'StripeForm',
                 amount: item.price,
@@ -2805,7 +2911,7 @@ var Payment_Payment = function (_Component) {
               })
             )
           ),
-          Payment__ref8
+          _ref9
         ),
         Object(preact_min["h"])(
           FooterButton_FooterButton,
@@ -2814,7 +2920,11 @@ var Payment_Payment = function (_Component) {
             // disabled={!this.state.formIsValid}
             , onClick: this.onSubmit
           },
-          _ref9
+          Object(preact_min["h"])(
+            'div',
+            null,
+            isSubmitting ? _ref10 : 'Book'
+          )
         )
       )
     );
@@ -2890,7 +3000,7 @@ var ClassDetail_ClassDetail = function (_Component) {
 
     _this.state = {
       item: _this.props.data.state.classes[props.matches.id],
-      showPayment: is_dev()
+      showPayment: false
     };
     return _this;
   }
