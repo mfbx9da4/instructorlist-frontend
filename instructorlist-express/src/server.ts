@@ -36,7 +36,7 @@ function getCredentials(): { key: string; cert: string } {
 
 function setHeaders(res: Response, file: string) {
   let cache =
-    basename(file) === 'service-worker.js'
+    basename(file) === 'sw.js'
       ? 'private,no-cache,no-store,must-revalidate,proxy-revalidate'
       : 'public,max-age=31536000,immutable'
   return res.setHeader('Cache-Control', cache) // don't cache service worker file
