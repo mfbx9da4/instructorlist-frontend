@@ -1184,11 +1184,6 @@ var Filters_activities = {
           'div',
           { className: filters_style_default.a.section },
           Object(preact_min["h"])(
-            'pre',
-            null,
-            JSON.stringify(filters, null, 2)
-          ),
-          Object(preact_min["h"])(
             'div',
             { className: filters_style_default.a.sectionHeader },
             Object(preact_min["h"])(
@@ -1227,9 +1222,7 @@ var Filters_activities = {
 }(preact_min["Component"]), Filters__initialiseProps = function _initialiseProps() {
   var _this3 = this;
 
-  this.onRoute = function (event) {
-    console.log('event', event);
-  };
+  this.onRoute = function (event) {};
 
   this.simulateToggleUrl = function (x, _filters) {
     var filters = JSON.parse(JSON.stringify(_filters));
@@ -1248,8 +1241,6 @@ var Filters_activities = {
       event.stopPropagation();
       event.preventDefault();
       var prevFilters = _this3.state.filters;
-
-      console.log('prevFilters', prevFilters);
 
       var _simulateToggleUrl = _this3.simulateToggleUrl(x, prevFilters),
           path = _simulateToggleUrl.path,
@@ -1270,7 +1261,6 @@ var Filters_activities = {
     event.preventDefault();
     event.stopPropagation();
     var path = _this3.simulateBackToSearchUrl();
-    console.log('path', path);
     if (_this3.props.onDone) {
       _this3.props.onDone(_this3.state.filters);
     }
@@ -1404,6 +1394,15 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
     }.bind(this));
   };
 
+  /*
+     RGX to replace
+     https://instructorlist.org/search/2019-09-23/?i={}
+     to become
+     https://instructorlist.org/search/2019-09-23/filters?i={}
+     And keeping the search part of the url
+  */
+
+
   Search.prototype.render = function render(_ref, _ref2) {
     var _classNames, _classNames2, _classNames3;
 
@@ -1427,7 +1426,7 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
         Object(preact_min["h"])(
           'div',
           null,
-          this.formatSelectedDay()
+          this.formatCurrentDay()
         ),
         Object(preact_min["h"])('a', {
           href: (this.simulateAddDayUrl(1), day, filters).url,
@@ -1722,23 +1721,17 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
   };
 
   this.simulateToFiltersUrl = function () {
-    // a = '/search/8392-23-4/'
-    // const split = a.split('/')
-    // if (split.length)
-    // a = '/search?'
-    // a = '/search'
-
-    // "/search".replace(new RegExp(`(\/search\/?(${day})?)`), `/search/2019-09-08/filters`)
-
-    // https://localhost:8080/search/2019-09-23/?i={}
+    // TODO: delete
+    // 'https://instructorlist.org/search/2019-09-23/?i={}'.replace(
+    //   new RegExp(`(\/search\/?(${day})?)\/?`),
+    //   `/search/2019-09-08/filters`,
+    // )
     var day = _this2.state.day.format('YYYY-MM-DD');
     var rgx = new RegExp('(/search/?(' + day + ')?)/?');
-    'https://localhost:8080/search/2019-09-23/?i={}'.replace(new RegExp('(/search/?(' + day + ')?)/?'), '/search/2019-09-08/filters');
     var newPath = '/search/' + day + '/filters';
     if (is_ssr()) {
       return _this2.props.url.replace(rgx, newPath);
     }
-    console.log('location.pathname.replace(rgx, newPath) + location.search', location.pathname, newPath, location.pathname.replace(rgx, newPath) + location.search);
     return location.pathname.replace(rgx, newPath) + location.search;
   };
 
@@ -1782,10 +1775,11 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
     return { day: day, filters: filters, url: url };
   };
 
-  this.formatSelectedDay = function () {
+  this.formatCurrentDay = function () {
     var day = _this2.state.day;
 
-    var diff = dayjs_min_default()().diff('day', day);
+    var now = dayjs_min_default()().set('hour', day.hour()).set('minute', day.minute()).set('second', day.second()).set('millisecond', day.millisecond());
+    var diff = day.diff(now, 'day');
     if (diff === 0) {
       return 'TODAY';
     } else if (diff === 1) {
@@ -1822,7 +1816,6 @@ search_SearchPage.getInitialProps = function () {
         return Promise.resolve(res.json()).then(function ($await_2) {
           try {
             result = $await_2;
-            console.log('result', result);
             return $return({
               classes: result
             });
@@ -2676,7 +2669,6 @@ var Payment_Payment = function (_Component) {
 
         e.preventDefault();
         e.stopPropagation();
-        console.log('onsubmit');
         _this.setState({ isSubmitting: true });
         _this.setState({ errors: {}, error: false });
 
@@ -2688,7 +2680,6 @@ var Payment_Payment = function (_Component) {
           return Promise.resolve(_this.stripeSubmit(e)).then(function ($await_2) {
             try {
               _res = $await_2;
-              console.log('res2', _res);
               if (_res.error) {
                 return $return(_this.setState({ isSubmitting: false, error: _res.error.message }));
               }
@@ -2710,11 +2701,9 @@ var Payment_Payment = function (_Component) {
             venue: _this.props.item.venue.id,
             email: _this.state.values.phone_number + '@example.com'
           }, _this.state.values);
-          console.log('data', data);
           return Promise.resolve(_this.postBooking(data)).then(function ($await_3) {
             try {
               res = $await_3;
-              console.log('res', res);
               if (res.error) {
                 return $return(_this.setState({
                   isSubmitting: false,
@@ -3008,8 +2997,6 @@ var ClassDetail_ClassDetail = function (_Component) {
   ClassDetail.prototype.componentDidMount = function componentDidMount() {
     return new Promise(function ($return, $error) {
       var res;
-
-      console.log('did mount');
       return Promise.resolve(this.props.data.getClass(this.props.matches.id)).then(function ($await_1) {
         try {
           res = $await_1;
@@ -3216,7 +3203,6 @@ ClassDetail_ClassDetail.getInitialProps = function (_ref) {
         return Promise.resolve(res.json()).then(function ($await_2) {
           try {
             response = $await_2;
-            console.log('class response', response);
             return $return({
               classes: (_classes = {}, _classes[id] = response, _classes)
             });
@@ -3513,7 +3499,6 @@ app_App.pages = pages;
 if (typeof window !== 'undefined') {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      console.log('Request Register service worker');
       navigator.serviceWorker.register('/sw.js');
     });
   }
