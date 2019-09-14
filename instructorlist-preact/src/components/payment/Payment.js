@@ -39,10 +39,10 @@ export default class Payment extends Component {
     }
     const phone = values['phone_number']
     const split = phone.split('+')
-    if (split.length > 1) {
+    if (split.length > 2) {
       return { phone_number: 'Phone number must have only one "+"' }
     }
-    const rest = split[0]
+    const rest = split[1]
     const isOnlyNumbers = /^\d+$/.test(rest)
     if (!isOnlyNumbers) {
       return { phone_number: 'Phone number must be made only of numbers' }
@@ -60,8 +60,8 @@ export default class Payment extends Component {
     this.setState({ errors: {}, error: false })
 
     const errors = this.validateValues()
-    const error = errors.phone
-    if (errors.phone)
+    const error = errors.phone_number
+    if (errors.phone_number)
       return this.setState({ isSubmitting: false, errors, error })
 
     if (!this.state.paymentMethod) {
@@ -202,7 +202,7 @@ export default class Payment extends Component {
             // disabled={!this.state.formIsValid}
             onClick={this.onSubmit}
           >
-            <div>{isSubmitting ? <Loading></Loading> : 'Book'}</div>
+            <div>{isSubmitting ? <Loading></Loading> : 'Confirm booking'}</div>
           </FooterButton>
         </form>
       </div>
