@@ -1,3 +1,4 @@
+import webpack from 'webpack'
 import criticalCssPlugin from 'preact-cli-plugin-critical-css'
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 import { GenerateSW } from 'workbox-webpack-plugin'
@@ -9,6 +10,7 @@ function isSSRBundle() {
 }
 
 export default (config, env, helpers) => {
+  console.log('config', JSON.stringify(config, null, 2))
   console.log('config', config.output)
   asyncPlugin(config)
 
@@ -24,6 +26,9 @@ export default (config, env, helpers) => {
     console.log('REMOVED_SWPRECACHE')
     config.plugins.splice(swPrecache[0].index, 1)
   }
+  new webpack.DefinePlugin({
+    ADD_SW: JSON.stringify(false),
+  })
 
   // // Workbox
   console.log('ADDED_WORKBOX')
@@ -41,5 +46,10 @@ export default (config, env, helpers) => {
         /*\.js.*/
       ],
     }),
+  )
+
+  console.log(
+    'JSON.stringify(config, null, 2)',
+    JSON.stringify(config, null, 2),
   )
 }
