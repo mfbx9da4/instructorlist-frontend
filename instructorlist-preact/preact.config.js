@@ -10,8 +10,6 @@ function isSSRBundle() {
 }
 
 export default (config, env, helpers) => {
-  console.log('config', JSON.stringify(config, null, 2))
-  console.log('config', config.output)
   asyncPlugin(config)
 
   // Remove Critical CSS plugin
@@ -23,7 +21,6 @@ export default (config, env, helpers) => {
   // // Remove SWPrecache
   const swPrecache = helpers.getPluginsByName(config, 'SWPrecacheWebpackPlugin')
   if (swPrecache[0]) {
-    console.log('REMOVED_SWPRECACHE')
     config.plugins.splice(swPrecache[0].index, 1)
   }
   new webpack.DefinePlugin({
@@ -31,7 +28,6 @@ export default (config, env, helpers) => {
   })
 
   // // Workbox
-  console.log('ADDED_WORKBOX')
   config.plugins.push(
     new GenerateSW({
       swDest: 'sw.js',
@@ -46,10 +42,5 @@ export default (config, env, helpers) => {
         /*\.js.*/
       ],
     }),
-  )
-
-  console.log(
-    'JSON.stringify(config, null, 2)',
-    JSON.stringify(config, null, 2),
   )
 }

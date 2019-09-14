@@ -22,7 +22,6 @@ function parseDate(day) {
       const year = parseInt(split[0])
       const month = parseInt(split[1]) - 1
       const date = parseInt(split[2])
-      console.log('year, month, date', year, month, date)
       return dayjs()
         .set('date', date)
         .set('month', month)
@@ -35,14 +34,11 @@ function parseDate(day) {
 export default class Search extends Component {
   constructor(props) {
     super(props)
-    console.log('constructor_props', props.date)
     const filters = getFiltersFromUrl(props.url || location.href) || {}
     const filterCount = this.getFilterCount(filters)
     // || dayjs().format('YYYY-MM-DD')
     const day = parseDate(props.date)
-    console.log('url day', props.date, day.format('dddd D MMM'))
     const allClasses = props.data.state.classes
-    console.log('constructed with filters', filters)
     this.state = {
       day,
       filters,
@@ -63,18 +59,15 @@ export default class Search extends Component {
       : 0
 
   doSearch = async () => {
-    console.log('do searc')
     let { filters, day } = this.state
     await this.setState({ isLoading: true })
     let res
     try {
       res = await this.props.data.getSearch(filters)
     } catch (err) {
-      console.log('offline')
       this.setState({ isOffline: true })
     }
     this.setState({ isLoading: false })
-    console.log('gotSearch', res.results)
     this.setState(
       {
         day: day || parseDate(this.props.date),
@@ -106,13 +99,11 @@ export default class Search extends Component {
               const fStart = parseInt(key) * 60
               const filterDuration = 3 * 60
               const fEnd = fStart + filterDuration
-              console.log('start, fStart, fEnd', start, fStart, fEnd)
               if (start < fStart || start > fEnd) return false
             } else if (filter.type === 'category' && !matchedACategory) {
               hasCategories = true
               for (let i = 0; i < item.categories.length; i++) {
                 const category = item.categories[i]
-                console.log('category', category, filter)
                 if (category.name.toLowerCase() === key.toLowerCase()) {
                   matchedACategory = true
                 }
@@ -121,16 +112,10 @@ export default class Search extends Component {
           }
         }
 
-        console.log(
-          'matchedACategory , hasCategories',
-          matchedACategory,
-          hasCategories,
-        )
         if (!matchedACategory && hasCategories) return false
         return true
       })
     }
-    console.log('classes', classes)
     this.setState({ classes })
     return classes
   }

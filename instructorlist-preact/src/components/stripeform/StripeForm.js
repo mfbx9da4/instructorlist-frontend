@@ -55,7 +55,6 @@ class StripePaymentRequestButton extends Component {
 export default class StripeForm extends Component {
   constructor(props) {
     super(props)
-    console.log('construct')
     this.state = {
       loadingStripe: true,
       responses: [],
@@ -64,7 +63,6 @@ export default class StripeForm extends Component {
   }
 
   componentDidUpdate() {
-    console.log('did update')
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -98,24 +96,20 @@ export default class StripeForm extends Component {
     // const prButton = this.elements.create('paymentRequestButton', {
     //   paymentRequest,
     // })
-    console.log('card', card)
     this.setState({ card, prButton, paymentRequest })
   }
 
   async componentWillUnmount() {
-    console.log('willunmoutn')
     if (this.state.card) {
       this.state.card.destroy()
     }
   }
 
   async componentDidMount() {
-    console.log('mount')
     await this.registerStripeElements()
   }
 
   onSubmit = async e => {
-    console.log('onstripesubmit')
     return this.onSubmitCard(e)
   }
 
@@ -140,11 +134,9 @@ export default class StripeForm extends Component {
       response.payment_intent_client_secret,
     )
 
-    console.log('actiionres', res)
 
     if (res.error) {
       // Show error from Stripe.js in payment form
-      console.log('errorAction', res.error)
       return res
     }
     const body = {
@@ -152,12 +144,10 @@ export default class StripeForm extends Component {
       amount: this.getAmount(),
     }
     const confirmationRes = await this.confirm('intent', body)
-    console.log('confirmationRes', confirmationRes)
     return res
   }
 
   confirm = async (type, body) => {
-    console.log('body', body)
     const response = await fetch(`${BASE_URL}/api/payment-${type}/confirm/`, {
       method: 'POST',
       headers: {
@@ -167,7 +157,6 @@ export default class StripeForm extends Component {
     })
 
     let confirmed = await response.json()
-    console.log('confirmed', confirmed)
     return confirmed
   }
 
@@ -179,11 +168,9 @@ export default class StripeForm extends Component {
 
   getClientSecret = async () => {
     let res = await fetch(`${BASE_URL}/api/intent/${this.getAmount()}/`)
-    console.log('res', res)
     if (res.ok) {
       return res.json()
     }
-    console.log('err', res)
     return res
   }
 
@@ -209,18 +196,15 @@ export default class StripeForm extends Component {
       const { error } = await this.stripe.handleCardPayment(client_secret)
       if (error) {
         // The payment failed -- ask your customer for a new payment method.
-        console.log(
           'The payment failed -- ask your customer for a new payment method.',
         )
       } else {
         // The payment has succeeded.
-        console.log('The payment has succeeded.')
       }
     }
   }
 
   render({}, { res, loadingStripe }) {
-    console.log('rednder, loadingStripe', loadingStripe)
     return (
       <div>
         {loadingStripe ? (
