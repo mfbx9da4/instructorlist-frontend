@@ -56,7 +56,6 @@ export default class Payment extends Component {
   onSubmit = async e => {
     e.preventDefault()
     e.stopPropagation()
-    console.log('onsubmit')
     this.setState({ isSubmitting: true })
     this.setState({ errors: {}, error: false })
 
@@ -67,7 +66,6 @@ export default class Payment extends Component {
 
     if (!this.state.paymentMethod) {
       let res = await this.stripeSubmit(e)
-      console.log('res2', res)
       if (res.error) {
         return this.setState({ isSubmitting: false, error: res.error.message })
       }
@@ -83,9 +81,7 @@ export default class Payment extends Component {
       email: `${this.state.values.phone_number}@example.com`,
       ...this.state.values,
     }
-    console.log('data', data)
     let res = await this.postBooking(data)
-    console.log('res', res)
     if (res.error) {
       return this.setState({
         isSubmitting: false,

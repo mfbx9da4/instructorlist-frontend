@@ -15,7 +15,6 @@ SearchPage.getInitialProps = async () => {
     'https://instructorlist-django.herokuapp.com/api/classes',
   )
   let result = await res.json()
-  console.log('result', result)
   return {
     classes: result,
   }

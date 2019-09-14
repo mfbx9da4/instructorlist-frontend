@@ -135,32 +135,25 @@ export default class Search extends Component {
     return classes
   }
 
+  /*
+     RGX to replace
+     https://instructorlist.org/search/2019-09-23/?i={}
+     to become
+     https://instructorlist.org/search/2019-09-23/filters?i={}
+     And keeping the search part of the url
+  */
   simulateToFiltersUrl = () => {
-    // a = '/search/8392-23-4/'
-    // const split = a.split('/')
-    // if (split.length)
-    // a = '/search?'
-    // a = '/search'
-
-    // "/search".replace(new RegExp(`(\/search\/?(${day})?)`), `/search/2019-09-08/filters`)
-
-    // https://localhost:8080/search/2019-09-23/?i={}
+    // TODO: delete
+    // 'https://instructorlist.org/search/2019-09-23/?i={}'.replace(
+    //   new RegExp(`(\/search\/?(${day})?)\/?`),
+    //   `/search/2019-09-08/filters`,
+    // )
     const day = this.state.day.format('YYYY-MM-DD')
     const rgx = new RegExp(`(\/search\/?(${day})?)\/?`)
-    'https://localhost:8080/search/2019-09-23/?i={}'.replace(
-      new RegExp(`(\/search\/?(${day})?)\/?`),
-      `/search/2019-09-08/filters`,
-    )
     const newPath = `/search/${day}/filters`
     if (isSSR()) {
       return this.props.url.replace(rgx, newPath)
     }
-    console.log(
-      'location.pathname.replace(rgx, newPath) + location.search',
-      location.pathname,
-      newPath,
-      location.pathname.replace(rgx, newPath) + location.search,
-    )
     return location.pathname.replace(rgx, newPath) + location.search
   }
 
@@ -196,9 +189,14 @@ export default class Search extends Component {
     return { day, filters, url }
   }
 
-  formatSelectedDay = () => {
+  formatCurrentDay = () => {
     const { day } = this.state
-    const diff = dayjs().diff('day', day)
+    const now = dayjs()
+      .set('hour', day.hour())
+      .set('minute', day.minute())
+      .set('second', day.second())
+      .set('millisecond', day.millisecond())
+    const diff = day.diff(now, 'day')
     if (diff === 0) {
       return 'TODAY'
     } else if (diff === 1) {
@@ -218,7 +216,7 @@ export default class Search extends Component {
             onClick={this.addDay(-1)}
             className="leftArrow"
           />
-          <div>{this.formatSelectedDay()}</div>
+          <div>{this.formatCurrentDay()}</div>
           <a
             href={(this.simulateAddDayUrl(1), day, filters).url}
             onClick={this.addDay(1)}

@@ -1,0 +1,14 @@
+{
+  "folders": [
+	{
+		"path": "."
+	},
+	{
+		"path": "/Users/davidadler/code/instructorlist-django"
+	}
+],
+  "settings": {
+    "djangointellisense.projectRoot": "/Users/davidadler/code/instructorlist-django",
+    "djangointellisense.settingsModule": "instructorlist.settings"
+  }
+}

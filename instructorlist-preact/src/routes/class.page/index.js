@@ -7,7 +7,6 @@ ClassDetail.getInitialProps = async ({ id }) => {
     `https://instructorlist-django.herokuapp.com/api/classes/${id}`,
   )
   let response = await res.json()
-  console.log('class response', response)
   return {
     classes: {
       [id]: response,

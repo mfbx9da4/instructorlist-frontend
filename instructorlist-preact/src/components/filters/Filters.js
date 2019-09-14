@@ -101,9 +101,7 @@ export default class Filters extends Component {
     }
   }
 
-  onRoute = event => {
-    console.log('event', event)
-  }
+  onRoute = event => {}
 
   componentDidMount() {}
 
@@ -125,7 +123,6 @@ export default class Filters extends Component {
     event.stopPropagation()
     event.preventDefault()
     let { filters: prevFilters } = this.state
-    console.log('prevFilters', prevFilters)
     const { path, filters } = this.simulateToggleUrl(x, prevFilters)
     this.setState({ filters }, () => {
       return routeWithQuery(path)
@@ -141,7 +138,6 @@ export default class Filters extends Component {
     event.preventDefault()
     event.stopPropagation()
     const path = this.simulateBackToSearchUrl()
-    console.log('path', path)
     if (this.props.onDone) {
       this.props.onDone(this.state.filters)
     }
@@ -202,7 +198,6 @@ export default class Filters extends Component {
           </div>
 
           <div className={style.section}>
-            <pre>{JSON.stringify(filters, null, 2)}</pre>
             <div className={style.sectionHeader}>
               <div className={style.sectionTitle}>ACTIVITIES</div>
             </div>
