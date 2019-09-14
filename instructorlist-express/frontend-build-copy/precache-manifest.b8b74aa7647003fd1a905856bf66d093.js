@@ -17,10 +17,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/assets/favicon.ico"
   },
   {
-    "revision": "5cee1e4c6643f42c2c617be141d6580a",
-    "url": "/assets/fonts/.DS_Store"
-  },
-  {
     "revision": "5c55c9c311ea4182d284de4f249beaf9",
     "url": "/assets/fonts/Proxima Nova/Mark Simonson - Proxima Nova Black Italic.otf"
   },
