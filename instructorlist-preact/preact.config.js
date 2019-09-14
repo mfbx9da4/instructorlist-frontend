@@ -34,7 +34,7 @@ export default (config, env, helpers) => {
   console.log('ADDED_WORKBOX')
   config.plugins.push(
     new GenerateSW({
-      swDest: 'service-worker.js',
+      swDest: 'sw.js',
       // You can take control of uncontrolled clients by calling clients.claim()
       // within your service worker once it's activated.
       clientsClaim: true,

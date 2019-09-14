@@ -16,7 +16,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "cd ../instructorlist-preact && yarn build && cd - && cp -r ../instructorlist-preact/build ./frontend-build-copy && git add frontend-build-copy/ && git commit -am 'Copied across frontend'"
+      "pre-push": "cd ../instructorlist-preact && yarn build && git add frontend-build-copy/ && git commit -am 'Copied across frontend'"
     }
   },
   "dependencies": {
