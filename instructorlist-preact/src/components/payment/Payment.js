@@ -5,7 +5,7 @@ import classNames from '../../utils/classNames'
 import FooterButton from '../footerbutton/FooterButton'
 import { dayToDayString } from '../../constants'
 import StripeForm from '../stripeform/StripeForm'
-import { BASE_URL } from '../../api'
+import { BASE_URL } from '../../DataService'
 import dayjs from 'dayjs'
 
 export default class Payment extends Component {

@@ -1905,8 +1905,8 @@ function convertArrayToObject(array, key) {
     return acc;
   }, {});
 }
-// CONCATENATED MODULE: ./api.js
-function api__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+// CONCATENATED MODULE: ./DataService.js
+function DataService__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 
 
@@ -1934,10 +1934,10 @@ var prerenderState = {
   classes: { 1: defaultClass }
 };
 
-var api_DataService = function DataService(initialState) {
+var DataService_DataService = function DataService(initialState) {
   var _this = this;
 
-  api__classCallCheck(this, DataService);
+  DataService__classCallCheck(this, DataService);
 
   this.getAllClasses = function () {
     return new Promise(function ($return, $error) {
@@ -3096,14 +3096,28 @@ var ClassDetail_ClassDetail = function (_Component) {
 
 
 ClassDetail_ClassDetail.getInitialProps = function (_ref) {
-  var id = _ref.id;
+  return new Promise(function ($return, $error) {
+    var _classes, id, res, response;
 
-  return new Promise(function (resolve) {
-    fetch('https://instructorlist-django.herokuapp.com/api/classes/' + id).then(function (res) {
-      res.json().then(function (json) {
-        return resolve(json);
-      });
-    });
+    id = _ref.id;
+    return Promise.resolve(fetch('https://instructorlist-django.herokuapp.com/api/classes/' + id)).then(function ($await_1) {
+      try {
+        res = $await_1;
+        return Promise.resolve(res.json()).then(function ($await_2) {
+          try {
+            response = $await_2;
+            console.log('class response', response);
+            return $return({
+              classes: (_classes = {}, _classes[id] = response, _classes)
+            });
+          } catch ($boundEx) {
+            return $error($boundEx);
+          }
+        }, $error);
+      } catch ($boundEx) {
+        return $error($boundEx);
+      }
+    }, $error);
   });
 };
 
@@ -3327,7 +3341,7 @@ var app_App = function (_Component) {
     };
 
     _this.state = {
-      data: new api_DataService(props.ssrData)
+      data: new DataService_DataService(props.ssrData)
     };
     return _this;
   }

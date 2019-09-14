@@ -45,7 +45,7 @@ function getCredentials() {
     return credentials;
 }
 function setHeaders(res, file) {
-    let cache = path_2.basename(file) === 'service-worker.js'
+    let cache = path_2.basename(file) === 'sw.js'
         ? 'private,no-cache,no-store,must-revalidate,proxy-revalidate'
         : 'public,max-age=31536000,immutable';
     return res.setHeader('Cache-Control', cache); // don't cache service worker file
@@ -60,7 +60,7 @@ function matchPage(url, pages) {
     }
 }
 const ssr = (template, isAmp = true) => async (req, res) => {
-    console.log('template, isAmp', isAmp, template);
+    console.log('template, isAmp', isAmp);
     let ssrData = {};
     const url = req.url;
     let matched = matchPage(url, ssr_bundle_1.default.pages);
@@ -73,13 +73,11 @@ const ssr = (template, isAmp = true) => async (req, res) => {
     }
     let body = await preact_render_to_string_1.render(preact_1.h(ssr_bundle_1.default, { url, ssrData }));
     res.setHeader('Content-Type', 'text/html');
-    console.log('template.indexOf', template.indexOf('src="/bundle.'));
     let out = template.replace(rgxContent, body);
-    console.log('template.indexOf', out.indexOf('src="/bundle.'));
     if (!isAmp) {
         out.replace(rgxAmpScripts, '');
     }
-    console.log('is AMP', url, out.indexOf('src="/bundle.'));
+    console.log('is AMP', url, out.indexOf('src="/bundle.') === -1);
     res.end(out);
 };
 const app = express_1.default()
@@ -90,6 +88,8 @@ const app = express_1.default()
 })
     .get('/', ssr(home))
     .get('/search/', ssr(search))
+    .get('/classes/', ssr(search))
+    .get('/classes/:id', ssr(search))
     .get('/shell/index.html', ssr(shell, false))
     .get('/profile/', ssr(profile))
     .get('/profile/:user', ssr(profile))

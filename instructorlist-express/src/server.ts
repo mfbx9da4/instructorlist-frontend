@@ -65,7 +65,7 @@ const ssr = (template: string, isAmp: boolean = true) => async (
   req: Request,
   res: Response,
 ) => {
-  console.log('template, isAmp', isAmp, template)
+  console.log('template, isAmp', isAmp)
   let ssrData = {}
   const url = req.url
   let matched = matchPage(url, App.pages)
@@ -78,13 +78,11 @@ const ssr = (template: string, isAmp: boolean = true) => async (
   }
   let body = await render(h(App, { url, ssrData }))
   res.setHeader('Content-Type', 'text/html')
-  console.log('template.indexOf', template.indexOf('src="/bundle.'))
   let out = template.replace(rgxContent, body)
-  console.log('template.indexOf', out.indexOf('src="/bundle.'))
   if (!isAmp) {
     out.replace(rgxAmpScripts, '')
   }
-  console.log('is AMP', url, out.indexOf('src="/bundle.'))
+  console.log('is AMP', url, out.indexOf('src="/bundle.') === -1)
   res.end(out)
 }
 
@@ -96,6 +94,8 @@ const app = express()
   })
   .get('/', ssr(home))
   .get('/search/', ssr(search))
+  .get('/classes/', ssr(search))
+  .get('/classes/:id', ssr(search))
   .get('/shell/index.html', ssr(shell, false))
   .get('/profile/', ssr(profile))
   .get('/profile/:user', ssr(profile))

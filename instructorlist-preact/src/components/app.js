@@ -9,7 +9,7 @@ import Search from '../routes/search'
 import ClassPage from '../routes/class.page'
 import Profile from '../routes/profile'
 import isSSR from '../utils/is-ssr'
-import DataService from '../api'
+import DataService from '../DataService'
 
 const pages = [
   {

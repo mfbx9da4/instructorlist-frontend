@@ -5,7 +5,7 @@ import classNames from '../../utils/classNames'
 import FooterButton from '../footerbutton/FooterButton'
 import { dayToDayString, STRIPE_KEY } from '../../constants'
 import loadjs from 'loadjs'
-import { BASE_URL } from '../../api'
+import { BASE_URL } from '../../DataService'
 
 async function loadStripe() {
   await new Promise(resolve => loadjs('https://js.stripe.com/v3/', resolve))
