@@ -62,8 +62,7 @@ export default class StripeForm extends Component {
     this.props.onSubmit(this.onSubmit)
   }
 
-  componentDidUpdate() {
-  }
+  componentDidUpdate() {}
 
   shouldComponentUpdate(nextProps, nextState) {
     // Important so that Stripe elements can be found by stripe Lib
@@ -134,7 +133,6 @@ export default class StripeForm extends Component {
       response.payment_intent_client_secret,
     )
 
-
     if (res.error) {
       // Show error from Stripe.js in payment form
       return res
@@ -196,8 +194,6 @@ export default class StripeForm extends Component {
       const { error } = await this.stripe.handleCardPayment(client_secret)
       if (error) {
         // The payment failed -- ask your customer for a new payment method.
-          'The payment failed -- ask your customer for a new payment method.',
-        )
       } else {
         // The payment has succeeded.
       }
