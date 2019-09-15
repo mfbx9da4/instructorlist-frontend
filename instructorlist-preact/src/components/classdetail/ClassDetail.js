@@ -5,6 +5,7 @@ import Payment from '../payment/Payment'
 import FooterButton from '../footerbutton/FooterButton'
 import { dayToDayString } from '../../constants'
 import isDev from '../../utils/is-dev'
+import Directions from '../directions/Directions'
 
 export default class ClassDetail extends Component {
   constructor(props) {
@@ -36,6 +37,7 @@ export default class ClassDetail extends Component {
   }
 
   render({}, { item, showPayment }) {
+    console.log('item, showPayment', item, showPayment)
     if (!item)
       return (
         <div column flex jc="center" ai="center">
@@ -82,29 +84,7 @@ export default class ClassDetail extends Component {
             <div className={style.address}>
               {item.venue.name} {item.venue.area}
             </div>
-            <a
-              href={
-                item.venue.google_maps_url
-                  ? item.venue.google_maps_url
-                  : `https://www.google.co.uk/maps/dir//${item.venue.address_line_1} ${item.venue.postcode}`
-              }
-              target="_blank"
-              className={style.well}
-              style={{ borderTop: '1px solid var(--off-white)' }}
-            >
-              <div className={style.wellIcon}>
-                <div className="directions"></div>
-              </div>
-              <div className={style.wellMain}>
-                <div className={style.wellName}>{item.venue.name}</div>
-                <div className={style.wellDescription}>
-                  {item.venue.address_line_1}, {item.venue.postcode}
-                </div>
-              </div>
-              <div className={style.wellAction}>
-                <div className="rightArrow"></div>
-              </div>
-            </a>
+            <Directions venue={item.venue}></Directions>
             <a className={style.well} href={`${profile.slug}`}>
               <div className={style.wellIcon}>
                 <img

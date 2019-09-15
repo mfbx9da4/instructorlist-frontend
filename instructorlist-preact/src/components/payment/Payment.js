@@ -5,6 +5,7 @@ import classNames from '../../utils/classNames'
 import FooterButton from '../footerbutton/FooterButton'
 import { dayToDayString } from '../../constants'
 import StripeForm from '../stripeform/StripeForm'
+import PaymentSuccess from '../paymentsuccess/PaymentSuccess'
 import { BASE_URL } from '../../DataService'
 import dayjs from 'dayjs'
 import Loading from '../loading/Loading'
@@ -13,6 +14,7 @@ export default class Payment extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      success: true,
       formIsValid: false,
       paymentMethod: null,
       errors: {},
@@ -25,11 +27,18 @@ export default class Payment extends Component {
   }
 
   onChange = name => e => {
-    this.setState({
-      values: {
-        [name]: e.target.value,
+    this.setState(
+      {
+        values: {
+          [name]: e.target.value,
+        },
       },
-    })
+      () => {
+        const errors = this.validateValues()
+        const error = errors.phone_number
+        if (errors.phone_number) return this.setState({ errors, error })
+      },
+    )
   }
 
   validateValues = () => {
@@ -39,10 +48,13 @@ export default class Payment extends Component {
     }
     const phone = values['phone_number']
     const split = phone.split('+')
-    if (split.length > 2) {
-      return { phone_number: 'Phone number must have only one "+"' }
+    let rest = split[0]
+    if (split.length > 1) {
+      rest = split[1]
+      if (split.length > 2) {
+        return { phone_number: 'Phone number must have only one "+"' }
+      }
     }
-    const rest = split[1]
     const isOnlyNumbers = /^\d+$/.test(rest)
     if (!isOnlyNumbers) {
       return { phone_number: 'Phone number must be made only of numbers' }
@@ -88,8 +100,8 @@ export default class Payment extends Component {
         error: res.error.message || 'Issue making booking',
       })
     }
-    alert(res.code)
-    return this.setState({ isSubmitting: false, success: true, code: res.code })
+    console.log('res', res)
+    return this.setState({ isSubmitting: false, success: true, booking: res })
   }
 
   postBooking = async data => {
@@ -103,8 +115,12 @@ export default class Payment extends Component {
     return res.json()
   }
 
-  render({ item, show }, { error, values, isSubmitting, paymentMethod }) {
+  render(
+    { item, show },
+    { error, values, booking, isSubmitting, paymentMethod, success },
+  ) {
     if (!item) return <div>Class not found</div>
+    if (success) return <PaymentSuccess show={true} booking={booking} />
     return (
       <div>
         <form
@@ -121,7 +137,7 @@ export default class Payment extends Component {
                 onClick={this.props.onClose}
               ></div>
               <div className={style.title}>Checkout</div>
-              <div></div>
+              <div style={{ width: '1rem', height: '1rem' }}></div>
             </div>
 
             <div className={'hr'} />
@@ -179,11 +195,15 @@ export default class Payment extends Component {
                   />
                 </div>
 
-                {paymentMethod && (
-                  <div key="paid">
-                    <div className="tick"></div> Paid!
-                  </div>
-                )}
+                <div
+                  key="paid"
+                  style={{
+                    margin: paymentMethod ? '1rem 0' : 0,
+                    height: paymentMethod ? 'auto' : 0,
+                  }}
+                >
+                  <div className="tick"></div> Paid!
+                </div>
 
                 <StripeForm
                   key="StripeForm"

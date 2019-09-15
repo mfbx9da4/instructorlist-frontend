@@ -1,0 +1,51 @@
+.paymentSuccessWrapper {
+  position: fixed;
+  background: white;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  overflow-x: hidden;
+  transition: all 0.4s;
+  z-index: 100;
+  justify-content: center;
+  background: var(--lightest);
+  &.close {
+    top: 100%;
+    height: 0;
+  }
+}
+
+.paymentSuccessMain {
+  max-width: 800px;
+  background: white;
+  flex: 1;
+  flex-direction: column;
+  margin-bottom: 60rem;
+
+  .paymentSuccessHeader {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .back {
+      align-self: flex-start;
+    }
+
+    .title {
+      font-weight: bold;
+    }
+  }
+}
+
+.heroImage {
+  height: 25rem;
+  flex: 1;
+  position: relative;
+  background: var(--off-white);
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+}
