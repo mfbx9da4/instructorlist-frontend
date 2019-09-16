@@ -1,0 +1,21 @@
+.well {
+  border-bottom: 1px solid var(--off-white);
+  padding: 1.6rem;
+  display: flex;
+  align-items: center;
+  .wellIcon {
+    align-self: flex-start;
+    margin: auto 1.6rem auto 0;
+  }
+  .wellMain {
+    flex: 1;
+    flex-direction: column;
+    .wellDescription {
+      color: var(--grey);
+    }
+  }
+  .wellAction {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
