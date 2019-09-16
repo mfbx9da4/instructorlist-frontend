@@ -459,6 +459,14 @@ module.exports = {"header":"header__3IhT1","active":"active__2kmrA","menuIcon":"
 
 /***/ }),
 
+/***/ "0YCM":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"well":"well__F80wH","wellIcon":"wellIcon__3pUbQ","wellMain":"wellMain__1jOyl","wellDescription":"wellDescription__3BENF","wellAction":"wellAction__12aEo"};
+
+/***/ }),
+
 /***/ "3dZY":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -671,6 +679,14 @@ module.exports = {"search":"search__2fBVV"};
 
 // removed by extract-text-webpack-plugin
 module.exports = {"classDetailWrapper":"classDetailWrapper__2T8mX","heroImage":"heroImage__Qr4BU","back":"back__1aQJI","timeLabel":"timeLabel__1dmWn","main":"main__ieBPs","mainTitle":"mainTitle__3QRdT","address":"address__teZVQ","description":"description__25Gbt","section":"section__1vexu","title":"title__gjFEQ","instructorAvatar":"instructorAvatar__25zFg","well":"well__372E6","wellIcon":"wellIcon__3hDcb","wellMain":"wellMain__1JhNM","wellDescription":"wellDescription__1PEH9","wellAction":"wellAction__3j7JB","priceLabel":"priceLabel__3dyS3"};
+
+/***/ }),
+
+/***/ "CBWn":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"paymentSuccessWrapper":"paymentSuccessWrapper__2RZe2","close":"close__2MK24","paymentSuccessMain":"paymentSuccessMain__pJize","paymentSuccessHeader":"paymentSuccessHeader__17UVM","back":"back__1LxL4","title":"title__2X-kw","heroImage":"heroImage__3yJVp","shader":"shader__3pujb","label":"label__2oUc4","main":"main__2onSq","mainTitle":"mainTitle__1LSxt","timeLabel":"timeLabel__3wp0x","address":"address__2TJ5s","bookingCodeContainer":"bookingCodeContainer__2F9b4","bookingReceived":"bookingReceived__33C71","bookingCode":"bookingCode__2nfDT"};
 
 /***/ }),
 
@@ -2491,6 +2507,84 @@ var StripeForm_StripeForm = function (_Component3) {
 }(preact_min["Component"]);
 
 
+// EXTERNAL MODULE: ./components/paymentsuccess/style.scss
+var paymentsuccess_style = __webpack_require__("CBWn");
+var paymentsuccess_style_default = /*#__PURE__*/__webpack_require__.n(paymentsuccess_style);
+
+// EXTERNAL MODULE: ./components/directions/style.scss
+var directions_style = __webpack_require__("0YCM");
+var directions_style_default = /*#__PURE__*/__webpack_require__.n(directions_style);
+
+// CONCATENATED MODULE: ./components/directions/Directions.js
+
+
+function Directions__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function Directions__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function Directions__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var Directions__ref2 = Object(preact_min["h"])('div', { className: 'directions' });
+
+var Directions__ref3 = Object(preact_min["h"])('div', { className: 'rightArrow' });
+
+var Directions_Directions = function (_Component) {
+  Directions__inherits(Directions, _Component);
+
+  function Directions() {
+    Directions__classCallCheck(this, Directions);
+
+    return Directions__possibleConstructorReturn(this, _Component.apply(this, arguments));
+  }
+
+  Directions.prototype.render = function render(_ref) {
+    var venue = _ref.venue;
+
+    return Object(preact_min["h"])(
+      'a',
+      {
+        href: venue.google_maps_url ? venue.google_maps_url : 'https://www.google.co.uk/maps/dir//' + venue.address_line_1 + ' ' + venue.postcode,
+        target: '_blank',
+        className: directions_style_default.a.well,
+        style: { borderTop: '1px solid var(--off-white)' }
+      },
+      Object(preact_min["h"])(
+        'div',
+        { className: directions_style_default.a.wellIcon },
+        Directions__ref2
+      ),
+      Object(preact_min["h"])(
+        'div',
+        { className: directions_style_default.a.wellMain },
+        Object(preact_min["h"])(
+          'div',
+          { className: directions_style_default.a.wellName },
+          venue.name
+        ),
+        Object(preact_min["h"])(
+          'div',
+          { className: directions_style_default.a.wellDescription },
+          venue.address_line_1,
+          ', ',
+          venue.postcode
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        { className: directions_style_default.a.wellAction },
+        Directions__ref3
+      )
+    );
+  };
+
+  return Directions;
+}(preact_min["Component"]);
+
+
 // EXTERNAL MODULE: ./components/loading/style.scss
 var loading_style = __webpack_require__("GNQB");
 var loading_style_default = /*#__PURE__*/__webpack_require__.n(loading_style);
@@ -2546,6 +2640,220 @@ var Loading_Loading = function (_Component) {
 }(preact_min["Component"]);
 
 
+// CONCATENATED MODULE: ./components/paymentsuccess/PaymentSuccess.js
+var PaymentSuccess__class, PaymentSuccess__temp;
+
+
+
+function PaymentSuccess__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function PaymentSuccess__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function PaymentSuccess__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+
+
+
+
+var PaymentSuccess__ref2 = Object(preact_min["h"])('div', { className: 'leftArrow' });
+
+var PaymentSuccess__ref3 = Object(preact_min["h"])('div', { className: 'hr' });
+
+var PaymentSuccess_PaymentSuccess = (PaymentSuccess__temp = PaymentSuccess__class = function (_Component) {
+  PaymentSuccess__inherits(PaymentSuccess, _Component);
+
+  function PaymentSuccess(props) {
+    PaymentSuccess__classCallCheck(this, PaymentSuccess);
+
+    var _this = PaymentSuccess__possibleConstructorReturn(this, _Component.call(this, props));
+
+    _this.formatDay = function (day) {
+      return '' + dayToDayString[day][0].toUpperCase() + dayToDayString[day].substr(1).toLowerCase();
+    };
+
+    _this.mainCategory = function (categories) {
+      if (categories.length === 0) return 'Dance';
+      var cat = categories[0].name;
+      return '' + cat[0].toUpperCase() + cat.substr(1).toLowerCase();
+    };
+
+    _this.state = {};
+    return _this;
+  }
+
+  PaymentSuccess.prototype.render = function render(_ref) {
+    var _classNames;
+
+    var booking = _ref.booking,
+        show = _ref.show,
+        onClose = _ref.onClose;
+    var item = booking.class_attended;
+
+    return Object(preact_min["h"])(
+      'div',
+      null,
+      Object(preact_min["h"])(
+        'div',
+        {
+          className: utils_classNames((_classNames = {}, _classNames[paymentsuccess_style_default.a.paymentSuccessWrapper] = true, _classNames[paymentsuccess_style_default.a.close] = !show, _classNames))
+        },
+        Object(preact_min["h"])(
+          'div',
+          { className: paymentsuccess_style_default.a.paymentSuccessMain },
+          Object(preact_min["h"])(
+            'div',
+            { className: paymentsuccess_style_default.a.paymentSuccessHeader },
+            Object(preact_min["h"])('div', {
+              className: 'leftArrow ' + paymentsuccess_style_default.a.back,
+              onClick: this.props.onClose
+            }),
+            Object(preact_min["h"])(
+              'div',
+              { className: paymentsuccess_style_default.a.title },
+              'Booking confirmed'
+            ),
+            Object(preact_min["h"])('div', { style: { width: '1rem', height: '1rem' } })
+          ),
+          Object(preact_min["h"])(
+            'div',
+            { className: paymentsuccess_style_default.a.classHero },
+            Object(preact_min["h"])(
+              'div',
+              { className: paymentsuccess_style_default.a.heroImage },
+              Object(preact_min["h"])('img', {
+                src: item.hero_image_url || '/assets/images/class.jpeg',
+                alt: item.title
+              }),
+              Object(preact_min["h"])(
+                'a',
+                { onClick: onClose, href: '/search', className: '' + paymentsuccess_style_default.a.back },
+                PaymentSuccess__ref2
+              ),
+              Object(preact_min["h"])('div', { className: paymentsuccess_style_default.a.shader }),
+              Object(preact_min["h"])(
+                'div',
+                { className: paymentsuccess_style_default.a.label },
+                'Let\'s do some',
+                Object(preact_min["h"])(
+                  'div',
+                  { className: paymentsuccess_style_default.a.title },
+                  this.mainCategory(item.categories)
+                )
+              )
+            )
+          ),
+          Object(preact_min["h"])(
+            'div',
+            { className: paymentsuccess_style_default.a.main },
+            Object(preact_min["h"])(Directions_Directions, { venue: item.venue }),
+            Object(preact_min["h"])(
+              'div',
+              { className: paymentsuccess_style_default.a.mainTitle },
+              item.title
+            ),
+            Object(preact_min["h"])(
+              'div',
+              { className: paymentsuccess_style_default.a.timeLabel },
+              this.formatDay(item.day),
+              ' ',
+              item.start_time,
+              ' - ',
+              item.end_time
+            ),
+            Object(preact_min["h"])(
+              'div',
+              { className: paymentsuccess_style_default.a.address },
+              item.venue.name,
+              ' ',
+              item.venue.area
+            ),
+            PaymentSuccess__ref3,
+            Object(preact_min["h"])(
+              'div',
+              { className: paymentsuccess_style_default.a.bookingCodeContainer },
+              Object(preact_min["h"])(
+                'div',
+                { className: paymentsuccess_style_default.a.bookingReceived },
+                'I didn\'t receive the confirmation message.'
+              ),
+              Object(preact_min["h"])(
+                'div',
+                { className: paymentsuccess_style_default.a.bookingCode },
+                'Booking ID: ',
+                Object(preact_min["h"])(
+                  'strong',
+                  null,
+                  booking.code
+                )
+              )
+            )
+          )
+        )
+      )
+    );
+  };
+
+  return PaymentSuccess;
+}(preact_min["Component"]), PaymentSuccess__class.defaultProps = {
+  booking: {
+    id: 34,
+    code: 'GAKWL3',
+    venue: {
+      id: 1,
+      name: 'Pineapple Studios',
+      address_line_1: '7 Langley Street',
+      area: 'Covent Gardem',
+      postcode: 'WC2H 9JA'
+    },
+    class_attended: {
+      id: 5,
+      venue: {
+        id: 1,
+        name: 'Pineapple Studios',
+        address_line_1: '7 Langley Street',
+        area: 'Covent Gardem',
+        postcode: 'WC2H 9JA'
+      },
+      day: 5,
+      price: 13,
+      start_time: '09:06',
+      end_time: '11:00',
+      title: 'Salsa',
+      instructors: [{
+        id: 3,
+        profile: {
+          bio: 'This is my bio. I am a great teacher.',
+          instagram_url: '',
+          facebook_url: '',
+          youtube_url: '',
+          website_url: ''
+        },
+        full_name: 'New Teacher Surname',
+        name: 'New Teacher Surname',
+        email: 'adf@gmail.com',
+        phone_number: '07476996601',
+        is_student: false,
+        is_teacher: true
+      }],
+      categories: [{
+        id: 7,
+        name: 'Salsa'
+      }]
+    },
+    start_time: '09:06',
+    end_time: '11:00',
+    created: '2019-09-15T11:37:26.985220Z',
+    modified: '2019-09-15T11:37:26.985328Z'
+  }
+}, PaymentSuccess__temp);
+
 // CONCATENATED MODULE: ./components/payment/Payment.js
 var Payment__extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -2568,30 +2876,24 @@ function Payment__inherits(subClass, superClass) { if (typeof superClass !== "fu
 
 
 
+
 var Payment__ref3 = Object(preact_min["h"])(
   'div',
   null,
   'Class not found'
 );
 
-var Payment__ref4 = Object(preact_min["h"])('div', null);
+var Payment__ref4 = Object(preact_min["h"])('div', { className: 'hr' });
 
 var Payment__ref5 = Object(preact_min["h"])('div', { className: 'hr' });
 
 var Payment__ref6 = Object(preact_min["h"])('div', { className: 'hr' });
 
-var Payment__ref7 = Object(preact_min["h"])('div', { className: 'hr' });
+var Payment__ref7 = Object(preact_min["h"])('div', { className: 'tick' });
 
-var Payment__ref8 = Object(preact_min["h"])(
-  'div',
-  { key: 'paid' },
-  Object(preact_min["h"])('div', { className: 'tick' }),
-  ' Paid!'
-);
+var Payment__ref8 = Object(preact_min["h"])('div', { className: 'bottom' });
 
-var _ref9 = Object(preact_min["h"])('div', { className: 'bottom' });
-
-var _ref10 = Object(preact_min["h"])(Loading_Loading, null);
+var _ref9 = Object(preact_min["h"])(Loading_Loading, null);
 
 var Payment_Payment = function (_Component) {
   Payment__inherits(Payment, _Component);
@@ -2607,6 +2909,10 @@ var Payment_Payment = function (_Component) {
 
         _this.setState({
           values: (_values = {}, _values[name] = e.target.value, _values)
+        }, function () {
+          var errors = _this.validateValues();
+          var error = errors.phone_number;
+          if (errors.phone_number) return _this.setState({ errors: errors, error: error });
         });
       };
     };
@@ -2619,10 +2925,13 @@ var Payment_Payment = function (_Component) {
       }
       var phone = values['phone_number'];
       var split = phone.split('+');
-      if (split.length > 2) {
-        return { phone_number: 'Phone number must have only one "+"' };
+      var rest = split[0];
+      if (split.length > 1) {
+        rest = split[1];
+        if (split.length > 2) {
+          return { phone_number: 'Phone number must have only one "+"' };
+        }
       }
-      var rest = split[1];
       var isOnlyNumbers = /^\d+$/.test(rest);
       if (!isOnlyNumbers) {
         return { phone_number: 'Phone number must be made only of numbers' };
@@ -2680,8 +2989,7 @@ var Payment_Payment = function (_Component) {
                   error: res.error.message || 'Issue making booking'
                 }));
               }
-              alert(res.code);
-              return $return(_this.setState({ isSubmitting: false, success: true, code: res.code }));
+              return $return(_this.setState({ isSubmitting: false, success: true, booking: res }));
             } catch ($boundEx) {
               return $error($boundEx);
             }
@@ -2713,6 +3021,7 @@ var Payment_Payment = function (_Component) {
     };
 
     _this.state = {
+      success: false,
       formIsValid: false,
       paymentMethod: null,
       errors: {},
@@ -2730,13 +3039,17 @@ var Payment_Payment = function (_Component) {
         _this2 = this;
 
     var item = _ref.item,
-        show = _ref.show;
+        show = _ref.show,
+        onClose = _ref.onClose;
     var error = _ref2.error,
         values = _ref2.values,
+        booking = _ref2.booking,
         isSubmitting = _ref2.isSubmitting,
-        paymentMethod = _ref2.paymentMethod;
+        paymentMethod = _ref2.paymentMethod,
+        success = _ref2.success;
 
     if (!item) return Payment__ref3;
+    if (success) return Object(preact_min["h"])(PaymentSuccess_PaymentSuccess, { onClose: onClose, show: show && success, booking: booking });
     return Object(preact_min["h"])(
       'div',
       null,
@@ -2754,16 +3067,16 @@ var Payment_Payment = function (_Component) {
             { className: payment_style_default.a.paymentHeader },
             Object(preact_min["h"])('div', {
               className: 'leftArrow ' + payment_style_default.a.back,
-              onClick: this.props.onClose
+              onClick: onClose
             }),
             Object(preact_min["h"])(
               'div',
               { className: payment_style_default.a.title },
               'Checkout'
             ),
-            Payment__ref4
+            Object(preact_min["h"])('div', { style: { width: '1rem', height: '1rem' } })
           ),
-          Payment__ref5,
+          Payment__ref4,
           Object(preact_min["h"])(
             'div',
             { className: payment_style_default.a.section },
@@ -2789,7 +3102,7 @@ var Payment_Payment = function (_Component) {
               item.venue.area
             )
           ),
-          Payment__ref6,
+          Payment__ref5,
           Object(preact_min["h"])(
             'div',
             { className: payment_style_default.a.section },
@@ -2822,7 +3135,7 @@ var Payment_Payment = function (_Component) {
               'upon arrival.'
             )
           ),
-          Payment__ref7,
+          Payment__ref6,
           Object(preact_min["h"])(
             'div',
             { className: payment_style_default.a.section },
@@ -2860,7 +3173,18 @@ var Payment_Payment = function (_Component) {
                   onChange: this.onChange('phone_number')
                 })
               ),
-              paymentMethod && Payment__ref8,
+              Object(preact_min["h"])(
+                'div',
+                {
+                  key: 'paid',
+                  style: {
+                    margin: paymentMethod ? '1rem 0' : 0,
+                    height: paymentMethod ? 'auto' : 0
+                  }
+                },
+                Payment__ref7,
+                ' Paid!'
+              ),
               Object(preact_min["h"])(StripeForm_StripeForm, {
                 key: 'StripeForm',
                 amount: item.price,
@@ -2870,7 +3194,7 @@ var Payment_Payment = function (_Component) {
               })
             )
           ),
-          _ref9
+          Payment__ref8
         ),
         Object(preact_min["h"])(
           FooterButton_FooterButton,
@@ -2882,7 +3206,7 @@ var Payment_Payment = function (_Component) {
           Object(preact_min["h"])(
             'div',
             null,
-            isSubmitting ? _ref10 : 'Confirm booking'
+            isSubmitting ? _ref9 : 'Confirm booking'
           )
         )
       )
@@ -2912,6 +3236,7 @@ function ClassDetail__inherits(subClass, superClass) { if (typeof superClass !==
 
 
 
+
 var ClassDetail__ref3 = Object(preact_min["h"])(
   'div',
   { column: true, flex: true, jc: 'center', ai: 'center' },
@@ -2930,11 +3255,7 @@ var ClassDetail__ref3 = Object(preact_min["h"])(
 
 var ClassDetail__ref4 = Object(preact_min["h"])('div', { className: 'leftArrow' });
 
-var ClassDetail__ref5 = Object(preact_min["h"])('div', { className: 'directions' });
-
-var ClassDetail__ref6 = Object(preact_min["h"])('div', { className: 'rightArrow' });
-
-var ClassDetail__ref7 = Object(preact_min["h"])('div', { className: 'rightArrow' });
+var ClassDetail__ref5 = Object(preact_min["h"])('div', { className: 'rightArrow' });
 
 var ClassDetail_ClassDetail = function (_Component) {
   ClassDetail__inherits(ClassDetail, _Component);
@@ -3049,41 +3370,7 @@ var ClassDetail_ClassDetail = function (_Component) {
             ' ',
             item.venue.area
           ),
-          Object(preact_min["h"])(
-            'a',
-            {
-              href: item.venue.google_maps_url ? item.venue.google_maps_url : 'https://www.google.co.uk/maps/dir//' + item.venue.address_line_1 + ' ' + item.venue.postcode,
-              target: '_blank',
-              className: classdetail_style_default.a.well,
-              style: { borderTop: '1px solid var(--off-white)' }
-            },
-            Object(preact_min["h"])(
-              'div',
-              { className: classdetail_style_default.a.wellIcon },
-              ClassDetail__ref5
-            ),
-            Object(preact_min["h"])(
-              'div',
-              { className: classdetail_style_default.a.wellMain },
-              Object(preact_min["h"])(
-                'div',
-                { className: classdetail_style_default.a.wellName },
-                item.venue.name
-              ),
-              Object(preact_min["h"])(
-                'div',
-                { className: classdetail_style_default.a.wellDescription },
-                item.venue.address_line_1,
-                ', ',
-                item.venue.postcode
-              )
-            ),
-            Object(preact_min["h"])(
-              'div',
-              { className: classdetail_style_default.a.wellAction },
-              ClassDetail__ref6
-            )
-          ),
+          Object(preact_min["h"])(Directions_Directions, { venue: item.venue }),
           Object(preact_min["h"])(
             'a',
             { className: classdetail_style_default.a.well, href: '' + profile.slug },
@@ -3113,7 +3400,7 @@ var ClassDetail_ClassDetail = function (_Component) {
             Object(preact_min["h"])(
               'div',
               { className: classdetail_style_default.a.wellAction },
-              ClassDetail__ref7
+              ClassDetail__ref5
             )
           ),
           item.description && Object(preact_min["h"])(
