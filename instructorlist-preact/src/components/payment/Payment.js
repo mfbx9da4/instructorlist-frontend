@@ -14,7 +14,7 @@ export default class Payment extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      success: true,
+      success: false,
       formIsValid: false,
       paymentMethod: null,
       errors: {},
@@ -100,7 +100,6 @@ export default class Payment extends Component {
         error: res.error.message || 'Issue making booking',
       })
     }
-    console.log('res', res)
     return this.setState({ isSubmitting: false, success: true, booking: res })
   }
 
@@ -116,11 +115,12 @@ export default class Payment extends Component {
   }
 
   render(
-    { item, show },
+    { item, show, onClose },
     { error, values, booking, isSubmitting, paymentMethod, success },
   ) {
     if (!item) return <div>Class not found</div>
-    if (success) return <PaymentSuccess show={true} booking={booking} />
+    if (success)
+      return <PaymentSuccess onClose={onClose} show={show && success} booking={booking} />
     return (
       <div>
         <form
@@ -134,7 +134,7 @@ export default class Payment extends Component {
             <div className={style.paymentHeader}>
               <div
                 className={`leftArrow ${style.back}`}
-                onClick={this.props.onClose}
+                onClick={onClose}
               ></div>
               <div className={style.title}>Checkout</div>
               <div style={{ width: '1rem', height: '1rem' }}></div>

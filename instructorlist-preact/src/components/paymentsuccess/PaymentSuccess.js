@@ -9,8 +9,6 @@ import { BASE_URL } from '../../DataService'
 import dayjs from 'dayjs'
 import Loading from '../loading/Loading'
 
-console.log('style', style)
-
 export default class PaymentSuccess extends Component {
   static defaultProps = {
     booking: {
@@ -74,7 +72,19 @@ export default class PaymentSuccess extends Component {
     this.state = {}
   }
 
-  render({ booking, show }) {
+  formatDay = day => {
+    return `${dayToDayString[day][0].toUpperCase()}${dayToDayString[day]
+      .substr(1)
+      .toLowerCase()}`
+  }
+
+  mainCategory = categories => {
+    if (categories.length === 0) return 'Dance'
+    const cat = categories[0].name
+    return `${cat[0].toUpperCase()}${cat.substr(1).toLowerCase()}`
+  }
+
+  render({ booking, show, onClose }) {
     const { class_attended: item } = booking
     return (
       <div>
@@ -99,35 +109,35 @@ export default class PaymentSuccess extends Component {
                   src={item.hero_image_url || '/assets/images/class.jpeg'}
                   alt={item.title}
                 />
-                <a
-                  onClick={this.onBack}
-                  href="/search"
-                  className={`${style.back}`}
-                >
+                <a onClick={onClose} href="/search" className={`${style.back}`}>
                   <div className="leftArrow"></div>
                 </a>
-                <div className={style.timeLabel}>
-                  {dayToDayString[item.day].toUpperCase()} {item.start_time} -{' '}
-                  {item.end_time}
+                <div className={style.shader}></div>
+                <div className={style.label}>
+                  Let's do some
+                  <div className={style.title}>
+                    {this.mainCategory(item.categories)}
+                  </div>
                 </div>
               </div>
             </div>
-            <Directions venue={item.venue}></Directions>
-            <div className={style.mainTitle}>{item.title}</div>
-            <div className={style.timeLabel}>
-              {dayToDayString[item.day].toUpperCase()} {item.start_time} -{' '}
-              {item.end_time}
-            </div>
-            <div className={style.address}>
-              {item.venue.name} {item.venue.area}
-            </div>
-            <div className="hr"></div>
-            <div className={style.bookingCodeContainer}>
-              <div className={style.bookingReceived}>
-                I didn't receive the confirmaiton message.
+            <div className={style.main}>
+              <Directions venue={item.venue}></Directions>
+              <div className={style.mainTitle}>{item.title}</div>
+              <div className={style.timeLabel}>
+                {this.formatDay(item.day)} {item.start_time} - {item.end_time}
               </div>
-              <div className={style.bookingCode}>
-                Booking Code: {booking.code}
+              <div className={style.address}>
+                {item.venue.name} {item.venue.area}
+              </div>
+              <div className="hr"></div>
+              <div className={style.bookingCodeContainer}>
+                <div className={style.bookingReceived}>
+                  I didn't receive the confirmation message.
+                </div>
+                <div className={style.bookingCode}>
+                  Booking ID: <strong>{booking.code}</strong>
+                </div>
               </div>
             </div>
           </div>

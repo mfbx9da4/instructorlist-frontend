@@ -37,7 +37,6 @@ export default class ClassDetail extends Component {
   }
 
   render({}, { item, showPayment }) {
-    console.log('item, showPayment', item, showPayment)
     if (!item)
       return (
         <div column flex jc="center" ai="center">

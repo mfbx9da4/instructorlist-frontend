@@ -48,4 +48,63 @@
     height: 100%;
     position: absolute;
   }
+  .shader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 20, 20, 0.7);
+  }
+  .label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .title {
+      font-size: 2.9rem;
+      font-weight: bold;
+    }
+  }
+}
+
+.main {
+  flex-direction: column;
+}
+
+.mainTitle {
+  padding: 2rem 0rem 1rem 2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.timeLabel {
+  padding: 0 0 1rem 2rem;
+}
+
+.address {
+  padding: 0 0 2rem 2rem;
+}
+
+.bookingCodeContainer {
+  padding: 2rem 2rem;
+  flex-direction: column;
+  .bookingReceived {
+    color: var(--brand-blue);
+    font-weight: bold;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .bookingCode {
+    padding-top: 0.5rem;
+    color: grey;
+    strong {
+      padding-left: 1rem;
+    }
+  }
 }

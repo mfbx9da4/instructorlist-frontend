@@ -141,9 +141,9 @@ button {
   background: url('../assets/images/directions.svg') no-repeat;
   background-position: center;
   cursor: pointer;
-  background-size: 7rem;
-  height: 5rem;
-  width: 5rem;
+  background-size: 5rem;
+  height: 3rem;
+  width: 3rem;
 }
 
 .shrug {
