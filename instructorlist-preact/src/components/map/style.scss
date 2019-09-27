@@ -1,0 +1,20 @@
+.MapWrapper {
+  background: white;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  overflow-x: hidden;
+  transition: all 0.4s;
+  z-index: 100;
+  justify-content: center;
+  border: 1px solid var(--off-white);
+  &.close {
+    display: none;
+  }
+}
+
+.Map {
+  max-width: 60rem;
+  flex: 1;
+  flex-direction: column;
+}

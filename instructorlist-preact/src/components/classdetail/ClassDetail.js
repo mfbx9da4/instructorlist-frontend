@@ -51,6 +51,8 @@ export default class ClassDetail extends Component {
       )
     const instructor = item.instructors[0]
     const profile = instructor.profile || { bio: '' }
+    const day =
+      dayToDayString[item.day] && dayToDayString[item.day].toUpperCase()
     return (
       <div>
         <Payment
@@ -73,8 +75,7 @@ export default class ClassDetail extends Component {
                 <div className="leftArrow"></div>
               </a>
               <div className={style.timeLabel}>
-                {dayToDayString[item.day].toUpperCase()} {item.start_time} -{' '}
-                {item.end_time}
+                {day} {item.start_time} - {item.end_time}
               </div>
             </div>
           </div>

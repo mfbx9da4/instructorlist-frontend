@@ -62,8 +62,6 @@ export default class StripeForm extends Component {
     this.props.onSubmit(this.onSubmit)
   }
 
-  componentDidUpdate() {}
-
   shouldComponentUpdate(nextProps, nextState) {
     // Important so that Stripe elements can be found by stripe Lib
     return (

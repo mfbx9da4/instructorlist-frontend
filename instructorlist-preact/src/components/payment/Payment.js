@@ -120,7 +120,13 @@ export default class Payment extends Component {
   ) {
     if (!item) return <div>Class not found</div>
     if (success)
-      return <PaymentSuccess onClose={onClose} show={show && success} booking={booking} />
+      return (
+        <PaymentSuccess
+          onClose={onClose}
+          show={show && success}
+          booking={booking}
+        />
+      )
     return (
       <div>
         <form

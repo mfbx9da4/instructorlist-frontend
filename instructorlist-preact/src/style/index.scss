@@ -118,6 +118,40 @@ button {
   filter: blur(0.5rem);
 }
 
+.hide {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.hide * {
+  display: none;
+}
+
+input {
+  padding: 1rem;
+  font-size: 1.6rem;
+  border-radius: 3px;
+  border: 1px solid var(--off-white);
+}
+
+.hr {
+  border-bottom: 1px solid var(--off-white);
+}
+
+.bottom {
+  margin-bottom: 7.5rem;
+}
+
+.errorContainer {
+  padding: 1rem;
+  background: #fbbc03;
+  color: white;
+  font-weight: bold;
+}
+
+/* START ICONS */
+
 .rightArrow {
   background: url('../assets/images/chevron.svg') no-repeat;
   background-position: center;
@@ -164,26 +198,18 @@ button {
   width: 12rem;
 }
 
-.hide {
-  opacity: 0;
-  width: 0;
-  height: 0;
+.tick {
+  background: url('../assets/images/tick.svg') no-repeat;
+  background-position: center;
+  cursor: pointer;
+  background-size: 1.2rem;
+  height: 2rem;
+  width: 2rem;
 }
 
-.hide * {
-  display: none;
-}
+/* END ICONS */
 
-input {
-  padding: 1rem;
-  font-size: 1.6rem;
-  border-radius: 3px;
-  border: 1px solid var(--off-white);
-}
-
-.hr {
-  border-bottom: 1px solid var(--off-white);
-}
+/* START STRIPE */
 
 input,
 .StripeElement {
@@ -220,22 +246,137 @@ input.invalid,
   background-color: #fefde5 !important;
 }
 
-.bottom {
-  margin-bottom: 7.5rem;
-}
+/* END STRIPE */
 
-.errorContainer {
-  padding: 1rem;
-  background: #fbbc03;
-  color: white;
-  font-weight: bold;
-}
+/* START MAPBOX */
 
-.tick {
-  background: url('../assets/images/tick.svg') no-repeat;
-  background-position: center;
+.marker {
+  background: url('../assets/images/pin.svg') no-repeat;
+  background-size: cover;
+  width: 25px;
+  height: 35px;
   cursor: pointer;
-  background-size: 1.2rem;
-  height: 2rem;
-  width: 2rem;
+  transition: none;
+  margin-top: -13px;
+}
+
+.mapboxgl-popup {
+  position: absolute;
+  background: white;
+  transition: none;
+  border: 1px solid #e9e9e9;
+  width: 316px;
+  height: 213px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.4);
+  display: flex;
+}
+
+.mapboxgl-popup:after,
+.mapboxgl-popup:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: ' ';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.mapboxgl-popup:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-top-color: #ffffff;
+
+  border-width: 10px;
+  margin-left: -10px;
+}
+.mapboxgl-popup:before {
+  border-color: rgba(233, 233, 233, 0);
+  border-top-color: #c8c8c8;
+  border-width: 11px;
+  margin-left: -11px;
+}
+.mapboxgl-popup-content {
+  flex: 1;
+  flex-direction: column;
+  display: flex;
+}
+
+.mapboxgl-popup-close-button {
+  display: none;
+}
+
+/* END MAPBOX */
+
+.popup-content {
+  display: flex;
+  position: relative;
+}
+
+.popup-content--link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.popup-content--action,
+.popup-content--main,
+.popup-content--aside {
+  flex-direction: column;
+}
+
+.popup-content--action {
+  .popup-content--itemActionLink {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+.popup-content--aside {
+  padding: 0 1rem;
+  .popup-content--startTime {
+    color: var(--grey);
+    padding: 1rem 1rem 1rem 0;
+  }
+  .popup-content--price {
+    font-weight: bold;
+  }
+}
+
+.popup-content--main {
+  flex: 1;
+  .popup-content--category {
+    color: var(--brand-blue);
+    font-weight: bold;
+    padding: 1rem 1rem 1rem 0;
+    font-size: 1.5rem;
+  }
+  .popup-content--title {
+    font-weight: bold;
+    font-size: 1.7rem;
+    padding-bottom: 0.8rem;
+  }
+  .popup-content--venue {
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: var(--grey);
+    flex-direction: column;
+    padding-bottom: 0.8rem;
+  }
+  .popup-content--instructor {
+    align-items: center;
+    padding: 2rem 0;
+    font-weight: bold;
+
+    img {
+      height: 3.5rem;
+      border-radius: 50px;
+      border: 1px solid var(--off-white);
+      margin-right: 2rem;
+      max-width: 3.5rem;
+      font-size: 0.1rem;
+    }
+  }
 }

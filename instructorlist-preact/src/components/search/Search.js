@@ -2,6 +2,7 @@ import { h, Component } from 'preact'
 import style from './style'
 import dayjs from 'dayjs'
 import Filters from '../filters/Filters'
+import Map from '../map/Map'
 import { route } from 'preact-router'
 import isSSR from '../../utils/is-ssr'
 import { getFiltersFromUrl } from '../../utils/getFiltersFromUrl'
@@ -127,15 +128,14 @@ export default class Search extends Component {
      https://instructorlist.org/search/2019-09-23/filters?i={}
      And keeping the search part of the url
   */
-  simulateToFiltersUrl = () => {
-    // TODO: delete
+  simulateToUrl = to => {
     // 'https://instructorlist.org/search/2019-09-23/?i={}'.replace(
     //   new RegExp(`(\/search\/?(${day})?)\/?`),
     //   `/search/2019-09-08/filters`,
     // )
     const day = this.state.day.format('YYYY-MM-DD')
     const rgx = new RegExp(`(\/search\/?(${day})?)\/?`)
-    const newPath = `/search/${day}/filters`
+    const newPath = `/search/${day}${to}`
     if (isSSR()) {
       return this.props.url.replace(rgx, newPath)
     }
@@ -155,7 +155,7 @@ export default class Search extends Component {
   routeToFilters = event => {
     event.preventDefault()
     event.stopPropagation()
-    return route(this.simulateToFiltersUrl())
+    return route(this.simulateToUrl('/filters'))
   }
 
   addDay = x => e => {
@@ -192,7 +192,8 @@ export default class Search extends Component {
     return day.format('dddd D MMM').toUpperCase()
   }
 
-  render({}, { day, filters, filterCount }) {
+  render({}, { day, filters, filterCount, classes }) {
+    const isMapView = this.props.path.indexOf('/search/:date/map') === 0
     return (
       <div className={style.search}>
         <div className={style.dayWrapper}>
@@ -213,7 +214,7 @@ export default class Search extends Component {
             [style.infoWrapper]: true,
             hide:
               this.state.isLoading ||
-              this.state.classes.length !== 0 ||
+              classes.length !== 0 ||
               this.state.isOffline,
           })}
         >
@@ -236,7 +237,7 @@ export default class Search extends Component {
         <div
           className={classNames({
             [style.infoWrapper]: true,
-            hide: !this.state.isLoading || this.state.classes.length !== 0,
+            hide: !this.state.isLoading || classes.length !== 0,
           })}
         >
           <img
@@ -247,9 +248,13 @@ export default class Search extends Component {
           />
           <div>Loading</div>
         </div>
-        <div className={style.listItems}>
-          {this.state.classes &&
-            this.state.classes.map(item => (
+        <Map items={classes} onDone={this.onDone} active={isMapView} />
+        <div
+          style={{ display: isMapView ? 'none' : 'flex' }}
+          className={classNames({ [style.listItems]: true })}
+        >
+          {classes &&
+            classes.map(item => (
               <div
                 onClick={() => route(`/classes/${item.id}?i=1`)}
                 className={style.listItemWrapper}
@@ -271,7 +276,7 @@ export default class Search extends Component {
                         <a
                           className={style.category}
                           key={i}
-                          href={`/search/category/${x}`}
+                          href={`/search/category/${x.normalized_name}`}
                         >
                           #{x.name.toLowerCase()}
                         </a>
@@ -315,10 +320,11 @@ export default class Search extends Component {
           onDone={this.onDone}
           active={this.props.path.indexOf('/search/:date/filters') === 0}
         />
+
         <div className={style.filtersButtonWrapper}>
           <div className={style.filtersButtonContainer}>
             <a
-              href={this.simulateToFiltersUrl()}
+              href={this.simulateToUrl('/filters')}
               onClick={this.routeToFilters}
               className={style.filtersButton}
             >
@@ -328,7 +334,10 @@ export default class Search extends Component {
                 <div className={style.filterCount}>{filterCount}</div>
               )}
             </a>
-            <a href={`/search/map-view`} className={style.filtersButton}>
+            <a
+              onClick={() => route(this.simulateToUrl('/map'))}
+              className={style.filtersButton}
+            >
               <div className={`${style.filterIcon} ${style.mapIcon}`} />
               Map View
             </a>
