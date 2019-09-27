@@ -728,8 +728,8 @@ module.exports = {"search":"search__2-8Kz","listItems":"listItems__16EqL","infoW
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
-// EXTERNAL MODULE: ./style/index.css
-var style = __webpack_require__("rq4c");
+// EXTERNAL MODULE: ./style/index.scss
+var style = __webpack_require__("yY49");
 var style_default = /*#__PURE__*/__webpack_require__.n(style);
 
 // EXTERNAL MODULE: ../node_modules/preact/dist/preact.min.js
@@ -1295,6 +1295,10 @@ var Filters_activities = {
   };
 }, Filters__temp);
 
+// EXTERNAL MODULE: ./components/map/style.scss
+var map_style = __webpack_require__("dabo");
+var map_style_default = /*#__PURE__*/__webpack_require__.n(map_style);
+
 // CONCATENATED MODULE: ./utils/classNames.js
 var classNames = function classNames(obj) {
   return Object.entries(obj).filter(function (e) {
@@ -1305,6 +1309,195 @@ var classNames = function classNames(obj) {
 };
 
 /* harmony default export */ var utils_classNames = (classNames);
+// EXTERNAL MODULE: ../node_modules/loadjs/dist/loadjs.umd.js
+var loadjs_umd = __webpack_require__("r4pm");
+var loadjs_umd_default = /*#__PURE__*/__webpack_require__.n(loadjs_umd);
+
+// CONCATENATED MODULE: ./lazyLoaders.js
+
+
+var addLink = function addLink(url) {
+  var link = document.createElement('link');
+  link.src = url;
+  link.rel = 'stylesheet';
+  link.type = 'text/css'; // no need for HTML5
+  document.getElementsByTagName('head')[0].appendChild(link); // for IE6
+};
+
+var loading = {
+  mapbox: false
+};
+
+var loaded = {
+  mapbox: false
+};
+
+function loadMapBox() {
+  return new Promise(function ($return, $error) {
+    if (!loading.mapbox && !loaded.mapbox) {
+      addLink('https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.css');
+      loading.mapbox = true;
+      return Promise.resolve(loadjs_umd_default()('https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.js', { returnPromise: true })).then(function ($await_2) {
+        try {
+          loading.mapbox = false;
+          loaded.mapbox = true;
+          return $If_1.call(this);
+        } catch ($boundEx) {
+          return $error($boundEx);
+        }
+      }.bind(this), $error);
+    }
+
+    function $If_1() {
+      return $return();
+    }
+
+    return $If_1.call(this);
+  });
+}
+// CONCATENATED MODULE: ./components/map/Map.js
+
+
+function Map__objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
+function Map__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function Map__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function Map__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+var _ref3 = Object(preact_min["h"])('div', { className: 'mapboxgl-ctrl' });
+
+var Map_Map = function (_Component) {
+  Map__inherits(Map, _Component);
+
+  function Map(props) {
+    Map__classCallCheck(this, Map);
+
+    var _this = Map__possibleConstructorReturn(this, _Component.call(this, props));
+
+    _this.onDone = function (event) {};
+
+    _this.onReset = function (event) {};
+
+    _this.popupHTML = function (item) {
+      var categories = item.categories.map(function (x, i) {
+        return '<a class="popup-content--category"\n            href=\'/search/category/' + x.normalized_name + '\'\n        >\n          #' + x.name.toLowerCase() + '\n        </a>';
+      }).join('');
+
+      return '<div class="popup-content" >\n        <a class="popup-content--link" href=\'/classes/' + item.id + '?i=1\'></a>\n        <div class="popup-content--aside">\n          <div class="popup-content--startTime">' + item.start_time + '</div>\n          <div class="popup-content--price">\xA3' + item.price + '</div>\n        </div>\n        <div class="popup-content--main">\n          <div class="popup-content--categories">' + categories + '</div>\n          <div class="popup-content--title">' + item.title + '</div>\n          <div class="popup-content--venue">\n            <div>' + item.venue.name + '</div>\n            <div>' + item.venue.area + '</div>\n          </div>\n          <div class="popup-content--instructor">\n            <img\n              class="popup-content--instructor-avatar"\n              alt=\'' + item.instructors[0].name + '\'\n              src=\'' + (item.instructors[0].avatar || 'https://api.adorable.io/avatars/60/' + item.instructors[0].email + '.png') + '\'\n            />\n            <div class="popup-content--instructorName">\n              ' + item.instructors[0].name + '\n            </div>\n          </div>\n        </div>\n        <div class="popup-content--action">\n          <a class="popup-content--itemActionLink" href=\'/classes/' + item.id + '\'>\n            <span class="rightArrow" />\n          </a>\n        </div>\n      </div>';
+    };
+
+    _this.onLibLoaded = function () {
+      return new Promise(function ($return, $error) {
+        mapboxgl.accessToken = 'pk.eyJ1IjoibWZieDlkIiwiYSI6ImNrMG8xd2NocTAzcDUzZ242bmJxemRhcmoifQ.-MmxtOUW0-Dz9rgGZTLTDw';
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v10?optimize=true',
+          center: [-0.120624, 51.513322],
+          zoom: 10
+        });
+        map.on('load', function () {
+          var items = [{
+            id: 1,
+            instructors: [{
+              name: 'Alexander Smith',
+              avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png'
+            }],
+            title: 'Introduction to Bachata',
+            price: 12,
+            categories: [{ name: 'bachata' }],
+            start_time: '07:30',
+            duration: 'Alexander Smith',
+            venue: {
+              area: 'Covent Garden',
+              name: 'Pineapple Dance Studios',
+              lat: 51.513322,
+              lon: -0.120624
+            }
+          }];
+          _this.props.items.forEach(function (item) {
+            // create a HTML element for each feature
+            var el = document.createElement('div');
+            el.className = 'marker';
+            var lngLat = [item.venue.lon, item.venue.lat];
+            console.log('lngLat', lngLat);
+            new mapboxgl.Marker(el).setLngLat(lngLat).setPopup(new mapboxgl.Popup({ offset: 37, maxWidth: '316px' }).setHTML(_this.popupHTML(item))).addTo(map);
+          });
+        });
+        return $return();
+      });
+    };
+
+    _this.state = {
+      libLoaded: false,
+      libLoading: false
+    };
+    return _this;
+  }
+
+  Map.prototype.componentDidMount = function componentDidMount() {};
+
+  Map.prototype.componentDidUpdate = function componentDidUpdate() {
+    return new Promise(function ($return, $error) {
+      if (!this.props.active) return $return();
+      if (!this.state.libLoaded && !this.state.libLoading) {
+        this.setState({ libLoading: true });
+        return Promise.resolve(loadMapBox()).then(function ($await_2) {
+          try {
+            this.setState({ libLoading: false, libLoaded: true });
+            return Promise.resolve(this.onLibLoaded()).then(function ($await_3) {
+              try {
+                return $If_1.call(this);
+              } catch ($boundEx) {
+                return $error($boundEx);
+              }
+            }.bind(this), $error);
+          } catch ($boundEx) {
+            return $error($boundEx);
+          }
+        }.bind(this), $error);
+      }
+
+      function $If_1() {
+        return $return();
+      }
+
+      return $If_1.call(this);
+    }.bind(this));
+  };
+
+  Map.prototype.render = function render(_ref, _ref2) {
+    var _classNames;
+
+    var active = _ref.active;
+
+    Map__objectDestructuringEmpty(_ref2);
+
+    return Object(preact_min["h"])(
+      'div',
+      {
+        className: utils_classNames((_classNames = {}, _classNames[map_style_default.a.MapWrapper] = 1, _classNames[map_style_default.a.close] = !active, _classNames))
+      },
+      Object(preact_min["h"])(
+        'div',
+        { className: map_style_default.a.Map },
+        Object(preact_min["h"])('div', { id: 'map', style: { width: '100%', height: '100%' } }),
+        _ref3
+      )
+    );
+  };
+
+  return Map;
+}(preact_min["Component"]);
+
+
 // CONCATENATED MODULE: ./components/search/Search.js
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -1319,6 +1512,7 @@ function Search__classCallCheck(instance, Constructor) { if (!(instance instance
 function Search__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function Search__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -1353,7 +1547,7 @@ function parseDate(day) {
   return dayjs_min_default()();
 }
 
-var _ref3 = Object(preact_min["h"])('img', {
+var Search__ref3 = Object(preact_min["h"])('img', {
   width: '85',
   height: '119',
   src: '/assets/images/dancing.gif',
@@ -1416,14 +1610,20 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
 
 
   Search.prototype.render = function render(_ref, _ref2) {
-    var _classNames, _classNames2, _classNames3;
+    var _classNames,
+        _classNames2,
+        _classNames3,
+        _classNames4,
+        _this2 = this;
 
     var day = _ref2.day,
         filters = _ref2.filters,
-        filterCount = _ref2.filterCount;
+        filterCount = _ref2.filterCount,
+        classes = _ref2.classes;
 
     Search__objectDestructuringEmpty(_ref);
 
+    var isMapView = this.props.path.indexOf('/search/:date/map') === 0;
     return Object(preact_min["h"])(
       'div',
       { className: components_search_style_default.a.search },
@@ -1449,7 +1649,7 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
       Object(preact_min["h"])(
         'div',
         {
-          className: classNames((_classNames = {}, _classNames[components_search_style_default.a.infoWrapper] = true, _classNames.hide = this.state.isLoading || this.state.classes.length !== 0 || this.state.isOffline, _classNames))
+          className: classNames((_classNames = {}, _classNames[components_search_style_default.a.infoWrapper] = true, _classNames.hide = this.state.isLoading || classes.length !== 0 || this.state.isOffline, _classNames))
         },
         Object(preact_min["h"])(
           'div',
@@ -1481,15 +1681,19 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
       Object(preact_min["h"])(
         'div',
         {
-          className: classNames((_classNames3 = {}, _classNames3[components_search_style_default.a.infoWrapper] = true, _classNames3.hide = !this.state.isLoading || this.state.classes.length !== 0, _classNames3))
+          className: classNames((_classNames3 = {}, _classNames3[components_search_style_default.a.infoWrapper] = true, _classNames3.hide = !this.state.isLoading || classes.length !== 0, _classNames3))
         },
-        _ref3,
+        Search__ref3,
         _ref4
       ),
+      Object(preact_min["h"])(Map_Map, { items: classes, onDone: this.onDone, active: isMapView }),
       Object(preact_min["h"])(
         'div',
-        { className: components_search_style_default.a.listItems },
-        this.state.classes && this.state.classes.map(function (item) {
+        {
+          style: { display: isMapView ? 'none' : 'flex' },
+          className: classNames((_classNames4 = {}, _classNames4[components_search_style_default.a.listItems] = true, _classNames4))
+        },
+        classes && classes.map(function (item) {
           return Object(preact_min["h"])(
             'div',
             {
@@ -1532,7 +1736,7 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
                       {
                         className: components_search_style_default.a.category,
                         key: i,
-                        href: '/search/category/' + x
+                        href: '/search/category/' + x.normalized_name
                       },
                       '#',
                       x.name.toLowerCase()
@@ -1602,7 +1806,7 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
           Object(preact_min["h"])(
             'a',
             {
-              href: this.simulateToFiltersUrl(),
+              href: this.simulateToUrl('/filters'),
               onClick: this.routeToFilters,
               className: components_search_style_default.a.filtersButton
             },
@@ -1616,7 +1820,12 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
           ),
           Object(preact_min["h"])(
             'a',
-            { href: '/search/map-view', className: components_search_style_default.a.filtersButton },
+            {
+              onClick: function onClick() {
+                return Object(preact_router_es["route"])(_this2.simulateToUrl('/map'));
+              },
+              className: components_search_style_default.a.filtersButton
+            },
             Object(preact_min["h"])('div', { className: components_search_style_default.a.filterIcon + ' ' + components_search_style_default.a.mapIcon }),
             'Map View'
           )
@@ -1627,7 +1836,7 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
 
   return Search;
 }(preact_min["Component"]), Search__initialiseProps = function _initialiseProps() {
-  var _this2 = this;
+  var _this3 = this;
 
   this.getFilterCount = function (filters) {
     return typeof filters === 'object' ? Object.keys(filters).filter(function (key) {
@@ -1639,18 +1848,18 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
     return new Promise(function ($return, $error) {
       var _state, filters, day, res;
 
-      _state = _this2.state, filters = _state.filters, day = _state.day;
-      return Promise.resolve(_this2.setState({ isLoading: true })).then(function ($await_3) {
+      _state = _this3.state, filters = _state.filters, day = _state.day;
+      return Promise.resolve(_this3.setState({ isLoading: true })).then(function ($await_3) {
         try {
           res = void 0;
           var $Try_1_Post = function () {
             try {
-              _this2.setState({ isLoading: false });
-              _this2.setState({
-                day: day || parseDate(_this2.props.date),
+              _this3.setState({ isLoading: false });
+              _this3.setState({
+                day: day || parseDate(_this3.props.date),
                 allClasses: res.results
               }, function () {
-                return res.results && _this2.doLocalSearch();
+                return res.results && _this3.doLocalSearch();
               });
               return $return();
             } catch ($boundEx) {
@@ -1658,13 +1867,13 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
             }
           };var $Try_1_Catch = function (err) {
             try {
-              _this2.setState({ isOffline: true });
+              _this3.setState({ isOffline: true });
               return $Try_1_Post();
             } catch ($boundEx) {
               return $error($boundEx);
             }
           };try {
-            return Promise.resolve(_this2.props.data.getSearch(filters)).then(function ($await_4) {
+            return Promise.resolve(_this3.props.data.getSearch(filters)).then(function ($await_4) {
               try {
                 res = $await_4;
                 return $Try_1_Post();
@@ -1683,8 +1892,8 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
   };
 
   this.doLocalSearch = function () {
-    var allClasses = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _this2.state.allClasses;
-    var day = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _this2.state.day;
+    var allClasses = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _this3.state.allClasses;
+    var day = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _this3.state.day;
 
     if (!day.isValid()) console.error('Invalid Date');
     var dayFilter = day.day();
@@ -1696,9 +1905,9 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
         var hasCategories = false;
 
         // Basic search
-        for (var key in _this2.state.filters) {
-          if (_this2.state.filters.hasOwnProperty(key)) {
-            var filter = _this2.state.filters[key];
+        for (var key in _this3.state.filters) {
+          if (_this3.state.filters.hasOwnProperty(key)) {
+            var filter = _this3.state.filters[key];
             if (filter.type === 'time') {
               var start = timeToMinutes(item.start_time);
               var fStart = parseInt(key) * 60;
@@ -1721,52 +1930,51 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
         return true;
       });
     }
-    _this2.setState({ classes: classes });
+    _this3.setState({ classes: classes });
     return classes;
   };
 
-  this.simulateToFiltersUrl = function () {
-    // TODO: delete
+  this.simulateToUrl = function (to) {
     // 'https://instructorlist.org/search/2019-09-23/?i={}'.replace(
     //   new RegExp(`(\/search\/?(${day})?)\/?`),
     //   `/search/2019-09-08/filters`,
     // )
-    var day = _this2.state.day.format('YYYY-MM-DD');
+    var day = _this3.state.day.format('YYYY-MM-DD');
     var rgx = new RegExp('(/search/?(' + day + ')?)/?');
-    var newPath = '/search/' + day + '/filters';
+    var newPath = '/search/' + day + to;
     if (is_ssr()) {
-      return _this2.props.url.replace(rgx, newPath);
+      return _this3.props.url.replace(rgx, newPath);
     }
     return location.pathname.replace(rgx, newPath) + location.search;
   };
 
   this.onDone = function (filters) {
-    _this2.setState({
+    _this3.setState({
       filters: filters,
-      filterCount: _this2.getFilterCount(filters)
-    }, _this2.doLocalSearch);
+      filterCount: _this3.getFilterCount(filters)
+    }, _this3.doLocalSearch);
   };
 
   this.routeToFilters = function (event) {
     event.preventDefault();
     event.stopPropagation();
-    return Object(preact_router_es["route"])(_this2.simulateToFiltersUrl());
+    return Object(preact_router_es["route"])(_this3.simulateToUrl('/filters'));
   };
 
   this.addDay = function (x) {
     return function (e) {
       e.preventDefault();
       e.stopPropagation();
-      var _state2 = _this2.state,
+      var _state2 = _this3.state,
           _day = _state2.day,
           _filters = _state2.filters;
 
-      var _simulateAddDayUrl = _this2.simulateAddDayUrl(x, _day, _filters),
+      var _simulateAddDayUrl = _this3.simulateAddDayUrl(x, _day, _filters),
           day = _simulateAddDayUrl.day,
           filters = _simulateAddDayUrl.filters,
           url = _simulateAddDayUrl.url;
 
-      _this2.setState({ day: day, filters: filters }, _this2.doLocalSearch);
+      _this3.setState({ day: day, filters: filters }, _this3.doLocalSearch);
       Object(preact_router_es["route"])(url);
     };
   };
@@ -1781,7 +1989,7 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
   };
 
   this.formatCurrentDay = function () {
-    var day = _this2.state.day;
+    var day = _this3.state.day;
 
     var now = dayjs_min_default()().set('hour', day.hour()).set('minute', day.minute()).set('second', day.second()).set('millisecond', day.millisecond());
     var diff = day.diff(now, 'day');
@@ -1934,10 +2142,6 @@ var STRIPE_KEY = is_dev() ? 'pk_test_i0mT0MQhBYOTm3kcHw73xILH' : 'pk_test_i0mT0M
 // EXTERNAL MODULE: ./components/stripeform/style.scss
 var stripeform_style = __webpack_require__("GjWG");
 var stripeform_style_default = /*#__PURE__*/__webpack_require__.n(stripeform_style);
-
-// EXTERNAL MODULE: ../node_modules/loadjs/dist/loadjs.umd.js
-var loadjs_umd = __webpack_require__("r4pm");
-var loadjs_umd_default = /*#__PURE__*/__webpack_require__.n(loadjs_umd);
 
 // CONCATENATED MODULE: ./utils/convertArrayToObject.js
 function convertArrayToObject(array, key) {
@@ -2452,8 +2656,6 @@ var StripeForm_StripeForm = function (_Component3) {
     _this3.props.onSubmit(_this3.onSubmit);
     return _this3;
   }
-
-  StripeForm.prototype.componentDidUpdate = function componentDidUpdate() {};
 
   StripeForm.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
     // Important so that Stripe elements can be found by stripe Lib
@@ -3049,7 +3251,11 @@ var Payment_Payment = function (_Component) {
         success = _ref2.success;
 
     if (!item) return Payment__ref3;
-    if (success) return Object(preact_min["h"])(PaymentSuccess_PaymentSuccess, { onClose: onClose, show: show && success, booking: booking });
+    if (success) return Object(preact_min["h"])(PaymentSuccess_PaymentSuccess, {
+      onClose: onClose,
+      show: show && success,
+      booking: booking
+    });
     return Object(preact_min["h"])(
       'div',
       null,
@@ -3313,6 +3519,7 @@ var ClassDetail_ClassDetail = function (_Component) {
     if (!item) return ClassDetail__ref3;
     var instructor = item.instructors[0];
     var profile = instructor.profile || { bio: '' };
+    var day = dayToDayString[item.day] && dayToDayString[item.day].toUpperCase();
     return Object(preact_min["h"])(
       'div',
       null,
@@ -3346,11 +3553,10 @@ var ClassDetail_ClassDetail = function (_Component) {
             Object(preact_min["h"])(
               'div',
               { className: classdetail_style_default.a.timeLabel },
-              dayToDayString[item.day].toUpperCase(),
+              day,
               ' ',
               item.start_time,
-              ' -',
-              ' ',
+              ' - ',
               item.end_time
             )
           )
@@ -3993,6 +4199,14 @@ module.exports = {"home":"home__MseGd"};
 
 /***/ }),
 
+/***/ "dabo":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"MapWrapper":"MapWrapper__3gG48","close":"close__2p9k9","Map":"Map__lNODB"};
+
+/***/ }),
+
 /***/ "r4pm":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4303,13 +4517,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ "rq4c":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "sw5u":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4426,6 +4633,13 @@ module.exports = {"filtersWrapper":"filtersWrapper__3DXok","close":"close__3YC_j
 /***/ }),
 
 /***/ "vbq8":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "yY49":
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
