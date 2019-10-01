@@ -152,6 +152,15 @@ export default class Search extends Component {
     )
   }
 
+  toggleMapView = () => {
+    event.preventDefault()
+    event.stopPropagation()
+    if (this.props.path.indexOf('/search/:date/map') === 0) {
+      return route(this.props.url.replace('/map', ''))
+    }
+    return route(this.simulateToUrl('/map'))
+  }
+
   routeToFilters = event => {
     event.preventDefault()
     event.stopPropagation()
@@ -337,9 +346,14 @@ export default class Search extends Component {
             <a
               onClick={() => route(this.simulateToUrl('/map'))}
               className={style.filtersButton}
+              onClick={this.toggleMapView}
             >
-              <div className={`${style.filterIcon} ${style.mapIcon}`} />
-              Map View
+              <div
+                className={`${style.filterIcon} ${
+                  isMapView ? style.listIcon : style.mapIcon
+                }`}
+              />
+              {isMapView ? 'List View' : 'Map View'}
             </a>
           </div>
         </div>
