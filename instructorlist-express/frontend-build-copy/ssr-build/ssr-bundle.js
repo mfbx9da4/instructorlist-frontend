@@ -718,7 +718,7 @@ module.exports = {"formContainer":"formContainer__1XJ08"};
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"search":"search__2-8Kz","listItems":"listItems__16EqL","infoWrapper":"infoWrapper__3cbB8","infoMessage":"infoMessage__9F7UF","infoIcon":"infoIcon__84nL1","title":"title__2iaYI","listItemWrapper":"listItemWrapper__21eW2","listItemLink":"listItemLink__3j4FE","listItem":"listItem__29e2n","listItemAction":"listItemAction__1tmWk","listItemMain":"listItemMain__2KU1-","listItemAside":"listItemAside__1m9LH","itemActionLink":"itemActionLink__3B_OP","startTime":"startTime__-cf_E","price":"price__2Elbz","category":"category__g6hkq","venue":"venue__1vLQq","instructor":"instructor__1SQ9m","filtersButtonWrapper":"filtersButtonWrapper__3uNOD","filtersButtonContainer":"filtersButtonContainer__2eD-l","filtersButton":"filtersButton__2nkFI","filterIcon":"filterIcon__IAjqJ","filterCount":"filterCount__2uHeF","mapIcon":"mapIcon__3PXt2","dayWrapper":"dayWrapper__2wPmt"};
+module.exports = {"search":"search__2-8Kz","listItems":"listItems__16EqL","infoWrapper":"infoWrapper__3cbB8","infoMessage":"infoMessage__9F7UF","infoIcon":"infoIcon__84nL1","title":"title__2iaYI","listItemWrapper":"listItemWrapper__21eW2","listItemLink":"listItemLink__3j4FE","listItem":"listItem__29e2n","listItemAction":"listItemAction__1tmWk","listItemMain":"listItemMain__2KU1-","listItemAside":"listItemAside__1m9LH","itemActionLink":"itemActionLink__3B_OP","startTime":"startTime__-cf_E","price":"price__2Elbz","category":"category__g6hkq","venue":"venue__1vLQq","instructor":"instructor__1SQ9m","filtersButtonWrapper":"filtersButtonWrapper__3uNOD","filtersButtonContainer":"filtersButtonContainer__2eD-l","filtersButton":"filtersButton__2nkFI","filterIcon":"filterIcon__IAjqJ","filterCount":"filterCount__2uHeF","mapIcon":"mapIcon__3PXt2","listIcon":"listIcon__1BJh3","dayWrapper":"dayWrapper__2wPmt"};
 
 /***/ }),
 
@@ -1614,7 +1614,8 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
         _classNames2,
         _classNames3,
         _classNames4,
-        _this2 = this;
+        _this2 = this,
+        _h;
 
     var day = _ref2.day,
         filters = _ref2.filters,
@@ -1820,14 +1821,16 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
           ),
           Object(preact_min["h"])(
             'a',
-            {
+            (_h = {
               onClick: function onClick() {
                 return Object(preact_router_es["route"])(_this2.simulateToUrl('/map'));
               },
               className: components_search_style_default.a.filtersButton
-            },
-            Object(preact_min["h"])('div', { className: components_search_style_default.a.filterIcon + ' ' + components_search_style_default.a.mapIcon }),
-            'Map View'
+            }, _h['onClick'] = this.toggleMapView, _h),
+            Object(preact_min["h"])('div', {
+              className: components_search_style_default.a.filterIcon + ' ' + (isMapView ? components_search_style_default.a.listIcon : components_search_style_default.a.mapIcon)
+            }),
+            isMapView ? 'List View' : 'Map View'
           )
         )
       )
@@ -1953,6 +1956,15 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
       filters: filters,
       filterCount: _this3.getFilterCount(filters)
     }, _this3.doLocalSearch);
+  };
+
+  this.toggleMapView = function () {
+    event.preventDefault();
+    event.stopPropagation();
+    if (_this3.props.path.indexOf('/search/:date/map') === 0) {
+      return Object(preact_router_es["route"])(_this3.props.url.replace('/map', ''));
+    }
+    return Object(preact_router_es["route"])(_this3.simulateToUrl('/map'));
   };
 
   this.routeToFilters = function (event) {
