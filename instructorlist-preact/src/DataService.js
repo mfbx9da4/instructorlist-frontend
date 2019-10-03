@@ -1,8 +1,9 @@
 import { convertArrayToObject } from './utils/convertArrayToObject'
 import isDev from './utils/is-dev'
 
+// ? 'http://localhost:8000'
 export const BASE_URL = isDev()
-  ? 'http://localhost:8000'
+  ? 'https://instructorlist-django.herokuapp.com'
   : 'https://instructorlist-django.herokuapp.com'
 
 const defaultClass = {

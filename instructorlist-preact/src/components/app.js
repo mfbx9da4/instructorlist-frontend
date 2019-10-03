@@ -10,11 +10,13 @@ import ClassPage from '../routes/class.page'
 import Profile from '../routes/profile'
 import isSSR from '../utils/is-ssr'
 import DataService from '../DataService'
+import Redirect from './redirect/Redirect'
 
 const pages = [
   {
-    component: Home,
+    component: Redirect,
     path: '/',
+    to: '/search',
   },
   {
     component: Search,

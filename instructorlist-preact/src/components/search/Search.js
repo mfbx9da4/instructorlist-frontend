@@ -152,13 +152,29 @@ export default class Search extends Component {
     )
   }
 
+  isFilterView = () => this.props.path.indexOf('/search/:date/filters') === 0
+
   toggleMapView = () => {
+    console.log('this.props.url', this.props.url)
     event.preventDefault()
     event.stopPropagation()
-    if (this.props.path.indexOf('/search/:date/map') === 0) {
+    if (this.isMapView()) {
       return route(this.props.url.replace('/map', ''))
+    } else if (this.isFilterView()) {
+      return route(this.props.url.replace('/filters', ''))
     }
     return route(this.simulateToUrl('/map'))
+  }
+
+  toggleFilters = event => {
+    event.preventDefault()
+    event.stopPropagation()
+    if (this.isMapView()) {
+      return route(this.props.url.replace('/map', ''))
+    } else if (this.isFilterView()) {
+      return route(this.props.url.replace('/filters', ''))
+    }
+    return route(this.simulateToUrl('/filters'))
   }
 
   routeToFilters = event => {
@@ -201,8 +217,9 @@ export default class Search extends Component {
     return day.format('dddd D MMM').toUpperCase()
   }
 
+  isMapView = () => this.props.path.indexOf('/search/:date/map') === 0
+
   render({}, { day, filters, filterCount, classes }) {
-    const isMapView = this.props.path.indexOf('/search/:date/map') === 0
     return (
       <div className={style.search}>
         <div className={style.dayWrapper}>
@@ -257,9 +274,9 @@ export default class Search extends Component {
           />
           <div>Loading</div>
         </div>
-        <Map items={classes} onDone={this.onDone} active={isMapView} />
+        <Map items={classes} onDone={this.onDone} active={this.isMapView()} />
         <div
-          style={{ display: isMapView ? 'none' : 'flex' }}
+          style={{ display: this.isMapView() ? 'none' : 'flex' }}
           className={classNames({ [style.listItems]: true })}
         >
           {classes &&
@@ -334,7 +351,7 @@ export default class Search extends Component {
           <div className={style.filtersButtonContainer}>
             <a
               href={this.simulateToUrl('/filters')}
-              onClick={this.routeToFilters}
+              onClick={this.toggleFilters}
               className={style.filtersButton}
             >
               <div className={style.filterIcon} />
@@ -350,10 +367,10 @@ export default class Search extends Component {
             >
               <div
                 className={`${style.filterIcon} ${
-                  isMapView ? style.listIcon : style.mapIcon
+                  this.isMapView() ? style.listIcon : style.mapIcon
                 }`}
               />
-              {isMapView ? 'List View' : 'Map View'}
+              {this.isMapView() ? 'List View' : 'Map View'}
             </a>
           </div>
         </div>
