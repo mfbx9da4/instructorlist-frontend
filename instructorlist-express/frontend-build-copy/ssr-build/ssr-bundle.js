@@ -1388,7 +1388,7 @@ var Map_Map = function (_Component) {
 
     _this.popupHTML = function (item) {
       var categories = item.categories.map(function (x, i) {
-        return '<a class="popup-content--category"\n            href=\'/search/category/' + x.normalized_name + '\'\n        >\n          #' + x.name.toLowerCase() + '\n        </a>';
+        return '<a class="popup-content--category"\n            href=\'\'\n        >\n          #' + x.name.toLowerCase() + '\n        </a>';
       }).join('');
 
       return '<div class="popup-content" >\n        <a class="popup-content--link" href=\'/classes/' + item.id + '?i=1\'></a>\n        <div class="popup-content--aside">\n          <div class="popup-content--startTime">' + item.start_time + '</div>\n          <div class="popup-content--price">\xA3' + item.price + '</div>\n        </div>\n        <div class="popup-content--main">\n          <div class="popup-content--categories">' + categories + '</div>\n          <div class="popup-content--title">' + item.title + '</div>\n          <div class="popup-content--venue">\n            <div>' + item.venue.name + '</div>\n            <div>' + item.venue.area + '</div>\n          </div>\n          <div class="popup-content--instructor">\n            <img\n              class="popup-content--instructor-avatar"\n              alt=\'' + item.instructors[0].name + '\'\n              src=\'' + (item.instructors[0].avatar || 'https://api.adorable.io/avatars/60/' + item.instructors[0].email + '.png') + '\'\n            />\n            <div class="popup-content--instructorName">\n              ' + item.instructors[0].name + '\n            </div>\n          </div>\n        </div>\n        <div class="popup-content--action">\n          <a class="popup-content--itemActionLink" href=\'/classes/' + item.id + '\'>\n            <span class="rightArrow" />\n          </a>\n        </div>\n      </div>';
@@ -1624,7 +1624,6 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
 
     Search__objectDestructuringEmpty(_ref);
 
-    var isMapView = this.props.path.indexOf('/search/:date/map') === 0;
     return Object(preact_min["h"])(
       'div',
       { className: components_search_style_default.a.search },
@@ -1687,11 +1686,11 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
         Search__ref3,
         _ref4
       ),
-      Object(preact_min["h"])(Map_Map, { items: classes, onDone: this.onDone, active: isMapView }),
+      Object(preact_min["h"])(Map_Map, { items: classes, onDone: this.onDone, active: this.isMapView() }),
       Object(preact_min["h"])(
         'div',
         {
-          style: { display: isMapView ? 'none' : 'flex' },
+          style: { display: this.isMapView() ? 'none' : 'flex' },
           className: classNames((_classNames4 = {}, _classNames4[components_search_style_default.a.listItems] = true, _classNames4))
         },
         classes && classes.map(function (item) {
@@ -1808,7 +1807,7 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
             'a',
             {
               href: this.simulateToUrl('/filters'),
-              onClick: this.routeToFilters,
+              onClick: this.toggleFilters,
               className: components_search_style_default.a.filtersButton
             },
             Object(preact_min["h"])('div', { className: components_search_style_default.a.filterIcon }),
@@ -1828,9 +1827,9 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
               className: components_search_style_default.a.filtersButton
             }, _h['onClick'] = this.toggleMapView, _h),
             Object(preact_min["h"])('div', {
-              className: components_search_style_default.a.filterIcon + ' ' + (isMapView ? components_search_style_default.a.listIcon : components_search_style_default.a.mapIcon)
+              className: components_search_style_default.a.filterIcon + ' ' + (this.isMapView() ? components_search_style_default.a.listIcon : components_search_style_default.a.mapIcon)
             }),
-            isMapView ? 'List View' : 'Map View'
+            this.isMapView() ? 'List View' : 'Map View'
           )
         )
       )
@@ -1958,13 +1957,31 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
     }, _this3.doLocalSearch);
   };
 
+  this.isFilterView = function () {
+    return _this3.props.path.indexOf('/search/:date/filters') === 0;
+  };
+
   this.toggleMapView = function () {
+    console.log('this.props.url', _this3.props.url);
     event.preventDefault();
     event.stopPropagation();
-    if (_this3.props.path.indexOf('/search/:date/map') === 0) {
+    if (_this3.isMapView()) {
       return Object(preact_router_es["route"])(_this3.props.url.replace('/map', ''));
+    } else if (_this3.isFilterView()) {
+      return Object(preact_router_es["route"])(_this3.props.url.replace('/filters', ''));
     }
     return Object(preact_router_es["route"])(_this3.simulateToUrl('/map'));
+  };
+
+  this.toggleFilters = function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (_this3.isMapView()) {
+      return Object(preact_router_es["route"])(_this3.props.url.replace('/map', ''));
+    } else if (_this3.isFilterView()) {
+      return Object(preact_router_es["route"])(_this3.props.url.replace('/filters', ''));
+    }
+    return Object(preact_router_es["route"])(_this3.simulateToUrl('/filters'));
   };
 
   this.routeToFilters = function (event) {
@@ -2013,6 +2030,10 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
       return 'YESTERDAY';
     }
     return day.format('dddd D MMM').toUpperCase();
+  };
+
+  this.isMapView = function () {
+    return _this3.props.path.indexOf('/search/:date/map') === 0;
   };
 }, Search__temp);
 
@@ -2169,7 +2190,8 @@ function DataService__classCallCheck(instance, Constructor) { if (!(instance ins
 
 
 
-var BASE_URL = is_dev() ? 'http://localhost:8000' : 'https://instructorlist-django.herokuapp.com';
+// ? 'http://localhost:8000'
+var BASE_URL = is_dev() ? 'https://instructorlist-django.herokuapp.com' : 'https://instructorlist-django.herokuapp.com';
 
 var defaultClass = {
   id: 1,
@@ -3829,6 +3851,37 @@ var profile_Profile = function (_Component) {
 }(preact_min["Component"]);
 
 
+// CONCATENATED MODULE: ./components/redirect/Redirect.js
+function Redirect__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function Redirect__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function Redirect__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var Redirect_Redirect = function (_Component) {
+  Redirect__inherits(Redirect, _Component);
+
+  function Redirect() {
+    Redirect__classCallCheck(this, Redirect);
+
+    return Redirect__possibleConstructorReturn(this, _Component.apply(this, arguments));
+  }
+
+  Redirect.prototype.componentWillMount = function componentWillMount() {
+    Object(preact_router_es["route"])(this.props.to, true);
+  };
+
+  Redirect.prototype.render = function render() {
+    return null;
+  };
+
+  return Redirect;
+}(preact_min["Component"]);
+
+
 // CONCATENATED MODULE: ./components/app.js
 var app__extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -3855,9 +3908,11 @@ function app__inherits(subClass, superClass) { if (typeof superClass !== "functi
 
 
 
+
 var pages = [{
-  component: home,
-  path: '/'
+  component: Redirect_Redirect,
+  path: '/',
+  to: '/search'
 }, {
   component: search,
   path: '/search'
