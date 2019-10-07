@@ -119,4 +119,5 @@ const oneMinute = 1000 * 60
 setInterval(() => {
   fetch('https://instructorlist-django.herokuapp.com/api/')
   fetch(`https://instructorlist-frontend.herokuapp.com/`)
+  fetch(`https://brightpath.herokuapp.com/`)
 }, oneMinute * 4)
