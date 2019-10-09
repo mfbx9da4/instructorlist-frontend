@@ -100,7 +100,7 @@ export default class Search extends Component {
               const fStart = parseInt(key) * 60
               const filterDuration = 3 * 60
               const fEnd = fStart + filterDuration
-              if (start < fStart || start > fEnd) return false
+              if (start >= fStart && start <= fEnd) return true
             } else if (filter.type === 'category' && !matchedACategory) {
               hasCategories = true
               for (let i = 0; i < item.categories.length; i++) {
