@@ -15,10 +15,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/9e4607ba1f07e89136e790c60671e5d9.svg"
   },
   {
-    "revision": "856b8b125f822ae45df0ba104d8ffa51",
-    "url": "/assets/.DS_Store"
-  },
-  {
     "revision": "53ac170e970ad034a55ee15ce198708c",
     "url": "/assets/favicon.ico"
   },
