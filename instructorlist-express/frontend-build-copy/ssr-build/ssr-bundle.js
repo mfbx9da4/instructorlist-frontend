@@ -837,7 +837,7 @@ var Menu_Menu = function (_Component) {
 
 // CONCATENATED MODULE: ./config.js
 var config = {
-  Version: 1
+  Version: 2
 };
 
 /* harmony default export */ var config_0 = (config);
@@ -1882,7 +1882,7 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
               var fStart = parseInt(key) * 60;
               var filterDuration = 3 * 60;
               var fEnd = fStart + filterDuration;
-              if (start < fStart || start > fEnd) return false;
+              if (start >= fStart && start <= fEnd) return true;
             } else if (filter.type === 'category' && !matchedACategory) {
               hasCategories = true;
               for (var i = 0; i < item.categories.length; i++) {
