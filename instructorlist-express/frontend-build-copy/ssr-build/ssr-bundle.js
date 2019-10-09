@@ -902,51 +902,6 @@ var header_Header = function (_Component) {
 }(preact_min["Component"]);
 
 /* harmony default export */ var header = (header_Header);
-// EXTERNAL MODULE: ./routes/home/style.css
-var home_style = __webpack_require__("ZAL5");
-var home_style_default = /*#__PURE__*/__webpack_require__.n(home_style);
-
-// CONCATENATED MODULE: ./routes/home/index.js
-
-
-
-
-var home__ref = Object(preact_min["h"])(
-  'h1',
-  null,
-  'Home'
-);
-
-var home__ref2 = Object(preact_min["h"])(
-  'p',
-  null,
-  'Go to ',
-  Object(preact_min["h"])(
-    'a',
-    { href: '/search/' },
-    'search'
-  ),
-  '.'
-);
-
-var home_Home = function Home() {
-  return Object(preact_min["h"])(
-    'div',
-    { 'class': home_style_default.a.home },
-    home__ref,
-    home__ref2
-  );
-};
-
-home_Home.getInitialProps = function () {
-  return new Promise(function (resolve) {
-    setTimeout(function () {
-      resolve({ rgeat: 1 });
-    }, 300);
-  });
-};
-
-/* harmony default export */ var home = (home_Home);
 // EXTERNAL MODULE: ./routes/search/style.scss
 var search_style = __webpack_require__("492T");
 var search_style_default = /*#__PURE__*/__webpack_require__.n(search_style);
@@ -3908,7 +3863,6 @@ function app__inherits(subClass, superClass) { if (typeof superClass !== "functi
 
 
 
-
 var pages = [{
   component: Redirect_Redirect,
   path: '/',
@@ -4255,14 +4209,6 @@ module.exports = {"paymentWrapper":"paymentWrapper__1x25b","close":"close__1l-EC
 
 // removed by extract-text-webpack-plugin
 module.exports = {"profile":"profile__t2Dqz"};
-
-/***/ }),
-
-/***/ "ZAL5":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-module.exports = {"home":"home__MseGd"};
 
 /***/ }),
 
