@@ -835,6 +835,12 @@ var Menu_Menu = function (_Component) {
 }(preact_min["Component"]);
 
 
+// CONCATENATED MODULE: ./config.js
+var config = {
+  Version: 1
+};
+
+/* harmony default export */ var config_0 = (config);
 // CONCATENATED MODULE: ./components/header/index.js
 
 
@@ -845,6 +851,7 @@ function header__classCallCheck(instance, Constructor) { if (!(instance instance
 function header__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function header__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -883,6 +890,11 @@ var header_Header = function (_Component) {
             'instructorlist ',
             is_ssr() && '⚡'
           )
+        ),
+        Object(preact_min["h"])(
+          'small',
+          { style: { position: 'fixed', right: 0, bottom: 0 } },
+          config.Version
         ),
         Object(preact_min["h"])(
           'nav',
