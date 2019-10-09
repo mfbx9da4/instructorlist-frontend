@@ -3,6 +3,7 @@ import { Link } from 'preact-router/match'
 import style from './style'
 import isSSR from '../../utils/is-ssr'
 import Menu from '../menu/Menu'
+import { config } from '../../config'
 
 class Header extends Component {
   toggleMenu = () => this.setState({ isOpen: !this.state.isOpen })
@@ -15,6 +16,9 @@ class Header extends Component {
             instructorlist {isSSR() && '⚡'}
           </Link>
         </h1>
+        <small style={{ position: 'fixed', right: 0, bottom: 0 }}>
+          {config.Version}
+        </small>
         <nav>
           <Link
             onClick={this.toggleMenu}
