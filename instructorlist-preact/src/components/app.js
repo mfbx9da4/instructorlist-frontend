@@ -1,5 +1,6 @@
 import { h, Component } from 'preact'
 import { Router } from 'preact-router'
+import styled from 'styled-components'
 
 import Header from './header'
 
@@ -11,11 +12,25 @@ import isSSR from '../utils/is-ssr'
 import DataService from '../DataService'
 import Redirect from './redirect/Redirect'
 
+const Div = styled.div`
+  background: red;
+  color: white;
+`
+class Home extends Component {
+  render() {
+    return (
+      <div style={{ padding: '300px' }}>
+        <div>somethrin Hey there</div>
+        <Div>somethrin Hey there</Div>
+      </div>
+    )
+  }
+}
+
 const pages = [
   {
-    component: Redirect,
-    path: '/',
-    to: '/search',
+    component: Home,
+    path: '/blah',
   },
   {
     component: Search,
