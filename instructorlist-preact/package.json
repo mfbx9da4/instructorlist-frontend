@@ -7,9 +7,9 @@
     "start": "per-env",
     "start:production": "npm run -s serve",
     "start:development": "npm run -s dev",
-    "build": "find . -name '.DS_Store' -type f -delete && preact build --json --template template.ejs && rm -rf ../instructorlist-express/frontend-build-copy/* && cp -r ./build/* ../instructorlist-express/frontend-build-copy/",
-    "serve": "preact build --json --template template.ejs && preact serve",
-    "dev": "preact watch --https --template template.ejs ",
+    "build": "find . -name '.DS_Store' -type f -delete && ./node_modules/preact-cli/src/index.js build --json --template template.ejs && rm -rf ../instructorlist-express/frontend-build-copy/* && cp -r ./build/* ../instructorlist-express/frontend-build-copy/",
+    "serve": "./node_modules/preact-cli/src/index.js build --json --template template.ejs && ./node_modules/preact-cli/src/index.js serve",
+    "dev": "./node_modules/preact-cli/src/index.js watch --https --template template.ejs ",
     "lint": "eslint src",
     "test": "jest"
   },
