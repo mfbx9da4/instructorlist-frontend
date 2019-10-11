@@ -1872,12 +1872,14 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
         if (item.day !== dayFilter) return false;
         var matchedACategory = false;
         var hasCategories = false;
+        var hasTimes = false;
 
         // Basic search
         for (var key in _this3.state.filters) {
           if (_this3.state.filters.hasOwnProperty(key)) {
             var filter = _this3.state.filters[key];
             if (filter.type === 'time') {
+              hasTimes = true;
               var start = timeToMinutes(item.start_time);
               var fStart = parseInt(key) * 60;
               var filterDuration = 3 * 60;
@@ -1888,14 +1890,14 @@ var Search_Search = (Search__temp = Search__class = function (_Component) {
               for (var i = 0; i < item.categories.length; i++) {
                 var category = item.categories[i];
                 if (category.name.toLowerCase() === key.toLowerCase()) {
-                  matchedACategory = true;
+                  return true;
                 }
               }
             }
           }
         }
 
-        if (!matchedACategory && hasCategories) return false;
+        if (hasTimes || hasCategories) return false;
         return true;
       });
     }
