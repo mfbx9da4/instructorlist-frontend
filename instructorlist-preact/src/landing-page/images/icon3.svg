@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="149px" height="123px" viewBox="0 0 149 123" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>17--dancer</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-3" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-5" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-7" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-9" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-11" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-13" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-15" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-17" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-19" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-21" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-23" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-25" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-27" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-29" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-31" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-33" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-35" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-37" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-39" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-41" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-43" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-45" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-47" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-49" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-51" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-53" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-55" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-57" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-59" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-61" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-63" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-65" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-67" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-69" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-71" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-73" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-75" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-77" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-79" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-81" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-83" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-85" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-87" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-89" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-91" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-93" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-95" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-97" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-99" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-101" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-103" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-105" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-107" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-109" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-111" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-113" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-115" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-117" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-119" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-121" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-123" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-125" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-127" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-129" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-131" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-133" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-135" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-137" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-139" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-141" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-143" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-145" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-147" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-149" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-151" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-153" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-155" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-157" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-159" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-161" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-163" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-165" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-167" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-169" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-171" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-173" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-175" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-177" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-179" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-181" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-183" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-185" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-187" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-189" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-191" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-193" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-195" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-197" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-199" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-201" points="0 188 168 188 168 0 0 0"></polygon>
+        <polygon id="path-203" points="0 188 168 188 168 0 0 0"></polygon>
+    </defs>
+    <g id="Design-1.2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="17--dancer" transform="translate(-9.000000, -27.000000)">
+            <path d="M151.452672,94.51465 C151.452672,57.43165 121.365552,27.3717929 84.252672,27.3717929 C47.139792,27.3717929 17.052672,57.43165 17.052672,94.51465 C17.052672,104.393043 19.206432,113.764507 23.040192,122.211079 L145.465152,122.211079 C149.300592,113.764507 151.452672,104.393043 151.452672,94.51465" id="Fill-1" fill="#F0F2FF" fill-rule="nonzero"></path>
+            <path d="M17.892672,122.211079 L148.932672,122.211079" id="Stroke-3" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M10.332672,122.211079 L14.532672,122.211079" id="Stroke-5" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M152.292672,122.211079 L156.492672,122.211079" id="Stroke-7" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M61.572672,94.51465 C61.572672,92.1965429 59.692752,90.3182214 57.372672,90.3182214 C55.052592,90.3182214 53.172672,92.1965429 53.172672,94.51465 C53.172672,94.51465 52.332672,100.38965 49.812672,99.5503643 C49.812672,99.5503643 51.492672,103.746793 57.372672,103.746793 C63.252672,103.746793 64.932672,99.5503643 64.932672,99.5503643 C62.412672,100.38965 61.572672,94.51465 61.572672,94.51465" id="Fill-9" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M61.572672,94.51465 C61.572672,92.1965429 59.692752,90.3182214 57.372672,90.3182214 C55.052592,90.3182214 53.172672,92.1965429 53.172672,94.51465 C53.172672,94.51465 52.332672,100.38965 49.812672,99.5503643 C49.812672,99.5503643 51.492672,103.746793 57.372672,103.746793 C63.252672,103.746793 64.932672,99.5503643 64.932672,99.5503643 C62.412672,100.38965 61.572672,94.51465 61.572672,94.51465 Z" id="Stroke-11" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M53.172672,112.13965 L53.172672,101.665364 C54.373872,100.85965 55.818672,100.38965 57.372672,100.38965 C58.926672,100.38965 60.371472,100.85965 61.572672,101.665364 L61.572672,112.13965 L53.172672,112.13965 Z" id="Fill-13" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M53.172672,112.13965 L53.172672,101.665364 C54.373872,100.85965 55.818672,100.38965 57.372672,100.38965 C58.926672,100.38965 60.371472,100.85965 61.572672,101.665364 L61.572672,112.13965 L53.172672,112.13965 Z" id="Stroke-15" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M48.132672,112.978936 C47.205312,112.978936 46.452672,112.226936 46.452672,111.300364 C46.452672,110.372114 47.205312,109.621793 48.132672,109.621793 C49.060032,109.621793 49.812672,108.869793 49.812672,107.943221 C49.812672,105.322971 51.146592,103.019971 53.172672,101.665364 L53.172672,107.943221 C53.172672,110.722936 50.916432,112.978936 48.132672,112.978936" id="Fill-17" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M48.132672,112.978936 C47.205312,112.978936 46.452672,112.226936 46.452672,111.300364 C46.452672,110.372114 47.205312,109.621793 48.132672,109.621793 C49.060032,109.621793 49.812672,108.869793 49.812672,107.943221 C49.812672,105.322971 51.146592,103.019971 53.172672,101.665364 L53.172672,107.943221 C53.172672,110.722936 50.916432,112.978936 48.132672,112.978936 Z" id="Stroke-19" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M66.612672,112.978936 C67.540032,112.978936 68.292672,112.226936 68.292672,111.300364 C68.292672,110.372114 67.540032,109.621793 66.612672,109.621793 C65.685312,109.621793 64.932672,108.869793 64.932672,107.943221 C64.932672,105.322971 63.598752,103.019971 61.572672,101.665364 L61.572672,107.943221 C61.572672,110.722936 63.828912,112.978936 66.612672,112.978936" id="Fill-21" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M66.612672,112.978936 C67.540032,112.978936 68.292672,112.226936 68.292672,111.300364 C68.292672,110.372114 67.540032,109.621793 66.612672,109.621793 C65.685312,109.621793 64.932672,108.869793 64.932672,107.943221 C64.932672,105.322971 63.598752,103.019971 61.572672,101.665364 L61.572672,107.943221 C61.572672,110.722936 63.828912,112.978936 66.612672,112.978936 Z" id="Stroke-23" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <g id="Group-28" transform="translate(60.480000, 106.750000)">
+                <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Fill-25" fill="#FFFFFF" fill-rule="nonzero"></path>
+                <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Stroke-27" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+            <g id="Group-32" transform="translate(52.080000, 106.750000)">
+                <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Fill-29" fill="#FFFFFF" fill-rule="nonzero"></path>
+                <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Stroke-31" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+            <path d="M61.572672,112.13965 L62.412672,122.211079 L59.052672,122.211079 C59.052672,122.211079 59.052672,114.657507 57.372672,114.657507 C55.692672,114.657507 55.692672,122.211079 55.692672,122.211079 L52.332672,122.211079 L53.172672,112.13965 L61.572672,112.13965 Z" id="Fill-33" fill="#D6DAFF" fill-rule="nonzero"></path>
+            <path d="M61.572672,112.13965 L62.412672,122.211079 L59.052672,122.211079 C59.052672,122.211079 59.052672,114.657507 57.372672,114.657507 C55.692672,114.657507 55.692672,122.211079 55.692672,122.211079 L52.332672,122.211079 L53.172672,112.13965 L61.572672,112.13965 Z" id="Stroke-35" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <g id="Fill-37-Clipped">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="path-1"></g>
+                <polygon id="Fill-37" fill="#D6DAFF" fill-rule="nonzero" mask="url(#mask-2)" points="53.172 107.943893 61.572 107.943893 61.572 104.58675 53.172 104.58675"></polygon>
+            </g>
+            <g id="Stroke-39-Clipped">
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <g id="path-1"></g>
+                <polygon id="Stroke-39" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="53.172 107.943893 61.572 107.943893 61.572 104.58675 53.172 104.58675"></polygon>
+            </g>
+            <g id="Fill-40-Clipped">
+                <mask id="mask-6" fill="white">
+                    <use xlink:href="#path-5"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M53.172672,96.1932214 C53.172672,98.50965 55.052592,100.38965 57.372672,100.38965 C59.692752,100.38965 61.572672,98.50965 61.572672,96.1932214 L61.572672,94.51465 C61.572672,92.1965429 59.692752,90.3182214 57.372672,90.3182214 C55.052592,90.3182214 53.172672,92.1965429 53.172672,94.51465 L53.172672,96.1932214 Z" id="Fill-40" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-6)"></path>
+            </g>
+            <g id="Stroke-41-Clipped">
+                <mask id="mask-8" fill="white">
+                    <use xlink:href="#path-7"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M53.172672,96.1932214 C53.172672,98.50965 55.052592,100.38965 57.372672,100.38965 C59.692752,100.38965 61.572672,98.50965 61.572672,96.1932214 L61.572672,94.51465 C61.572672,92.1965429 59.692752,90.3182214 57.372672,90.3182214 C55.052592,90.3182214 53.172672,92.1965429 53.172672,94.51465 L53.172672,96.1932214 Z" id="Stroke-41" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-8)"></path>
+            </g>
+            <g id="Fill-42-Clipped">
+                <mask id="mask-10" fill="white">
+                    <use xlink:href="#path-9"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M57.372672,94.51465 C58.923312,94.51465 60.262272,93.6652929 60.989712,92.4164357 C60.262272,91.1675786 58.923312,90.3182214 57.372672,90.3182214 C55.822032,90.3182214 54.483072,91.1675786 53.755632,92.4164357 C54.483072,93.6652929 55.822032,94.51465 57.372672,94.51465" id="Fill-42" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-10)"></path>
+            </g>
+            <g id="Stroke-43-Clipped">
+                <mask id="mask-12" fill="white">
+                    <use xlink:href="#path-11"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M57.372672,94.51465 C58.923312,94.51465 60.262272,93.6652929 60.989712,92.4164357 C60.262272,91.1675786 58.923312,90.3182214 57.372672,90.3182214 C55.822032,90.3182214 54.483072,91.1675786 53.755632,92.4164357 C54.483072,93.6652929 55.822032,94.51465 57.372672,94.51465 Z" id="Stroke-43" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-12)"></path>
+            </g>
+            <g id="Fill-44-Clipped">
+                <mask id="mask-14" fill="white">
+                    <use xlink:href="#path-13"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M34.692672,94.51465 C34.692672,92.1965429 32.812752,90.3182214 30.492672,90.3182214 C28.172592,90.3182214 26.292672,92.1965429 26.292672,94.51465 C26.292672,94.51465 25.452672,100.38965 22.932672,99.5503643 C22.932672,99.5503643 24.612672,103.746793 30.492672,103.746793 C36.372672,103.746793 38.052672,99.5503643 38.052672,99.5503643 C35.532672,100.38965 34.692672,94.51465 34.692672,94.51465" id="Fill-44" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-14)"></path>
+            </g>
+            <g id="Stroke-45-Clipped">
+                <mask id="mask-16" fill="white">
+                    <use xlink:href="#path-15"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M34.692672,94.51465 C34.692672,92.1965429 32.812752,90.3182214 30.492672,90.3182214 C28.172592,90.3182214 26.292672,92.1965429 26.292672,94.51465 C26.292672,94.51465 25.452672,100.38965 22.932672,99.5503643 C22.932672,99.5503643 24.612672,103.746793 30.492672,103.746793 C36.372672,103.746793 38.052672,99.5503643 38.052672,99.5503643 C35.532672,100.38965 34.692672,94.51465 34.692672,94.51465 Z" id="Stroke-45" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-16)"></path>
+            </g>
+            <g id="Fill-46-Clipped">
+                <mask id="mask-18" fill="white">
+                    <use xlink:href="#path-17"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M26.292672,112.13965 L26.292672,101.665364 C27.493872,100.85965 28.938672,100.38965 30.492672,100.38965 C32.046672,100.38965 33.491472,100.85965 34.692672,101.665364 L34.692672,112.13965 L26.292672,112.13965 Z" id="Fill-46" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-18)"></path>
+            </g>
+            <g id="Stroke-47-Clipped">
+                <mask id="mask-20" fill="white">
+                    <use xlink:href="#path-19"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M26.292672,112.13965 L26.292672,101.665364 C27.493872,100.85965 28.938672,100.38965 30.492672,100.38965 C32.046672,100.38965 33.491472,100.85965 34.692672,101.665364 L34.692672,112.13965 L26.292672,112.13965 Z" id="Stroke-47" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-20)"></path>
+            </g>
+            <g id="Fill-48-Clipped">
+                <mask id="mask-22" fill="white">
+                    <use xlink:href="#path-21"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M21.252672,112.978936 C20.325312,112.978936 19.572672,112.226936 19.572672,111.300364 C19.572672,110.372114 20.325312,109.621793 21.252672,109.621793 C22.180032,109.621793 22.932672,108.869793 22.932672,107.943221 C22.932672,105.322971 24.266592,103.019971 26.292672,101.665364 L26.292672,107.943221 C26.292672,110.722936 24.036432,112.978936 21.252672,112.978936" id="Fill-48" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-22)"></path>
+            </g>
+            <g id="Stroke-49-Clipped">
+                <mask id="mask-24" fill="white">
+                    <use xlink:href="#path-23"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M21.252672,112.978936 C20.325312,112.978936 19.572672,112.226936 19.572672,111.300364 C19.572672,110.372114 20.325312,109.621793 21.252672,109.621793 C22.180032,109.621793 22.932672,108.869793 22.932672,107.943221 C22.932672,105.322971 24.266592,103.019971 26.292672,101.665364 L26.292672,107.943221 C26.292672,110.722936 24.036432,112.978936 21.252672,112.978936 Z" id="Stroke-49" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-24)"></path>
+            </g>
+            <g id="Fill-50-Clipped">
+                <mask id="mask-26" fill="white">
+                    <use xlink:href="#path-25"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M39.732672,112.978936 C40.660032,112.978936 41.412672,112.226936 41.412672,111.300364 C41.412672,110.372114 40.660032,109.621793 39.732672,109.621793 C38.805312,109.621793 38.052672,108.869793 38.052672,107.943221 C38.052672,105.322971 36.718752,103.019971 34.692672,101.665364 L34.692672,107.943221 C34.692672,110.722936 36.948912,112.978936 39.732672,112.978936" id="Fill-50" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-26)"></path>
+            </g>
+            <g id="Stroke-51-Clipped">
+                <mask id="mask-28" fill="white">
+                    <use xlink:href="#path-27"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M39.732672,112.978936 C40.660032,112.978936 41.412672,112.226936 41.412672,111.300364 C41.412672,110.372114 40.660032,109.621793 39.732672,109.621793 C38.805312,109.621793 38.052672,108.869793 38.052672,107.943221 C38.052672,105.322971 36.718752,103.019971 34.692672,101.665364 L34.692672,107.943221 C34.692672,110.722936 36.948912,112.978936 39.732672,112.978936 Z" id="Stroke-51" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-28)"></path>
+            </g>
+            <g id="Group-54-Clipped">
+                <mask id="mask-30" fill="white">
+                    <use xlink:href="#path-29"></use>
+                </mask>
+                <g id="path-1"></g>
+                <g id="Group-54" mask="url(#mask-30)">
+                    <g transform="translate(33.000000, 106.000000)" id="Group">
+                        <g transform="translate(0.600000, 0.750000)">
+                            <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Fill-52" fill="#FFFFFF"></path>
+                            <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Stroke-53" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="Group-57-Clipped">
+                <mask id="mask-32" fill="white">
+                    <use xlink:href="#path-31"></use>
+                </mask>
+                <g id="path-1"></g>
+                <g id="Group-57" mask="url(#mask-32)">
+                    <g transform="translate(25.000000, 106.000000)" id="Group">
+                        <g transform="translate(0.200000, 0.750000)">
+                            <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Fill-55" fill="#FFFFFF"></path>
+                            <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Stroke-56" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="Fill-58-Clipped">
+                <mask id="mask-34" fill="white">
+                    <use xlink:href="#path-33"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M34.692672,112.13965 L35.532672,122.211079 L32.172672,122.211079 C32.172672,122.211079 32.172672,114.657507 30.492672,114.657507 C28.812672,114.657507 28.812672,122.211079 28.812672,122.211079 L25.452672,122.211079 L26.292672,112.13965 L34.692672,112.13965 Z" id="Fill-58" fill="#D6DAFF" fill-rule="nonzero" mask="url(#mask-34)"></path>
+            </g>
+            <g id="Stroke-59-Clipped">
+                <mask id="mask-36" fill="white">
+                    <use xlink:href="#path-35"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M34.692672,112.13965 L35.532672,122.211079 L32.172672,122.211079 C32.172672,122.211079 32.172672,114.657507 30.492672,114.657507 C28.812672,114.657507 28.812672,122.211079 28.812672,122.211079 L25.452672,122.211079 L26.292672,112.13965 L34.692672,112.13965 Z" id="Stroke-59" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-36)"></path>
+            </g>
+            <g id="Fill-60-Clipped">
+                <mask id="mask-38" fill="white">
+                    <use xlink:href="#path-37"></use>
+                </mask>
+                <g id="path-1"></g>
+                <polygon id="Fill-60" fill="#D6DAFF" fill-rule="nonzero" mask="url(#mask-38)" points="26.292 107.943893 34.692 107.943893 34.692 104.58675 26.292 104.58675"></polygon>
+            </g>
+            <g id="Stroke-61-Clipped">
+                <mask id="mask-40" fill="white">
+                    <use xlink:href="#path-39"></use>
+                </mask>
+                <g id="path-1"></g>
+                <polygon id="Stroke-61" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-40)" points="26.292 107.943893 34.692 107.943893 34.692 104.58675 26.292 104.58675"></polygon>
+            </g>
+            <g id="Fill-62-Clipped">
+                <mask id="mask-42" fill="white">
+                    <use xlink:href="#path-41"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M26.292672,96.1932214 C26.292672,98.50965 28.172592,100.38965 30.492672,100.38965 C32.812752,100.38965 34.692672,98.50965 34.692672,96.1932214 L34.692672,94.51465 C34.692672,92.1965429 32.812752,90.3182214 30.492672,90.3182214 C28.172592,90.3182214 26.292672,92.1965429 26.292672,94.51465 L26.292672,96.1932214 Z" id="Fill-62" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-42)"></path>
+            </g>
+            <g id="Stroke-63-Clipped">
+                <mask id="mask-44" fill="white">
+                    <use xlink:href="#path-43"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M26.292672,96.1932214 C26.292672,98.50965 28.172592,100.38965 30.492672,100.38965 C32.812752,100.38965 34.692672,98.50965 34.692672,96.1932214 L34.692672,94.51465 C34.692672,92.1965429 32.812752,90.3182214 30.492672,90.3182214 C28.172592,90.3182214 26.292672,92.1965429 26.292672,94.51465 L26.292672,96.1932214 Z" id="Stroke-63" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-44)"></path>
+            </g>
+            <g id="Fill-64-Clipped">
+                <mask id="mask-46" fill="white">
+                    <use xlink:href="#path-45"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M30.492672,94.51465 C32.043312,94.51465 33.382272,93.6652929 34.109712,92.4164357 C33.382272,91.1675786 32.043312,90.3182214 30.492672,90.3182214 C28.942032,90.3182214 27.603072,91.1675786 26.875632,92.4164357 C27.603072,93.6652929 28.942032,94.51465 30.492672,94.51465" id="Fill-64" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-46)"></path>
+            </g>
+            <g id="Stroke-65-Clipped">
+                <mask id="mask-48" fill="white">
+                    <use xlink:href="#path-47"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M30.492672,94.51465 C32.043312,94.51465 33.382272,93.6652929 34.109712,92.4164357 C33.382272,91.1675786 32.043312,90.3182214 30.492672,90.3182214 C28.942032,90.3182214 27.603072,91.1675786 26.875632,92.4164357 C27.603072,93.6652929 28.942032,94.51465 30.492672,94.51465 Z" id="Stroke-65" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-48)"></path>
+            </g>
+            <g id="Fill-66-Clipped">
+                <mask id="mask-50" fill="white">
+                    <use xlink:href="#path-49"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M115.332672,94.51465 C115.332672,92.1965429 113.452752,90.3182214 111.132672,90.3182214 C108.812592,90.3182214 106.932672,92.1965429 106.932672,94.51465 C106.932672,94.51465 106.092672,100.38965 103.572672,99.5503643 C103.572672,99.5503643 105.252672,103.746793 111.132672,103.746793 C117.012672,103.746793 118.692672,99.5503643 118.692672,99.5503643 C116.172672,100.38965 115.332672,94.51465 115.332672,94.51465" id="Fill-66" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-50)"></path>
+            </g>
+            <g id="Stroke-67-Clipped">
+                <mask id="mask-52" fill="white">
+                    <use xlink:href="#path-51"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M115.332672,94.51465 C115.332672,92.1965429 113.452752,90.3182214 111.132672,90.3182214 C108.812592,90.3182214 106.932672,92.1965429 106.932672,94.51465 C106.932672,94.51465 106.092672,100.38965 103.572672,99.5503643 C103.572672,99.5503643 105.252672,103.746793 111.132672,103.746793 C117.012672,103.746793 118.692672,99.5503643 118.692672,99.5503643 C116.172672,100.38965 115.332672,94.51465 115.332672,94.51465 Z" id="Stroke-67" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-52)"></path>
+            </g>
+            <g id="Fill-68-Clipped">
+                <mask id="mask-54" fill="white">
+                    <use xlink:href="#path-53"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M115.332672,112.13965 L115.332672,101.665364 C114.131472,100.85965 112.686672,100.38965 111.132672,100.38965 C109.578672,100.38965 108.133872,100.85965 106.932672,101.665364 L106.932672,112.13965 L115.332672,112.13965 Z" id="Fill-68" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-54)"></path>
+            </g>
+            <g id="Stroke-69-Clipped">
+                <mask id="mask-56" fill="white">
+                    <use xlink:href="#path-55"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M115.332672,112.13965 L115.332672,101.665364 C114.131472,100.85965 112.686672,100.38965 111.132672,100.38965 C109.578672,100.38965 108.133872,100.85965 106.932672,101.665364 L106.932672,112.13965 L115.332672,112.13965 Z" id="Stroke-69" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-56)"></path>
+            </g>
+            <g id="Fill-70-Clipped">
+                <mask id="mask-58" fill="white">
+                    <use xlink:href="#path-57"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M120.372672,112.978936 C121.300032,112.978936 122.052672,112.226936 122.052672,111.300364 C122.052672,110.372114 121.300032,109.621793 120.372672,109.621793 C119.445312,109.621793 118.692672,108.869793 118.692672,107.943221 C118.692672,105.322971 117.358752,103.019971 115.332672,101.665364 L115.332672,107.943221 C115.332672,110.722936 117.588912,112.978936 120.372672,112.978936" id="Fill-70" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-58)"></path>
+            </g>
+            <g id="Stroke-71-Clipped">
+                <mask id="mask-60" fill="white">
+                    <use xlink:href="#path-59"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M120.372672,112.978936 C121.300032,112.978936 122.052672,112.226936 122.052672,111.300364 C122.052672,110.372114 121.300032,109.621793 120.372672,109.621793 C119.445312,109.621793 118.692672,108.869793 118.692672,107.943221 C118.692672,105.322971 117.358752,103.019971 115.332672,101.665364 L115.332672,107.943221 C115.332672,110.722936 117.588912,112.978936 120.372672,112.978936 Z" id="Stroke-71" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-60)"></path>
+            </g>
+            <g id="Fill-72-Clipped">
+                <mask id="mask-62" fill="white">
+                    <use xlink:href="#path-61"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M101.892672,112.978936 C100.965312,112.978936 100.212672,112.226936 100.212672,111.300364 C100.212672,110.372114 100.965312,109.621793 101.892672,109.621793 C102.820032,109.621793 103.572672,108.869793 103.572672,107.943221 C103.572672,105.322971 104.906592,103.019971 106.932672,101.665364 L106.932672,107.943221 C106.932672,110.722936 104.676432,112.978936 101.892672,112.978936" id="Fill-72" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-62)"></path>
+            </g>
+            <g id="Stroke-73-Clipped">
+                <mask id="mask-64" fill="white">
+                    <use xlink:href="#path-63"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M101.892672,112.978936 C100.965312,112.978936 100.212672,112.226936 100.212672,111.300364 C100.212672,110.372114 100.965312,109.621793 101.892672,109.621793 C102.820032,109.621793 103.572672,108.869793 103.572672,107.943221 C103.572672,105.322971 104.906592,103.019971 106.932672,101.665364 L106.932672,107.943221 C106.932672,110.722936 104.676432,112.978936 101.892672,112.978936 Z" id="Stroke-73" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-64)"></path>
+            </g>
+            <g id="Group-76-Clipped">
+                <mask id="mask-66" fill="white">
+                    <use xlink:href="#path-65"></use>
+                </mask>
+                <g id="path-1"></g>
+                <g id="Group-76" mask="url(#mask-66)">
+                    <g transform="translate(105.000000, 106.000000)" id="Group">
+                        <g transform="translate(0.840000, 0.750000)">
+                            <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Fill-74" fill="#FFFFFF"></path>
+                            <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Stroke-75" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="Group-79-Clipped">
+                <mask id="mask-68" fill="white">
+                    <use xlink:href="#path-67"></use>
+                </mask>
+                <g id="path-1"></g>
+                <g id="Group-79" mask="url(#mask-68)">
+                    <g transform="translate(114.000000, 106.000000)" id="Group">
+                        <g transform="translate(0.240000, 0.750000)">
+                            <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Fill-77" fill="#FFFFFF"></path>
+                            <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Stroke-78" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="Fill-80-Clipped">
+                <mask id="mask-70" fill="white">
+                    <use xlink:href="#path-69"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M106.932672,112.13965 L106.092672,122.211079 L109.452672,122.211079 C109.452672,122.211079 109.452672,114.657507 111.132672,114.657507 C112.812672,114.657507 112.812672,122.211079 112.812672,122.211079 L116.172672,122.211079 L115.332672,112.13965 L106.932672,112.13965 Z" id="Fill-80" fill="#D6DAFF" fill-rule="nonzero" mask="url(#mask-70)"></path>
+            </g>
+            <g id="Stroke-81-Clipped">
+                <mask id="mask-72" fill="white">
+                    <use xlink:href="#path-71"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M106.932672,112.13965 L106.092672,122.211079 L109.452672,122.211079 C109.452672,122.211079 109.452672,114.657507 111.132672,114.657507 C112.812672,114.657507 112.812672,122.211079 112.812672,122.211079 L116.172672,122.211079 L115.332672,112.13965 L106.932672,112.13965 Z" id="Stroke-81" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-72)"></path>
+            </g>
+            <g id="Fill-82-Clipped">
+                <mask id="mask-74" fill="white">
+                    <use xlink:href="#path-73"></use>
+                </mask>
+                <g id="path-1"></g>
+                <polygon id="Fill-82" fill="#D6DAFF" fill-rule="nonzero" mask="url(#mask-74)" points="106.932 107.943893 115.332 107.943893 115.332 104.58675 106.932 104.58675"></polygon>
+            </g>
+            <g id="Stroke-83-Clipped">
+                <mask id="mask-76" fill="white">
+                    <use xlink:href="#path-75"></use>
+                </mask>
+                <g id="path-1"></g>
+                <polygon id="Stroke-83" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-76)" points="106.932 107.943893 115.332 107.943893 115.332 104.58675 106.932 104.58675"></polygon>
+            </g>
+            <g id="Fill-84-Clipped">
+                <mask id="mask-78" fill="white">
+                    <use xlink:href="#path-77"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M115.332672,96.1932214 C115.332672,98.50965 113.452752,100.38965 111.132672,100.38965 C108.812592,100.38965 106.932672,98.50965 106.932672,96.1932214 L106.932672,94.51465 C106.932672,92.1965429 108.812592,90.3182214 111.132672,90.3182214 C113.452752,90.3182214 115.332672,92.1965429 115.332672,94.51465 L115.332672,96.1932214 Z" id="Fill-84" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-78)"></path>
+            </g>
+            <g id="Stroke-85-Clipped">
+                <mask id="mask-80" fill="white">
+                    <use xlink:href="#path-79"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M115.332672,96.1932214 C115.332672,98.50965 113.452752,100.38965 111.132672,100.38965 C108.812592,100.38965 106.932672,98.50965 106.932672,96.1932214 L106.932672,94.51465 C106.932672,92.1965429 108.812592,90.3182214 111.132672,90.3182214 C113.452752,90.3182214 115.332672,92.1965429 115.332672,94.51465 L115.332672,96.1932214 Z" id="Stroke-85" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-80)"></path>
+            </g>
+            <g id="Fill-86-Clipped">
+                <mask id="mask-82" fill="white">
+                    <use xlink:href="#path-81"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M111.132672,94.51465 C109.582032,94.51465 108.243072,93.6652929 107.515632,92.4164357 C108.243072,91.1675786 109.582032,90.3182214 111.132672,90.3182214 C112.683312,90.3182214 114.022272,91.1675786 114.749712,92.4164357 C114.022272,93.6652929 112.683312,94.51465 111.132672,94.51465" id="Fill-86" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-82)"></path>
+            </g>
+            <g id="Stroke-87-Clipped">
+                <mask id="mask-84" fill="white">
+                    <use xlink:href="#path-83"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M111.132672,94.51465 C109.582032,94.51465 108.243072,93.6652929 107.515632,92.4164357 C108.243072,91.1675786 109.582032,90.3182214 111.132672,90.3182214 C112.683312,90.3182214 114.022272,91.1675786 114.749712,92.4164357 C114.022272,93.6652929 112.683312,94.51465 111.132672,94.51465 Z" id="Stroke-87" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-84)"></path>
+            </g>
+            <g id="Fill-88-Clipped">
+                <mask id="mask-86" fill="white">
+                    <use xlink:href="#path-85"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M142.212672,94.51465 C142.212672,92.1965429 140.332752,90.3182214 138.012672,90.3182214 C135.692592,90.3182214 133.812672,92.1965429 133.812672,94.51465 C133.812672,94.51465 132.972672,100.38965 130.452672,99.5503643 C130.452672,99.5503643 132.132672,103.746793 138.012672,103.746793 C143.892672,103.746793 145.572672,99.5503643 145.572672,99.5503643 C143.052672,100.38965 142.212672,94.51465 142.212672,94.51465" id="Fill-88" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-86)"></path>
+            </g>
+            <g id="Stroke-89-Clipped">
+                <mask id="mask-88" fill="white">
+                    <use xlink:href="#path-87"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M142.212672,94.51465 C142.212672,92.1965429 140.332752,90.3182214 138.012672,90.3182214 C135.692592,90.3182214 133.812672,92.1965429 133.812672,94.51465 C133.812672,94.51465 132.972672,100.38965 130.452672,99.5503643 C130.452672,99.5503643 132.132672,103.746793 138.012672,103.746793 C143.892672,103.746793 145.572672,99.5503643 145.572672,99.5503643 C143.052672,100.38965 142.212672,94.51465 142.212672,94.51465 Z" id="Stroke-89" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-88)"></path>
+            </g>
+            <g id="Fill-90-Clipped">
+                <mask id="mask-90" fill="white">
+                    <use xlink:href="#path-89"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M142.212672,112.13965 L142.212672,101.665364 C141.011472,100.85965 139.566672,100.38965 138.012672,100.38965 C136.458672,100.38965 135.013872,100.85965 133.812672,101.665364 L133.812672,112.13965 L142.212672,112.13965 Z" id="Fill-90" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-90)"></path>
+            </g>
+            <g id="Stroke-91-Clipped">
+                <mask id="mask-92" fill="white">
+                    <use xlink:href="#path-91"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M142.212672,112.13965 L142.212672,101.665364 C141.011472,100.85965 139.566672,100.38965 138.012672,100.38965 C136.458672,100.38965 135.013872,100.85965 133.812672,101.665364 L133.812672,112.13965 L142.212672,112.13965 Z" id="Stroke-91" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-92)"></path>
+            </g>
+            <g id="Fill-92-Clipped">
+                <mask id="mask-94" fill="white">
+                    <use xlink:href="#path-93"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M147.252672,112.978936 C148.180032,112.978936 148.932672,112.226936 148.932672,111.300364 C148.932672,110.372114 148.180032,109.621793 147.252672,109.621793 C146.325312,109.621793 145.572672,108.869793 145.572672,107.943221 C145.572672,105.322971 144.238752,103.019971 142.212672,101.665364 L142.212672,107.943221 C142.212672,110.722936 144.468912,112.978936 147.252672,112.978936" id="Fill-92" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-94)"></path>
+            </g>
+            <g id="Stroke-93-Clipped">
+                <mask id="mask-96" fill="white">
+                    <use xlink:href="#path-95"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M147.252672,112.978936 C148.180032,112.978936 148.932672,112.226936 148.932672,111.300364 C148.932672,110.372114 148.180032,109.621793 147.252672,109.621793 C146.325312,109.621793 145.572672,108.869793 145.572672,107.943221 C145.572672,105.322971 144.238752,103.019971 142.212672,101.665364 L142.212672,107.943221 C142.212672,110.722936 144.468912,112.978936 147.252672,112.978936 Z" id="Stroke-93" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-96)"></path>
+            </g>
+            <g id="Fill-94-Clipped">
+                <mask id="mask-98" fill="white">
+                    <use xlink:href="#path-97"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M128.772672,112.978936 C127.845312,112.978936 127.092672,112.226936 127.092672,111.300364 C127.092672,110.372114 127.845312,109.621793 128.772672,109.621793 C129.700032,109.621793 130.452672,108.869793 130.452672,107.943221 C130.452672,105.322971 131.786592,103.019971 133.812672,101.665364 L133.812672,107.943221 C133.812672,110.722936 131.556432,112.978936 128.772672,112.978936" id="Fill-94" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-98)"></path>
+            </g>
+            <g id="Stroke-95-Clipped">
+                <mask id="mask-100" fill="white">
+                    <use xlink:href="#path-99"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M128.772672,112.978936 C127.845312,112.978936 127.092672,112.226936 127.092672,111.300364 C127.092672,110.372114 127.845312,109.621793 128.772672,109.621793 C129.700032,109.621793 130.452672,108.869793 130.452672,107.943221 C130.452672,105.322971 131.786592,103.019971 133.812672,101.665364 L133.812672,107.943221 C133.812672,110.722936 131.556432,112.978936 128.772672,112.978936 Z" id="Stroke-95" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-100)"></path>
+            </g>
+            <g id="Group-98-Clipped">
+                <mask id="mask-102" fill="white">
+                    <use xlink:href="#path-101"></use>
+                </mask>
+                <g id="path-1"></g>
+                <g id="Group-98" mask="url(#mask-102)">
+                    <g transform="translate(132.000000, 106.000000)" id="Group">
+                        <g transform="translate(0.720000, 0.750000)">
+                            <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Fill-96" fill="#FFFFFF"></path>
+                            <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Stroke-97" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="Group-101-Clipped">
+                <mask id="mask-104" fill="white">
+                    <use xlink:href="#path-103"></use>
+                </mask>
+                <g id="path-1"></g>
+                <g id="Group-101" mask="url(#mask-104)">
+                    <g transform="translate(141.000000, 106.000000)" id="Group">
+                        <g transform="translate(0.120000, 0.750000)">
+                            <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Fill-99" fill="#FFFFFF"></path>
+                            <path d="M1.092672,5.38965 L1.092672,0.35393571" id="Stroke-100" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="Fill-102-Clipped">
+                <mask id="mask-106" fill="white">
+                    <use xlink:href="#path-105"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M133.812672,112.13965 L132.972672,122.211079 L136.332672,122.211079 C136.332672,122.211079 136.332672,114.657507 138.012672,114.657507 C139.692672,114.657507 139.692672,122.211079 139.692672,122.211079 L143.052672,122.211079 L142.212672,112.13965 L133.812672,112.13965 Z" id="Fill-102" fill="#D6DAFF" fill-rule="nonzero" mask="url(#mask-106)"></path>
+            </g>
+            <g id="Stroke-103-Clipped">
+                <mask id="mask-108" fill="white">
+                    <use xlink:href="#path-107"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M133.812672,112.13965 L132.972672,122.211079 L136.332672,122.211079 C136.332672,122.211079 136.332672,114.657507 138.012672,114.657507 C139.692672,114.657507 139.692672,122.211079 139.692672,122.211079 L143.052672,122.211079 L142.212672,112.13965 L133.812672,112.13965 Z" id="Stroke-103" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-108)"></path>
+            </g>
+            <g id="Fill-104-Clipped">
+                <mask id="mask-110" fill="white">
+                    <use xlink:href="#path-109"></use>
+                </mask>
+                <g id="path-1"></g>
+                <polygon id="Fill-104" fill="#D6DAFF" fill-rule="nonzero" mask="url(#mask-110)" points="133.812 107.943893 142.212 107.943893 142.212 104.58675 133.812 104.58675"></polygon>
+            </g>
+            <g id="Stroke-105-Clipped">
+                <mask id="mask-112" fill="white">
+                    <use xlink:href="#path-111"></use>
+                </mask>
+                <g id="path-1"></g>
+                <polygon id="Stroke-105" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-112)" points="133.812 107.943893 142.212 107.943893 142.212 104.58675 133.812 104.58675"></polygon>
+            </g>
+            <g id="Fill-106-Clipped">
+                <mask id="mask-114" fill="white">
+                    <use xlink:href="#path-113"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M142.212672,96.1932214 C142.212672,98.50965 140.332752,100.38965 138.012672,100.38965 C135.692592,100.38965 133.812672,98.50965 133.812672,96.1932214 L133.812672,94.51465 C133.812672,92.1965429 135.692592,90.3182214 138.012672,90.3182214 C140.332752,90.3182214 142.212672,92.1965429 142.212672,94.51465 L142.212672,96.1932214 Z" id="Fill-106" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-114)"></path>
+            </g>
+            <g id="Stroke-107-Clipped">
+                <mask id="mask-116" fill="white">
+                    <use xlink:href="#path-115"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M142.212672,96.1932214 C142.212672,98.50965 140.332752,100.38965 138.012672,100.38965 C135.692592,100.38965 133.812672,98.50965 133.812672,96.1932214 L133.812672,94.51465 C133.812672,92.1965429 135.692592,90.3182214 138.012672,90.3182214 C140.332752,90.3182214 142.212672,92.1965429 142.212672,94.51465 L142.212672,96.1932214 Z" id="Stroke-107" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-116)"></path>
+            </g>
+            <g id="Fill-108-Clipped">
+                <mask id="mask-118" fill="white">
+                    <use xlink:href="#path-117"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M138.012672,94.51465 C136.462032,94.51465 135.123072,93.6652929 134.395632,92.4164357 C135.123072,91.1675786 136.462032,90.3182214 138.012672,90.3182214 C139.563312,90.3182214 140.902272,91.1675786 141.629712,92.4164357 C140.902272,93.6652929 139.563312,94.51465 138.012672,94.51465" id="Fill-108" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-118)"></path>
+            </g>
+            <g id="Stroke-109-Clipped">
+                <mask id="mask-120" fill="white">
+                    <use xlink:href="#path-119"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M138.012672,94.51465 C136.462032,94.51465 135.123072,93.6652929 134.395632,92.4164357 C135.123072,91.1675786 136.462032,90.3182214 138.012672,90.3182214 C139.563312,90.3182214 140.902272,91.1675786 141.629712,92.4164357 C140.902272,93.6652929 139.563312,94.51465 138.012672,94.51465 Z" id="Stroke-109" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-120)"></path>
+            </g>
+            <g id="Fill-110-Clipped">
+                <mask id="mask-122" fill="white">
+                    <use xlink:href="#path-121"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M109.999848,146.171846 C109.999848,147.771525 98.755608,149.069061 84.883848,149.069061 C71.012088,149.069061 59.767848,147.771525 59.767848,146.171846 C59.767848,144.573846 71.012088,143.276311 84.883848,143.276311 C98.755608,143.276311 109.999848,144.573846 109.999848,146.171846" id="Fill-110" fill="#F0F2FF" fill-rule="nonzero" mask="url(#mask-122)"></path>
+            </g>
+            <g id="Fill-111-Clipped">
+                <mask id="mask-124" fill="white">
+                    <use xlink:href="#path-123"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M74.977392,135.554546 L65.031792,135.554546 C65.100672,136.417332 65.206512,137.275082 65.349312,138.134511 L66.530352,145.206332 L73.174752,145.206332 C74.286912,145.206332 75.168912,144.271368 75.103392,143.163511 L74.886672,139.482404 C74.809392,138.164725 74.841312,136.848725 74.977392,135.554546" id="Fill-111" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-124)"></path>
+            </g>
+            <g id="Stroke-112-Clipped">
+                <mask id="mask-126" fill="white">
+                    <use xlink:href="#path-125"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M74.977392,135.554546 L65.031792,135.554546 C65.100672,136.417332 65.206512,137.275082 65.349312,138.134511 L66.530352,145.206332 L73.174752,145.206332 C74.286912,145.206332 75.168912,144.271368 75.103392,143.163511 L74.886672,139.482404 C74.809392,138.164725 74.841312,136.848725 74.977392,135.554546 Z" id="Stroke-112" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-126)"></path>
+            </g>
+            <g id="Fill-113-Clipped">
+                <mask id="mask-128" fill="white">
+                    <use xlink:href="#path-127"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M88.441248,135.554546 L88.688208,143.338082 C88.721808,144.380475 89.576928,145.206332 90.618528,145.206332 L97.441008,145.206332 L97.441008,135.554546 L88.441248,135.554546 Z" id="Fill-113" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-128)"></path>
+            </g>
+            <g id="Stroke-114-Clipped">
+                <mask id="mask-130" fill="white">
+                    <use xlink:href="#path-129"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M88.441248,135.554546 L88.688208,143.338082 C88.721808,144.380475 89.576928,145.206332 90.618528,145.206332 L97.441008,145.206332 L97.441008,135.554546 L88.441248,135.554546 Z" id="Stroke-114" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-130)"></path>
+            </g>
+            <g id="Fill-115-Clipped">
+                <mask id="mask-132" fill="white">
+                    <use xlink:href="#path-131"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M72.327696,111.426593 L97.440336,111.426593 C100.340016,114.322129 99.374016,124.939093 97.442016,129.764986 L97.440336,135.554379 L88.438896,135.554379 L88.255776,129.764986 C86.742096,128.813236 85.342656,123.007057 83.918016,123.007057 C83.918016,123.007057 80.054016,128.799807 78.122016,128.799807 L76.589856,134.15445 C76.352976,134.983664 75.595296,135.554379 74.731776,135.554379 L64.598016,135.554379 L64.598016,128.799807 C63.005376,123.490486 65.940336,114.432914 72.327696,111.426593" id="Fill-115" fill="#D6DAFF" fill-rule="nonzero" mask="url(#mask-132)"></path>
+            </g>
+            <g id="Stroke-116-Clipped">
+                <mask id="mask-134" fill="white">
+                    <use xlink:href="#path-133"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M72.327696,111.426593 L97.440336,111.426593 C100.340016,114.322129 99.374016,124.939093 97.442016,129.764986 L97.440336,135.554379 L88.438896,135.554379 L88.255776,129.764986 C86.742096,128.813236 85.342656,123.007057 83.918016,123.007057 C83.918016,123.007057 80.054016,128.799807 78.122016,128.799807 L76.589856,134.15445 C76.352976,134.983664 75.595296,135.554379 74.731776,135.554379 L64.598016,135.554379 L64.598016,128.799807 C63.005376,123.490486 65.940336,114.432914 72.327696,111.426593 Z" id="Stroke-116" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-134)"></path>
+            </g>
+            <g id="Fill-117-Clipped">
+                <mask id="mask-136" fill="white">
+                    <use xlink:href="#path-135"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M100.228296,145.206332 C100.839816,145.206332 101.308536,144.642332 101.185896,144.044761 C100.648296,141.402689 98.309736,139.416939 95.507496,139.416939 L88.564056,139.416939 L88.686696,143.338082 C88.718616,144.378796 89.575416,145.206332 90.618696,145.206332 L100.228296,145.206332 Z" id="Fill-117" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-136)"></path>
+            </g>
+            <g id="Stroke-118-Clipped">
+                <mask id="mask-138" fill="white">
+                    <use xlink:href="#path-137"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M100.228296,145.206332 C100.839816,145.206332 101.308536,144.642332 101.185896,144.044761 C100.648296,141.402689 98.309736,139.416939 95.507496,139.416939 L88.564056,139.416939 L88.686696,143.338082 C88.718616,144.378796 89.575416,145.206332 90.618696,145.206332 L100.228296,145.206332 Z" id="Stroke-118" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-138)"></path>
+            </g>
+            <g id="Fill-119-Clipped">
+                <mask id="mask-140" fill="white">
+                    <use xlink:href="#path-139"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M61.80972,145.206332 C61.1982,145.206332 60.7278,144.642332 60.85044,144.044761 C61.38972,141.402689 63.72828,139.416939 66.53052,139.416939 L74.88684,139.416939 L75.10524,143.165189 C75.16908,144.273046 74.28708,145.206332 73.1766,145.206332 L61.80972,145.206332 Z" id="Fill-119" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-140)"></path>
+            </g>
+            <g id="Stroke-120-Clipped">
+                <mask id="mask-142" fill="white">
+                    <use xlink:href="#path-141"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M61.80972,145.206332 C61.1982,145.206332 60.7278,144.642332 60.85044,144.044761 C61.38972,141.402689 63.72828,139.416939 66.53052,139.416939 L74.88684,139.416939 L75.10524,143.165189 C75.16908,144.273046 74.28708,145.206332 73.1766,145.206332 L61.80972,145.206332 Z" id="Stroke-120" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-142)"></path>
+            </g>
+            <g id="Fill-121-Clipped">
+                <mask id="mask-144" fill="white">
+                    <use xlink:href="#path-143"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M92.674008,73.7849643 C89.626488,82.0888571 84.882168,95.0172143 84.882168,95.0172143 L77.251608,74.2281071 C63.178248,75.8798214 55.446888,81.9881429 52.118808,87.3763571 L57.951768,93.2043571 C64.522248,83.1748929 72.324168,89.2261429 72.324168,89.2261429 L72.324168,111.426929 L78.946728,114.735393 C79.620408,115.071107 80.428488,114.9855 81.018168,114.5155 L84.882168,111.426929 L88.746168,114.5155 C89.335848,114.9855 90.143928,115.071107 90.817608,114.735393 L97.440168,111.426929 L97.440168,89.2295 C97.440168,80.5395357 104.202168,73.7849643 104.202168,73.7849643 L92.674008,73.7849643 Z" id="Fill-121" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-144)"></path>
+            </g>
+            <g id="Stroke-122-Clipped">
+                <mask id="mask-146" fill="white">
+                    <use xlink:href="#path-145"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M92.674008,73.7849643 C89.626488,82.0888571 84.882168,95.0172143 84.882168,95.0172143 L77.251608,74.2281071 C63.178248,75.8798214 55.446888,81.9881429 52.118808,87.3763571 L57.951768,93.2043571 C64.522248,83.1748929 72.324168,89.2261429 72.324168,89.2261429 L72.324168,111.426929 L78.946728,114.735393 C79.620408,115.071107 80.428488,114.9855 81.018168,114.5155 L84.882168,111.426929 L88.746168,114.5155 C89.335848,114.9855 90.143928,115.071107 90.817608,114.735393 L97.440168,111.426929 L97.440168,89.2295 C97.440168,80.5395357 104.202168,73.7849643 104.202168,73.7849643 L92.674008,73.7849643 Z" id="Stroke-122" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-146)"></path>
+            </g>
+            <g id="Stroke-123-Clipped">
+                <mask id="mask-148" fill="white">
+                    <use xlink:href="#path-147"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M84.881832,95.0178857 L84.881832,111.425921" id="Stroke-123" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-148)"></path>
+            </g>
+            <g id="Fill-124-Clipped">
+                <mask id="mask-150" fill="white">
+                    <use xlink:href="#path-149"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M71.066184,75.3341179 L79.430904,94.5537607 C79.792104,95.3880107 80.689224,95.8563321 81.581304,95.6784036 L84.882504,95.018725 L77.251944,74.2279393 C75.030984,74.4897964 72.969624,74.8607607 71.056104,75.3223679 L71.066184,75.3341179 Z" id="Fill-124" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-150)"></path>
+            </g>
+            <g id="Stroke-125-Clipped">
+                <mask id="mask-152" fill="white">
+                    <use xlink:href="#path-151"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M71.066184,75.3341179 L79.430904,94.5537607 C79.792104,95.3880107 80.689224,95.8563321 81.581304,95.6784036 L84.882504,95.018725 L77.251944,74.2279393 C75.030984,74.4897964 72.969624,74.8607607 71.056104,75.3223679 L71.066184,75.3341179 Z" id="Stroke-125" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-152)"></path>
+            </g>
+            <g id="Fill-126-Clipped">
+                <mask id="mask-154" fill="white">
+                    <use xlink:href="#path-153"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M99.371832,73.7849643 L92.673672,73.7849643 C89.626152,82.0888571 84.881832,95.0172143 84.881832,95.0172143 L88.183032,95.6768929 C89.075112,95.8548214 89.970552,95.3881786 90.333432,94.5539286 L99.371832,73.7849643 Z" id="Fill-126" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-154)"></path>
+            </g>
+            <g id="Stroke-127-Clipped">
+                <mask id="mask-156" fill="white">
+                    <use xlink:href="#path-155"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M99.371832,73.7849643 L92.673672,73.7849643 C89.626152,82.0888571 84.881832,95.0172143 84.881832,95.0172143 L88.183032,95.6768929 C89.075112,95.8548214 89.970552,95.3881786 90.333432,94.5539286 L99.371832,73.7849643 Z" id="Stroke-127" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-156)"></path>
+            </g>
+            <g id="Fill-128-Clipped">
+                <mask id="mask-158" fill="white">
+                    <use xlink:href="#path-157"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M89.711832,98.8782643 C88.645032,98.8782643 87.779832,99.7427286 87.779832,100.808621 C87.779832,101.874514 88.645032,102.738979 89.711832,102.738979 C90.778632,102.738979 91.643832,101.874514 91.643832,100.808621 C91.643832,99.7427286 90.778632,98.8782643 89.711832,98.8782643 M89.711832,100.556836 C89.851272,100.556836 89.963832,100.6693 89.963832,100.808621 C89.963832,100.947943 89.851272,101.060407 89.711832,101.060407 C89.572392,101.060407 89.459832,100.947943 89.459832,100.808621 C89.459832,100.6693 89.572392,100.556836 89.711832,100.556836" id="Fill-128" fill="#4550E6" fill-rule="nonzero" mask="url(#mask-158)"></path>
+            </g>
+            <g id="Fill-129-Clipped">
+                <mask id="mask-160" fill="white">
+                    <use xlink:href="#path-159"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M80.051832,98.8782643 C78.985032,98.8782643 78.119832,99.7427286 78.119832,100.808621 C78.119832,101.874514 78.985032,102.738979 80.051832,102.738979 C81.118632,102.738979 81.983832,101.874514 81.983832,100.808621 C81.983832,99.7427286 81.118632,98.8782643 80.051832,98.8782643 M80.051832,100.556836 C80.191272,100.556836 80.303832,100.6693 80.303832,100.808621 C80.303832,100.947943 80.191272,101.060407 80.051832,101.060407 C79.912392,101.060407 79.799832,100.947943 79.799832,100.808621 C79.799832,100.6693 79.912392,100.556836 80.051832,100.556836" id="Fill-129" fill="#4550E6" fill-rule="nonzero" mask="url(#mask-160)"></path>
+            </g>
+            <g id="Fill-130-Clipped">
+                <mask id="mask-162" fill="white">
+                    <use xlink:href="#path-161"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M89.711832,104.669671 C88.645032,104.669671 87.779832,105.534136 87.779832,106.600029 C87.779832,107.665921 88.645032,108.530386 89.711832,108.530386 C90.778632,108.530386 91.643832,107.665921 91.643832,106.600029 C91.643832,105.534136 90.778632,104.669671 89.711832,104.669671 M89.711832,106.348243 C89.851272,106.348243 89.963832,106.460707 89.963832,106.600029 C89.963832,106.737671 89.851272,106.851814 89.711832,106.851814 C89.572392,106.851814 89.459832,106.737671 89.459832,106.600029 C89.459832,106.460707 89.572392,106.348243 89.711832,106.348243" id="Fill-130" fill="#4550E6" fill-rule="nonzero" mask="url(#mask-162)"></path>
+            </g>
+            <g id="Fill-131-Clipped">
+                <mask id="mask-164" fill="white">
+                    <use xlink:href="#path-163"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M80.051832,104.669671 C78.985032,104.669671 78.119832,105.534136 78.119832,106.600029 C78.119832,107.665921 78.985032,108.530386 80.051832,108.530386 C81.118632,108.530386 81.983832,107.665921 81.983832,106.600029 C81.983832,105.534136 81.118632,104.669671 80.051832,104.669671 M80.051832,106.348243 C80.191272,106.348243 80.303832,106.460707 80.303832,106.600029 C80.303832,106.737671 80.191272,106.851814 80.051832,106.851814 C79.912392,106.851814 79.799832,106.737671 79.799832,106.600029 C79.799832,106.460707 79.912392,106.348243 80.051832,106.348243" id="Fill-131" fill="#4550E6" fill-rule="nonzero" mask="url(#mask-164)"></path>
+            </g>
+            <g id="Fill-132-Clipped">
+                <mask id="mask-166" fill="white">
+                    <use xlink:href="#path-165"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M92.674008,73.7849643 L84.883848,73.7849643 C82.145448,73.7849643 79.618728,73.9511429 77.251608,74.2281071 L84.882168,95.0172143 C84.882168,95.0172143 89.626488,82.0888571 92.674008,73.7849643" id="Fill-132" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-166)"></path>
+            </g>
+            <g id="Stroke-133-Clipped">
+                <mask id="mask-168" fill="white">
+                    <use xlink:href="#path-167"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M92.674008,73.7849643 L84.883848,73.7849643 C82.145448,73.7849643 79.618728,73.9511429 77.251608,74.2281071 L84.882168,95.0172143 C84.882168,95.0172143 89.626488,82.0888571 92.674008,73.7849643 Z" id="Stroke-133" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-168)"></path>
+            </g>
+            <g id="Fill-134-Clipped">
+                <mask id="mask-170" fill="white">
+                    <use xlink:href="#path-169"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M106.586424,74.1898357 C105.885864,70.8847286 102.786264,70.55405 100.960104,70.9401214 L85.663704,75.0073 L88.081224,81.7702643 L102.762744,79.4404071 C104.588904,79.0509786 107.286984,77.4949429 106.586424,74.1898357" id="Fill-134" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-170)"></path>
+            </g>
+            <g id="Stroke-135-Clipped">
+                <mask id="mask-172" fill="white">
+                    <use xlink:href="#path-171"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M106.586424,74.1898357 C105.885864,70.8847286 102.786264,70.55405 100.960104,70.9401214 L85.663704,75.0073 L88.081224,81.7702643 L102.762744,79.4404071 C104.588904,79.0509786 107.286984,77.4949429 106.586424,74.1898357 Z" id="Stroke-135" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-172)"></path>
+            </g>
+            <g id="Fill-136-Clipped">
+                <mask id="mask-174" fill="white">
+                    <use xlink:href="#path-173"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M51.071832,95.9834 C54.935832,98.8789357 56.867832,95.0182214 56.867832,95.0182214 C57.223992,94.3568643 57.585192,93.76265 57.951432,93.2053643 L52.118472,87.3756857 C49.680792,91.31865 49.585032,94.8688286 51.071832,95.9834" id="Fill-136" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-174)"></path>
+            </g>
+            <g id="Stroke-137-Clipped">
+                <mask id="mask-176" fill="white">
+                    <use xlink:href="#path-175"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M51.071832,95.9834 C54.935832,98.8789357 56.867832,95.0182214 56.867832,95.0182214 C57.223992,94.3568643 57.585192,93.76265 57.951432,93.2053643 L52.118472,87.3756857 C49.680792,91.31865 49.585032,94.8688286 51.071832,95.9834 Z" id="Stroke-137" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-176)"></path>
+            </g>
+            <g id="Fill-138-Clipped">
+                <mask id="mask-178" fill="white">
+                    <use xlink:href="#path-177"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M82.732608,75.7864929 C80.906448,76.1725643 79.738848,77.9669571 80.126928,79.7932429 C80.513328,81.61785 82.307568,82.7844571 84.133728,82.3967071 L88.081728,81.7689214 L85.664208,75.0076357 L82.732608,75.7864929 Z" id="Fill-138" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-178)"></path>
+            </g>
+            <g id="Stroke-139-Clipped">
+                <mask id="mask-180" fill="white">
+                    <use xlink:href="#path-179"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M82.732608,75.7864929 C80.906448,76.1725643 79.738848,77.9669571 80.126928,79.7932429 C80.513328,81.61785 82.307568,82.7844571 84.133728,82.3967071 L88.081728,81.7689214 L85.664208,75.0076357 L82.732608,75.7864929 Z" id="Stroke-139" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-180)"></path>
+            </g>
+            <g id="Fill-140-Clipped">
+                <mask id="mask-182" fill="white">
+                    <use xlink:href="#path-181"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M98.407176,58.3417714 C98.407176,57.1802 97.568856,56.2569857 96.475176,56.0253429 L96.475176,54.4810571 C96.475176,48.0840214 91.285656,42.8989143 84.883176,42.8989143 C78.482376,42.8989143 73.291176,48.0840214 73.291176,54.4810571 L73.291176,56.0253429 C72.197496,56.2569857 71.359176,57.1802 71.359176,58.3417714 C71.359176,59.58895 72.320136,60.5809857 73.534776,60.7052 C74.628456,65.9692 79.293816,69.9222357 84.883176,69.9222357 C90.474216,69.9222357 95.139576,65.9692 96.233256,60.7052 C97.447896,60.5809857 98.407176,59.58895 98.407176,58.3417714" id="Fill-140" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-182)"></path>
+            </g>
+            <g id="Stroke-141-Clipped">
+                <mask id="mask-184" fill="white">
+                    <use xlink:href="#path-183"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M98.407176,58.3417714 C98.407176,57.1802 97.568856,56.2569857 96.475176,56.0253429 L96.475176,54.4810571 C96.475176,48.0840214 91.285656,42.8989143 84.883176,42.8989143 C78.482376,42.8989143 73.291176,48.0840214 73.291176,54.4810571 L73.291176,56.0253429 C72.197496,56.2569857 71.359176,57.1802 71.359176,58.3417714 C71.359176,59.58895 72.320136,60.5809857 73.534776,60.7052 C74.628456,65.9692 79.293816,69.9222357 84.883176,69.9222357 C90.474216,69.9222357 95.139576,65.9692 96.233256,60.7052 C97.447896,60.5809857 98.407176,59.58895 98.407176,58.3417714 Z" id="Stroke-141" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-184)"></path>
+            </g>
+            <g id="Fill-142-Clipped">
+                <mask id="mask-186" fill="white">
+                    <use xlink:href="#path-185"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M80.053512,59.7892036 C80.053512,60.5898821 79.405032,61.2361321 78.605352,61.2361321 C77.803992,61.2361321 77.155512,60.5898821 77.155512,59.7892036 C77.155512,58.988525 77.803992,58.342275 78.605352,58.342275 C79.405032,58.342275 80.053512,58.988525 80.053512,59.7892036" id="Fill-142" fill="#D6DAFF" fill-rule="nonzero" mask="url(#mask-186)"></path>
+            </g>
+            <g id="Fill-143-Clipped">
+                <mask id="mask-188" fill="white">
+                    <use xlink:href="#path-187"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M92.61168,59.7892036 C92.61168,60.5898821 91.9632,61.2361321 91.16352,61.2361321 C90.36216,61.2361321 89.71368,60.5898821 89.71368,59.7892036 C89.71368,58.988525 90.36216,58.342275 91.16352,58.342275 C91.9632,58.342275 92.61168,58.988525 92.61168,59.7892036" id="Fill-143" fill="#D6DAFF" fill-rule="nonzero" mask="url(#mask-188)"></path>
+            </g>
+            <g id="Stroke-144-Clipped">
+                <mask id="mask-190" fill="white">
+                    <use xlink:href="#path-189"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M81.985344,63.2562929 C83.740944,64.4245786 86.027424,64.4245786 87.781344,63.2562929" id="Stroke-144" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-190)"></path>
+            </g>
+            <g id="Fill-145-Clipped">
+                <mask id="mask-192" fill="white">
+                    <use xlink:href="#path-191"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M84.883512,42.8985786 C78.481032,42.8985786 73.291512,48.0836857 73.291512,54.4807214 L73.291512,55.5399 C75.618312,55.2041857 76.197912,54.0845786 76.475112,52.3304714 C76.676712,51.0597929 77.903112,50.1902929 79.164792,50.4387214 C80.616312,50.7240786 82.622232,51.0060786 84.883512,51.0060786 C87.144792,51.0060786 89.150712,50.7240786 90.602232,50.4387214 C91.863912,50.1902929 93.090312,51.0597929 93.291912,52.3304714 C93.569112,54.0845786 94.148712,55.2041857 96.475512,55.5399 L96.475512,54.4807214 C96.475512,48.0836857 91.285992,42.8985786 84.883512,42.8985786" id="Fill-145" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-192)"></path>
+            </g>
+            <g id="Stroke-146-Clipped">
+                <mask id="mask-194" fill="white">
+                    <use xlink:href="#path-193"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M84.883512,42.8985786 C78.481032,42.8985786 73.291512,48.0836857 73.291512,54.4807214 L73.291512,55.5399 C75.618312,55.2041857 76.197912,54.0845786 76.475112,52.3304714 C76.676712,51.0597929 77.903112,50.1902929 79.164792,50.4387214 C80.616312,50.7240786 82.622232,51.0060786 84.883512,51.0060786 C87.144792,51.0060786 89.150712,50.7240786 90.602232,50.4387214 C91.863912,50.1902929 93.090312,51.0597929 93.291912,52.3304714 C93.569112,54.0845786 94.148712,55.2041857 96.475512,55.5399 L96.475512,54.4807214 C96.475512,48.0836857 91.285992,42.8985786 84.883512,42.8985786 Z" id="Stroke-146" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-194)"></path>
+            </g>
+            <g id="Fill-147-Clipped">
+                <mask id="mask-196" fill="white">
+                    <use xlink:href="#path-195"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M79.088016,59.3072857 L77.156016,59.3072857 C76.089216,59.3072857 75.224016,58.4411429 75.224016,57.3769286 L75.224016,55.4448929 C75.224016,54.379 76.089216,53.5162143 77.156016,53.5162143 L81.020016,53.5162143 C82.086816,53.5162143 82.952016,54.379 82.952016,55.4448929 C82.952016,57.5783571 81.221616,59.3072857 79.088016,59.3072857" id="Fill-147" fill="#D6DAFF" fill-rule="nonzero" mask="url(#mask-196)"></path>
+            </g>
+            <g id="Fill-148-Clipped">
+                <mask id="mask-198" fill="white">
+                    <use xlink:href="#path-197"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M92.61168,59.3072857 L90.67968,59.3072857 C88.54608,59.3072857 86.81568,57.5783571 86.81568,55.4448929 C86.81568,54.379 87.68088,53.5162143 88.74768,53.5162143 L92.61168,53.5162143 C93.67848,53.5162143 94.54368,54.379 94.54368,55.4448929 L94.54368,57.3769286 C94.54368,58.4411429 93.67848,59.3072857 92.61168,59.3072857" id="Fill-148" fill="#D6DAFF" fill-rule="nonzero" mask="url(#mask-198)"></path>
+            </g>
+            <g id="Stroke-149-Clipped">
+                <mask id="mask-200" fill="white">
+                    <use xlink:href="#path-199"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M82.95168,55.4452286 C82.95168,54.3793357 83.81688,53.51655 84.88368,53.51655 C85.95048,53.51655 86.81568,54.3793357 86.81568,55.4452286" id="Stroke-149" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-200)"></path>
+            </g>
+            <g id="Stroke-150-Clipped">
+                <mask id="mask-202" fill="white">
+                    <use xlink:href="#path-201"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M79.088016,59.3072857 L77.156016,59.3072857 C76.089216,59.3072857 75.224016,58.4411429 75.224016,57.3769286 L75.224016,55.4448929 C75.224016,54.379 76.089216,53.5162143 77.156016,53.5162143 L81.020016,53.5162143 C82.086816,53.5162143 82.952016,54.379 82.952016,55.4448929 C82.952016,57.5783571 81.221616,59.3072857 79.088016,59.3072857 Z" id="Stroke-150" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-202)"></path>
+            </g>
+            <g id="Stroke-151-Clipped">
+                <mask id="mask-204" fill="white">
+                    <use xlink:href="#path-203"></use>
+                </mask>
+                <g id="path-1"></g>
+                <path d="M92.61168,59.3072857 L90.67968,59.3072857 C88.54608,59.3072857 86.81568,57.5783571 86.81568,55.4448929 C86.81568,54.379 87.68088,53.5162143 88.74768,53.5162143 L92.61168,53.5162143 C93.67848,53.5162143 94.54368,54.379 94.54368,55.4448929 L94.54368,57.3769286 C94.54368,58.4411429 93.67848,59.3072857 92.61168,59.3072857 Z" id="Stroke-151" stroke="#4550E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-204)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

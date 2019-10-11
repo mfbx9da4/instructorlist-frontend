@@ -75,40 +75,40 @@ body {
   box-sizing: border-box;
 }
 
-#app {
+.main-app {
   font-size: 1.6rem;
   height: 100%;
   flex-direction: column;
 }
 
-div,
-form {
+.main-app div,
+.main-app form {
   display: flex;
   transition: all 0.3s;
 }
 
-div[flex] {
+.main-app div[flex] {
   flex: 1;
 }
 
-div[column] {
+.main-app div[column] {
   flex-direction: column;
 }
 
-div[jc='center'] {
+.main-app div[jc='center'] {
   justify-content: center;
 }
 
-div[ai='center'] {
+.main-app div[ai='center'] {
   align-items: center;
 }
 
-a {
+.main-app a {
   text-decoration: none;
   color: var(--off-black);
 }
 
-button {
+.main-app button {
   outline: none;
   border: none;
   background: none;

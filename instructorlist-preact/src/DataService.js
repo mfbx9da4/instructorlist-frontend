@@ -31,6 +31,8 @@ const prerenderState = {
 
 export default class DataService {
   constructor(initialState) {
+    // TODO: include flag for is this prerendered data or not
+    // add data fetch time
     if (initialState) {
       this.state = initialState
     } else {
