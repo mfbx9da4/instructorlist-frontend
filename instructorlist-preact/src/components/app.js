@@ -1,6 +1,5 @@
 import { h, Component } from 'preact'
 import { Router } from 'preact-router'
-import styled from 'styled-components'
 
 import Header from './header'
 
@@ -11,54 +10,76 @@ import Profile from '../routes/profile'
 import isSSR from '../utils/is-ssr'
 import DataService from '../DataService'
 import Redirect from './redirect/Redirect'
+import LandingPage from '../landing-page/pages/index'
+import Home from './TestHome'
 
-const Div = styled.div`
-  background: red;
-  color: white;
-`
-class Home extends Component {
-  render() {
-    return (
-      <div style={{ padding: '300px' }}>
-        <div>somethrin Hey there</div>
-        <Div>somethrin Hey there</Div>
+const withMainTemplate = Page => props => (
+  <div className="main-app">
+    <Header />
+
+    <Page data={props.data} {...props} />
+
+    <div
+      style="justify-content: center; align-items: center; flex: 1; height: 100vh;"
+      default
+    >
+      404 Not Found
+    </div>
+    {isSSR() && (
+      <div>
+        <details style={{ padding: '2rem' }}>
+          <summary>ssrData</summary>
+          <pre style={{ whiteSpace: 'pre-wrap' }}>
+            {JSON.stringify(props.ssrData, null, 2)}
+          </pre>
+        </details>
       </div>
-    )
-  }
-}
+    )}
+  </div>
+)
+
+const withLandingPageTemplate = Page => props => (
+  <div className="landing-page">
+    <Page {...props} />
+  </div>
+)
 
 const pages = [
   {
-    component: Home,
+    component: withLandingPageTemplate(LandingPage),
+    path: '/',
+  },
+  {
+    component: withMainTemplate(Home),
     path: '/blah',
   },
   {
-    component: Search,
+    component: withMainTemplate(Search),
     path: '/search',
   },
   {
-    component: Search,
+    component: withMainTemplate(Search),
     path: '/search/:date/map/',
   },
   {
-    component: Search,
+    component: withMainTemplate(Search),
     path: '/search/:date/filters/',
   },
   {
-    component: Search,
+    component: withMainTemplate(Search),
     path: '/search/:date/',
   },
   {
-    component: ClassPage,
+    component: withMainTemplate(ClassPage),
     path: '/classes/:id',
   },
   {
-    component: Profile,
+    component: withMainTemplate(Profile),
     path: '/profile/',
     user: 'me',
   },
   {
-    component: Profile,
+    component: withMainTemplate(Profile),
     path: '/profile/:user',
   },
 ]
@@ -81,34 +102,19 @@ export default class App extends Component {
 
   render({ url }) {
     return (
-      <div id="app">
-        <Header />
-
-        <Router url={url} onChange={this.handleRoute}>
-          {pages.map(x => {
-            const { component: Component, ...rest } = x
-            return (
-              <Component data={this.state.data} {...rest} {...this.props} />
-            )
-          })}
-          <div
-            style="justify-content: center; align-items: center; flex: 1; height: 100vh;"
-            default
-          >
-            404 Not Found
-          </div>
-        </Router>
-        {isSSR() && (
-          <div>
-            <details style={{ padding: '2rem' }}>
-              <summary>ssrData</summary>
-              <pre style={{ whiteSpace: 'pre-wrap' }}>
-                {JSON.stringify(this.props.ssrData, null, 2)}
-              </pre>
-            </details>
-          </div>
-        )}
-      </div>
+      <Router url={url} onChange={this.handleRoute}>
+        {pages.map(x => {
+          const { component: Component, ...rest } = x
+          return (
+            <Component
+              data={this.state.data}
+              ssrData={this.props.ssrData}
+              {...rest}
+              {...this.props}
+            />
+          )
+        })}
+      </Router>
     )
   }
 }
