@@ -90,12 +90,14 @@ export default class Search extends Component {
         if (item.day !== dayFilter) return false
         let matchedACategory = false
         let hasCategories = false
+        let hasTimes = false
 
         // Basic search
         for (const key in this.state.filters) {
           if (this.state.filters.hasOwnProperty(key)) {
             const filter = this.state.filters[key]
             if (filter.type === 'time') {
+              hasTimes = true
               const start = timeToMinutes(item.start_time)
               const fStart = parseInt(key) * 60
               const filterDuration = 3 * 60
@@ -106,14 +108,14 @@ export default class Search extends Component {
               for (let i = 0; i < item.categories.length; i++) {
                 const category = item.categories[i]
                 if (category.name.toLowerCase() === key.toLowerCase()) {
-                  matchedACategory = true
+                  return true
                 }
               }
             }
           }
         }
 
-        if (!matchedACategory && hasCategories) return false
+        if (hasTimes || hasCategories) return false
         return true
       })
     }
