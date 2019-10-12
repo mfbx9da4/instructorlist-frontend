@@ -49,5 +49,4 @@ class Home extends Component {
   }
 }
 
-// export default withTheme(Home)
-export default () => null
+export default withTheme(Home)
