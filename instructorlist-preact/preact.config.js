@@ -10,10 +10,22 @@ function isSSRBundle() {
 }
 
 export default (config, env, helpers) => {
+  let { rule } = helpers.getLoadersByName(config, 'babel-loader')[0]
+  let babelConfig = rule.options
+
+  console.log('babelConfig.plugins', babelConfig.plugins)
+  babelConfig.plugins.push(
+    [
+      '@quickbaseoss/babel-plugin-styled-components-css-namespace',
+      { cssNamespace: '.landing-page' },
+    ],
+    'styled-components',
+  )
+
   // asyncPlugin(config)
   // // Remove Critical CSS plugin
   // criticalCssPlugin(config, env, {})
-  // // // CaseSensitivePathsPlugin
+  // CaseSensitivePathsPlugin
   // config.plugins.unshift(new CaseSensitivePathsPlugin())
   // // // Remove SWPrecache
   // const swPrecache = helpers.getPluginsByName(config, 'SWPrecacheWebpackPlugin')

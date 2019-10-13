@@ -1,6 +1,6 @@
-import styled from "styled-components"
-import breakpoint from "styled-components-breakpoint"
-import HeaderImage from "../../components/imageComponents/headerImage"
+import styled from 'styled-components'
+import breakpoint from 'styled-components-breakpoint'
+import HeaderImage from '../../components/imageComponents/headerImage'
 
 export const StyledAlert = styled.p`
   color: ${props => props.theme.accent};
@@ -60,7 +60,6 @@ export const StyledDiv = styled.div`
   a {
     text-decoration: none;
     color: ${props => (props.primary ? `#1848FF` : `white`)};
-  }
   }
 `
 
