@@ -4,6 +4,7 @@ import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 import { GenerateSW } from 'workbox-webpack-plugin'
 import asyncPlugin from 'preact-cli-plugin-async'
 import path from 'path'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
 function isSSRBundle() {
   return config.output.filename === 'ssr-bundle.js'
@@ -21,6 +22,8 @@ export default (config, env, helpers) => {
     ],
     'styled-components',
   )
+
+  config.plugins.push(new BundleAnalyzerPlugin())
 
   // asyncPlugin(config)
   // // Remove Critical CSS plugin
