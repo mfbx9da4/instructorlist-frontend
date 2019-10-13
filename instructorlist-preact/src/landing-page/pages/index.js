@@ -37,9 +37,7 @@ const IndexPage = () => (
           <br />
           Across London.
           <br />
-          <StyledSpan>
-            <Link href="/search">Handpicked.</Link>
-          </StyledSpan>
+          <StyledSpan>Handpicked.</StyledSpan>
         </span>
       }
       subtext="Attend hundreds of dance classes from the best teachers across London with a single membership."

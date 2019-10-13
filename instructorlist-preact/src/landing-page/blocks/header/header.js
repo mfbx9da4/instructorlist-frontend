@@ -1,13 +1,13 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { Row, Col } from "../../components/grid/index"
+import { Row, Col } from '../../components/grid/index'
 import {
   SectionHeader,
   StyledText,
   PaddingContainer,
   SectionMarginTop,
-} from "../../components/globalStyles/styles"
+} from '../../components/globalStyles/styles'
 import {
   StyledAlert,
   StyledButton,
@@ -15,9 +15,9 @@ import {
   StyledImage,
   StyledDiv,
   StyledForm,
-} from "./styles"
+} from './styles'
 
-import { Container } from "../../components/grid/index"
+import { Container } from '../../components/grid/index'
 
 const ColBreakPoints = {
   xs: 1,
@@ -110,7 +110,7 @@ const Header = props => {
 
 Header.propTypes = {
   alert: PropTypes.string,
-  title: PropTypes.string,
+  title: PropTypes.element,
   subtext: PropTypes.string,
 }
 

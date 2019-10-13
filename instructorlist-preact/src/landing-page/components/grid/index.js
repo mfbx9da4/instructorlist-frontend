@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 import {
   space,
   color,
@@ -12,7 +12,7 @@ import {
   order,
   alignSelf,
   display,
-} from "styled-system"
+} from 'styled-system'
 
 const Box = styled(`div`)(
   {
@@ -26,7 +26,7 @@ const Box = styled(`div`)(
   order,
   alignSelf,
   display,
-  props => props.css
+  props => props.css,
 )
 
 Box.displayName = `Box`
@@ -46,7 +46,7 @@ const Flex = styled(Box)(
   flexDirection,
   alignItems,
   justifyContent,
-  space
+  space,
 )
 
 Flex.displayName = `Flex`
@@ -59,7 +59,7 @@ Flex.propTypes = {
   ...justifyContent.propTypes,
 }
 
-export const Container = styled(Box).attrs({
+export const Container = styled(Box).attrs(() => ({
   boxSizing: `border-box`,
   width: {
     xs: `100%`,
@@ -69,7 +69,7 @@ export const Container = styled(Box).attrs({
     xl: `1200px`,
   },
   space,
-})``
+}))``
 
 Container.defaultProps = {
   mx: `auto`,
@@ -91,13 +91,13 @@ export const Hr = styled.hr`
 `
 
 // Layout engine
-export const Row = styled(Flex).attrs({
+export const Row = styled(Flex).attrs(() => ({
   mx: -15,
   flexWrap: `wrap`,
   space,
-})``
+}))``
 
-export const Col = styled(Box).attrs({
+export const Col = styled(Box).attrs(() => ({
   px: 15,
   display,
-})``
+}))``

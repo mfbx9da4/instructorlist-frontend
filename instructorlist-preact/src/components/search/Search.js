@@ -37,17 +37,17 @@ export default class Search extends Component {
     super(props)
     const filters = getFiltersFromUrl(props.url || location.href) || {}
     const filterCount = this.getFilterCount(filters)
-    // || dayjs().format('YYYY-MM-DD')
     const day = parseDate(props.date)
     const allClasses = props.data.state.classes
-    this.state = {
+    const state = {
       day,
       filters,
       filterCount,
       allClasses,
       isOffline: false,
-      classes: this.doLocalSearch(allClasses, day),
+      classes: this.doLocalSearchInner(allClasses, day, filters),
     }
+    this.state = state
   }
 
   async componentDidMount() {
@@ -68,9 +68,9 @@ export default class Search extends Component {
     } catch (err) {
       this.setState({ isOffline: true })
     }
-    this.setState({ isLoading: false })
     this.setState(
       {
+        isLoading: false,
         day: day || parseDate(this.props.date),
         allClasses: res.results,
       },
@@ -78,10 +78,7 @@ export default class Search extends Component {
     )
   }
 
-  doLocalSearch = (
-    allClasses = this.state.allClasses,
-    day = this.state.day,
-  ) => {
+  doLocalSearchInner = (allClasses, day, filters) => {
     if (!day.isValid()) console.error('Invalid Date')
     const dayFilter = day.day()
     let classes = []
@@ -93,9 +90,9 @@ export default class Search extends Component {
         let hasTimes = false
 
         // Basic search
-        for (const key in this.state.filters) {
-          if (this.state.filters.hasOwnProperty(key)) {
-            const filter = this.state.filters[key]
+        for (const key in filters) {
+          if (filters.hasOwnProperty(key)) {
+            const filter = filters[key]
             if (filter.type === 'time') {
               hasTimes = true
               const start = timeToMinutes(item.start_time)
@@ -119,6 +116,15 @@ export default class Search extends Component {
         return true
       })
     }
+    return classes
+  }
+
+  doLocalSearch = () => {
+    const classes = this.doLocalSearchInner(
+      this.state.allClasses,
+      this.state.day,
+      this.state.filters,
+    )
     this.setState({ classes })
     return classes
   }

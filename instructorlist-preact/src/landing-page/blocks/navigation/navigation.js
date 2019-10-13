@@ -64,13 +64,13 @@ const Navigation = props => {
 }
 
 Navigation.propTypes = {
-  logo: PropTypes.string,
+  logo: PropTypes.element,
   primaryButton: PropTypes.string,
   secundaryButton: PropTypes.string,
 }
 
 Navigation.defaultProps = {
-  logo: `instructorlist`,
+  logo: <span>instructorlist</span>,
   primaryButton: `I&#39;m a teacher`,
   secundaryButton: `Get a free class`,
 }

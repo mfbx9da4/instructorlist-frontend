@@ -7,7 +7,7 @@ import { withTheme } from 'styled-components'
 import theme from '../theme'
 import { ThemeProvider } from 'styled-components'
 
-const Layout = ({ children }) => (
+const Layout = ({ children, theme }) => (
   <ThemeProvider theme={theme}>
     <div>{children}</div>
   </ThemeProvider>
@@ -15,7 +15,11 @@ const Layout = ({ children }) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  theme: PropTypes.object,
 }
 
-// export default withTheme(Layout)
-export default Layout
+Layout.defaultProps = {
+  theme: theme,
+}
+
+export default withTheme(Layout)

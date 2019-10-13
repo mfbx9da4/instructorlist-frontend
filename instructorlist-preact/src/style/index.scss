@@ -64,14 +64,22 @@ body {
   margin: 0;
   font-family: 'Mark Simonson - Proxima Nova Regular', 'Helvetica Neue', arial,
     sans-serif;
-  font-size: 10px;
-  font-weight: 400;
-  color: #444;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
+body {
+  word-wrap: break-word;
+  font-kerning: normal;
+  -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+}
+
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
@@ -79,6 +87,9 @@ body {
   font-size: 1.6rem;
   height: 100%;
   flex-direction: column;
+  font-size: 10px;
+  font-weight: 400;
+  color: #444;
 }
 
 .main-app div,
@@ -128,7 +139,7 @@ body {
   display: none;
 }
 
-input {
+.main-app input {
   padding: 1rem;
   font-size: 1.6rem;
   border-radius: 3px;
@@ -211,7 +222,7 @@ input {
 
 /* START STRIPE */
 
-input,
+.main-app input,
 .StripeElement {
   display: block;
   height: 4rem;
@@ -231,13 +242,13 @@ input,
   box-shadow: 0 1px 3px 0 #e6ebf1;
 }
 
-input:focus,
+.main-app input:focus,
 .StripeElement--focus {
   box-shadow: 0 1px 3px 0 #cfd7df;
   outline: 0;
 }
 
-input.invalid,
+.main-app input.invalid,
 .StripeElement--invalid {
   border-color: #fa755a;
 }
