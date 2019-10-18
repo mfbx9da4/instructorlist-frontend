@@ -40,8 +40,8 @@ export const StyledDiv = styled.div`
   background-color: ${props => (props.primary ? `white` : `#1848FF`)};
   border: 1px solid ${props => (props.primary ? `#1848FF` : `white`)};
   margin-right: ${props => (props.primary ? `10px` : `0`)};
-  border-radius: 8davrem;
-  padding: 9.6davrem 2.08davrem;
+  border-radius: 8rem;
+  padding: 9.6rem 2.08rem;
 
   font-size: 11px;
   font-weight: 600;
@@ -67,8 +67,8 @@ export const StyledButton = styled.button`
   background-color: ${props => (props.primary ? `white` : `#1848FF`)};
   border: 1px solid ${props => (props.primary ? `#1848FF` : `white`)};
   margin-right: ${props => (props.primary ? `10px` : `0`)};
-  border-radius: 8davrem;
-  padding: 9.6davrem 2.08davrem;
+  border-radius: 8rem;
+  padding: 9.6rem 2.08rem;
 
   font-size: 11px;
   font-weight: 600;
@@ -78,8 +78,8 @@ export const StyledButton = styled.button`
   margin-top: 10px;
 
   @media ${props => props.theme.media.sm} {
-    padding: 9.6davrem 3.68davrem;
-    width: 11.6davrem;
+    padding: 9.6rem 3.68rem;
+    width: 11.6rem;
     margin-top: 0;
   }
 
@@ -91,23 +91,23 @@ export const StyledButton = styled.button`
 `
 
 export const StyledInput = styled.input`
-  border-radius: 8davrem;
+  border-radius: 8rem;
   text-align: center;
   border: 1px solid #cfcdcd;
-  padding: 8davrem 1.6davrem;
+  padding: 8rem 1.6rem;
 
   font-size: 13px;
   font-weight: 300;
   letter-spacing: 0.8px;
   outline: none;
-  margin-right: 8davrem;
+  margin-right: 8rem;
 
   width: 100%;
   margin-top: 10px;
 
   @media ${props => props.theme.media.sm} {
-    padding: 8davrem4.8davrem;
-    width: 25.6davrem;
+    padding: 8rem4.8rem;
+    width: 25.6rem;
     margin-top: 0;
     text-align: left;
   }

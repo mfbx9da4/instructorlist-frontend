@@ -34,8 +34,8 @@ export const StyledButton = styled.button`
   background-color: ${props => (props.primary ? `white` : `#1848FF`)};
   border: 1px solid ${props => (props.primary ? `#1848FF` : `white`)};
   margin-right: ${props => (props.primary ? `10px` : `15px`)};
-  border-radius: 8davrem;
-  padding: 9.6davrem 2.08davrem;
+  border-radius: 8rem;
+  padding: 9.6rem 2.08rem;
 
   font-size: 11px;
   font-weight: 600;
@@ -47,7 +47,7 @@ export const StyledButton = styled.button`
   @media ${props => props.theme.media.sm} {
     display: flex;
     flex-flow: row;
-    padding: 9.6davrem 3.68davrem;
+    padding: 9.6rem 3.68rem;
   }
   :hover {
     transform: scale(1.06);

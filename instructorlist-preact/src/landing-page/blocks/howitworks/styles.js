@@ -17,5 +17,5 @@ export const StyledDiv = styled.div`
 `
 
 export const StyledSectionHeader = styled(SectionHeader)`
-  padding-bottom:6.4davrem;
+  padding-bottom:6.4rem;
 `

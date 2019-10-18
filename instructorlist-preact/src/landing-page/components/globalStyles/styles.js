@@ -44,18 +44,18 @@ export const StyledText = styled.p`
 `
 
 export const SectionMargin = styled.div`
-  padding-bottom: 3.2davrem;
-  margin-top: 8davrem;
-  padding-top: ${props => (props.footer ? `6rem` : `0`)};
+  padding-bottom: 3.2rem;
+  margin-top: 8rem;
+  padding-top: ${props => (props.footer ? `9.6rem` : `0`)};
   @media ${props => props.theme.media.md} {
-    margin-top: ${props => (props.margin ? `16davrem` : `5rem`)};
-    padding-bottom: ${props => (props.footer ? `3.2davrem` : `5rem`)};
+    margin-top: ${props => (props.margin ? `16rem` : `12.8rem`)};
+    padding-bottom: ${props => (props.footer ? `3.2rem` : `12.8rem`)};
   }
 `
 
 export const SectionMarginTop = styled.div`
-  padding-bottom: 6.4davrem;
-  padding-top: 12.8davrem;
+  padding-bottom: 6.4rem;
+  padding-top: 12.8rem;
 `
 
 export const StyledSpan = styled.span`

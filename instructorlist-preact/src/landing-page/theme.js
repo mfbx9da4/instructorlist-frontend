@@ -20,9 +20,9 @@ const theme = {
     lg: `only screen and (min-width: ${breakpoints['lg']}px)`,
     xl: `only screen and (min-width: ${breakpoints['xl']}px)`,
   },
-  paddingsm: `3.2davrem 0`,
-  paddingmd: `6.4davrem 0`,
-  paddinglg: `12.8davrem 0`,
+  paddingsm: `3.2rem 0`,
+  paddingmd: `6.4rem 0`,
+  paddinglg: `12.8rem 0`,
 }
 
 export default theme

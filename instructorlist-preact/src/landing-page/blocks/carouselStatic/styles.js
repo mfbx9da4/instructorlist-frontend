@@ -4,9 +4,9 @@ export const StyledSection = styled.section`
   background-color: ${props => props.theme.accent};
 `
 export const StyledDiv = styled.div`
-  border-radius: 8davrem;
-  width: 10.4davrem;
-  height: 44.8davrem;
+  border-radius: 8rem;
+  width: 10.4rem;
+  height: 44.8rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;

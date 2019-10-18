@@ -4,24 +4,24 @@ export const StyledSection = styled.section`
   background-color: ${props => props.theme.accent};
   overflow-x: hidden;
   /* .swiper-slide {
-    width: 16davrem;
+    width: 16rem;
   }
   .swiper-slide-active {
-    width: 16davrem;
+    width: 16rem;
   } */
   .swiper-wrapper {
     display: flex;
   }
 `
 export const StyledDiv = styled.div`
-  border-radius: 8davrem;
-  width: 10.4davrem;
-  height: 44.8davrem;
+  border-radius: 8rem;
+  width: 10.4rem;
+  height: 44.8rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-bottom: 3.2davrem;
+  margin-bottom: 3.2rem;
 `
 
 export const StyledButtonPrev = styled.div`

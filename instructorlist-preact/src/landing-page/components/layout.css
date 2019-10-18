@@ -197,7 +197,7 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
 }
 .landing-page h1 {
   margin-left: 0;
@@ -225,12 +225,12 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
   color: inherit;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 2.213056davrem;
+  font-size: 2.213056rem;
   line-height: 1.1;
 }
 .landing-page h4 {
@@ -241,12 +241,12 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
   color: inherit;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 1.6davrem;
+  font-size: 1.6rem;
   line-height: 1.1;
 }
 .landing-page h5 {
@@ -257,12 +257,12 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
   color: inherit;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 1.360448davrem;
+  font-size: 1.360448rem;
   line-height: 1.1;
 }
 .landing-page h6 {
@@ -273,12 +273,12 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
   color: inherit;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 1.25448davrem;
+  font-size: 1.25448rem;
   line-height: 1.1;
 }
 .landing-page hgroup {
@@ -289,29 +289,29 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
 }
 .landing-page ul {
-  margin-left: 2.32davrem;
+  margin-left: 2.32rem;
   margin-right: 0;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
   list-style-position: outside;
   list-style-image: none;
 }
 .landing-page ol {
-  margin-left: 2.32davrem;
+  margin-left: 2.32rem;
   margin-right: 0;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
   list-style-position: outside;
   list-style-image: none;
 }
@@ -323,7 +323,7 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
 }
 .landing-page dd {
   margin-left: 0;
@@ -333,7 +333,7 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
 }
 .landing-page p {
   margin-left: 0;
@@ -343,7 +343,7 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: regular;
 }
@@ -355,20 +355,20 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
 }
 .landing-page pre {
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
-  margin-bottom: 2.32davrem;
-  font-size: 1.36davrem;
+  margin-bottom: 2.32rem;
+  font-size: 1.36rem;
   line-height: 1.42;
   background: hsla(0, 0%, 0%, 0.04);
   border-radius: 3px;
   overflow: auto;
   word-wrap: normal;
-  padding: 2.32davrem;
+  padding: 2.32rem;
 }
 .landing-page table {
   margin-left: 0;
@@ -378,9 +378,9 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
-  font-size: 1.6davrem;
-  line-height: 2.32davrem;
+  margin-bottom: 2.32rem;
+  font-size: 1.6rem;
+  line-height: 2.32rem;
   border-collapse: collapse;
   width: 100%;
 }
@@ -392,17 +392,17 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
 }
 .landing-page blockquote {
-  margin-left: 2.32davrem;
-  margin-right: 2.32davrem;
+  margin-left: 2.32rem;
+  margin-right: 2.32rem;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
 }
 .landing-page form {
   margin-left: 0;
@@ -412,7 +412,7 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
 }
 .landing-page noscript {
   margin-left: 0;
@@ -422,7 +422,7 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
 }
 .landing-page iframe {
   margin-left: 0;
@@ -432,7 +432,7 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
 }
 .landing-page hr {
   margin-left: 0;
@@ -442,7 +442,7 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: calc(2.32davrem - 1px);
+  margin-bottom: calc(2.32rem - 1px);
   background: hsla(0, 0%, 0%, 0.2);
   border: none;
   height: 1px;
@@ -455,7 +455,7 @@ samp {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 2.32davrem;
+  margin-bottom: 2.32rem;
 }
 .landing-page b {
   font-weight: bold;
@@ -470,7 +470,7 @@ samp {
   font-weight: bold;
 }
 .landing-page li {
-  margin-bottom: calc(2.32davrem / 2);
+  margin-bottom: calc(2.32rem / 2);
 }
 .landing-page ol li {
   padding-left: 0;
@@ -479,14 +479,14 @@ samp {
   padding-left: 0;
 }
 .landing-page li > ol {
-  margin-left: 2.32davrem;
-  margin-bottom: calc(2.32davrem / 2);
-  margin-top: calc(2.32davrem / 2);
+  margin-left: 2.32rem;
+  margin-bottom: calc(2.32rem / 2);
+  margin-top: calc(2.32rem / 2);
 }
 .landing-page li > ul {
-  margin-left: 2.32davrem;
-  margin-bottom: calc(2.32davrem / 2);
-  margin-top: calc(2.32davrem / 2);
+  margin-left: 2.32rem;
+  margin-bottom: calc(2.32rem / 2);
+  margin-top: calc(2.32rem / 2);
 }
 .landing-page blockquote *:last-child {
   margin-bottom: 0;
@@ -498,19 +498,19 @@ samp {
   margin-bottom: 0;
 }
 .landing-page li > p {
-  margin-bottom: calc(2.32davrem / 2);
+  margin-bottom: calc(2.32rem / 2);
 }
 .landing-page code {
-  font-size: 1.36davrem;
-  line-height: 2.32davrem;
+  font-size: 1.36rem;
+  line-height: 2.32rem;
 }
 .landing-page kbd {
-  font-size: 1.36davrem;
-  line-height: 2.32davrem;
+  font-size: 1.36rem;
+  line-height: 2.32rem;
 }
 .landing-page samp {
-  font-size: 1.36davrem;
-  line-height: 2.32davrem;
+  font-size: 1.36rem;
+  line-height: 2.32rem;
 }
 .landing-page abbr {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
@@ -536,10 +536,10 @@ samp {
   -moz-font-feature-settings: 'tnum';
   -ms-font-feature-settings: 'tnum';
   -webkit-font-feature-settings: 'tnum';
-  padding-left: 1.546672davrem;
-  padding-right: 1.546672davrem;
-  padding-top: 1.16davrem;
-  padding-bottom: calc(1.16davrem - 1px);
+  padding-left: 1.546672rem;
+  padding-right: 1.546672rem;
+  padding-top: 1.16rem;
+  padding-bottom: calc(1.16rem - 1px);
 }
 .landing-page th:first-child,
 .landing-page td:first-child {

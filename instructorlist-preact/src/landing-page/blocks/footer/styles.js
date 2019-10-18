@@ -7,10 +7,10 @@ export const SectionHeader = styled.h1`
 
 export const PaddingBetween = styled.div`
   width: 100%;
-  height: 6.4davrem;
+  height: 6.4rem;
 
   @media ${props => props.theme.media.md} {
-    height: 16davrem;
+    height: 16rem;
   }
 `
 
@@ -24,7 +24,7 @@ export const StyledSection = styled.section`
   background-color: ${props => props.theme.accent};
 `
 export const StyledForm = styled.form`
-  margin-top: 1.6davrem;
+  margin-top: 1.6rem;
   display: flex;
   flex-direction: column;
   @media ${props => props.theme.media.sm} {
@@ -50,8 +50,8 @@ export const StyledButton = styled.button`
   background-color: white;
   border: none;
   margin-left: 5px;
-  border-radius: 8davrem;
-  padding: 9.6davrem 3.2davrem;
+  border-radius: 8rem;
+  padding: 9.6rem 3.2rem;
 
   font-size: 11px;
   font-weight: 600;
@@ -61,8 +61,8 @@ export const StyledButton = styled.button`
   margin-top: 10px;
 
   @media ${props => props.theme.media.sm} {
-    padding: 9.6davrem 3.2davrem;
-    width: 11.6davrem;
+    padding: 9.6rem 3.2rem;
+    width: 11.6rem;
     margin-top: 0;
   }
 
@@ -74,24 +74,24 @@ export const StyledButton = styled.button`
 `
 
 export const StyledInput = styled.input`
-  border-radius: 8davrem;
+  border-radius: 8rem;
   border: 1px solid ${props => props.theme.inputBlue};
   background-color: ${props => props.theme.inputBlue};
   color: white;
-  padding: 8davrem6.4davrem;
+  padding: 8rem6.4rem;
 
   font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.8px;
   outline: none;
-  margin-right: 8davrem;
+  margin-right: 8rem;
   text-align: center;
   width: 100%;
   margin-top: 10px;
 
   @media ${props => props.theme.media.sm} {
-    padding: 8davrem4.8davrem;
-    width: 25.6davrem;
+    padding: 8rem4.8rem;
+    width: 25.6rem;
     margin-top: 0;
     text-align: left;
   }

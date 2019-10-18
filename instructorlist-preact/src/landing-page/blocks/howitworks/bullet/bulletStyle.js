@@ -9,7 +9,7 @@ export const BulletTitle = styled.h2`
   font-size: 21px;
 `
 export const StyledImg = styled.img`
-  margin-top: 2.08davrem;
+  margin-top: 2.08rem;
 `
 
 export const StyledBlock = styled.div`
@@ -19,8 +19,8 @@ export const StyledBlock = styled.div`
   align-items: center;
   background-color: white;
   border-radius: 12px;
-  width: 28.8davrem;
-  height: 30.4davrem;
+  width: 28.8rem;
+  height: 30.4rem;
   text-align: center;
 `
 

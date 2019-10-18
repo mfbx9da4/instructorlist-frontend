@@ -10,7 +10,7 @@ export const StyledDiv = styled.div`
   justify-content: space-between;
   /* width: 100%; */
   /* RESET WIDTH TO 100% FOR DYNAMIC CAROUSEL */
-  width: 24davrem;
+  width: 24rem;
 `
 
 export const StyledBlock = styled.div`
@@ -18,7 +18,7 @@ export const StyledBlock = styled.div`
   flex-flow: column;
   /* width: 100%; */
   /* RESET WIDTH TO 100% FOR DYNAMIC CAROUSEL */
-  width: 24davrem;
+  width: 24rem;
 `
 
 export const DottedBlock = styled.div`
@@ -27,11 +27,11 @@ export const DottedBlock = styled.div`
   text-align: center;
   align-items: center;
   justify-content: center;
-  width: 24davrem;
-  height: 24davrem;
+  width: 24rem;
+  height: 24rem;
   border: 5px dashed white;
-  border-radius: 1.6davrem;
-  padding: 1.6davrem;
+  border-radius: 1.6rem;
+  padding: 1.6rem;
 `
 
 export const StyledTitle = styled.h2`
