@@ -1,18 +1,18 @@
-import styled from "styled-components"
-import { Col } from "../../components/grid/index"
-import breakpoint from "styled-components-breakpoint"
+import styled from 'styled-components'
+import { Col } from '../../components/grid/index'
+
 
 export const SectionHeader = styled.h1`
   display: none;
-
 `
 
 export const PaddingBetween = styled.div`
   width: 100%;
   height: 4rem;
-  ${breakpoint(`md`)`
-      height: 10rem;
-  `};
+
+  ${props => props.theme.media.md} {
+    height: 10rem;
+  }
 `
 
 export const StyledCol = styled(Col)`
@@ -28,16 +28,16 @@ export const StyledForm = styled.form`
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  ${breakpoint(`sm`)`
-      flex-direction: column;
-      width: 100%;
-  `};
-  ${breakpoint(`md`)`
-      flex-direction: column;
-  `};
-  ${breakpoint(`lg`)`
-      flex-direction: row;
-  `};
+  ${props => props.theme.media.sm} {
+    flex-direction: column;
+    width: 100%;
+  }
+  ${props => props.theme.media.md} {
+    flex-direction: column;
+  }
+  ${props => props.theme.media.lg} {
+    flex-direction: row;
+  }
 `
 
 export const StyledDiv = styled.div`
@@ -58,15 +58,15 @@ export const StyledButton = styled.button`
   font-weight: 600;
   text-transform: uppercase;
   outline: none;
-  ${breakpoint(`sm`)`
-      padding: 0.6rem 2rem;
-      width: 11rem;
-      margin-top: 0;
-  `};
-  ${breakpoint(`xs`)`
-      width: 100%;
-      margin-top: 10px;
-  `};
+  width: 100%;
+  margin-top: 10px;
+
+  ${props => props.theme.media.sm} {
+    padding: 0.6rem 2rem;
+    width: 11rem;
+    margin-top: 0;
+  }
+
   transition: transform 0.3s ease-in-out;
   :hover {
     transform: scale(1.06);
@@ -87,17 +87,15 @@ export const StyledInput = styled.input`
   outline: none;
   margin-right: 0.5rem;
   text-align: center;
-  ${breakpoint(`xs`)`
-      width: 100%;
-      margin-top: 10px;
-  `};
-  ${breakpoint(`sm`)`
-      padding: 0.5rem 3rem;
-      width: 16rem;
-      margin-top: 0;
-      text-align: left;
+  width: 100%;
+  margin-top: 10px;
 
-  `};
+  ${props => props.theme.media.sm} {
+    padding: 0.5rem 3rem;
+    width: 16rem;
+    margin-top: 0;
+    text-align: left;
+  }
 `
 
 export const StyledImg = styled.img`

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
   space,
   color,
@@ -12,11 +12,12 @@ import {
   order,
   alignSelf,
   display,
+  maxWidth,
 } from 'styled-system'
 
-const Box = styled(`div`)(
+export const Box = styled('div')(
   {
-    boxSizing: `border-box`,
+    boxSizing: 'border-box',
   },
   space,
   color,
@@ -26,10 +27,11 @@ const Box = styled(`div`)(
   order,
   alignSelf,
   display,
+  maxWidth,
   props => props.css,
 )
 
-Box.displayName = `Box`
+Box.displayName = 'Box'
 
 Box.propTypes = {
   ...space.propTypes,
@@ -38,9 +40,9 @@ Box.propTypes = {
   ...fontSize.propTypes,
 }
 
-const Flex = styled(Box)(
+export const Flex = styled(Box)(
   {
-    display: `flex`,
+    display: 'flex',
   },
   flexWrap,
   flexDirection,
@@ -49,7 +51,7 @@ const Flex = styled(Box)(
   space,
 )
 
-Flex.displayName = `Flex`
+Flex.displayName = 'Flex'
 
 Flex.propTypes = {
   ...flexWrap.propTypes,
@@ -59,45 +61,19 @@ Flex.propTypes = {
   ...justifyContent.propTypes,
 }
 
-export const Container = styled(Box).attrs(() => ({
-  boxSizing: `border-box`,
-  width: {
-    xs: `100%`,
-    sm: `100%`,
-    md: `750px`,
-    lg: `960px`,
-    xl: `1200px`,
-  },
-  space,
+export const Container = styled(Box).attrs(props => ({
+  boxSizing: 'border-box',
+  md: props.theme.media.md,
+  lg: props.theme.media.md,
+  xl: props.theme.media.md,
 }))``
-
-Container.defaultProps = {
-  mx: `auto`,
-}
-
-export const Panel = styled(Box)`
-  background: #fff;
-  border: 1px solid #e1e1e1;
-  border-radius: 3px;
-  margin-bottom: 2rem;
-  padding: 2rem;
-`
-
-export const Hr = styled.hr`
-  border: 0;
-  border-top: 1px solid #e6e8eb;
-  border-color: #edefed;
-  margin: 2rem 0;
-`
 
 // Layout engine
-export const Row = styled(Flex).attrs(() => ({
+export const Row = styled(Flex).attrs({
   mx: -15,
-  flexWrap: `wrap`,
-  space,
-}))``
+  flexWrap: 'wrap',
+})``
 
-export const Col = styled(Box).attrs(() => ({
+export const Col = styled(Box).attrs({
   px: 15,
-  display,
-}))``
+})``

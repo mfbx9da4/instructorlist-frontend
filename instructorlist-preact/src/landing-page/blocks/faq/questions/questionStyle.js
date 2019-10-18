@@ -1,13 +1,11 @@
-import styled, { keyframes } from "styled-components"
-import breakpoint from "styled-components-breakpoint"
+import styled, { keyframes } from 'styled-components'
 
 export const QuestionTitle = styled.h2`
-
   font-weight: 700;
   font-size: 16px;
-  ${breakpoint(`sm`)`
-      font-size: 22px;
-  `};
+  ${props => props.theme.media.sm} {
+    font-size: 22px;
+  }
 `
 
 export const StyledContainer = styled.div`
@@ -17,7 +15,6 @@ export const StyledContainer = styled.div`
 `
 
 export const PlusSign = styled.p`
-
   font-weight: 700;
   font-size: 30px;
   color: ${props => props.theme.grey2};
@@ -29,8 +26,8 @@ export const PlusSign = styled.p`
 `
 
 export const ToggleState = styled.div`
-  display: ${props => (props.toggle ? "flex" : "none")};
-  animation: ${props => (props.toggle ? "(${fade}0.5s ease-in-out)" : "none")};
+  display: ${props => (props.toggle ? 'flex' : 'none')};
+  animation: ${props => (props.toggle ? '(${fade}0.5s ease-in-out)' : 'none')};
 `
 
 const fade = keyframes`

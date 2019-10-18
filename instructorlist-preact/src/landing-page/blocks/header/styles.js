@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import breakpoint from 'styled-components-breakpoint'
+
 import HeaderImage from '../../components/imageComponents/headerImage'
 
 export const StyledAlert = styled.p`
@@ -9,9 +9,9 @@ export const StyledAlert = styled.p`
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
-  /* ${breakpoint(`sm`)`
+  /* ${props => props.theme.media.sm}{
       display: none;
-  `}; */
+  } */
 `
 
 export const StyledForm = styled.form`
@@ -20,17 +20,17 @@ export const StyledForm = styled.form`
   justify-content: center;
   margin-left: 10px;
   width: 95%;
-  ${breakpoint(`sm`)`
-      flex-direction: column;
-      width: 100%;
-  `};
-  ${breakpoint(`md`)`
-      flex-direction: column;
-  `};
-  ${breakpoint(`lg`)`
-      flex-direction: row;
-      margin-left: -30px;
-  `};
+  ${props => props.theme.media.sm} {
+    flex-direction: column;
+    width: 100%;
+  }
+  ${props => props.theme.media.md} {
+    flex-direction: column;
+  }
+  ${props => props.theme.media.lg} {
+    flex-direction: row;
+    margin-left: -30px;
+  }
 `
 
 export const StyledDiv = styled.div`
@@ -46,12 +46,11 @@ export const StyledDiv = styled.div`
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  ${breakpoint(`xs`)`
-      width: 100%;
-  `};
-  ${breakpoint(`sm`)`
-      display: none;
-  `};
+  width: 100%;
+
+  ${props => props.theme.media.sm} {
+    display: none;
+  }
   transition: transform 0.3s ease-in-out;
   :hover {
     transform: scale(1.06);
@@ -75,15 +74,15 @@ export const StyledButton = styled.button`
   font-weight: 600;
   text-transform: uppercase;
   outline: none;
-  ${breakpoint(`sm`)`
-      padding: 0.6rem 2.3rem;
-      width: 11rem;
-      margin-top: 0;
-  `};
-  ${breakpoint(`xs`)`
-      width: 100%;
-      margin-top: 10px;
-  `};
+  width: 100%;
+  margin-top: 10px;
+
+  ${props => props.theme.media.sm} {
+    padding: 0.6rem 2.3rem;
+    width: 11rem;
+    margin-top: 0;
+  }
+
   transition: transform 0.3s ease-in-out;
   :hover {
     transform: scale(1.06);
@@ -102,17 +101,16 @@ export const StyledInput = styled.input`
   letter-spacing: 0.8px;
   outline: none;
   margin-right: 0.5rem;
-  ${breakpoint(`xs`)`
-      width: 100%;
-      margin-top: 10px;
-  `};
-  ${breakpoint(`sm`)`
-      padding: 0.5rem 3rem;
-      width: 16rem;
-      margin-top: 0;
-      text-align: left;
 
-  `};
+  width: 100%;
+  margin-top: 10px;
+
+  ${props => props.theme.media.sm} {
+    padding: 0.5rem 3rem;
+    width: 16rem;
+    margin-top: 0;
+    text-align: left;
+  }
 `
 
 export const StyledImage = styled(HeaderImage)``
