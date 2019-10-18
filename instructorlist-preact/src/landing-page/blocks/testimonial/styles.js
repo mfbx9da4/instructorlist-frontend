@@ -20,10 +20,10 @@ export const StyledQuote = styled.p`
   font-size: 40px;
   line-height: 1.5;
   font-weight: 300;
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     font-size: 20px;
   }
-  ${props => props.theme.media.lg} {
+  @media ${props => props.theme.media.lg} {
     font-size: 40px;
   }
 `
@@ -33,10 +33,10 @@ export const StyledDt = styled(Col)`
   letter-spacing: 1.9px;
   font-weight: 700;
   text-transform: uppercase;
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     font-size: 11px;
   }
-  ${props => props.theme.media.xl} {
+  @media ${props => props.theme.media.xl} {
     font-size: 14px;
   }
 `
@@ -47,7 +47,7 @@ export const StyledDd = styled(Col)`
   font-weight: 300;
 `
 export const StyledHr = styled.hr`
-  margin-top: 1rem;
+  margin-top: 1.6davrem;
   border: 0;
   height: 0;
   border-top: 1px solid #e7e7e7;

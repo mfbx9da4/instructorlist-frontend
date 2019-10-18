@@ -9,7 +9,7 @@ export const StyledAlert = styled.p`
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
-  /* ${props => props.theme.media.sm}{
+  /* @media ${props => props.theme.media.sm}{
       display: none;
   } */
 `
@@ -20,14 +20,14 @@ export const StyledForm = styled.form`
   justify-content: center;
   margin-left: 10px;
   width: 95%;
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     flex-direction: column;
     width: 100%;
   }
-  ${props => props.theme.media.md} {
+  @media ${props => props.theme.media.md} {
     flex-direction: column;
   }
-  ${props => props.theme.media.lg} {
+  @media ${props => props.theme.media.lg} {
     flex-direction: row;
     margin-left: -30px;
   }
@@ -40,15 +40,15 @@ export const StyledDiv = styled.div`
   background-color: ${props => (props.primary ? `white` : `#1848FF`)};
   border: 1px solid ${props => (props.primary ? `#1848FF` : `white`)};
   margin-right: ${props => (props.primary ? `10px` : `0`)};
-  border-radius: 5rem;
-  padding: 0.6rem 1.3rem;
+  border-radius: 8davrem;
+  padding: 9.6davrem 2.08davrem;
 
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
   width: 100%;
 
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     display: none;
   }
   transition: transform 0.3s ease-in-out;
@@ -67,8 +67,8 @@ export const StyledButton = styled.button`
   background-color: ${props => (props.primary ? `white` : `#1848FF`)};
   border: 1px solid ${props => (props.primary ? `#1848FF` : `white`)};
   margin-right: ${props => (props.primary ? `10px` : `0`)};
-  border-radius: 5rem;
-  padding: 0.6rem 1.3rem;
+  border-radius: 8davrem;
+  padding: 9.6davrem 2.08davrem;
 
   font-size: 11px;
   font-weight: 600;
@@ -77,9 +77,9 @@ export const StyledButton = styled.button`
   width: 100%;
   margin-top: 10px;
 
-  ${props => props.theme.media.sm} {
-    padding: 0.6rem 2.3rem;
-    width: 11rem;
+  @media ${props => props.theme.media.sm} {
+    padding: 9.6davrem 3.68davrem;
+    width: 11.6davrem;
     margin-top: 0;
   }
 
@@ -91,23 +91,23 @@ export const StyledButton = styled.button`
 `
 
 export const StyledInput = styled.input`
-  border-radius: 5rem;
+  border-radius: 8davrem;
   text-align: center;
   border: 1px solid #cfcdcd;
-  padding: 0.5rem 1rem;
+  padding: 8davrem 1.6davrem;
 
   font-size: 13px;
   font-weight: 300;
   letter-spacing: 0.8px;
   outline: none;
-  margin-right: 0.5rem;
+  margin-right: 8davrem;
 
   width: 100%;
   margin-top: 10px;
 
-  ${props => props.theme.media.sm} {
-    padding: 0.5rem 3rem;
-    width: 16rem;
+  @media ${props => props.theme.media.sm} {
+    padding: 8davrem4.8davrem;
+    width: 25.6davrem;
     margin-top: 0;
     text-align: left;
   }

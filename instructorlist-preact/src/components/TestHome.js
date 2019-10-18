@@ -8,7 +8,7 @@ const StyledDiv = styled.div`
   color: white;
   font-weight: 700;
   font-size: 16px;
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     font-size: 22px;
   }
 `

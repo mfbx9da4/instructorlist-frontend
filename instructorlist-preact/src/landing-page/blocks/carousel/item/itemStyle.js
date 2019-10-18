@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { StyledText } from "../../../components/globalStyles/styles"
+import styled from 'styled-components'
+import { StyledText } from '../../../components/globalStyles/styles'
 
 export const ExtraStyledText = styled(StyledText)`
   font-weight: 300;
@@ -10,7 +10,7 @@ export const StyledDiv = styled.div`
   justify-content: space-between;
   /* width: 100%; */
   /* RESET WIDTH TO 100% FOR DYNAMIC CAROUSEL */
-  width: 15rem;
+  width: 24davrem;
 `
 
 export const StyledBlock = styled.div`
@@ -18,7 +18,7 @@ export const StyledBlock = styled.div`
   flex-flow: column;
   /* width: 100%; */
   /* RESET WIDTH TO 100% FOR DYNAMIC CAROUSEL */
-  width: 15rem;
+  width: 24davrem;
 `
 
 export const DottedBlock = styled.div`
@@ -27,11 +27,11 @@ export const DottedBlock = styled.div`
   text-align: center;
   align-items: center;
   justify-content: center;
-  width: 15rem;
-  height: 15rem;
+  width: 24davrem;
+  height: 24davrem;
   border: 5px dashed white;
-  border-radius: 1rem;
-  padding: 1rem;
+  border-radius: 1.6davrem;
+  padding: 1.6davrem;
 `
 
 export const StyledTitle = styled.h2`
