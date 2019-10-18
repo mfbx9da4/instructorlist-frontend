@@ -1,27 +1,27 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const StyledSection = styled.section`
   background-color: ${props => props.theme.accent};
   overflow-x: hidden;
   /* .swiper-slide {
-    width: 10rem;
+    width: 16rem;
   }
   .swiper-slide-active {
-    width: 10rem;
+    width: 16rem;
   } */
   .swiper-wrapper {
     display: flex;
   }
 `
 export const StyledDiv = styled.div`
-  border-radius: 5rem;
-  width: 6.5rem;
-  height: 2.8rem;
+  border-radius: 8rem;
+  width: 10.4rem;
+  height: 4.48rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-bottom: 2rem;
+  margin-bottom: 3.2rem;
 `
 
 export const StyledButtonPrev = styled.div`

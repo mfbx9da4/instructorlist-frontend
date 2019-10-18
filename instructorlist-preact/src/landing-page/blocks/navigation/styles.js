@@ -21,10 +21,10 @@ export const StyledLink = styled(Link)`
   font-weight: bold;
   text-decoration: none;
   display: flex;
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     font-size: 22px;
   }
-  ${props => props.theme.media.md} {
+  @media ${props => props.theme.media.md} {
     font-size: 30px;
   }
 `
@@ -34,8 +34,8 @@ export const StyledButton = styled.button`
   background-color: ${props => (props.primary ? `white` : `#1848FF`)};
   border: 1px solid ${props => (props.primary ? `#1848FF` : `white`)};
   margin-right: ${props => (props.primary ? `10px` : `15px`)};
-  border-radius: 5rem;
-  padding: 0.6rem 1.3rem;
+  border-radius: 8rem;
+  padding: 0.96rem 2.08rem;
 
   font-size: 11px;
   font-weight: 600;
@@ -43,10 +43,11 @@ export const StyledButton = styled.button`
   outline: none;
   display: ${props => (props.primary ? `none` : `flex`)};
   transition: transform 0.3s ease-in-out;
-  ${props => props.theme.media.sm} {
+
+  @media ${props => props.theme.media.sm} {
     display: flex;
     flex-flow: row;
-    padding: 0.6rem 2.3rem;
+    padding: 0.96rem 3.68rem;
   }
   :hover {
     transform: scale(1.06);

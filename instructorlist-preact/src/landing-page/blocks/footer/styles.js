@@ -1,17 +1,16 @@
 import styled from 'styled-components'
 import { Col } from '../../components/grid/index'
 
-
 export const SectionHeader = styled.h1`
   display: none;
 `
 
 export const PaddingBetween = styled.div`
   width: 100%;
-  height: 4rem;
+  height: 6.4rem;
 
-  ${props => props.theme.media.md} {
-    height: 10rem;
+  @media ${props => props.theme.media.md} {
+    height: 16rem;
   }
 `
 
@@ -25,17 +24,17 @@ export const StyledSection = styled.section`
   background-color: ${props => props.theme.accent};
 `
 export const StyledForm = styled.form`
-  margin-top: 1rem;
+  margin-top: 1.6rem;
   display: flex;
   flex-direction: column;
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     flex-direction: column;
     width: 100%;
   }
-  ${props => props.theme.media.md} {
+  @media ${props => props.theme.media.md} {
     flex-direction: column;
   }
-  ${props => props.theme.media.lg} {
+  @media ${props => props.theme.media.lg} {
     flex-direction: row;
   }
 `
@@ -51,8 +50,8 @@ export const StyledButton = styled.button`
   background-color: white;
   border: none;
   margin-left: 5px;
-  border-radius: 5rem;
-  padding: 0.6rem 2rem;
+  border-radius: 8rem;
+  padding: 0.96rem 3.2rem;
 
   font-size: 11px;
   font-weight: 600;
@@ -61,9 +60,8 @@ export const StyledButton = styled.button`
   width: 100%;
   margin-top: 10px;
 
-  ${props => props.theme.media.sm} {
-    padding: 0.6rem 2rem;
-    width: 11rem;
+  @media ${props => props.theme.media.sm} {
+    width: 17.6rem;
     margin-top: 0;
   }
 
@@ -75,24 +73,24 @@ export const StyledButton = styled.button`
 `
 
 export const StyledInput = styled.input`
-  border-radius: 5rem;
+  border-radius: 8rem;
   border: 1px solid ${props => props.theme.inputBlue};
   background-color: ${props => props.theme.inputBlue};
   color: white;
-  padding: 0.5rem 4rem;
+  padding: 0.8rem 6.4rem;
 
   font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.8px;
   outline: none;
-  margin-right: 0.5rem;
+  margin-right: 0.8rem;
   text-align: center;
   width: 100%;
   margin-top: 10px;
 
-  ${props => props.theme.media.sm} {
-    padding: 0.5rem 3rem;
-    width: 16rem;
+  @media ${props => props.theme.media.sm} {
+    padding: 0.8rem 4.8rem;
+    width: 25.6rem;
     margin-top: 0;
     text-align: left;
   }

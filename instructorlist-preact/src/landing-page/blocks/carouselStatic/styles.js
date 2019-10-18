@@ -1,12 +1,12 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const StyledSection = styled.section`
   background-color: ${props => props.theme.accent};
 `
 export const StyledDiv = styled.div`
-  border-radius: 5rem;
-  width: 6.5rem;
-  height: 2.8rem;
+  border-radius: 8rem;
+  width: 10.4rem;
+  height: 4.48rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;

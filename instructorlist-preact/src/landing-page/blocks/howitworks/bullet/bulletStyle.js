@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import CounterNumber from '../../../images/CounterFigure.svg'
 
-
 export const BulletTitle = styled.h2`
   font-weight: 700;
   color: ${props => props.theme.accent};
@@ -10,7 +9,7 @@ export const BulletTitle = styled.h2`
   font-size: 21px;
 `
 export const StyledImg = styled.img`
-  margin-top: 1.3rem;
+  margin-top: 2.08rem;
 `
 
 export const StyledBlock = styled.div`
@@ -20,8 +19,8 @@ export const StyledBlock = styled.div`
   align-items: center;
   background-color: white;
   border-radius: 12px;
-  width: 18rem;
-  height: 19rem;
+  width: 28.8rem;
+  height: 30.4rem;
   text-align: center;
 `
 

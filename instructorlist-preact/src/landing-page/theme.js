@@ -15,14 +15,14 @@ const theme = {
   space: [0, 6, 12, 18, 24],
   breakpoints: breakpoints,
   media: {
-    sm: `@media only screen and (min-width: ${breakpoints['sm']}px)`,
-    md: `@media only screen and (min-width: ${breakpoints['md']}px)`,
-    lg: `@media only screen and (min-width: ${breakpoints['lg']}px)`,
-    xl: `@media only screen and (min-width: ${breakpoints['xl']}px)`,
+    sm: `only screen and (min-width: ${breakpoints['sm']}px)`,
+    md: `only screen and (min-width: ${breakpoints['md']}px)`,
+    lg: `only screen and (min-width: ${breakpoints['lg']}px)`,
+    xl: `only screen and (min-width: ${breakpoints['xl']}px)`,
   },
-  paddingsm: `2rem 0`,
-  paddingmd: `4rem 0`,
-  paddinglg: `8rem 0`,
+  paddingsm: `3.2rem 0`,
+  paddingmd: `6.4rem 0`,
+  paddinglg: `12.8rem 0`,
 }
 
 export default theme
