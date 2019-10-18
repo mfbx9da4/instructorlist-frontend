@@ -1,9 +1,10 @@
 const breakpoints = [0, 576, 768, 992, 1200]
 // aliases
-breakpoints.sm = breakpoints[0]
-breakpoints.md = breakpoints[1]
-breakpoints.lg = breakpoints[2]
-breakpoints.xl = breakpoints[3]
+breakpoints.xs = breakpoints[0]
+breakpoints.sm = breakpoints[1]
+breakpoints.md = breakpoints[2]
+breakpoints.lg = breakpoints[3]
+breakpoints.xl = breakpoints[4]
 
 const theme = {
   //   // font: 'Mark Simonson - Proxima Nova Regular', 'Helvetica Neue', arial,

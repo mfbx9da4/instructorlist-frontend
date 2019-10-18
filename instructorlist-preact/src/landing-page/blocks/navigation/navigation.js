@@ -14,14 +14,6 @@ const ColBreakPoints = {
   xl: 1 / 2,
 }
 
-const ColBreakPoints2 = {
-  xs: 1 / 2,
-  sm: 1 / 4,
-  md: 1 / 2,
-  lg: 1 / 2,
-  xl: 1 / 2,
-}
-
 const Padding = {
   xs: '20px',
   sm: '20px',
@@ -39,7 +31,7 @@ const Navigation = props => {
         <PaddingContainer>
           <Row pt="40px" pb={Padding} justifyContent="center">
             <Col
-              width={ColBreakPoints2}
+              width={ColBreakPoints}
               justifyContent="center"
               alignItems="center"
               display="flex"
