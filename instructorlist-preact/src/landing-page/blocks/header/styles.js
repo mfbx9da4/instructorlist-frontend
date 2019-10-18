@@ -9,7 +9,7 @@ export const StyledAlert = styled.p`
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
-  /* ${props => props.theme.media.sm}{
+  /* @media ${props => props.theme.media.sm}{
       display: none;
   } */
 `
@@ -20,14 +20,14 @@ export const StyledForm = styled.form`
   justify-content: center;
   margin-left: 10px;
   width: 95%;
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     flex-direction: column;
     width: 100%;
   }
-  ${props => props.theme.media.md} {
+  @media ${props => props.theme.media.md} {
     flex-direction: column;
   }
-  ${props => props.theme.media.lg} {
+  @media ${props => props.theme.media.lg} {
     flex-direction: row;
     margin-left: -30px;
   }
@@ -48,7 +48,7 @@ export const StyledDiv = styled.div`
   text-transform: uppercase;
   width: 100%;
 
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     display: none;
   }
   transition: transform 0.3s ease-in-out;
@@ -77,7 +77,7 @@ export const StyledButton = styled.button`
   width: 100%;
   margin-top: 10px;
 
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     padding: 0.6rem 2.3rem;
     width: 11rem;
     margin-top: 0;
@@ -105,7 +105,7 @@ export const StyledInput = styled.input`
   width: 100%;
   margin-top: 10px;
 
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     padding: 0.5rem 3rem;
     width: 16rem;
     margin-top: 0;

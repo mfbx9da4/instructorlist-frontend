@@ -5,7 +5,7 @@ export const SectionHeader = styled.h1`
   line-height: 1.3;
   font-weight: 900;
   color: ${props => (props.secundary ? `white` : `black`)};
-  ${props => props.theme.media.lg} {
+  @media ${props => props.theme.media.lg} {
     font-size: 45px;
   }
 `
@@ -18,7 +18,7 @@ export const Span = styled.span`
 
 export const LogoSpan = styled.span`
   display: none;
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,7 +47,7 @@ export const SectionMargin = styled.div`
   padding-bottom: 2rem;
   margin-top: 5rem;
   padding-top: ${props => (props.footer ? `6rem` : `0`)};
-  ${props => props.theme.media.md} {
+  @media ${props => props.theme.media.md} {
     margin-top: ${props => (props.margin ? `10rem` : `5rem`)};
     padding-bottom: ${props => (props.footer ? `2rem` : `5rem`)};
   }

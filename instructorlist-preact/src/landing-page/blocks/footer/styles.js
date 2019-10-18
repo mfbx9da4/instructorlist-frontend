@@ -10,7 +10,7 @@ export const PaddingBetween = styled.div`
   width: 100%;
   height: 4rem;
 
-  ${props => props.theme.media.md} {
+  @media ${props => props.theme.media.md} {
     height: 10rem;
   }
 `
@@ -28,14 +28,14 @@ export const StyledForm = styled.form`
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     flex-direction: column;
     width: 100%;
   }
-  ${props => props.theme.media.md} {
+  @media ${props => props.theme.media.md} {
     flex-direction: column;
   }
-  ${props => props.theme.media.lg} {
+  @media ${props => props.theme.media.lg} {
     flex-direction: row;
   }
 `
@@ -61,7 +61,7 @@ export const StyledButton = styled.button`
   width: 100%;
   margin-top: 10px;
 
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     padding: 0.6rem 2rem;
     width: 11rem;
     margin-top: 0;
@@ -90,7 +90,7 @@ export const StyledInput = styled.input`
   width: 100%;
   margin-top: 10px;
 
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     padding: 0.5rem 3rem;
     width: 16rem;
     margin-top: 0;
