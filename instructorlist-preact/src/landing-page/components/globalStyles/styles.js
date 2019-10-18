@@ -48,8 +48,8 @@ export const SectionMargin = styled.div`
   margin-top: 8rem;
   padding-top: ${props => (props.footer ? `9.6rem` : `0`)};
   @media ${props => props.theme.media.md} {
-    margin-top: ${props => (props.margin ? `16rem` : `12.8rem`)};
-    padding-bottom: ${props => (props.footer ? `3.2rem` : `12.8rem`)};
+    margin-top: ${props => (props.margin ? `16rem` : `8rem`)};
+    padding-bottom: ${props => (props.footer ? `3.2rem` : `8rem`)};
   }
 `
 

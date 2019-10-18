@@ -51,7 +51,7 @@ export const StyledButton = styled.button`
   border: none;
   margin-left: 5px;
   border-radius: 8rem;
-  padding: 9.6rem 3.2rem;
+  padding: 0.96rem 3.2rem;
 
   font-size: 11px;
   font-weight: 600;
@@ -61,8 +61,7 @@ export const StyledButton = styled.button`
   margin-top: 10px;
 
   @media ${props => props.theme.media.sm} {
-    padding: 9.6rem 3.2rem;
-    width: 11.6rem;
+    width: 17.6rem;
     margin-top: 0;
   }
 
@@ -78,19 +77,19 @@ export const StyledInput = styled.input`
   border: 1px solid ${props => props.theme.inputBlue};
   background-color: ${props => props.theme.inputBlue};
   color: white;
-  padding: 8rem6.4rem;
+  padding: 0.8rem 6.4rem;
 
   font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.8px;
   outline: none;
-  margin-right: 8rem;
+  margin-right: 0.8rem;
   text-align: center;
   width: 100%;
   margin-top: 10px;
 
   @media ${props => props.theme.media.sm} {
-    padding: 8rem4.8rem;
+    padding: 0.8rem 4.8rem;
     width: 25.6rem;
     margin-top: 0;
     text-align: left;
