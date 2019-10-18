@@ -66,6 +66,13 @@ export const Container = styled(Box).attrs(props => ({
   md: props.theme.media.md,
   lg: props.theme.media.md,
   xl: props.theme.media.md,
+  width: {
+    xs: `100%`,
+    sm: `100%`,
+    md: `750px`,
+    lg: `960px`,
+    xl: `1200px`,
+  },
 }))``
 
 // Layout engine

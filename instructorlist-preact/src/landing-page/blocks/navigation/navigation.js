@@ -5,6 +5,7 @@ import { Row, Col } from '../../components/grid/index'
 import { SectionHeader, StyledLink, StyledButton, StickyDiv } from './styles'
 import { PaddingContainer } from '../../components/globalStyles/styles'
 import { Container } from '../../components/grid/index'
+import { Link } from 'preact-router'
 
 const ColBreakPoints = {
   xs: 1 / 2,
@@ -45,7 +46,9 @@ const Navigation = props => {
                     {primaryButton}
                   </a>
                 </StyledButton>
-                <StyledButton>{secundaryButton}</StyledButton>
+                <StyledButton>
+                  <Link href="/search">{secundaryButton}</Link>
+                </StyledButton>
               </Row>
             </Col>
           </Row>
