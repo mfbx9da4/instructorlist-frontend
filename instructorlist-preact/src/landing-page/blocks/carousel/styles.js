@@ -16,7 +16,7 @@ export const StyledSection = styled.section`
 export const StyledDiv = styled.div`
   border-radius: 8rem;
   width: 10.4rem;
-  height: 44.8rem;
+  height: 4.48rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
