@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import breakpoint from 'styled-components-breakpoint'
+
 import { Link } from 'preact-router/match'
 
 export const SectionHeader = styled.h1`
@@ -21,12 +21,12 @@ export const StyledLink = styled(Link)`
   font-weight: bold;
   text-decoration: none;
   display: flex;
-  ${breakpoint(`sm`)`
-      font-size: 22px;
-  `};
-  ${breakpoint(`md`)`
-      font-size: 30px;
-  `};
+  ${props => props.theme.media.sm} {
+    font-size: 22px;
+  }
+  ${props => props.theme.media.md} {
+    font-size: 30px;
+  }
 `
 
 export const StyledButton = styled.button`
@@ -43,11 +43,11 @@ export const StyledButton = styled.button`
   outline: none;
   display: ${props => (props.primary ? `none` : `flex`)};
   transition: transform 0.3s ease-in-out;
-  ${breakpoint(`sm`)`
-      display: flex;
-      flex-flow: row;
-      padding: 0.6rem 2.3rem;
-  `};
+  ${props => props.theme.media.sm} {
+    display: flex;
+    flex-flow: row;
+    padding: 0.6rem 2.3rem;
+  }
   :hover {
     transform: scale(1.06);
     cursor: pointer;

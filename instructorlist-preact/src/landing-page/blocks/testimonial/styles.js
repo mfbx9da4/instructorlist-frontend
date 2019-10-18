@@ -1,6 +1,5 @@
-import styled from "styled-components"
-import { Col } from "../../components/grid/index"
-import breakpoint from "styled-components-breakpoint"
+import styled from 'styled-components'
+import { Col } from '../../components/grid/index'
 
 export const StyledSection = styled.div`
   display: flex;
@@ -10,7 +9,6 @@ export const StyledSection = styled.div`
 `
 
 export const StyledTeacher = styled.p`
-
   font-size: 17px;
   letter-spacing: 1.29px;
   font-weight: 300;
@@ -19,34 +17,31 @@ export const StyledTeacher = styled.p`
 `
 
 export const StyledQuote = styled.p`
-
   font-size: 40px;
   line-height: 1.5;
   font-weight: 300;
-  ${breakpoint(`sm`)`
-      font-size: 20px;
-  `};
-  ${breakpoint(`lg`)`
-      font-size: 40px;
-  `};
+  ${props => props.theme.media.sm} {
+    font-size: 20px;
+  }
+  ${props => props.theme.media.lg} {
+    font-size: 40px;
+  }
 `
 
 export const StyledDt = styled(Col)`
-
   font-size: 14px;
   letter-spacing: 1.9px;
   font-weight: 700;
   text-transform: uppercase;
-  ${breakpoint(`sm`)`
+  ${props => props.theme.media.sm} {
     font-size: 11px;
-  `};
-  ${breakpoint(`xl`)`
+  }
+  ${props => props.theme.media.xl} {
     font-size: 14px;
-  `};
+  }
 `
 
 export const StyledDd = styled(Col)`
-
   font-size: 15px;
   letter-spacing: 0.75px;
   font-weight: 300;

@@ -1,10 +1,10 @@
-const breakpoints = [0, 576, 768, 992, 1200]
+const breakpoints = [576, 768, 992, 1200]
 // aliases
-breakpoints.xs = breakpoints[0]
-breakpoints.sm = breakpoints[1]
-breakpoints.md = breakpoints[2]
-breakpoints.lg = breakpoints[3]
-breakpoints.xl = breakpoints[4]
+
+breakpoints.sm = breakpoints[0]
+breakpoints.md = breakpoints[1]
+breakpoints.lg = breakpoints[2]
+breakpoints.xl = breakpoints[3]
 
 const theme = {
   //   // font: 'Mark Simonson - Proxima Nova Regular', 'Helvetica Neue', arial,
@@ -13,7 +13,13 @@ const theme = {
   grey2: `#C0C0C0`,
   inputBlue: `#7473FF`,
   space: [0, 6, 12, 18, 24],
-  breakpoints,
+  breakpoints: breakpoints,
+  media: {
+    sm: `@media only screen and (min-width: ${breakpoints['sm']}px)`,
+    md: `@media only screen and (min-width: ${breakpoints['md']}px)`,
+    lg: `@media only screen and (min-width: ${breakpoints['lg']}px)`,
+    xl: `@media only screen and (min-width: ${breakpoints['xl']}px)`,
+  },
   paddingsm: `2rem 0`,
   paddingmd: `4rem 0`,
   paddinglg: `8rem 0`,

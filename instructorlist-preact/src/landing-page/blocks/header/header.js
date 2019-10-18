@@ -20,9 +20,7 @@ import {
 import { Container } from '../../components/grid/index'
 
 const ColBreakPoints = {
-  xs: 1,
-  sm: 1,
-  md: 1 / 2,
+  md: 1 / 3,
   lg: 1 / 2,
   xl: 1 / 2,
 }
@@ -35,11 +33,28 @@ const Padding = {
   xl: `0`,
 }
 
+const est = {
+  sm: '50px',
+  md: '200px',
+  lg: 1 / 2,
+}
 const Header = props => {
   const { alert, title, subtext } = props
   return (
     <Container>
       <SectionMarginTop>
+        <Row>
+          <Col width={est}>
+            <div
+              style={{ background: 'blue', width: '100%', height: '200px' }}
+            />
+          </Col>
+          <Col width={est}>
+            <div
+              style={{ background: 'red', width: '100%', height: '200px' }}
+            />
+          </Col>
+        </Row>
         <Row justifyContent="space-between" alignItems="center">
           <Col width={ColBreakPoints} order={-2}>
             <StyledImage scr="Header-image.png" />

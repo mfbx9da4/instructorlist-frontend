@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import CounterNumber from '../../../images/CounterFigure.svg'
-import breakpoint from 'styled-components-breakpoint'
+
 
 export const BulletTitle = styled.h2`
   font-weight: 700;
