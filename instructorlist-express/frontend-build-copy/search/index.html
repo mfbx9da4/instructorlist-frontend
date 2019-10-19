@@ -1,29 +1,48 @@
 Html Webpack Plugin:
 <pre>
-  Error: Cannot find module 'preact-render-to-string'
+  Error: undefined:1:72: property missing ':'
   
-  - loader.js:582 Function.Module._resolveFilename
-    internal/modules/cjs/loader.js:582:15
+  - index.js:62 error
+    [instructorlist-preact]/[css]/lib/parse/index.js:62:15
   
-  - loader.js:508 Function.Module._load
-    internal/modules/cjs/loader.js:508:25
+  - index.js:224 declaration
+    [instructorlist-preact]/[css]/lib/parse/index.js:224:33
   
-  - loader.js:637 Module.require
-    internal/modules/cjs/loader.js:637:17
+  - index.js:253 declarations
+    [instructorlist-preact]/[css]/lib/parse/index.js:253:19
   
-  - helpers.js:22 require
-    internal/modules/cjs/helpers.js:22:18
+  - index.js:561 rule
+    [instructorlist-preact]/[css]/lib/parse/index.js:561:21
   
-  - prerender.js:29 module.exports
-    [instructorlist-preact]/[preact-cli]/lib/lib/webpack/prerender.js:29:21
+  - index.js:118 rules
+    [instructorlist-preact]/[css]/lib/parse/index.js:118:70
   
-  - render-html-plugin.js:54 Object.ssr
-    [instructorlist-preact]/[preact-cli]/lib/lib/webpack/render-html-plugin.js:54:31
+  - index.js:81 stylesheet
+    [instructorlist-preact]/[css]/lib/parse/index.js:81:21
   
-  - template.ejs:144 W49N.module.exports
-    /Users/davidadler/code/instructorlist-frontend/instructorlist-preact/template.ejs:144:37
+  - index.js:565 Object.module.exports [as parse]
+    [instructorlist-preact]/[css]/lib/parse/index.js:565:20
   
-  - index.js:284 Promise.resolve.then
-    [instructorlist-preact]/[html-webpack-plugin]/index.js:284:18
+  - critters.js:24 parseStylesheet
+    [instructorlist-preact]/[critters-webpack-plugin]/dist/critters.js:24:16
+  
+  - critters.js:258 Critters.<anonymous>
+    [instructorlist-preact]/[critters-webpack-plugin]/dist/critters.js:258:19
+  
+  - new Promise
+  
+  - critters.js:245 Critters.processStyle
+    [instructorlist-preact]/[critters-webpack-plugin]/dist/critters.js:245:12
+  
+  - critters.js:130 
+    [instructorlist-preact]/[critters-webpack-plugin]/dist/critters.js:130:76
+  
+  - Array.map
+  
+  - critters.js:130 Critters.$If_3
+    [instructorlist-preact]/[critters-webpack-plugin]/dist/critters.js:130:39
+  
+  - critters.js:120 Critters.<anonymous>
+    [instructorlist-preact]/[critters-webpack-plugin]/dist/critters.js:120:34
   
 </pre>

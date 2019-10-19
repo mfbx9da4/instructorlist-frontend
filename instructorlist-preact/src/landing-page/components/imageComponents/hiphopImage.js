@@ -1,12 +1,12 @@
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 const HiphopImage = () => (
   <StaticQuery
     query={graphql`
       query {
-        HiphopImage: file(relativePath: { eq: "dancer-1.png" }) {
+        HiphopImage: file(relativePath: { eq: "dancer-1.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 200) {
               ...GatsbyImageSharpFluid

@@ -71,8 +71,8 @@ const withLandingPageTemplate = Page => props => (
 
 const pages = [
   {
-    component: withLandingPageTemplate(LandingPage),
-    // component: () => 'gey',
+    // component: withLandingPageTemplate(LandingPage),
+    component: () => 'gey',
     path: '/',
   },
   {
