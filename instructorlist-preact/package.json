@@ -7,8 +7,9 @@
     "start": "per-env",
     "start:production": "npm run -s serve",
     "start:development": "npm run -s dev",
-    "build": "find . -name '.DS_Store' -type f -delete && ./node_modules/.bin/preact build --json --template template.ejs && rm -rf ../instructorlist-express/frontend-build-copy/* && cp -r ./build/* ../instructorlist-express/frontend-build-copy/",
-    "serve": "./node_modules/.bin/preact build --json --template template.ejs && ./node_modules/.bin/preact serve",
+    "_build": "./node_modules/.bin/preact build --analyze --json --template template.ejs",
+    "build": "find . -name '.DS_Store' -type f -delete && yarn _build && rm -rf ../instructorlist-express/frontend-build-copy/* && cp -r ./build/* ../instructorlist-express/frontend-build-copy/",
+    "serve": "yarn _build && ./node_modules/.bin/preact serve",
     "dev": "./node_modules/.bin/preact watch --https --template template.ejs ",
     "lint": "eslint src",
     "test": "jest"
@@ -50,8 +51,7 @@
     "preact-cli-plugin-async": "^2.0.0",
     "preact-cli-plugin-critical-css": "^0.1.0",
     "sass-loader": "^7.2.0",
-    "typings-for-css-modules-loader": "^1.7.0",
-    "webpack-bundle-analyzer": "^3.5.2"
+    "typings-for-css-modules-loader": "^1.7.0"
   },
   "dependencies": {
     "@quickbaseoss/babel-plugin-styled-components-css-namespace": "^1.0.0-rc3",
@@ -69,6 +69,7 @@
     "sharp": "^0.23.1",
     "styled-components": "4.3.2",
     "styled-system": "4.2.4",
+    "webpack-bundle-analyzer": "^3.6.0",
     "workbox-webpack-plugin": "^4.3.1"
   },
   "jest": {

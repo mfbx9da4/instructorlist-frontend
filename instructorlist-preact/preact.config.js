@@ -14,7 +14,6 @@ export default (config, env, helpers) => {
   let { rule } = helpers.getLoadersByName(config, 'babel-loader')[0]
   let babelConfig = rule.options
 
-  console.log('babelConfig.plugins', babelConfig.plugins)
   babelConfig.plugins.push(
     [
       '@quickbaseoss/babel-plugin-styled-components-css-namespace',
@@ -23,7 +22,7 @@ export default (config, env, helpers) => {
     'styled-components',
   )
 
-  if (!isSSRBundle(config)) config.plugins.push(new BundleAnalyzerPlugin())
+  // if (!isSSRBundle(config)) config.plugins.push(new BundleAnalyzerPlugin())
 
   // asyncPlugin(config)
   // // Remove Critical CSS plugin
