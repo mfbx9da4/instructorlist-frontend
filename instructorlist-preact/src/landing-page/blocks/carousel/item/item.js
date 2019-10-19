@@ -16,7 +16,6 @@ const itemStyle = props => {
   const { flag, image, title, description } = props
   return (
     <StyledBlock>
-      {/* <HiphopImage scr="dancer-1.png" /> */}
       <img src={image} width="400" alt="people dancing" />
       <div>
         <StyledDiv>

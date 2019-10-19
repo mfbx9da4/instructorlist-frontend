@@ -66,6 +66,7 @@
     "preact-cli": "3.0.0-rc.1",
     "preact-compat": "gist:developit/eeebf4c2449c9848dc95aff847d2454d",
     "preact-router": "3.0.1",
+    "sharp": "^0.23.1",
     "styled-components": "4.3.2",
     "styled-system": "4.2.4",
     "workbox-webpack-plugin": "^4.3.1"
