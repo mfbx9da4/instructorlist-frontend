@@ -7,7 +7,7 @@
     "start": "per-env",
     "start:production": "npm run -s serve",
     "start:development": "npm run -s dev",
-    "_build": "./node_modules/.bin/preact build --template template.ejs --inline-css false",
+    "_build": "./node_modules/.bin/preact build --template template.ejs --inline-css false --verbose",
     "build": "find . -name '.DS_Store' -type f -delete && yarn _build && rm -rf ../instructorlist-express/frontend-build-copy/* && cp -r ./build/* ../instructorlist-express/frontend-build-copy/",
     "serve": "yarn _build && ./node_modules/.bin/preact serve",
     "dev": "./node_modules/.bin/preact watch --https --template template.ejs ",
@@ -15,9 +15,9 @@
     "test": "jest"
   },
   "browserslist": [
-    "last 1 version",
     "> 1%",
-    "IE 10"
+    "IE >= 9",
+    "last 2 versions"
   ],
   "eslintConfig": {
     "extends": "eslint-config-synacor"
