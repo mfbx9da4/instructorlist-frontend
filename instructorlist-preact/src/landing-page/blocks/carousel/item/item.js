@@ -1,5 +1,5 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react'
+import PropTypes from 'prop-types'
 // import HiphopImage from "../../../components/imageComponents/hiphopImage"
 // import BalletImage from "../../../components/imageComponents/balletImage"
 // import CapImage from "../../../components/imageComponents/capImage"
@@ -10,14 +10,14 @@ import {
   StyledFlag,
   ExtraStyledText,
   StyledDiv,
-} from "./itemStyle"
+} from './itemStyle'
 
 const itemStyle = props => {
   const { flag, image, title, description } = props
   return (
     <StyledBlock>
       {/* <HiphopImage scr="dancer-1.png" /> */}
-      <img src={image} width="400" height="auto" alt="people dancing" />
+      <img src={image} width="400" alt="people dancing" />
       <div>
         <StyledDiv>
           <StyledTitle>{title}</StyledTitle>

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import CounterNumber from '../../../images/CounterFigure.svg'
-
+import CounterNumber from '../../../../assets/images/counter-figure.svg'
 
 export const BulletTitle = styled.h2`
   font-weight: 700;
@@ -36,6 +35,8 @@ export const StyledDiv = styled.div`
 export const StyledCounterNumber = styled.div`
   position: absolute;
   background: url(${CounterNumber});
+  width: 47px;
+  height: 56px;
 `
 
 export const StyledNumber = styled.p`

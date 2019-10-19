@@ -1,12 +1,12 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { Row, Col } from "../../components/grid/index"
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Row, Col } from '../../components/grid/index'
 import {
   SectionHeader,
   StyledText,
   SectionMargin,
   PaddingContainer,
-} from "../../components/globalStyles/styles"
+} from '../../components/globalStyles/styles'
 import {
   StyledSection,
   StyledButton,
@@ -16,13 +16,13 @@ import {
   StyledCol,
   StyledForm,
   PaddingBetween,
-} from "./styles"
+} from './styles'
 
-// import Twitter from "../../images/twitter.png"
-import Instagram from "../../images/instagram.png"
-// import Facebook from "../../images/facebook.png"
+// import Twitter from "../../../assets/images/landing-page/twitter.png"
+import Instagram from '../../../assets/images/landing-page/instagram.png'
+// import Facebook from "../../../assets/images/landing-page/facebook.png"
 
-import { Container } from "../../components/grid/index"
+import { Container } from '../../components/grid/index'
 
 const Footer = props => {
   const { title, copyright, email } = props
@@ -53,15 +53,15 @@ const Footer = props => {
                     <div id="mce-responses">
                       <div
                         id="mce-error-response"
-                        style={{ display: "none" }}
+                        style={{ display: 'none' }}
                       />
                       <div
                         id="mce-success-response"
-                        style={{ display: "none" }}
+                        style={{ display: 'none' }}
                       />
                     </div>
                     <div
-                      style={{ position: "absolute", left: "-5000px" }}
+                      style={{ position: 'absolute', left: '-5000px' }}
                       aria-hidden="true"
                     >
                       <input

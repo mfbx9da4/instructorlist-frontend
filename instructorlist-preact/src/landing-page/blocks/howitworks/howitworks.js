@@ -8,9 +8,9 @@ import { SectionMargin } from '../../components/globalStyles/styles'
 import { Container } from '../../components/grid/index'
 
 import Bullet from './bullet/bullet'
-import Icon1 from '../../images/icon-1.png'
-import Icon2 from '../../images/icon-2.png'
-import Icon3 from '../../images/icon3.png'
+import Icon1 from '../../../assets/images/landing-page/icon-1.png'
+import Icon2 from '../../../assets/images/landing-page/icon-2.png'
+import Icon3 from '../../../assets/images/landing-page/icon3.png'
 
 const justifyPlacement = {
   xs: 'center',
@@ -38,7 +38,7 @@ const Howitworks = props => {
                 />
               </Col>
 
-              {/* <Col pt="10px" pb="10px">
+              <Col pt="10px" pb="10px">
                 <Bullet
                   number="02"
                   image={Icon2}
@@ -54,7 +54,7 @@ const Howitworks = props => {
                   title="Dance"
                   description="Attend any class of your choice using your credits."
                 />
-              </Col> */}
+              </Col>
             </Row>
           </StyledDiv>
         </Container>

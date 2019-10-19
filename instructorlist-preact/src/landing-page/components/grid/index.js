@@ -64,8 +64,8 @@ Flex.propTypes = {
 export const Container = styled(Box).attrs(props => ({
   boxSizing: 'border-box',
   md: props.theme.media.md,
-  lg: props.theme.media.md,
-  xl: props.theme.media.md,
+  lg: props.theme.media.lg,
+  xl: props.theme.media.xl,
   width: {
     xs: `100%`,
     sm: `100%`,
@@ -74,6 +74,10 @@ export const Container = styled(Box).attrs(props => ({
     xl: `1200px`,
   },
 }))``
+
+Container.defaultProps = {
+  mx: `auto`,
+}
 
 // Layout engine
 export const Row = styled(Flex).attrs({
