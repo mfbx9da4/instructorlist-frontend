@@ -11,8 +11,4 @@ module.exports = [
     url: '/search',
     title: 'Search',
   },
-  {
-    url: '/profile',
-    title: 'Profile',
-  },
 ]

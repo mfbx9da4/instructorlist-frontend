@@ -1,5 +1,5 @@
-import './style'
 import App from './components/app'
+import './style'
 
 if (typeof window !== 'undefined') {
   if ('serviceWorker' in navigator) {
@@ -9,4 +9,5 @@ if (typeof window !== 'undefined') {
   }
 }
 
+// export default () => 'hey'
 export default App
