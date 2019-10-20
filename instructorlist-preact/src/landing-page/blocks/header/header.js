@@ -42,7 +42,7 @@ const Header = props => {
       <SectionMarginTop>
         <Row justifyContent="space-between" alignItems="center">
           <Col width={ColBreakPoints} order={-2}>
-            <StyledImage scr="/assets/images/landing-page/header-image.png" />
+            <StyledImage scr="/assets/images/landing-page/header-image.jpg" />
           </Col>
 
           <Col width={ColBreakPoints} pt={Padding}>

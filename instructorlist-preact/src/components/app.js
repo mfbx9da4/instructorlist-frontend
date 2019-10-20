@@ -52,8 +52,8 @@ const withMainTemplate = Page => props => (
 
 class LandingPageTemplate extends Component {
   componentDidMount() {
-    document.body.style.fontSize = '18px'
-    document.documentElement.style.fontSize = '18px'
+    document.body.style.fontSize = 'unset'
+    document.documentElement.style.fontSize = 'unset'
   }
   render() {
     return (

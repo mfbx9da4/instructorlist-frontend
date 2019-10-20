@@ -9,6 +9,9 @@ export default {
    * @param {object} options - this is mainly relevant for plugins (will always be empty in the config), default to an empty object
    **/
   webpack(config, env, helpers, options) {
-    console.log(JSON.stringify(config, null, 2))
+    console.log(
+      JSON.stringify(helpers.getRulesByMatchingFile(config, '.scss'), null, 2),
+    )
+    // console.log(JSON.stringify(config, null, 2))
   },
 }

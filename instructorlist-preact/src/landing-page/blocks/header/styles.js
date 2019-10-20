@@ -80,6 +80,7 @@ export const StyledButton = styled.button`
   @media ${props => props.theme.media.sm} {
     padding: 0.6rem 2.3rem;
     width: 11rem;
+    /* width: 15rem; */
     margin-top: 0;
   }
 

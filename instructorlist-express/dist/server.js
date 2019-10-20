@@ -29,8 +29,8 @@ const https_1 = __importDefault(require("https"));
 const ssr_bundle_1 = __importDefault(require("../frontend-build-copy/ssr-build/ssr-bundle"));
 // Polyfill Fetch for SSR
 require('isomorphic-fetch');
-const Version = 2;
-console.log('Version', Version, preact_render_to_string_1.render);
+const Version = 1;
+console.log('Version', Version);
 const compression = compression_1.default();
 const BUILD_LOCATION = path_1.default.resolve('./frontend-build-copy');
 const { PORT = 80 } = process.env;

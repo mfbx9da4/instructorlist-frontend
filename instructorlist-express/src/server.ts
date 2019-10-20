@@ -15,8 +15,8 @@ import App from '../frontend-build-copy/ssr-build/ssr-bundle'
 // Polyfill Fetch for SSR
 require('isomorphic-fetch')
 
-const Version = 2
-console.log('Version', Version, render)
+const Version = 1
+console.log('Version', Version)
 
 const compression = createCompression()
 const BUILD_LOCATION = path.resolve('./frontend-build-copy')

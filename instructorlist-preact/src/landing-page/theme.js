@@ -7,7 +7,7 @@ breakpoints.lg = breakpoints[2]
 breakpoints.xl = breakpoints[3]
 
 const theme = {
-  //   // font: 'Mark Simonson - Proxima Nova Regular', 'Helvetica Neue', arial,
+  //   // font: 'proximanova', 'Helvetica Neue', arial,
   accent: `#1848FF`,
   grey: `#F9F9F9`,
   grey2: `#C0C0C0`,
