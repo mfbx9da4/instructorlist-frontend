@@ -26,7 +26,6 @@ const { PORT = 80 } = process.env
 const rgxAmpScripts = /<script id="start-amp-scripts"[^>]*>.*?(?=<script id="end-amp-scripts")/i
 const rgxContent = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i
 const home = readFileSync(`${BUILD_LOCATION}/index.html`, 'utf8')
-const profile = readFileSync(`${BUILD_LOCATION}/profile/index.html`, 'utf8')
 const search = readFileSync(`${BUILD_LOCATION}/search/index.html`, 'utf8')
 const shell = readFileSync(`${BUILD_LOCATION}/shell/index.html`, 'utf8')
 
@@ -100,8 +99,6 @@ const app = express()
   .get('/classes/', ssr(search))
   .get('/classes/:id', ssr(search))
   .get('/shell/index.html', ssr(shell, false))
-  .get('/profile/', ssr(profile))
-  .get('/profile/:user', ssr(profile))
   .use(serve(BUILD_LOCATION, { setHeaders }))
   .get('*', (req, res) => {
     console.log('ERROR: should_not_be_here', req.url)
@@ -113,14 +110,15 @@ app.set('trust proxy', true)
 
 const httpServer = http.createServer(app)
 httpServer.listen(PORT, () => console.log(`🎠 http://localhost:${PORT}`))
-if (process.env.NODE_ENV !== 'production') {
-  const httpsServer = https.createServer(getCredentials(), app)
-  httpsServer.listen(443, () => console.log(`🐎 https://localhost`))
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   const httpsServer = https.createServer(getCredentials(), app)
+//   httpsServer.listen(443, () => console.log(`🐎 https://localhost`))
+// }
 
-const oneMinute = 1000 * 60
-setInterval(() => {
-  fetch('https://instructorlist-django.herokuapp.com/api/')
-  fetch(`https://instructorlist-frontend.herokuapp.com/`)
-  fetch(`https://brightpath.herokuapp.com/`)
-}, oneMinute * 4)
+// TODO: only do this during day time
+// const oneMinute = 1000 * 60
+// setInterval(() => {
+//   fetch('https://instructorlist-django.herokuapp.com/api/')
+//   fetch(`https://instructorlist-frontend.herokuapp.com/`)
+//   fetch(`https://brightpath.herokuapp.com/`)
+// }, oneMinute * 4)
