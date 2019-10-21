@@ -6,42 +6,66 @@ import Header from './header'
 // Code-splitting is automated for routes
 import Search from '../routes/search'
 import ClassPage from '../routes/class.page'
-import Profile from '../routes/profile'
 import isSSR from '../utils/is-ssr'
 import DataService from '../DataService'
 import Redirect from './redirect/Redirect'
 import LandingPage from '../landing-page/pages/index'
 import Home from './TestHome'
 
-const withMainTemplate = Page => props => (
-  <div className="main-app">
-    <Header />
+class MainTemplate extends Component {
+  componentDidMount() {
+    document.body.style.fontSize = '10px'
+    document.documentElement.style.fontSize = '10px'
+  }
+  render() {
+    const props = this.props
+    return (
+      <div className="main-app">
+        <Header />
 
-    <Page data={props.data} {...props} />
+        <props.Page data={props.data} {...props} />
 
-    <div
-      style="justify-content: center; align-items: center; flex: 1; height: 100vh;"
-      default
-    >
-      404 Not Found
-    </div>
-    {isSSR() && (
-      <div>
-        <details style={{ padding: '2rem' }}>
-          <summary>ssrData</summary>
-          <pre style={{ whiteSpace: 'pre-wrap' }}>
-            {JSON.stringify(props.ssrData, null, 2)}
-          </pre>
-        </details>
+        <div
+          style="justify-content: center; align-items: center; flex: 1; height: 100vh;"
+          default
+        >
+          404 Not Found
+        </div>
+        {isSSR() && (
+          <div>
+            <details style={{ padding: '2rem' }}>
+              <summary>ssrData</summary>
+              <pre style={{ whiteSpace: 'pre-wrap' }}>
+                {JSON.stringify(props.ssrData, null, 2)}
+              </pre>
+            </details>
+          </div>
+        )}
       </div>
-    )}
-  </div>
+    )
+  }
+}
+
+const withMainTemplate = Page => props => (
+  <MainTemplate Page={Page} {...props}></MainTemplate>
 )
 
+class LandingPageTemplate extends Component {
+  componentDidMount() {
+    document.body.style.fontSize = 'unset'
+    document.documentElement.style.fontSize = 'unset'
+  }
+  render() {
+    return (
+      <div className="landing-page">
+        <this.props.Page {...this.props} />
+      </div>
+    )
+  }
+}
+
 const withLandingPageTemplate = Page => props => (
-  <div className="landing-page">
-    <Page {...props} />
-  </div>
+  <LandingPageTemplate Page={Page} {...props} />
 )
 
 const pages = [
@@ -73,15 +97,6 @@ const pages = [
   {
     component: withMainTemplate(ClassPage),
     path: '/classes/:id',
-  },
-  {
-    component: withMainTemplate(Profile),
-    path: '/profile/',
-    user: 'me',
-  },
-  {
-    component: withMainTemplate(Profile),
-    path: '/profile/:user',
   },
 ]
 

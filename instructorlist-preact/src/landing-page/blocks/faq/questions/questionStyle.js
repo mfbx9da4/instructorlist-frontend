@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components'
 export const QuestionTitle = styled.h2`
   font-weight: 700;
   font-size: 16px;
-  ${props => props.theme.media.sm} {
+  @media ${props => props.theme.media.sm} {
     font-size: 22px;
   }
 `

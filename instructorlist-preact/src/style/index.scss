@@ -1,3 +1,30 @@
+@font-face {
+  font-family: 'proximanova';
+  src: url('../assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff2')
+      format('woff2'),
+    /* Super Modern Browsers */
+      url('../assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff')
+      format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: mynewfont;
+  src: url('../assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff2')
+      format('woff2'),
+    /* Super Modern Browsers */
+      url('../assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff')
+      format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: proximanova;
+  src: url('/assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff2')
+      format('woff2'),
+    /* Super Modern Browsers */
+      url('/assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff')
+      format('woff'); /* Pretty Modern Browsers */
+}
+
 :root {
   --light-blue: hsla(228, 100%, 95%, 1);
   --brand-blue: rgba(25, 72, 255, 1);
@@ -62,8 +89,7 @@ body {
   width: 100%;
   padding: 0;
   margin: 0;
-  font-family: 'Mark Simonson - Proxima Nova Regular', 'Helvetica Neue', arial,
-    sans-serif;
+  font-family: 'proximanova', 'Helvetica Neue', arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -87,7 +113,6 @@ body {
   font-size: 1.6rem;
   height: 100%;
   flex-direction: column;
-  font-size: 10px;
   font-weight: 400;
   color: #444;
 }

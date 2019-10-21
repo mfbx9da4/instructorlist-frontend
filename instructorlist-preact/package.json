@@ -7,16 +7,17 @@
     "start": "per-env",
     "start:production": "npm run -s serve",
     "start:development": "npm run -s dev",
-    "build": "find . -name '.DS_Store' -type f -delete && ./node_modules/.bin/preact build --json --template template.ejs && rm -rf ../instructorlist-express/frontend-build-copy/* && cp -r ./build/* ../instructorlist-express/frontend-build-copy/",
-    "serve": "./node_modules/.bin/preact build --json --template template.ejs && ./node_modules/.bin/preact serve",
+    "_build": "./node_modules/.bin/preact build --verbose --prerenderUrls prerender-urls.js --clean",
+    "build": "find . -name '.DS_Store' -type f -delete && rm -rf build/ ; yarn _build && rm -rf ../instructorlist-express/frontend-build-copy/* && cp -r ./build/* ../instructorlist-express/frontend-build-copy/",
+    "serve": "yarn _build && ./node_modules/.bin/preact serve",
     "dev": "./node_modules/.bin/preact watch --https --template template.ejs ",
     "lint": "eslint src",
     "test": "jest"
   },
   "browserslist": [
-    "last 1 version",
     "> 1%",
-    "IE 10"
+    "IE >= 9",
+    "last 2 versions"
   ],
   "eslintConfig": {
     "extends": "eslint-config-synacor"
@@ -50,8 +51,7 @@
     "preact-cli-plugin-async": "^2.0.0",
     "preact-cli-plugin-critical-css": "^0.1.0",
     "sass-loader": "^7.2.0",
-    "typings-for-css-modules-loader": "^1.7.0",
-    "webpack-bundle-analyzer": "^3.5.2"
+    "typings-for-css-modules-loader": "^1.7.0"
   },
   "dependencies": {
     "@quickbaseoss/babel-plugin-styled-components-css-namespace": "^1.0.0-rc3",
@@ -65,9 +65,13 @@
     "preact": "10.0.0",
     "preact-cli": "3.0.0-rc.1",
     "preact-compat": "gist:developit/eeebf4c2449c9848dc95aff847d2454d",
+    "preact-render-to-string": "^5.0.7",
     "preact-router": "3.0.1",
+    "sharp": "^0.23.1",
+    "sirv": "^0.4.2",
     "styled-components": "4.3.2",
     "styled-system": "4.2.4",
+    "webpack-bundle-analyzer": "^3.6.0",
     "workbox-webpack-plugin": "^4.3.1"
   },
   "jest": {

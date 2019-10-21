@@ -1,22 +1,22 @@
-import React, { useState } from "react"
-import PropTypes from "prop-types"
-import { Row, Col } from "../../components/grid/index"
-import left from "../../images/left.png"
-import right from "../../images/right.png"
-import Item from "../carousel/item/item"
-import Info from "../carousel/item/info"
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import { Row, Col } from '../../components/grid/index'
+import Item from '../carousel/item/item'
+import Info from '../carousel/item/info'
 
-import dancer1 from "../../images/dancer-1.png"
-import dancer2 from "../../images/dancer-2.png"
-import dancer3 from "../../images/dancer-3.png"
+import left from '../../../assets/images/landing-page/left.png'
+import right from '../../../assets/images/landing-page/right.png'
+import dancer1 from '../../../assets/images/landing-page/dancer-1.jpg'
+import dancer2 from '../../../assets/images/landing-page/dancer-2.jpg'
+import dancer3 from '../../../assets/images/landing-page/dancer-3.jpg'
 
 import {
   SectionMargin,
   SectionHeader,
   PaddingContainer,
-} from "../../components/globalStyles/styles"
-import { StyledSection } from "./styles"
-import { Container } from "../../components/grid/index"
+} from '../../components/globalStyles/styles'
+import { StyledSection } from './styles'
+import { Container } from '../../components/grid/index'
 
 const CarouselStatic = props => {
   const { title } = props
@@ -54,7 +54,7 @@ const CarouselStatic = props => {
                 <Info
                   flags="🇪🇬🇬🇷🇲🇽🇦🇷🇪🇸"
                   title="Hundreds more…"
-                  description="Salsa, Bachata, Commercial, Gwoka, 
+                  description="Salsa, Bachata, Commercial, Gwoka,
                   Indian dance, African dance, Tap,…"
                 />
               </Row>

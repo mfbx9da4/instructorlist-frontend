@@ -28,7 +28,7 @@
     "isomorphic-fetch": "^2.2.1",
     "preact": "^8.2.1",
     "preact-compat": "^3.17.0",
-    "preact-render-to-string": "^3.7.0",
+    "preact-render-to-string": "^5.0.7",
     "preact-router": "^2.6.1",
     "serve-static": "^1.14.1",
     "sirv": "^0.1.2"

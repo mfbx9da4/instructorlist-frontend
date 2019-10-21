@@ -1,7 +1,7 @@
 .landing-page {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font: 112.5%/1.45em 'Mark Simonson - Proxima Nova Regular', 'Helvetica Neue',
+  font: 112.5%/1.45em 'proximanova', 'Helvetica Neue',
     arial, sans-serif;
 }
 
@@ -227,7 +227,7 @@ samp {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'proximanova', sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
@@ -243,7 +243,7 @@ samp {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'proximanova', sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
@@ -259,7 +259,7 @@ samp {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'proximanova', sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
@@ -275,7 +275,7 @@ samp {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'proximanova', sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
@@ -344,7 +344,7 @@ samp {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'proximanova', sans-serif;
   font-weight: regular;
 }
 .landing-page figure {

@@ -1,21 +1,21 @@
-import React, { useState } from "react"
-import PropTypes from "prop-types"
-import { Navigation } from "swiper/dist/js/swiper.esm"
-import { Row, Col } from "../../components/grid/index"
-import Swiper from "react-id-swiper"
-import left from "../../images/left.png"
-import right from "../../images/right.png"
-import Item from "./item/item"
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import { Navigation } from 'swiper/dist/js/swiper.esm'
+import { Row, Col } from '../../components/grid/index'
+import Swiper from 'react-id-swiper'
+import left from '../../../assets/images/landing-page/left.png'
+import right from '../../../assets/images/landing-page/right.png'
+import Item from './item/item'
 
-import dancer1 from "../../images/dancer-1.png"
-import dancer2 from "../../images/dancer-2.png"
-import dancer3 from "../../images/dancer-3.png"
+import dancer1 from '../../../assets/images/landing-page/dancer-1.jpg'
+import dancer2 from '../../../assets/images/landing-page/dancer-2.jpg'
+import dancer3 from '../../../assets/images/landing-page/dancer-3.jpg'
 
 import {
   SectionMargin,
   SectionHeader,
   PaddingContainer,
-} from "../../components/globalStyles/styles"
+} from '../../components/globalStyles/styles'
 
 import {
   StyledSection,
@@ -23,11 +23,11 @@ import {
   StyledButtonPrev,
   StyledButtonNext,
   StyledSwiper,
-} from "./styles"
-import { Container } from "../../components/grid/index"
-import theme from "../../theme"
+} from './styles'
+import { Container } from '../../components/grid/index'
+import theme from '../../theme'
 
-import "./styles.css"
+import './styles.css'
 
 const Carousel = props => {
   const { title } = props
