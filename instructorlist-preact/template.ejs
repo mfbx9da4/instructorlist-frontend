@@ -59,25 +59,42 @@
         <% } %>
     </head>
     <body>
-        <%= htmlWebpackPlugin.options.ssr({
-            url: '/'
-        }) %>
+        <%= htmlWebpackPlugin.options.ssr() %>
+
+
         <script id="end-amp-content" type="application/ld+json"></script>
+
+        <% if (webpack.assets.filter(entry => entry.name.match(/bundle(\.\w{5})?.esm.js$/)).length > 0) { %>
+			<% /* Fix for safari < 11 nomodule bug. TODO: Do the following only for safari. */ %>
+			<script>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()},!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+			<script crossorigin="anonymous" src="<%= htmlWebpackPlugin.files.publicPath %><%= webpack.assets.filter(entry => entry.name.match(/bundle(\.\w{5})?.esm.js$/))[0].name %>" type="module"></script>
+			<%
+				/*Fetch and Promise polyfills are not needed for browsers that support type=module
+				Please re-evaluate below line if adding more polyfills.*/
+			%>
+			<script nomodule>window.fetch||document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
+			<script nomodule defer src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
+		<% } else { %>
+			<script <%= htmlWebpackPlugin.options.scriptLoading %>  src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
+			<script>window.fetch||document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
+		<% } %>
+
         <%if (htmlWebpackPlugin.options.url === '/shell' || !htmlWebpackPlugin.options.config.production) { %>
-        <!-- do stuff for non AMP page for production -->
+            <!-- todo - do stuff for non AMP page for production -->
         <% } %>
 
-            <script defer src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
-            <script>window.fetch||document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
-        <!--
-        <%= htmlWebpackPlugin.options.url %>
-        <%= JSON.stringify(htmlWebpackPlugin.options.config, null, 2) %>
-        -->
+        <!-- load amp service owrker -->
         <amp-install-serviceworker src="/sw.js"
             data-iframe-src="https://amp.dev/sw.html"
             layout="nodisplay"
             data-no-service-worker-fallback-url-match=".*"
             data-no-service-worker-fallback-shell-url="/shell/index.html">
         </amp-install-serviceworker>
+
+        <!-- Debug -->
+        <!--
+        <%= htmlWebpackPlugin.options.url %>
+        <%= JSON.stringify(htmlWebpackPlugin.options.config, null, 2) %>
+        -->
     </body>
 </html>

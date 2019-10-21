@@ -60,7 +60,7 @@ function matchPage(url, pages) {
     }
 }
 const ssr = (template, isAmp = true) => async (req, res) => {
-    console.log('template, isAmp', isAmp);
+    console.log('template, isAmp', isAmp, template);
     let ssrData = {};
     const url = req.url;
     let matched = matchPage(url, ssr_bundle_1.default.pages);

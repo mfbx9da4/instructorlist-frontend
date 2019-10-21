@@ -67,7 +67,7 @@ const ssr = (template: string, isAmp: boolean = true) => async (
   req: Request,
   res: Response,
 ) => {
-  console.log('template, isAmp', isAmp)
+  console.log('template, isAmp', isAmp, template)
   let ssrData = {}
   const url = req.url
   let matched = matchPage(url, App.pages)
