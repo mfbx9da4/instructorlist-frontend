@@ -105,6 +105,7 @@ httpServer.listen(PORT, () => console.log(`🎠 http://localhost:${PORT}`));
 //   httpsServer.listen(443, () => console.log(`🐎 https://localhost`))
 // }
 // TODO: only do this during day time
+// Was busting heroku free plan limits
 // const oneMinute = 1000 * 60
 // setInterval(() => {
 //   fetch('https://instructorlist-django.herokuapp.com/api/')

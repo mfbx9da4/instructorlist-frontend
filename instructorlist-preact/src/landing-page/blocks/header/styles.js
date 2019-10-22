@@ -69,7 +69,6 @@ export const StyledButton = styled.button`
   margin-right: ${props => (props.primary ? `10px` : `0`)};
   border-radius: 5rem;
   padding: 0.6rem 1.3rem;
-
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
@@ -80,7 +79,7 @@ export const StyledButton = styled.button`
   @media ${props => props.theme.media.sm} {
     padding: 0.6rem 2.3rem;
     width: 11rem;
-    /* width: 15rem; */
+    width: 15rem;
     margin-top: 0;
   }
 
