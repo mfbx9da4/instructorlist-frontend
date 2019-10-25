@@ -9,9 +9,6 @@ export const StyledAlert = styled.p`
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
-  /* @media ${props => props.theme.media.sm}{
-      display: none;
-  } */
 `
 
 export const StyledForm = styled.form`
