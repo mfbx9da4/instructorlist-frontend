@@ -13,5 +13,17 @@ export default {
       JSON.stringify(helpers.getRulesByMatchingFile(config, '.scss'), null, 2),
     )
     // console.log(JSON.stringify(config, null, 2))
+
+    let { rule } = helpers.getLoadersByName(config, 'babel-loader')[0]
+    let babelConfig = rule.options
+
+    console.log('babelConfig.plugins', babelConfig.plugins)
+    babelConfig.plugins.push(
+      [
+        '@quickbaseoss/babel-plugin-styled-components-css-namespace',
+        { cssNamespace: '.landing-page' },
+      ],
+      'styled-components',
+    )
   },
 }

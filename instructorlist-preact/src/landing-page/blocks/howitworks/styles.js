@@ -1,12 +1,9 @@
-import styled from "styled-components"
-import { SectionHeader } from "../../components/globalStyles/styles"
+import styled from 'styled-components'
+import { SectionHeader } from '../../components/globalStyles/styles'
 
 export const StyledSection = styled.section`
   background-color: ${props => props.theme.grey};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding-top: 1rem;
 `
 
 export const StyledDiv = styled.div`

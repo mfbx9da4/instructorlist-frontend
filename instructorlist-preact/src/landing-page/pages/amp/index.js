@@ -26,7 +26,7 @@ const IndexPage = () => (
         </Span>
       }
       primaryButton="I&#39;m a teacher"
-      secundaryButton="Get a free class"
+      secondaryButton="Get a free class"
     />
     <Header
       alert="We&#39;re launching soon!"

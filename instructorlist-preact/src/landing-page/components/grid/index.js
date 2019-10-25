@@ -73,11 +73,24 @@ export const Container = styled(Box).attrs(props => ({
     lg: `960px`,
     xl: `1200px`,
   },
-}))``
-
-Container.defaultProps = {
-  mx: `auto`,
-}
+}))`
+  max-width: 100%;
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  ${props => props.md} {
+    max-width: 720px;
+  }
+  ${props => props.lg} {
+    max-width: 960px;
+  }
+  ${props => props.xl} {
+    max-width: 1190px;
+  }
+`
 
 // Layout engine
 export const Row = styled(Flex).attrs({
