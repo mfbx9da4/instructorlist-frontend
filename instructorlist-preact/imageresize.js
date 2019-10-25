@@ -3,33 +3,33 @@ const sharp = require('sharp')
 async function main() {
   const sources = [
     {
-      file: 'dancer-1.png',
+      file: 'dancer-1.jpg',
       destFileName: 'dancer-1.jpg',
       resize: [400],
     },
     {
-      file: 'dancer-2.png',
+      file: 'dancer-2.jpg',
       destFileName: 'dancer-2.jpg',
       resize: [400],
     },
     {
-      file: 'dancer-3.png',
+      file: 'dancer-3.jpg',
       destFileName: 'dancer-3.jpg',
       resize: [400],
     },
     {
-      file: 'header-image.png',
+      file: 'header-image.jpg',
       destFileName: 'header-image.jpg',
       resize: [500],
     },
     {
-      file: 'map.png',
+      file: 'map.jpg',
       destFileName: 'map.jpg',
       resize: [500],
     },
     {
       file: 'testimonial.png',
-      destFileName: 'testimonial.jpg',
+      destFileName: 'testimonial.png',
       resize: [450],
     },
     {
@@ -49,8 +49,8 @@ async function main() {
       resize: [170],
     },
   ]
-  const src = './raw-images/'
-  const dest = './raw-images-resized/'
+  const src = 'raw-images/'
+  const dest = 'raw-images-resized/'
   await Promise.all(
     sources.map(x =>
       sharp(`${src}${x.file}`)

@@ -29,7 +29,7 @@ export const StyledForm = styled.form`
   }
   @media ${props => props.theme.media.lg} {
     flex-direction: row;
-    margin-left: -30px;
+    justify-content: unset;
   }
 `
 

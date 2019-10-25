@@ -81,13 +81,13 @@ export const Container = styled(Box).attrs(props => ({
   width: 100%;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  ${props => props.md} {
+  @media ${props => props.md} {
     max-width: 720px;
   }
-  ${props => props.lg} {
+  @media ${props => props.lg} {
     max-width: 960px;
   }
-  ${props => props.xl} {
+  @media ${props => props.xl} {
     max-width: 1190px;
   }
 `
