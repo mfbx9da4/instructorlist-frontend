@@ -152,10 +152,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/assets/icons/ms-icon-70x70.png"
   },
   {
-    "revision": "6ecfe23dc6b5e9385892c7746e65934a",
-    "url": "/assets/images/landing-page/Testimonial.png"
-  },
-  {
     "revision": "4d07e8e2eeaab4c2e7707857c38d51d6",
     "url": "/assets/images/landing-page/dancer-1.jpg"
   },
@@ -224,16 +220,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/assets/images/landing-page/testimonial.jpg"
   },
   {
+    "revision": "7327e37e49303f93de32b14e2deb1667",
+    "url": "/assets/images/landing-page/testimonial.png"
+  },
+  {
     "revision": "a4c387cb43fc6ba1032c1d99405f1c54",
     "url": "/assets/images/landing-page/twitter.png"
   },
   {
     "revision": "8c39fc49b32986313508",
-    "url": "/bundle.8de5c.css"
+    "url": "/bundle.8c39f.js"
   },
   {
-    "revision": "05f1f407c20d95df764045075a3c475e",
-    "url": "/bundle.c12db.esm.js"
+    "revision": "8c39fc49b32986313508",
+    "url": "/bundle.8de5c.css"
   },
   {
     "url": "/ee34b333f304e285fe6e4a99f7344586.jpg"
@@ -243,24 +243,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "38b05cfda53a0de8b265fb865cb71e99",
-    "url": "/polyfills.82dee.esm.js"
+    "revision": "7b2364631a557f545cde",
+    "url": "/polyfills.7b236.js"
   },
   {
     "revision": "a9a8b6d6d21724780409",
     "url": "/route-class.page.chunk.9b157.css"
   },
   {
-    "revision": "3c3ef772455b61d5dced394151902683",
-    "url": "/route-class.page.chunk.ca2db.esm.js"
-  },
-  {
-    "revision": "45b64b1dadbb629248227a755340c13a",
-    "url": "/route-search.chunk.16406.esm.js"
+    "revision": "a9a8b6d6d21724780409",
+    "url": "/route-class.page.chunk.a9a8b.js"
   },
   {
     "revision": "95da51f095c98f821d08",
     "url": "/route-search.chunk.4dddd.css"
+  },
+  {
+    "revision": "95da51f095c98f821d08",
+    "url": "/route-search.chunk.95da5.js"
   },
   {
     "revision": "4ddd984b8444fe0965cc489399902528",
@@ -269,5 +269,17 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2301b38f92ea70b5338bc2171809f1c9",
     "url": "/shell/index.html"
+  },
+  {
+    "revision": "13b82ed03d648451c57be206f75f0216",
+    "url": "/sw-debug.js"
+  },
+  {
+    "revision": "0122634964d958faabb60ccdae812ef8",
+    "url": "/sw-esm.js"
+  },
+  {
+    "revision": "5945cefa86b288230b17eae6088a307e",
+    "url": "/sw.js"
   }
 ]);
