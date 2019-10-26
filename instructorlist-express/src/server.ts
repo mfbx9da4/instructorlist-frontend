@@ -9,14 +9,15 @@ import { render } from 'preact-render-to-string'
 import { exec } from './preact-router-clone'
 import http from 'http'
 import https from 'https'
+import { getCriticalCssStyledComponents } from './getCriticalCssStyledComponents'
+require('isomorphic-fetch') // Polyfill Fetch for SSR
 // @ts-ignore
 import App from '../frontend-build-copy/ssr-build/ssr-bundle'
 
-// Polyfill Fetch for SSR
-require('isomorphic-fetch')
-
 const Version = 3
 console.log('InstructorListExpressVersion', Version)
+
+const criticalCssStyledComponents = getCriticalCssStyledComponents()
 
 const compression = createCompression()
 const BUILD_LOCATION = path.resolve('./frontend-build-copy')
@@ -24,6 +25,7 @@ const BUILD_LOCATION = path.resolve('./frontend-build-copy')
 const { PORT = 80 } = process.env
 
 const rgxAmpScripts = /<script id="start-amp-scripts"[^>]*>.*?(?=<script id="end-amp-scripts")/i
+const rgxHeaderStyle = /<style amp-custom><\/style>/i
 const rgxContent = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i
 const home = readFileSync(`${BUILD_LOCATION}/index.html`, 'utf8')
 const search = readFileSync(`${BUILD_LOCATION}/search/index.html`, 'utf8')
@@ -82,8 +84,13 @@ const ssr = (template: string, isAmp: boolean = true) => async (
   res.setHeader('Content-Type', 'text/html')
   let out = template.replace(rgxContent, body)
   if (!isAmp) {
-    out.replace(rgxAmpScripts, '')
+    out = out.replace(rgxAmpScripts, '')
   }
+  console.log('criticalCssStyledComponents', criticalCssStyledComponents)
+  out = out.replace(
+    rgxHeaderStyle,
+    `<style amp-custom ${criticalCssStyledComponents.substring(6)}`,
+  )
   console.log('is AMP', url, out.indexOf('src="/bundle.') === -1)
   res.end(out)
 }
