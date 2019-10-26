@@ -16,26 +16,47 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const serve_static_1 = __importDefault(require("serve-static"));
 const express_1 = __importDefault(require("express"));
-const path_1 = __importDefault(require("path"));
 const preact_1 = require("preact");
-const path_2 = require("path");
+const path_1 = require("path");
 const fs_1 = require("fs");
 const compression_1 = __importDefault(require("compression"));
 const preact_render_to_string_1 = require("preact-render-to-string");
 const preact_router_clone_1 = require("./preact-router-clone");
 const http_1 = __importDefault(require("http"));
-const getCriticalCssStyledComponents_1 = require("./getCriticalCssStyledComponents");
-require('isomorphic-fetch'); // Polyfill Fetch for SSR
+var path = require('path');
+var moduleAlias = require('module-alias');
+moduleAlias.addAliases({
+    react: 'preact/compat',
+    'react-dom': 'preact/compat',
+    'create-react-class': path.resolve(__dirname, './create-preact-class'),
+});
 // @ts-ignore
 const ssr_bundle_1 = __importDefault(require("../frontend-build-copy/ssr-build/ssr-bundle"));
+// import { renderToString } from 'react-dom/server'
+const styled_components_1 = require("styled-components");
+const sheet = new styled_components_1.ServerStyleSheet();
+try {
+    const inner = preact_1.h(ssr_bundle_1.default, { url: '/', ssrData: {} });
+    console.log('inner', inner);
+    const html = preact_render_to_string_1.render(sheet.collectStyles(inner));
+    const styleTags = sheet.getStyleTags(); // or sheet.getStyleElement();
+    console.log('styleTags', styleTags);
+}
+catch (error) {
+    // handle error
+    console.error(error);
+}
+finally {
+    sheet.seal();
+}
+// Polyfill Fetch for SSR
+require('isomorphic-fetch');
 const Version = 3;
 console.log('InstructorListExpressVersion', Version);
-const criticalCssStyledComponents = getCriticalCssStyledComponents_1.getCriticalCssStyledComponents();
 const compression = compression_1.default();
-const BUILD_LOCATION = path_1.default.resolve('./frontend-build-copy');
+const BUILD_LOCATION = path.resolve('./frontend-build-copy');
 const { PORT = 80 } = process.env;
 const rgxAmpScripts = /<script id="start-amp-scripts"[^>]*>.*?(?=<script id="end-amp-scripts")/i;
-const rgxHeaderStyle = /<style amp-custom><\/style>/i;
 const rgxContent = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i;
 const home = fs_1.readFileSync(`${BUILD_LOCATION}/index.html`, 'utf8');
 const search = fs_1.readFileSync(`${BUILD_LOCATION}/search/index.html`, 'utf8');
@@ -47,7 +68,7 @@ function getCredentials() {
     return credentials;
 }
 function setHeaders(res, file) {
-    let cache = path_2.basename(file) === 'sw.js'
+    let cache = path_1.basename(file) === 'sw.js'
         ? 'private,no-cache,no-store,must-revalidate,proxy-revalidate'
         : 'public,max-age=31536000,immutable';
     return res.setHeader('Cache-Control', cache); // don't cache service worker file
@@ -77,10 +98,8 @@ const ssr = (template, isAmp = true) => async (req, res) => {
     res.setHeader('Content-Type', 'text/html');
     let out = template.replace(rgxContent, body);
     if (!isAmp) {
-        out = out.replace(rgxAmpScripts, '');
+        out.replace(rgxAmpScripts, '');
     }
-    console.log('criticalCssStyledComponents', criticalCssStyledComponents);
-    out = out.replace(rgxHeaderStyle, `<style amp-custom ${criticalCssStyledComponents.substring(6)}`);
     console.log('is AMP', url, out.indexOf('src="/bundle.') === -1);
     res.end(out);
 };
