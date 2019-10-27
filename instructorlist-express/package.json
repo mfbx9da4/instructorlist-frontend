@@ -2,7 +2,7 @@
   "name": "instructorlist-express",
   "version": "1.0.0",
   "main": "server.js",
-  "license": "MIT",
+  "license": "proprietary",
   "engines": {
     "node": "10.15.3"
   },
