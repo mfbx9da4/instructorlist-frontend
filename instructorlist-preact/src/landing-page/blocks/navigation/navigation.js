@@ -66,8 +66,8 @@ Navigation.propTypes = {
 
 Navigation.defaultProps = {
   logo: <span>instructorlist</span>,
-  primaryButton: `I&#39;m a teacher`,
-  secondaryButton: `Get a free class`,
+  primaryButton: `Join as a teacher`,
+  secondaryButton: `Browse classes`,
 }
 
 export default Navigation

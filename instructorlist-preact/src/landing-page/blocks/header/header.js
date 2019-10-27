@@ -98,7 +98,7 @@ const Header = props => {
 
               {/* End Mailchimp signup */}
               <a href="mailto:instructors@davidalbertoadler.com?Subject=I%20want%20to%20sign%20up%20as%20a%20teacher">
-                <StyledDiv primary>I&#39;m a teacher</StyledDiv>
+                <StyledDiv primary>Join as a teacher</StyledDiv>
               </a>
             </PaddingContainer>
           </Col>

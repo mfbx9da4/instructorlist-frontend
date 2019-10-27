@@ -28,7 +28,6 @@ const Footer = props => {
   const { title, copyright, email } = props
   return (
     <StyledSection id="section1">
-      {/* id = for smooth scroll on "get a free class" nav click */}
       <SectionMargin footer>
         <Container>
           <PaddingContainer>

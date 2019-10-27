@@ -26,8 +26,6 @@ const IndexPage = () => (
           i<LogoSpan>nstructor</LogoSpan>l<LogoSpan>ist</LogoSpan>
         </Span>
       }
-      primaryButton="I&#39;m a teacher"
-      secondaryButton="Get a free class"
     />
     <Header
       alert="We&#39;re launching very soon!"
