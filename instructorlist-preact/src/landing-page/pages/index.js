@@ -79,7 +79,7 @@ const IndexPage = () => (
         color: 'rgba(0,0,0,0.2)',
       }}
     >
-      3
+      4
     </div>
   </Layout>
 )
