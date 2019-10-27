@@ -233,20 +233,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/assets/images/landing-page/testimonial.jpg"
   },
   {
-    "revision": "ea492d93541ebbf3790d9abf624bf74a",
-    "url": "/assets/images/landing-page/testimonial.png"
-  },
-  {
     "revision": "a4c387cb43fc6ba1032c1d99405f1c54",
     "url": "/assets/images/landing-page/twitter.png"
   },
   {
-    "revision": "1666f1ea194f1b2a6ebe",
-    "url": "/bundle.1666f.js"
+    "revision": "28681e177310ffc6e3fb",
+    "url": "/bundle.8de5c.css"
   },
   {
-    "revision": "1666f1ea194f1b2a6ebe",
-    "url": "/bundle.8de5c.css"
+    "revision": "4f65deea7699360e4827112d9a2f87b9",
+    "url": "/bundle.f6ad7.esm.js"
   },
   {
     "url": "/cd52c65f6e9b436815c145528d64c613.png"
@@ -255,47 +251,35 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fdc249a946c4f6db8c32166b7615272c.png"
   },
   {
-    "revision": "a279c42ee1628f8d86988a0627a1130e",
+    "revision": "bb09b71441da17d42cdeaeb093eca29c",
     "url": "/index.html"
   },
   {
-    "revision": "7b2364631a557f545cde",
-    "url": "/polyfills.7b236.js"
+    "revision": "38b05cfda53a0de8b265fb865cb71e99",
+    "url": "/polyfills.82dee.esm.js"
   },
   {
     "revision": "a9a8b6d6d21724780409",
     "url": "/route-class.page.chunk.9b157.css"
   },
   {
-    "revision": "a9a8b6d6d21724780409",
-    "url": "/route-class.page.chunk.a9a8b.js"
+    "revision": "3c3ef772455b61d5dced394151902683",
+    "url": "/route-class.page.chunk.ca2db.esm.js"
   },
   {
     "revision": "d4fe8e8df2aa60aec629",
     "url": "/route-search.chunk.4dddd.css"
   },
   {
-    "revision": "d4fe8e8df2aa60aec629",
-    "url": "/route-search.chunk.d4fe8.js"
+    "revision": "f20ecf2b61438923edcf4d472087b4d7",
+    "url": "/route-search.chunk.72993.esm.js"
   },
   {
-    "revision": "95e5f98ad642b1ef918b8056e70bcec5",
+    "revision": "e246ed024e8082ed99d37c132ac286cd",
     "url": "/search/index.html"
   },
   {
-    "revision": "3bf74577959e787ac4d01a6c7c648011",
+    "revision": "562cc9f3a2dcd1830b228cbc5368cebd",
     "url": "/shell/index.html"
-  },
-  {
-    "revision": "13b82ed03d648451c57be206f75f0216",
-    "url": "/sw-debug.js"
-  },
-  {
-    "revision": "b77b073d9c90f4ab6719f395868fc134",
-    "url": "/sw-esm.js"
-  },
-  {
-    "revision": "5945cefa86b288230b17eae6088a307e",
-    "url": "/sw.js"
   }
 ]);

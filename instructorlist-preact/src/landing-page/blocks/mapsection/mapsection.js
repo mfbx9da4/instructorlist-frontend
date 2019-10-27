@@ -35,7 +35,7 @@ const Mapsection = props => {
           </Col>
 
           <Col width={ColBreakPoints}>
-            <MapImage scr="/assets/images/landing-page/map.png" />
+            <MapImage scr="/assets/images/landing-page/map.jpg" />
           </Col>
         </Row>
       </Container>
