@@ -1,4 +1,3 @@
-import styledPlugin from 'preact-cli-plugin-styled-components'
 import criticalCssPlugin from 'preact-cli-plugin-critical-css'
 
 export default {
@@ -29,8 +28,6 @@ export default {
           ssr: env.ssr,
         },
       ],
-      // 'styled-components',
-      // require.resolve('babel-plugin-styled-components'),
     )
 
     criticalCssPlugin(config, env, {})

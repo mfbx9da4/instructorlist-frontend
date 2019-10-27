@@ -71,17 +71,16 @@ const IndexPage = () => (
       copyright="Instructorlist Ltd"
       email="instructors@instructorlist.org"
     />
-    {/* <script id="mcjs">
-      !function(c,h,i,m,p)
-      {
-        ((m = c.createElement(h)),
-        (p = c.getElementsByTagName(h)[0]),
-        (m.async = 1),
-        (m.src = i),
-        p.parentNode.insertBefore(m, p))
-      }
-      (document,"script","https://chimpstatic.com/mcjs-connected/js/users/0e7b5839a8abe9d0d2de31711/9ffb031103e3b61abd5682b57.js");
-    </script> */}
+    <div
+      style={{
+        position: 'fixed',
+        right: 0,
+        bottom: 0,
+        color: 'rgba(0,0,0,0.2)',
+      }}
+    >
+      1
+    </div>
   </Layout>
 )
 

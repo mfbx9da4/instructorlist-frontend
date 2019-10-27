@@ -84,7 +84,9 @@ export default class Search extends Component {
     let classes = []
     if (allClasses) {
       classes = Object.values(allClasses).filter(item => {
+        console.log('item.day', item.day, dayFilter)
         if (item.day !== dayFilter) return false
+        console.log('item.day', item.day)
         let matchedACategory = false
         let hasCategories = false
         let hasTimes = false

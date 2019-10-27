@@ -1,6 +1,6 @@
 import React from 'react'
 
 const TeacherImage = () => (
-  <img src="/assets/images/landing-page/testimonial.jpg" />
+  <img width="400" src="/assets/images/landing-page/testimonial.jpg" />
 )
 export default TeacherImage
