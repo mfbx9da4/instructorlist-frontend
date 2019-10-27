@@ -41,7 +41,6 @@ const IndexPage = () => (
       subtext="Attend hundreds of dance classes from the best teachers across London with a single membership."
     />
     <CarouselStatic />
-    {/*RESET WIDTH TO 100% FOR DYNAMIC CAROUSEL -- in blocks/carousel/item/itemStyle.js */}
     <Mapsection
       title="Discover new classes all over the city."
       subtext="Our instructors have classes in locations all over the city. It’s up to you where you decide to attend."
@@ -69,7 +68,7 @@ const IndexPage = () => (
     <Faq title="Frequently Asked Questions" />
     <Footer
       title="Sign up for a free class"
-      copyright="instructorlist"
+      copyright="Instructorlist Ltd"
       email="instructors@instructorlist.org"
     />
     {/* <script id="mcjs">
