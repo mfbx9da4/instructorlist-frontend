@@ -1,5 +1,5 @@
 import moment from 'moment-timezone'
-import globalFetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch'
 const oneMinute = 1000 * 60
 const isOutsidePeakHours = () =>
   moment()
@@ -12,6 +12,7 @@ const isOutsidePeakHours = () =>
 export function keepAlive() {
   return setInterval(() => {
     if (isOutsidePeakHours()) return
+    console.log('KEEP_ALIVE')
     fetch('https://instructorlist-django.herokuapp.com/api/')
     fetch(`https://instructorlist-frontend.herokuapp.com/`)
     fetch(`https://brightpath.herokuapp.com/`)
