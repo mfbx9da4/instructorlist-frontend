@@ -56,7 +56,6 @@ function matchPage(url, pages) {
     }
 }
 const ssr = (template, isAmp = true) => async (req, res) => {
-    console.log('template, isAmp', isAmp, template);
     let ssrData = {};
     const url = req.url;
     let matched = matchPage(url, ssr_bundle_1.default.pages);
@@ -64,7 +63,6 @@ const ssr = (template, isAmp = true) => async (req, res) => {
         let { match, page } = matched;
         if (page.component.getInitialProps) {
             ssrData = await page.component.getInitialProps(match);
-            console.log('ssrData', ssrData);
         }
     }
     let body = await preact_render_to_string_1.render(preact_1.h(ssr_bundle_1.default, { url, ssrData }));

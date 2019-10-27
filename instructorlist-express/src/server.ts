@@ -51,7 +51,6 @@ const ssr = (template: string, isAmp: boolean = true) => async (
   req: Request,
   res: Response,
 ) => {
-  console.log('template, isAmp', isAmp, template)
   let ssrData = {}
   const url = req.url
   let matched = matchPage(url, App.pages)
@@ -59,7 +58,6 @@ const ssr = (template: string, isAmp: boolean = true) => async (
     let { match, page } = matched
     if (page.component.getInitialProps) {
       ssrData = await page.component.getInitialProps(match)
-      console.log('ssrData', ssrData)
     }
   }
   let body = await render(h(App, { url, ssrData }))
