@@ -1,4 +1,4 @@
-import moment from 'moment'
+import moment from 'moment-timezone'
 const oneMinute = 1000 * 60
 const isOutsidePeakHours = () =>
   moment()
