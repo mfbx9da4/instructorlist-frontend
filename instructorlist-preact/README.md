@@ -21,6 +21,20 @@ yarn test
 
 For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
 
+## Images
+
+Some helpful scripts to make images smaller. This was introduced to integrate with original developers work who had many big images.
+
+Converts images to jpg and resizes to good dimensions, output is `raw-images-resized/`
+
+    node imageresize.js
+
+Then you can do
+
+    node imagemin.js
+
+Which minifies and moves all assets to the landing-page folder
+
 ## Deploy
 
 ```

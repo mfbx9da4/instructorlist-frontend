@@ -79,7 +79,6 @@ const ssr = (template, isAmp = true) => async (req, res) => {
     if (!isAmp) {
         out = out.replace(rgxAmpScripts, '');
     }
-    console.log('criticalCssStyledComponents', criticalCssStyledComponents);
     out = out.replace(rgxHeaderStyle, `<style amp-custom ${criticalCssStyledComponents.substring(6)}`);
     console.log('is AMP', url, out.indexOf('src="/bundle.') === -1);
     res.end(out);

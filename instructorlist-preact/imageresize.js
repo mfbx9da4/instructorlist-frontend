@@ -29,7 +29,7 @@ async function main() {
     },
     {
       file: 'testimonial.png',
-      destFileName: 'testimonial.png',
+      destFileName: 'testimonial.jpg',
       resize: [450],
     },
     {
@@ -54,6 +54,7 @@ async function main() {
   await Promise.all(
     sources.map(x =>
       sharp(`${src}${x.file}`)
+        .flatten({ background: { r: 255, g: 255, b: 255, alpha: 1 } })
         .resize(...x.resize)
         .toFile(`${dest}${x.destFileName || x.file}`),
     ),

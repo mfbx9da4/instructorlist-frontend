@@ -86,7 +86,6 @@ const ssr = (template: string, isAmp: boolean = true) => async (
   if (!isAmp) {
     out = out.replace(rgxAmpScripts, '')
   }
-  console.log('criticalCssStyledComponents', criticalCssStyledComponents)
   out = out.replace(
     rgxHeaderStyle,
     `<style amp-custom ${criticalCssStyledComponents.substring(6)}`,
