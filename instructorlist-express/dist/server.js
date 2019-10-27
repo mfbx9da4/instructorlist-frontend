@@ -25,11 +25,10 @@ const preact_render_to_string_1 = require("preact-render-to-string");
 const preact_router_clone_1 = require("./preact-router-clone");
 const http_1 = __importDefault(require("http"));
 const getCriticalCssStyledComponents_1 = require("./getCriticalCssStyledComponents");
-require('isomorphic-fetch'); // Polyfill Fetch for SSR
 // @ts-ignore
 const ssr_bundle_1 = __importDefault(require("../frontend-build-copy/ssr-build/ssr-bundle"));
+const keepAlive_1 = require("./keepAlive");
 const Version = 3;
-console.log('InstructorListExpressVersion', Version);
 const criticalCssStyledComponents = getCriticalCssStyledComponents_1.getCriticalCssStyledComponents();
 const compression = compression_1.default();
 const BUILD_LOCATION = path_1.default.resolve('./frontend-build-copy');
@@ -40,12 +39,7 @@ const rgxContent = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i;
 const home = fs_1.readFileSync(`${BUILD_LOCATION}/index.html`, 'utf8');
 const search = fs_1.readFileSync(`${BUILD_LOCATION}/search/index.html`, 'utf8');
 const shell = fs_1.readFileSync(`${BUILD_LOCATION}/shell/index.html`, 'utf8');
-function getCredentials() {
-    const privateKey = fs_1.readFileSync('sslcert/server.key', 'utf8');
-    const certificate = fs_1.readFileSync('sslcert/server.crt', 'utf8');
-    var credentials = { key: privateKey, cert: certificate };
-    return credentials;
-}
+console.log('InstructorListExpressVersion', Version);
 function setHeaders(res, file) {
     let cache = path_2.basename(file) === 'sw.js'
         ? 'private,no-cache,no-store,must-revalidate,proxy-revalidate'
@@ -86,7 +80,6 @@ const ssr = (template, isAmp = true) => async (req, res) => {
 const app = express_1.default()
     .use(compression)
     .use((req, res, next) => {
-    console.log('req.url', req.url);
     next();
 })
     .get('/', ssr(home))
@@ -103,15 +96,4 @@ const app = express_1.default()
 app.set('trust proxy', true);
 const httpServer = http_1.default.createServer(app);
 httpServer.listen(PORT, () => console.log(`🎠 http://localhost:${PORT}`));
-// if (process.env.NODE_ENV !== 'production') {
-//   const httpsServer = https.createServer(getCredentials(), app)
-//   httpsServer.listen(443, () => console.log(`🐎 https://localhost`))
-// }
-// TODO: only do this during day time
-// Was busting heroku free plan limits
-// const oneMinute = 1000 * 60
-// setInterval(() => {
-//   fetch('https://instructorlist-django.herokuapp.com/api/')
-//   fetch(`https://instructorlist-frontend.herokuapp.com/`)
-//   fetch(`https://brightpath.herokuapp.com/`)
-// }, oneMinute * 4)
+keepAlive_1.keepAlive();

@@ -10,20 +10,16 @@ import { exec } from './preact-router-clone'
 import http from 'http'
 import https from 'https'
 import { getCriticalCssStyledComponents } from './getCriticalCssStyledComponents'
-require('isomorphic-fetch') // Polyfill Fetch for SSR
+import globalFetch from 'isomorphic-fetch' // PolyFill Fetch for SSR
 // @ts-ignore
 import App from '../frontend-build-copy/ssr-build/ssr-bundle'
+import { keepAlive } from './keepAlive'
 
 const Version = 3
-console.log('InstructorListExpressVersion', Version)
-
 const criticalCssStyledComponents = getCriticalCssStyledComponents()
-
 const compression = createCompression()
 const BUILD_LOCATION = path.resolve('./frontend-build-copy')
-
 const { PORT = 80 } = process.env
-
 const rgxAmpScripts = /<script id="start-amp-scripts"[^>]*>.*?(?=<script id="end-amp-scripts")/i
 const rgxHeaderStyle = /<style amp-custom><\/style>/i
 const rgxContent = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i
@@ -31,12 +27,7 @@ const home = readFileSync(`${BUILD_LOCATION}/index.html`, 'utf8')
 const search = readFileSync(`${BUILD_LOCATION}/search/index.html`, 'utf8')
 const shell = readFileSync(`${BUILD_LOCATION}/shell/index.html`, 'utf8')
 
-function getCredentials(): { key: string; cert: string } {
-  const privateKey = readFileSync('sslcert/server.key', 'utf8')
-  const certificate = readFileSync('sslcert/server.crt', 'utf8')
-  var credentials = { key: privateKey, cert: certificate }
-  return credentials
-}
+console.log('InstructorListExpressVersion', Version)
 
 function setHeaders(res: Response, file: string) {
   let cache =
@@ -45,15 +36,6 @@ function setHeaders(res: Response, file: string) {
       : 'public,max-age=31536000,immutable'
   return res.setHeader('Cache-Control', cache) // don't cache service worker file
 }
-
-type PageType = {
-  path: string
-  component: {
-    getInitialProps: ((arg0: unknown) => Promise<{}>) | undefined
-  }
-}
-
-type PageMatch = { match: any; page: PageType }
 
 function matchPage(url: string, pages: Array<PageType>): PageMatch | undefined {
   for (let page of pages) {
@@ -97,7 +79,6 @@ const ssr = (template: string, isAmp: boolean = true) => async (
 const app = express()
   .use(compression)
   .use((req, res, next) => {
-    console.log('req.url', req.url)
     next()
   })
   .get('/', ssr(home))
@@ -116,16 +97,4 @@ app.set('trust proxy', true)
 
 const httpServer = http.createServer(app)
 httpServer.listen(PORT, () => console.log(`🎠 http://localhost:${PORT}`))
-// if (process.env.NODE_ENV !== 'production') {
-//   const httpsServer = https.createServer(getCredentials(), app)
-//   httpsServer.listen(443, () => console.log(`🐎 https://localhost`))
-// }
-
-// TODO: only do this during day time
-// Was busting heroku free plan limits
-// const oneMinute = 1000 * 60
-// setInterval(() => {
-//   fetch('https://instructorlist-django.herokuapp.com/api/')
-//   fetch(`https://instructorlist-frontend.herokuapp.com/`)
-//   fetch(`https://brightpath.herokuapp.com/`)
-// }, oneMinute * 4)
+keepAlive()
