@@ -25,9 +25,13 @@ For detailed explanation on how things work, checkout the [CLI Readme](https://g
 
 Some helpful scripts to make images smaller. This was introduced to integrate with original developers work who had many big images.
 
-Converts images to jpg and resizes to good dimensions, output is `raw-images-resized/`
+Converts images to jpg and resizes to good dimensions, input from `raw-images/`, output is `raw-images-resized/`
 
     node imageresize.js
+
+Copy back to `raw-images/`
+
+    cp raw-images-resized/* raw-images
 
 Then you can do
 

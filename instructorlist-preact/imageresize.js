@@ -34,18 +34,22 @@ async function main() {
     },
     {
       file: 'icon-1.png',
+      destFileName: 'icon-1.jpg',
       resize: [170],
     },
     {
       file: 'icon-2.png',
+      destFileName: 'icon-2.jpg',
       resize: [170],
     },
     {
       file: 'icon-3.png',
+      destFileName: 'icon-3.jpg',
       resize: [170],
     },
     {
       file: 'icon3.png',
+      destFileName: 'icon3.jpg',
       resize: [170],
     },
   ]
