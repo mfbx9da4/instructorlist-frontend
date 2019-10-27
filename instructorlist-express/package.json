@@ -12,7 +12,6 @@
   },
   "devDependencies": {
     "husky": "^3.0.5",
-    "module-alias": "^2.2.2",
     "preact-cli": "^2.0.0"
   },
   "husky": {
@@ -28,6 +27,7 @@
     "compression": "^1.7.1",
     "express": "^4.17.1",
     "isomorphic-fetch": "^2.2.1",
+    "module-alias": "^2.2.2",
     "preact": "^10.0.1",
     "preact-render-to-string": "^5.0.7",
     "preact-router": "^2.6.1",
