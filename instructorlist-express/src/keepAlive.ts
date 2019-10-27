@@ -1,5 +1,5 @@
 import moment from 'moment-timezone'
-import fetch from 'isomorphic-fetch'
+import globalFetch from 'isomorphic-fetch'
 const oneMinute = 1000 * 60
 const isOutsidePeakHours = () =>
   moment()

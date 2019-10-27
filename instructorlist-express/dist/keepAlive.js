@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const moment_timezone_1 = __importDefault(require("moment-timezone"));
-const isomorphic_fetch_1 = __importDefault(require("isomorphic-fetch"));
 const oneMinute = 1000 * 60;
 const isOutsidePeakHours = () => moment_timezone_1.default()
     .tz('Europe/London')
@@ -16,9 +15,9 @@ function keepAlive() {
     return setInterval(() => {
         if (isOutsidePeakHours())
             return;
-        isomorphic_fetch_1.default('https://instructorlist-django.herokuapp.com/api/');
-        isomorphic_fetch_1.default(`https://instructorlist-frontend.herokuapp.com/`);
-        isomorphic_fetch_1.default(`https://brightpath.herokuapp.com/`);
+        fetch('https://instructorlist-django.herokuapp.com/api/');
+        fetch(`https://instructorlist-frontend.herokuapp.com/`);
+        fetch(`https://brightpath.herokuapp.com/`);
     }, oneMinute * 4);
 }
 exports.keepAlive = keepAlive;
