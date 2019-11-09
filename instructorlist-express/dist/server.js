@@ -26,7 +26,7 @@ const getCriticalCssStyledComponents_1 = require("./getCriticalCssStyledComponen
 // @ts-ignore
 const ssr_bundle_1 = __importDefault(require("../frontend-build-copy/ssr-build/ssr-bundle"));
 const keepAlive_1 = require("./keepAlive");
-const Version = 3;
+const Version = 4;
 const criticalCssStyledComponents = getCriticalCssStyledComponents_1.getCriticalCssStyledComponents();
 const compression = compression_1.default();
 const BUILD_LOCATION = path_1.default.resolve('./frontend-build-copy');

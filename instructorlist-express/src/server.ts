@@ -15,7 +15,7 @@ import globalFetch from 'isomorphic-fetch' // PolyFill Fetch for SSR
 import App from '../frontend-build-copy/ssr-build/ssr-bundle'
 import { keepAlive } from './keepAlive'
 
-const Version = 3
+const Version = 4
 const criticalCssStyledComponents = getCriticalCssStyledComponents()
 const compression = createCompression()
 const BUILD_LOCATION = path.resolve('./frontend-build-copy')
