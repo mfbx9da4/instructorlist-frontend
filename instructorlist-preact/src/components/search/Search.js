@@ -10,9 +10,13 @@ import { classNames } from '../../utils/classNames'
 
 import loadjs from 'loadjs'
 
+const msg = '6'
+console.log('msg', msg)
+
 if (!isSSR())
   setTimeout(
-    () => loadjs('/assets/javascript/asdf.js', () => console.log('loaded 4')),
+    () =>
+      loadjs('/assets/javascript/asdf.js', () => console.log('loaded ' + msg)),
     2000,
   )
 

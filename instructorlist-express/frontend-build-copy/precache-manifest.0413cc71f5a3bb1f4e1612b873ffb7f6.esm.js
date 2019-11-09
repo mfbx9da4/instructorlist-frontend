@@ -213,16 +213,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/assets/images/landing-page/twitter.png"
   },
   {
-    "revision": "66de240870b9951a7323eaa52057ed80",
-    "url": "/assets/javascript/asdf.js"
+    "revision": "caeb07066e3a40db7cd2",
+    "url": "/bundle.a43b5.css"
   },
   {
-    "revision": "7e44755702c5c4a7bbb0",
-    "url": "/bundle.10af6.css"
-  },
-  {
-    "revision": "7e44755702c5c4a7bbb0",
-    "url": "/bundle.7e447.js"
+    "revision": "ce7fb67743f7214442da46da30a68e6a",
+    "url": "/bundle.e567e.esm.js"
   },
   {
     "url": "/cd52c65f6e9b436815c145528d64c613.png"
@@ -231,47 +227,35 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fdc249a946c4f6db8c32166b7615272c.png"
   },
   {
-    "revision": "c4f2b0469e75e699602eb4b8184d9aaf",
+    "revision": "c5acef9e88b33f0bd01be0e6d5fb7071",
     "url": "/index.html"
   },
   {
-    "revision": "7b2364631a557f545cde",
-    "url": "/polyfills.7b236.js"
-  },
-  {
-    "revision": "2a54b6e47a23fcda6183",
-    "url": "/route-class.page.chunk.2a54b.js"
+    "revision": "38b05cfda53a0de8b265fb865cb71e99",
+    "url": "/polyfills.82dee.esm.js"
   },
   {
     "revision": "2a54b6e47a23fcda6183",
     "url": "/route-class.page.chunk.74f86.css"
   },
   {
-    "revision": "d760ad9ec4108f0c4592",
+    "revision": "b2860d3698c150c4594eb4a7b560c4bc",
+    "url": "/route-class.page.chunk.e68d0.esm.js"
+  },
+  {
+    "revision": "ae20a15f544f28d9b323",
     "url": "/route-search.chunk.6f5f2.css"
   },
   {
-    "revision": "d760ad9ec4108f0c4592",
-    "url": "/route-search.chunk.d760a.js"
+    "revision": "6ce206708798bd0c1b1dc7622e2d59fd",
+    "url": "/route-search.chunk.aa6c1.esm.js"
   },
   {
-    "revision": "6474cc6c8341ef2f6d6a8182952029d6",
+    "revision": "b325cb1d0ef28476945f8d768ae90143",
     "url": "/search/index.html"
   },
   {
-    "revision": "95ed62005138213beb1e0b730fa55863",
+    "revision": "0912a98811b5ba24a07146652d27cc06",
     "url": "/shell/index.html"
-  },
-  {
-    "revision": "13b82ed03d648451c57be206f75f0216",
-    "url": "/sw-debug.js"
-  },
-  {
-    "revision": "84011ae0e84f632e65ed79911352c5f6",
-    "url": "/sw-esm.js"
-  },
-  {
-    "revision": "5945cefa86b288230b17eae6088a307e",
-    "url": "/sw.js"
   }
 ]);

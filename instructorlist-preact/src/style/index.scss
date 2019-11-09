@@ -246,47 +246,46 @@ body {
 /* END ICONS */
 
 /* START STRIPE */
-
-.main-app input,
-.StripeElement {
-  display: block;
-  height: 4rem;
-
-  margin-bottom: 2rem;
-  padding: 1rem 1.2rem;
-
-  border: 1px solid transparent;
-  border-radius: 4px;
-  background-color: white;
-  border: 1px solid var(--off-white);
-  transition: all 0.3s;
-}
-
-#payment-request-button {
-  padding: 0;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-}
-
-.main-app input:focus,
-.StripeElement--focus {
-  box-shadow: 0 1px 3px 0 #cfd7df;
-  outline: 0;
-}
-
-.main-app input.invalid,
-.StripeElement--invalid {
-  border-color: #fa755a;
-}
-
-.StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
-}
-
-/* END STRIPE */
-
-/* START MAPBOX */
-
 .main-app {
+  input,
+  .StripeElement {
+    display: block;
+    height: 4rem;
+
+    margin-bottom: 2rem;
+    padding: 1rem 1.2rem;
+
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid var(--off-white);
+    transition: all 0.3s;
+  }
+
+  #payment-request-button {
+    padding: 0;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+  }
+
+  input:focus,
+  .StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+    outline: 0;
+  }
+
+  input.invalid,
+  .StripeElement--invalid {
+    border-color: #fa755a;
+  }
+
+  .StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+  }
+
+  /* END STRIPE */
+
+  /* START MAPBOX */
+
   .marker {
     background: url('../assets/images/pin.svg') no-repeat;
     background-size: cover;
