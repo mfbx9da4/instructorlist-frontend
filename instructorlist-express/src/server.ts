@@ -19,7 +19,7 @@ const Version = 3
 const criticalCssStyledComponents = getCriticalCssStyledComponents()
 const compression = createCompression()
 const BUILD_LOCATION = path.resolve('./frontend-build-copy')
-const { PORT = 80 } = process.env
+const { PORT = 8686 } = process.env
 const rgxAmpScripts = /<script id="start-amp-scripts"[^>]*>.*?(?=<script id="end-amp-scripts")/i
 const rgxHeaderStyle = /<style amp-custom><\/style>/i
 const rgxContent = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i
@@ -30,8 +30,9 @@ const shell = readFileSync(`${BUILD_LOCATION}/shell/index.html`, 'utf8')
 console.log('InstructorListExpressVersion', Version)
 
 function setHeaders(res: Response, file: string) {
+  console.log('build file served', file)
   let cache =
-    basename(file) === 'sw.js'
+    basename(file) === 'sw.js' || basename(file) === 'sw-esm.js'
       ? 'private,no-cache,no-store,must-revalidate,proxy-revalidate'
       : 'public,max-age=31536000,immutable'
   return res.setHeader('Cache-Control', cache) // don't cache service worker file

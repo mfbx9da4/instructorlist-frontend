@@ -8,6 +8,14 @@ import isSSR from '../../utils/is-ssr'
 import { getFiltersFromUrl } from '../../utils/getFiltersFromUrl'
 import { classNames } from '../../utils/classNames'
 
+import loadjs from 'loadjs'
+
+if (!isSSR())
+  setTimeout(
+    () => loadjs('/assets/javascript/asdf.js', () => console.log('loaded 4')),
+    2000,
+  )
+
 const timeToMinutes = time => {
   const [a, b] = time.split(':')
   return parseInt(a) * 60 + parseInt(b)
@@ -84,9 +92,7 @@ export default class Search extends Component {
     let classes = []
     if (allClasses) {
       classes = Object.values(allClasses).filter(item => {
-        console.log('item.day', item.day, dayFilter)
         if (item.day !== dayFilter) return false
-        console.log('item.day', item.day)
         let matchedACategory = false
         let hasCategories = false
         let hasTimes = false

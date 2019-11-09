@@ -82,40 +82,41 @@ export default class Map extends Component {
       zoom: 10,
     })
     map.on('load', () => {
-      const items = [
-        {
-          id: 1,
-          instructors: [
-            {
-              name: 'Alexander Smith',
-              avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
-            },
-          ],
-          title: 'Introduction to Bachata',
-          price: 12,
-          categories: [{ name: 'bachata' }],
-          start_time: '07:30',
-          duration: 'Alexander Smith',
-          venue: {
-            area: 'Covent Garden',
-            name: 'Pineapple Dance Studios',
-            lat: 51.513322,
-            lon: -0.120624,
-          },
-        },
-      ]
+      // const items = [
+      //   {
+      //     id: 1,
+      //     instructors: [
+      //       {
+      //         name: 'Alexander Smith',
+      //         avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
+      //       },
+      //     ],
+      //     title: 'Introduction to Bachata',
+      //     price: 12,
+      //     categories: [{ name: 'bachata' }],
+      //     start_time: '07:30',
+      //     duration: 'Alexander Smith',
+      //     venue: {
+      //       area: 'Covent Garden',
+      //       name: 'Pineapple Dance Studios',
+      //       lat: 51.513322,
+      //       lon: -0.120624,
+      //     },
+      //   },
+      // ]
       this.props.items.forEach(item => {
         // create a HTML element for each feature
-        var el = document.createElement('div')
+        var el = document.createElement('i')
         el.className = 'marker'
         const lngLat = [item.venue.lon, item.venue.lat]
         console.log('lngLat', lngLat)
         new mapboxgl.Marker(el)
           .setLngLat(lngLat)
           .setPopup(
-            new mapboxgl.Popup({ offset: 37, maxWidth: '316px' }).setHTML(
-              this.popupHTML(item),
-            ),
+            new mapboxgl.Popup({
+              offset: 37,
+              maxWidth: '316px',
+            }).setHTML(this.popupHTML(item)),
           )
           .addTo(map)
       })
@@ -131,10 +132,23 @@ export default class Map extends Component {
         })}
       >
         <div className={style.Map}>
-          <div id="map" style={{ width: '100%', height: '100%' }}></div>
-          <div className="mapboxgl-ctrl"></div>
+          <MapBox></MapBox>
         </div>
       </div>
+    )
+  }
+}
+
+class MapBox extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return false
+  }
+  render() {
+    return (
+      <>
+        <div id="map" style={{ width: '100%', height: '100%' }}></div>{' '}
+        <div className="mapboxgl-ctrl"></div>
+      </>
     )
   }
 }

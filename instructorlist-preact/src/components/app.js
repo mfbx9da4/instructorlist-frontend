@@ -25,12 +25,6 @@ class MainTemplate extends Component {
 
         <props.Page data={props.data} {...props} />
 
-        <div
-          style="justify-content: center; align-items: center; flex: 1; height: 100vh;"
-          default
-        >
-          404 Not Found
-        </div>
         {isSSR() && (
           <div>
             <details style={{ padding: '2rem' }}>
@@ -130,6 +124,12 @@ export default class App extends Component {
             />
           )
         })}
+        <div
+          style="justify-content: center; align-items: center; flex: 1; height: 100vh;"
+          default
+        >
+          404 Not Found
+        </div>
       </Router>
     )
   }

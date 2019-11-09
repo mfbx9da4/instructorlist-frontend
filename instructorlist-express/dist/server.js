@@ -4,10 +4,8 @@ var __rest = (this && this.__rest) || function (s, e) {
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
+            t[p[i]] = s[p[i]];
     return t;
 };
 var __importDefault = (this && this.__importDefault) || function (mod) {
@@ -32,7 +30,7 @@ const Version = 3;
 const criticalCssStyledComponents = getCriticalCssStyledComponents_1.getCriticalCssStyledComponents();
 const compression = compression_1.default();
 const BUILD_LOCATION = path_1.default.resolve('./frontend-build-copy');
-const { PORT = 80 } = process.env;
+const { PORT = 8686 } = process.env;
 const rgxAmpScripts = /<script id="start-amp-scripts"[^>]*>.*?(?=<script id="end-amp-scripts")/i;
 const rgxHeaderStyle = /<style amp-custom><\/style>/i;
 const rgxContent = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i;
@@ -41,7 +39,8 @@ const search = fs_1.readFileSync(`${BUILD_LOCATION}/search/index.html`, 'utf8');
 const shell = fs_1.readFileSync(`${BUILD_LOCATION}/shell/index.html`, 'utf8');
 console.log('InstructorListExpressVersion', Version);
 function setHeaders(res, file) {
-    let cache = path_2.basename(file) === 'sw.js'
+    console.log('build file served', file);
+    let cache = path_2.basename(file) === 'sw.js' || path_2.basename(file) === 'sw-esm.js'
         ? 'private,no-cache,no-store,must-revalidate,proxy-revalidate'
         : 'public,max-age=31536000,immutable';
     return res.setHeader('Cache-Control', cache); // don't cache service worker file

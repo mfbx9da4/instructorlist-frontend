@@ -9,7 +9,9 @@
   justify-content: center;
   border: 1px solid var(--off-white);
   &.close {
-    display: none;
+    // display: none;
+    position: absolute;
+    top: -1000px;
   }
 }
 
