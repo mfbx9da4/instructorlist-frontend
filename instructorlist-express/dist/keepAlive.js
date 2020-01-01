@@ -20,6 +20,6 @@ function keepAlive() {
         isomorphic_fetch_1.default('https://instructorlist-django.herokuapp.com/api/');
         isomorphic_fetch_1.default(`https://instructorlist-frontend.herokuapp.com/`);
         isomorphic_fetch_1.default(`https://brightpath.herokuapp.com/`);
-    }, oneMinute * 4);
+    }, oneMinute * 2);
 }
 exports.keepAlive = keepAlive;

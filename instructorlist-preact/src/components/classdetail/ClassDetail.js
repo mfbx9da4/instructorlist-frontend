@@ -17,6 +17,7 @@ export default class ClassDetail extends Component {
   }
 
   async componentDidMount() {
+    console.log('did mount')
     let res = await this.props.data.getClass(this.props.matches.id)
     this.setState({
       item: res,
@@ -39,7 +40,7 @@ export default class ClassDetail extends Component {
   render({}, { item, showPayment }) {
     if (!item)
       return (
-        <div column flex jc="center" ai="center">
+        <div column flex jc="center" ai="center" style={{ marginTop: '120px' }}>
           <img
             width="85"
             height="119"

@@ -23,6 +23,7 @@ const preact_render_to_string_1 = require("preact-render-to-string");
 const preact_router_clone_1 = require("./preact-router-clone");
 const http_1 = __importDefault(require("http"));
 const getCriticalCssStyledComponents_1 = require("./getCriticalCssStyledComponents");
+require("isomorphic-fetch"); // PolyFill Fetch for SSR
 // @ts-ignore
 const ssr_bundle_1 = __importDefault(require("../frontend-build-copy/ssr-build/ssr-bundle"));
 const keepAlive_1 = require("./keepAlive");

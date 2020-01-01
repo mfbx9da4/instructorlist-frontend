@@ -286,6 +286,10 @@ body {
 
   /* START MAPBOX */
 
+  .mapboxgl-canvas {
+    outline: 0;
+  }
+
   .marker {
     background: url('../assets/images/pin.svg') no-repeat;
     background-size: cover;

@@ -16,5 +16,5 @@ export function keepAlive() {
     fetch('https://instructorlist-django.herokuapp.com/api/')
     fetch(`https://instructorlist-frontend.herokuapp.com/`)
     fetch(`https://brightpath.herokuapp.com/`)
-  }, oneMinute * 4)
+  }, oneMinute * 2)
 }

@@ -2,6 +2,7 @@ import { h, Component } from 'preact'
 import styled, { ThemeProvider, withTheme } from 'styled-components'
 
 import { space } from 'styled-system'
+import Map from './map/Map'
 
 const StyledDiv = styled.div`
   background: red;
@@ -54,7 +55,7 @@ const est = {
   lg: 1 / 2,
 }
 
-class Home extends Component {
+class Home2 extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
@@ -77,6 +78,35 @@ class Home extends Component {
           </Box>
         </div>
       </ThemeProvider>
+    )
+  }
+}
+
+class Home extends Component {
+  state = {
+    classes: [],
+    isActive: true,
+  }
+
+  render() {
+    const { isActive, classes } = this.state
+    return (
+      <div
+        style={{
+          width: '100%',
+          height: '80%',
+          marginTop: '100px',
+          border: 'solid pink',
+        }}
+      >
+        <Map items={classes} onDone={this.onDone} active={isActive}></Map>
+        <div
+          style={{ border: 'solid cadetblue' }}
+          onClick={() => this.setState({ isActive: !isActive })}
+        >
+          Toggle
+        </div>
+      </div>
     )
   }
 }

@@ -1,9 +1,9 @@
 import { convertArrayToObject } from './utils/convertArrayToObject'
 import isDev from './utils/is-dev'
 
-// ? 'http://localhost:8000'
+// ? 'https://instructorlist-django.herokuapp.com'
 export const BASE_URL = isDev()
-  ? 'https://instructorlist-django.herokuapp.com'
+  ? 'http://localhost:8000'
   : 'https://instructorlist-django.herokuapp.com'
 
 const defaultClass = {
@@ -11,7 +11,8 @@ const defaultClass = {
   instructors: [
     {
       full_name: 'Alexander Smith',
-      avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
+      profile_image_url:
+        'https://api.adorable.io/avatars/60/alexander@smith.png',
     },
   ],
   title: 'Introduction to Bachata',
@@ -31,6 +32,7 @@ const prerenderState = {
 
 export default class DataService {
   constructor(initialState) {
+    console.log('initializedata')
     // TODO: include flag for is this prerendered data or not
     // add data fetch time
     if (initialState) {
@@ -73,10 +75,13 @@ export default class DataService {
   }
 
   getClass = async id => {
+    console.log('id', id)
     if (id in this.state.classes && !this.hasPrerenderData) {
+      console.log('hit class')
       return this.state.classes[id]
     }
     let res = await fetch(`${BASE_URL}/api/classes/${id}`)
+    console.log('got class')
     if (res.ok) {
       const json = await res.json()
       this.state.classes[id] = json

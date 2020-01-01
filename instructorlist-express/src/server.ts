@@ -10,7 +10,7 @@ import { exec } from './preact-router-clone'
 import http from 'http'
 import https from 'https'
 import { getCriticalCssStyledComponents } from './getCriticalCssStyledComponents'
-import globalFetch from 'isomorphic-fetch' // PolyFill Fetch for SSR
+import 'isomorphic-fetch' // PolyFill Fetch for SSR
 // @ts-ignore
 import App from '../frontend-build-copy/ssr-build/ssr-bundle'
 import { keepAlive } from './keepAlive'
