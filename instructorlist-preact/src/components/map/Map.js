@@ -4,6 +4,33 @@ import style from './style'
 import classNames from '../../utils/classNames'
 import { loadMapBox } from '../../lazyLoaders'
 
+class LngLatCalculator {
+  constructor() {
+    this.count = {}
+    this.lngConstant = 1.000001
+    this.latConstant = 1.000001
+  }
+
+  calc(lngLat) {
+    // TODO: this is a hack, Add proper clusters for lat lng
+    // https://github.com/mapbox/mapbox-gl-js/issues/4491#issuecomment-501442036
+    const str = lngLat.join(',')
+    let count = -1
+    if (str in this.count) {
+      count = this.count[str]
+    }
+    this.count[str] = count + 1
+    console.log('this.count[str]', str, this.count[str])
+    if (this.count[str] === 0) return lngLat
+    const newCoord = [
+      lngLat[0] * this.lngConstant * this.count[str],
+      lngLat[1] * this.latConstant * this.count[str],
+    ]
+    console.log('newCoord', newCoord)
+    return newCoord
+  }
+}
+
 export default class Map extends Component {
   constructor(props) {
     super(props)
@@ -29,7 +56,8 @@ export default class Map extends Component {
   async componentDidUpdate(prevProps, prevState) {
     const ids1 = this.props.items.map(x => x.id)
     const ids2 = prevProps.items.map(x => x.id)
-    if (ids1 !== ids2) {
+    const idsEqual = ids1.reduce((prev, cur, i) => prev && cur == ids2[i], true)
+    if (ids1.length !== ids2.length || !idsEqual) {
       this.updatePins()
     }
   }
@@ -46,7 +74,9 @@ export default class Map extends Component {
       .join('')
 
     return `<div class="popup-content" >
-        <a class="popup-content--link" href='/classes/${item.id}/?i=1'></a>
+        <a class="popup-content--link" target='_blank' href='/classes/${
+          item.id
+        }/?i=1'></a>
         <div class="popup-content--aside">
           <div class="popup-content--startTime">${item.start_time}</div>
           <div class="popup-content--price">£${item.price}</div>
@@ -98,6 +128,7 @@ export default class Map extends Component {
 
   updatePins(map = this.state.map) {
     this.markers.map(x => x.remove())
+    const lngLatCalculator = new LngLatCalculator()
     this.props.items.forEach(item => {
       // create a HTML element for each feature
       var el = document.createElement('i')
@@ -105,7 +136,7 @@ export default class Map extends Component {
       const lngLat = [item.venue.lon, item.venue.lat]
       this.markers.push(
         new mapboxgl.Marker(el)
-          .setLngLat(lngLat)
+          .setLngLat(lngLatCalculator.calc(lngLat))
           .setPopup(
             new mapboxgl.Popup({
               offset: 37,

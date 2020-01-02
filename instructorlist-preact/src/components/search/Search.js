@@ -166,7 +166,6 @@ export default class Search extends Component {
   isFilterView = () => this.props.path.indexOf('/search/:date/filters') === 0
 
   toggleMapView = () => {
-    console.log('this.props.url', this.props.url)
     event.preventDefault()
     event.stopPropagation()
     this.setState({ isMapView: !this.state.isMapView })
