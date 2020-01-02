@@ -6,6 +6,7 @@ import Header from './header'
 // Code-splitting is automated for routes
 import Search from '../routes/search'
 import ClassPage from '../routes/class.page'
+import Profile from '../routes/profile'
 import isSSR from '../utils/is-ssr'
 import DataService from '../DataService'
 import Redirect from './redirect/Redirect'
@@ -90,6 +91,10 @@ const pages = [
   {
     component: withMainTemplate(ClassPage),
     path: '/classes/:id',
+  },
+  {
+    component: withMainTemplate(Profile),
+    path: '/:slug',
   },
 ]
 

@@ -28,6 +28,7 @@ const defaultClass = {
 
 const prerenderState = {
   classes: { 1: defaultClass },
+  profiles: {},
 }
 
 export default class DataService {
@@ -41,6 +42,26 @@ export default class DataService {
       this.hasPrerenderData = true
       this.state = prerenderState
     }
+  }
+
+  getProfile = async slug => {
+    if (slug in this.state.profiles) return this.state.profiles[slug]
+    const url = `${BASE_URL}/api/profiles/?slug=${slug}`
+    let res
+    try {
+      res = await fetch(url)
+    } catch (e) {
+      res = {
+        ok: false,
+        data: { message: 'You are offline' },
+      }
+    }
+    const [json] = await res.json()
+    if (res.ok) {
+      this.state.profiles[slug] = json
+      return json
+    }
+    return json
   }
 
   getAllClasses = async () => {
