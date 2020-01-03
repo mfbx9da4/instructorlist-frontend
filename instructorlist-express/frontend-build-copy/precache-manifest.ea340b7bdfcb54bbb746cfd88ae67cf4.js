@@ -217,12 +217,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/assets/mapbox-gl-js/v1.3.2/mapbox-gl.css"
   },
   {
-    "revision": "bd7901136ba5acd8105e",
-    "url": "/bundle.ba3d2.css"
+    "revision": "d2b6738e05e98fe69546e5ca4be42211",
+    "url": "/assets/mapbox-gl-js/v1.3.2/mapbox-gl.js"
   },
   {
-    "revision": "d9396fa28a9e66081992632835af1d6e",
-    "url": "/bundle.c3f9c.esm.js"
+    "revision": "106fb7e54672a106f056",
+    "url": "/bundle.106fb.js"
+  },
+  {
+    "revision": "106fb7e54672a106f056",
+    "url": "/bundle.38266.css"
   },
   {
     "url": "/cd52c65f6e9b436815c145528d64c613.png"
@@ -231,43 +235,55 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fdc249a946c4f6db8c32166b7615272c.png"
   },
   {
-    "revision": "ec43008082ca7be54a5af14cf13d7b09",
+    "revision": "e6512cebce319072404f6df34c4498af",
     "url": "/index.html"
   },
   {
-    "revision": "38b05cfda53a0de8b265fb865cb71e99",
-    "url": "/polyfills.82dee.esm.js"
-  },
-  {
-    "revision": "eb85e87f8e1fb896f9cf49b3eab50ca7",
-    "url": "/route-class.page.chunk.39064.esm.js"
+    "revision": "7b2364631a557f545cde",
+    "url": "/polyfills.7b236.js"
   },
   {
     "revision": "496d86de8c08d0e9cb77",
     "url": "/route-class.page.chunk.4404f.css"
   },
   {
-    "revision": "0103de83d69222c28d8ddb4edf093827",
-    "url": "/route-profile.chunk.76d2a.esm.js"
+    "revision": "496d86de8c08d0e9cb77",
+    "url": "/route-class.page.chunk.496d8.js"
+  },
+  {
+    "revision": "9ad8c912e7f343de7ed0",
+    "url": "/route-profile.chunk.9ad8c.js"
   },
   {
     "revision": "9ad8c912e7f343de7ed0",
     "url": "/route-profile.chunk.9ef88.css"
   },
   {
-    "revision": "ceddb092219415b26fd8a282d2dd6a79",
-    "url": "/route-search.chunk.67a28.esm.js"
-  },
-  {
     "revision": "fbff1594fbd867f2f8e2",
     "url": "/route-search.chunk.cf2e3.css"
   },
   {
-    "revision": "29d9ef49be83c840f8b2aeab70ca7db0",
+    "revision": "fbff1594fbd867f2f8e2",
+    "url": "/route-search.chunk.fbff1.js"
+  },
+  {
+    "revision": "8f7f7c2a56c303549b4f70b2a493c70e",
     "url": "/search/index.html"
   },
   {
-    "revision": "da68b074f7045ec1af0e39e628b96556",
+    "revision": "5d9da2969d493ec41dc9273231355443",
     "url": "/shell/index.html"
+  },
+  {
+    "revision": "13b82ed03d648451c57be206f75f0216",
+    "url": "/sw-debug.js"
+  },
+  {
+    "revision": "ac323a7529ff74f92e2d841c008c0d9b",
+    "url": "/sw-esm.js"
+  },
+  {
+    "revision": "5945cefa86b288230b17eae6088a307e",
+    "url": "/sw.js"
   }
 ]);
