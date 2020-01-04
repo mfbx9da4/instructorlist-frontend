@@ -188,6 +188,50 @@ body {
 
 /* START ICONS */
 
+.fa-facebook {
+  opacity: 0.5;
+  background: url('../assets/images/facebook-f-brands.svg') no-repeat;
+  background-position: center;
+  cursor: pointer;
+  background-size: 1.2rem;
+  display: block;
+  height: 5rem;
+  width: 5rem;
+}
+
+.fa-instagram {
+  opacity: 0.5;
+  background: url('../assets/images/instagram-brands.svg') no-repeat;
+  background-position: center;
+  cursor: pointer;
+  background-size: 2.2rem;
+  display: block;
+  height: 5rem;
+  width: 5rem;
+}
+
+.fa-youtube {
+  opacity: 0.5;
+  background: url('../assets/images/youtube-brands.svg') no-repeat;
+  background-position: center;
+  cursor: pointer;
+  background-size: 1.2rem;
+  display: block;
+  height: 5rem;
+  width: 5rem;
+}
+
+.fa-external-link {
+  opacity: 0.5;
+  background: url('../assets/images/external-link-alt-solid.svg') no-repeat;
+  background-position: center;
+  cursor: pointer;
+  background-size: 2rem;
+  display: block;
+  height: 5rem;
+  width: 5rem;
+}
+
 .rightArrow {
   background: url('../assets/images/chevron.svg') no-repeat;
   background-position: center;

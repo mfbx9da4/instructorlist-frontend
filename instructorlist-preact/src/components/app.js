@@ -13,27 +13,6 @@ import Redirect from './redirect/Redirect'
 import LandingPage from '../landing-page/pages/index'
 import Home from './TestHome'
 
-class Inner extends Component {
-  render = props => (
-    <div className="main-app">
-      <div onClick={() => this.setState({ showDiv: !this.state.showDiv })}>
-        Foo
-        <pre>{JSON.stringify(props)}</pre>
-      </div>
-      <Link href="/bar"> go to bar</Link>{' '}
-      <div
-        style={{
-          width: '50px',
-          height: '50px',
-          background: 'crimson',
-          position: 'absolute',
-          top: this.state.showDiv ? '200px' : '300px',
-        }}
-      ></div>
-    </div>
-  )
-}
-
 class MainTemplate extends Component {
   componentDidMount() {
     document.body.style.fontSize = '10px'
@@ -149,12 +128,6 @@ export default class App extends Component {
             />
           )
         })}
-
-        <Inner path="/foo/:var"></Inner>
-
-        <div className="main-app" path="/bar">
-          bar
-        </div>
 
         <div
           style="justify-content: center; align-items: center; flex: 1; height: 100vh;"
