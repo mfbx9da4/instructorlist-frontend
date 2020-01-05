@@ -10,7 +10,7 @@ export function keepAlive() {
     console.log('KEEP_ALIVE')
     for (let i = 0; i < 10; i++) {
       fetch('https://instructorlist-django.herokuapp.com/api/')
-      fetch(`https://instructorlist-frontend.herokuapp.com/`)
+      fetch(`https://instructorlist-frontend.herokuapp.com/sw.js`)
       fetch(`https://brightpath.herokuapp.com/`)
     }
   }, oneMinute * 2)
