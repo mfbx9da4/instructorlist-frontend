@@ -86,6 +86,7 @@ const app = express_1.default()
     .get('/classes/:id', ssr(search))
     .get('/shell/index.html', ssr(shell, false))
     .use(serve_static_1.default(BUILD_LOCATION, { setHeaders }))
+    .get('/:slug', ssr(search))
     .get('*', (req, res) => {
     console.log('ERROR: should_not_be_here', req.url);
     res.setHeader('Content-Type', 'text/html');
