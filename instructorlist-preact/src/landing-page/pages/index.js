@@ -71,16 +71,6 @@ const IndexPage = () => (
       copyright="Instructorlist Ltd"
       email="instructors@instructorlist.org"
     />
-    <div
-      style={{
-        position: 'fixed',
-        right: 0,
-        bottom: 0,
-        color: 'rgba(0,0,0,0.2)',
-      }}
-    >
-      4
-    </div>
   </Layout>
 )
 

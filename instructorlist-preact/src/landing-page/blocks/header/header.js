@@ -61,7 +61,7 @@ const Header = props => {
                 >
                   <StyledInput
                     type="email"
-                    id="mce-EMAIL"
+                    id="mce-EMAIL-2"
                     name="EMAIL"
                     placeholder="name@email.com"
                   />

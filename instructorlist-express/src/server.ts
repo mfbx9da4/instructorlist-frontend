@@ -55,11 +55,10 @@ const ssr = (template: string, isAmp: boolean = true) => async (
   let ssrData = {}
   const url = req.url
   let matched = matchPage(url, App.pages)
-  if (matched) {
-    let { match, page } = matched
-    if (page.component.getInitialProps) {
-      ssrData = await page.component.getInitialProps(match)
-    }
+
+  // Inject Data
+  if (matched && matched.page.component.getInitialProps) {
+    ssrData = await matched.page.component.getInitialProps(matched.match)
   }
   let body = await render(h(App, { url, ssrData }))
   res.setHeader('Content-Type', 'text/html')
