@@ -27,7 +27,7 @@ require("isomorphic-fetch"); // PolyFill Fetch for SSR
 // @ts-ignore
 const ssr_bundle_1 = __importDefault(require("../frontend-build-copy/ssr-build/ssr-bundle"));
 const keepAlive_1 = require("./keepAlive");
-const Version = 4;
+const Version = 5;
 const criticalCssStyledComponents = getCriticalCssStyledComponents_1.getCriticalCssStyledComponents();
 const compression = compression_1.default();
 const BUILD_LOCATION = path_1.default.resolve('./frontend-build-copy');
@@ -42,7 +42,7 @@ console.log('InstructorListExpressVersion', Version);
 function setHeaders(res, file) {
     console.log('build file served', file);
     let cache = path_2.basename(file) === 'sw.js' || path_2.basename(file) === 'sw-esm.js'
-        ? 'private,no-cache,no-store,must-revalidate,proxy-revalidate'
+        ? 'private,no-cache,no-store,must-revalidate'
         : 'public,max-age=31536000,immutable';
     return res.setHeader('Cache-Control', cache); // don't cache service worker file
 }

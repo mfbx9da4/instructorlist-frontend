@@ -14,7 +14,7 @@ function keepAlive() {
         console.log('KEEP_ALIVE');
         for (let i = 0; i < 10; i++) {
             isomorphic_fetch_1.default('https://instructorlist-django.herokuapp.com/api/');
-            isomorphic_fetch_1.default(`https://instructorlist-frontend.herokuapp.com/`);
+            isomorphic_fetch_1.default(`https://instructorlist-frontend.herokuapp.com/sw.js`);
             isomorphic_fetch_1.default(`https://brightpath.herokuapp.com/`);
         }
     }, oneMinute * 2);
