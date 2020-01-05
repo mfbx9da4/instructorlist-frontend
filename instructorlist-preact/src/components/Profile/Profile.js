@@ -18,7 +18,7 @@ const linkify = text => {
       index = index === null ? link.length - 1 : index.index
       links[i] = `<a href='${pair[1]}${link.substr(
         0,
-        index,
+        index + 1,
       )}' rel='nofollow' target='_blank'> ${link.substr(
         0,
         index,
