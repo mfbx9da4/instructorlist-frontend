@@ -221,11 +221,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/assets/mapbox-gl-js/v1.3.2/mapbox-gl.js"
   },
   {
-    "revision": "bf66c29431b12e906fa5",
-    "url": "/bundle.bf66c.js"
+    "revision": "2b69635b0b2708dfd0be",
+    "url": "/bundle.2b696.js"
   },
   {
-    "revision": "bf66c29431b12e906fa5",
+    "revision": "2b69635b0b2708dfd0be",
     "url": "/bundle.d2c97.css"
   },
   {
@@ -235,7 +235,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fdc249a946c4f6db8c32166b7615272c.png"
   },
   {
-    "revision": "0aa3ff25745d28fd8e9b48e46aa76385",
+    "revision": "a1a51f20d5c9c356f47d8f9518c109d4",
     "url": "/index.html"
   },
   {
@@ -267,11 +267,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/route-search.chunk.fbff1.js"
   },
   {
-    "revision": "9473e9d27c74ae2386177de316de4e19",
+    "revision": "54286a84167c6d9cb52fdf37d968d6e5",
     "url": "/search/index.html"
   },
   {
-    "revision": "af68a9967868d71e8644ee79bc652f66",
+    "revision": "a6dffb1621688c3fee69c3860889cfd1",
     "url": "/shell/index.html"
   },
   {
@@ -279,7 +279,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/sw-debug.js"
   },
   {
-    "revision": "1f821044618a57577ebe8230f8bc5e74",
+    "revision": "d97db4a36df972fa4cb63aaf857b8dea",
     "url": "/sw-esm.js"
   },
   {
