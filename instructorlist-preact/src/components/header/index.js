@@ -16,7 +16,15 @@ class Header extends Component {
             instructorlist {isSSR() && '⚡'}
           </Link>
         </h1>
-        <small style={{ position: 'fixed', right: 0, bottom: 0 }}>
+        <small
+          id="fe-version"
+          style={{
+            position: 'fixed',
+            right: 0,
+            bottom: 0,
+            color: 'rgba(0,0,0,0.2)',
+          }}
+        >
           {config.Version}
         </small>
         <nav>

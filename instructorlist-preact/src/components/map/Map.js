@@ -4,9 +4,37 @@ import style from './style'
 import classNames from '../../utils/classNames'
 import { loadMapBox } from '../../lazyLoaders'
 
+class LngLatCalculator {
+  constructor() {
+    this.count = {}
+    this.lngConstant = 1.000001
+    this.latConstant = 1.000001
+  }
+
+  calc(lngLat) {
+    // TODO: this is a hack, Add proper clusters for lat lng
+    // https://github.com/mapbox/mapbox-gl-js/issues/4491#issuecomment-501442036
+    const str = lngLat.join(',')
+    let count = -1
+    if (str in this.count) {
+      count = this.count[str]
+    }
+    this.count[str] = count + 1
+    console.log('this.count[str]', str, this.count[str])
+    if (this.count[str] === 0) return lngLat
+    const newCoord = [
+      lngLat[0] * this.lngConstant * this.count[str],
+      lngLat[1] * this.latConstant * this.count[str],
+    ]
+    console.log('newCoord', newCoord)
+    return newCoord
+  }
+}
+
 export default class Map extends Component {
   constructor(props) {
     super(props)
+    this.markers = []
     this.state = {
       libLoaded: false,
       libLoading: false,
@@ -16,15 +44,21 @@ export default class Map extends Component {
   onDone = event => {}
   onReset = event => {}
 
-  componentDidMount() {}
-
-  async componentDidUpdate() {
-    if (!this.props.active) return
+  async componentDidMount() {
     if (!this.state.libLoaded && !this.state.libLoading) {
       this.setState({ libLoading: true })
       await loadMapBox()
       this.setState({ libLoading: false, libLoaded: true })
       await this.onLibLoaded()
+    }
+  }
+
+  async componentDidUpdate(prevProps, prevState) {
+    const ids1 = this.props.items.map(x => x.id)
+    const ids2 = prevProps.items.map(x => x.id)
+    const idsEqual = ids1.reduce((prev, cur, i) => prev && cur == ids2[i], true)
+    if (ids1.length !== ids2.length || !idsEqual) {
+      this.updatePins()
     }
   }
 
@@ -40,7 +74,9 @@ export default class Map extends Component {
       .join('')
 
     return `<div class="popup-content" >
-        <a class="popup-content--link" href='/classes/${item.id}?i=1'></a>
+        <a class="popup-content--link" target='_blank' href='/classes/${
+          item.id
+        }/?i=1'></a>
         <div class="popup-content--aside">
           <div class="popup-content--startTime">${item.start_time}</div>
           <div class="popup-content--price">£${item.price}</div>
@@ -56,7 +92,7 @@ export default class Map extends Component {
             <img
               class="popup-content--instructor-avatar"
               alt='${item.instructors[0].name}'
-              src='${item.instructors[0].avatar ||
+              src='${item.instructors[0].profile.profile_image_url ||
                 `https://api.adorable.io/avatars/60/${item.instructors[0].email}.png`}'
             />
             <div class="popup-content--instructorName">
@@ -75,63 +111,58 @@ export default class Map extends Component {
   onLibLoaded = async () => {
     mapboxgl.accessToken =
       'pk.eyJ1IjoibWZieDlkIiwiYSI6ImNrMG8xd2NocTAzcDUzZ242bmJxemRhcmoifQ.-MmxtOUW0-Dz9rgGZTLTDw'
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10?optimize=true',
-      center: [-0.120624, 51.513322],
-      zoom: 10,
-    })
-    map.on('load', () => {
-      const items = [
-        {
-          id: 1,
-          instructors: [
-            {
-              name: 'Alexander Smith',
-              avatar: 'https://api.adorable.io/avatars/60/alexander@smith.png',
-            },
-          ],
-          title: 'Introduction to Bachata',
-          price: 12,
-          categories: [{ name: 'bachata' }],
-          start_time: '07:30',
-          duration: 'Alexander Smith',
-          venue: {
-            area: 'Covent Garden',
-            name: 'Pineapple Dance Studios',
-            lat: 51.513322,
-            lon: -0.120624,
-          },
-        },
-      ]
-      this.props.items.forEach(item => {
-        // create a HTML element for each feature
-        var el = document.createElement('div')
-        el.className = 'marker'
-        const lngLat = [item.venue.lon, item.venue.lat]
-        console.log('lngLat', lngLat)
-        new mapboxgl.Marker(el)
-          .setLngLat(lngLat)
-          .setPopup(
-            new mapboxgl.Popup({ offset: 37, maxWidth: '316px' }).setHTML(
-              this.popupHTML(item),
-            ),
-          )
-          .addTo(map)
+    if (!this.state.map) {
+      const map = new mapboxgl.Map({
+        container: this.mapContainer,
+        style: 'mapbox://styles/mapbox/streets-v10?optimize=true',
+        center: [-0.120624, 51.513322],
+        zoom: 10,
       })
+      this.setState({ map })
+      map.on('load', () => {
+        this.setState({ mapLoaded: true })
+        this.updatePins(map)
+      })
+    }
+  }
+
+  updatePins(map = this.state.map) {
+    this.markers.map(x => x.remove())
+    const lngLatCalculator = new LngLatCalculator()
+    this.props.items.forEach(item => {
+      // create a HTML element for each feature
+      var el = document.createElement('i')
+      el.className = 'marker'
+      const lngLat = [item.venue.lon, item.venue.lat]
+      this.markers.push(
+        new mapboxgl.Marker(el)
+          .setLngLat(lngLatCalculator.calc(lngLat))
+          .setPopup(
+            new mapboxgl.Popup({
+              offset: 37,
+              maxWidth: '316px',
+            }).setHTML(this.popupHTML(item)),
+          )
+          .addTo(map),
+      )
     })
   }
 
   render({ active }, {}) {
     return (
       <div
+        key="MapOuter"
         className={classNames({
           [style.MapWrapper]: 1,
           [style.close]: !active,
         })}
       >
-        <div className={style.Map}>
-          <div id="map" style={{ width: '100%', height: '100%' }}></div>
+        <div key="MapInner" className={style.Map}>
+          <div
+            id="map"
+            ref={el => (this.mapContainer = el)}
+            style={{ width: '100%', height: '100%' }}
+          ></div>{' '}
           <div className="mapboxgl-ctrl"></div>
         </div>
       </div>

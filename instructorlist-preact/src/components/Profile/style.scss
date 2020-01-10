@@ -1,0 +1,45 @@
+.ProfileWrapper {
+  flex-direction: column;
+  margin: var(--header-height) auto 0 auto;
+  padding: 3rem 1rem;
+  max-width: 600px;
+  text-align: center;
+  align-items: center;
+}
+
+.ProfileImage {
+  margin-bottom: 3rem;
+  img {
+    border-radius: 100%;
+    height: 190px;
+  }
+}
+.ProfileName {
+  line-height: 1.5;
+  color: #313f47;
+  margin: 0 0 0.525em 0;
+  font-size: 1.85em;
+}
+.ProfileBio {
+  display: block !important;
+  a {
+    display: inline;
+    &:hover {
+      border-bottom: 1px solid blue;
+    }
+  }
+}
+.ProfileLinks {
+}
+.ProfileLink {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &:hover {
+    border-bottom: 1px solid blue;
+    i {
+      opacity: 1;
+    }
+  }
+}

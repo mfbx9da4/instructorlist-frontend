@@ -4,10 +4,8 @@ var __rest = (this && this.__rest) || function (s, e) {
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
+            t[p[i]] = s[p[i]];
     return t;
 };
 var __importDefault = (this && this.__importDefault) || function (mod) {
@@ -25,14 +23,15 @@ const preact_render_to_string_1 = require("preact-render-to-string");
 const preact_router_clone_1 = require("./preact-router-clone");
 const http_1 = __importDefault(require("http"));
 const getCriticalCssStyledComponents_1 = require("./getCriticalCssStyledComponents");
+require("isomorphic-fetch"); // PolyFill Fetch for SSR
 // @ts-ignore
 const ssr_bundle_1 = __importDefault(require("../frontend-build-copy/ssr-build/ssr-bundle"));
 const keepAlive_1 = require("./keepAlive");
-const Version = 3;
+const Version = 5;
 const criticalCssStyledComponents = getCriticalCssStyledComponents_1.getCriticalCssStyledComponents();
 const compression = compression_1.default();
 const BUILD_LOCATION = path_1.default.resolve('./frontend-build-copy');
-const { PORT = 80 } = process.env;
+const { PORT = 8686 } = process.env;
 const rgxAmpScripts = /<script id="start-amp-scripts"[^>]*>.*?(?=<script id="end-amp-scripts")/i;
 const rgxHeaderStyle = /<style amp-custom><\/style>/i;
 const rgxContent = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i;
@@ -41,8 +40,9 @@ const search = fs_1.readFileSync(`${BUILD_LOCATION}/search/index.html`, 'utf8');
 const shell = fs_1.readFileSync(`${BUILD_LOCATION}/shell/index.html`, 'utf8');
 console.log('InstructorListExpressVersion', Version);
 function setHeaders(res, file) {
-    let cache = path_2.basename(file) === 'sw.js'
-        ? 'private,no-cache,no-store,must-revalidate,proxy-revalidate'
+    console.log('build file served', file);
+    let cache = path_2.basename(file) === 'sw.js' || path_2.basename(file) === 'sw-esm.js'
+        ? 'private,no-cache,no-store,must-revalidate'
         : 'public,max-age=31536000,immutable';
     return res.setHeader('Cache-Control', cache); // don't cache service worker file
 }
@@ -59,11 +59,9 @@ const ssr = (template, isAmp = true) => async (req, res) => {
     let ssrData = {};
     const url = req.url;
     let matched = matchPage(url, ssr_bundle_1.default.pages);
-    if (matched) {
-        let { match, page } = matched;
-        if (page.component.getInitialProps) {
-            ssrData = await page.component.getInitialProps(match);
-        }
+    // Inject Data
+    if (matched && matched.page.component.getInitialProps) {
+        ssrData = await matched.page.component.getInitialProps(matched.match);
     }
     let body = await preact_render_to_string_1.render(preact_1.h(ssr_bundle_1.default, { url, ssrData }));
     res.setHeader('Content-Type', 'text/html');
@@ -86,6 +84,7 @@ const app = express_1.default()
     .get('/classes/:id', ssr(search))
     .get('/shell/index.html', ssr(shell, false))
     .use(serve_static_1.default(BUILD_LOCATION, { setHeaders }))
+    .get('/:slug', ssr(search))
     .get('*', (req, res) => {
     console.log('ERROR: should_not_be_here', req.url);
     res.setHeader('Content-Type', 'text/html');

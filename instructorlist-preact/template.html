@@ -19,6 +19,9 @@
 				<link rel="preload" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>" <%= file.match(/bundle\.\w{5}\.esm\.js$/)?'crossorigin="anonymous"':'' %>>
 			<% } %>
 		<% } %>
+		<script type="template">
+			<%= JSON.stringify(htmlWebpackPlugin, null, 2) %>
+		</script>
 	</head>
 	<body>
 		<%= htmlWebpackPlugin.options.ssr() %>

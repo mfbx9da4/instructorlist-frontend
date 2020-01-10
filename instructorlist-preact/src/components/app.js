@@ -1,11 +1,12 @@
 import { h, Component } from 'preact'
-import { Router } from 'preact-router'
+import { Router, Link } from 'preact-router'
 
 import Header from './header'
 
 // Code-splitting is automated for routes
 import Search from '../routes/search'
 import ClassPage from '../routes/class.page'
+import Profile from '../routes/profile'
 import isSSR from '../utils/is-ssr'
 import DataService from '../DataService'
 import Redirect from './redirect/Redirect'
@@ -25,12 +26,6 @@ class MainTemplate extends Component {
 
         <props.Page data={props.data} {...props} />
 
-        <div
-          style="justify-content: center; align-items: center; flex: 1; height: 100vh;"
-          default
-        >
-          404 Not Found
-        </div>
         {isSSR() && (
           <div>
             <details style={{ padding: '2rem' }}>
@@ -71,7 +66,6 @@ const withLandingPageTemplate = Page => props => (
 const pages = [
   {
     component: withLandingPageTemplate(LandingPage),
-    // component: () => 'gey',
     path: '/',
   },
   {
@@ -97,6 +91,10 @@ const pages = [
   {
     component: withMainTemplate(ClassPage),
     path: '/classes/:id',
+  },
+  {
+    component: withMainTemplate(Profile),
+    path: '/:slug',
   },
 ]
 
@@ -130,6 +128,13 @@ export default class App extends Component {
             />
           )
         })}
+
+        <div
+          style="justify-content: center; align-items: center; flex: 1; height: 100vh;"
+          default
+        >
+          404 Not Found
+        </div>
       </Router>
     )
   }

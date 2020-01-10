@@ -43,6 +43,7 @@ export const StyledButton = styled.button`
   outline: none;
   display: ${props => (props.primary ? `none` : `flex`)};
   transition: transform 0.3s ease-in-out;
+  position: relative;
   @media ${props => props.theme.media.sm} {
     display: flex;
     flex-flow: row;
@@ -52,8 +53,11 @@ export const StyledButton = styled.button`
     transform: scale(1.06);
     cursor: pointer;
   }
+  text-decoration: none;
   a {
-    text-decoration: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     color: ${props => (props.primary ? `#1848FF` : `white`)};
   }
 `

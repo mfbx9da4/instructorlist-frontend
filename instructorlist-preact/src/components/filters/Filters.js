@@ -4,6 +4,8 @@ import style from './style'
 import isSSR from '../../utils/is-ssr'
 import { getFiltersFromUrl } from '../../utils/getFiltersFromUrl'
 import { routeWithQuery } from '../../utils/routeWithQuery'
+import { getUrlQueryParameters } from '../../utils/getUrlQueryParameters'
+import { setUrlQueryParameters } from '../../utils/setUrlQueryParameters'
 
 let activities = {
   capoeira: {
@@ -21,8 +23,8 @@ let activities = {
     label: 'Hip Hop',
     type: 'category',
   },
-  break_dance: {
-    name: 'break_dance',
+  breaking: {
+    name: 'breaking',
     label: 'Break Dance',
     type: 'category',
   },
@@ -106,16 +108,19 @@ export default class Filters extends Component {
   componentDidMount() {}
 
   simulateToggleUrl = (x, _filters) => {
+    const params = getUrlQueryParameters(this.props.url)
+
+    // Toggle filter
     const filters = JSON.parse(JSON.stringify(_filters))
     if (x.name in filters) {
       delete filters[x.name]
     } else {
       filters[x.name] = { type: x.type }
     }
-    const params = Object.keys(filters).length
-      ? `?i=${JSON.stringify(filters)}`
-      : ''
-    const path = `/search/filters${params}`
+
+    // Update query params
+    params['i'] = JSON.stringify(filters)
+    const path = setUrlQueryParameters(this.props.url, params)
     return { path, filters }
   }
 

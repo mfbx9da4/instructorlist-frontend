@@ -38,7 +38,7 @@ const Footer = props => {
                   <StyledForm
                     action="https://gmail.us20.list-manage.com/subscribe/post?u=0e7b5839a8abe9d0d2de31711&amp;id=f7e48cf5c0"
                     method="post"
-                    id="mc-embedded-subscribe-form"
+                    id="mc-embedded-subscribe-form-2"
                     name="mc-embedded-subscribe-form"
                     target="_blank"
                   >

@@ -1,5 +1,5 @@
 import { h, Component } from 'preact'
-import { route } from 'preact-router'
+import { route, Link } from 'preact-router'
 import style from './style'
 import Payment from '../payment/Payment'
 import FooterButton from '../footerbutton/FooterButton'
@@ -39,7 +39,7 @@ export default class ClassDetail extends Component {
   render({}, { item, showPayment }) {
     if (!item)
       return (
-        <div column flex jc="center" ai="center">
+        <div column flex jc="center" ai="center" style={{ marginTop: '120px' }}>
           <img
             width="85"
             height="119"
@@ -85,7 +85,7 @@ export default class ClassDetail extends Component {
               {item.venue.name} {item.venue.area}
             </div>
             <Directions venue={item.venue}></Directions>
-            <a className={style.well} href={`${profile.slug}`}>
+            <Link className={style.well} href={`/${profile.slug}`}>
               <div className={style.wellIcon}>
                 <img
                   className={style.instructorAvatar}
@@ -105,7 +105,7 @@ export default class ClassDetail extends Component {
               <div className={style.wellAction}>
                 <div className="rightArrow"></div>
               </div>
-            </a>
+            </Link>
             {item.description && (
               <div className={style.section}>
                 <div className={style.title}>About</div>

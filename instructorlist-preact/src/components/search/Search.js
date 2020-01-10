@@ -7,6 +7,9 @@ import { route } from 'preact-router'
 import isSSR from '../../utils/is-ssr'
 import { getFiltersFromUrl } from '../../utils/getFiltersFromUrl'
 import { classNames } from '../../utils/classNames'
+import { loadMapBox } from '../../lazyLoaders'
+
+if (!isSSR()) setTimeout(loadMapBox, 6000)
 
 const timeToMinutes = time => {
   const [a, b] = time.split(':')
@@ -84,9 +87,7 @@ export default class Search extends Component {
     let classes = []
     if (allClasses) {
       classes = Object.values(allClasses).filter(item => {
-        console.log('item.day', item.day, dayFilter)
         if (item.day !== dayFilter) return false
-        console.log('item.day', item.day)
         let matchedACategory = false
         let hasCategories = false
         let hasTimes = false
@@ -165,23 +166,15 @@ export default class Search extends Component {
   isFilterView = () => this.props.path.indexOf('/search/:date/filters') === 0
 
   toggleMapView = () => {
-    console.log('this.props.url', this.props.url)
     event.preventDefault()
     event.stopPropagation()
-    if (this.isMapView()) {
-      return route(this.props.url.replace('/map', ''))
-    } else if (this.isFilterView()) {
-      return route(this.props.url.replace('/filters', ''))
-    }
-    return route(this.simulateToUrl('/map'))
+    this.setState({ isMapView: !this.state.isMapView })
   }
 
   toggleFilters = event => {
     event.preventDefault()
     event.stopPropagation()
-    if (this.isMapView()) {
-      return route(this.props.url.replace('/map', ''))
-    } else if (this.isFilterView()) {
+    if (this.isFilterView()) {
       return route(this.props.url.replace('/filters', ''))
     }
     return route(this.simulateToUrl('/filters'))
@@ -226,8 +219,6 @@ export default class Search extends Component {
     }
     return day.format('dddd D MMM').toUpperCase()
   }
-
-  isMapView = () => this.props.path.indexOf('/search/:date/map') === 0
 
   render({}, { day, filters, filterCount, classes }) {
     return (
@@ -284,9 +275,15 @@ export default class Search extends Component {
           />
           <div>Loading</div>
         </div>
-        <Map items={classes} onDone={this.onDone} active={this.isMapView()} />
+        <Map
+          key="Map"
+          items={classes}
+          onDone={this.onDone}
+          active={this.state.isMapView}
+        />
         <div
-          style={{ display: this.isMapView() ? 'none' : 'flex' }}
+          style={{ display: this.state.isMapView ? 'none' : 'flex' }}
+          // style={{ display: 'none' }}
           className={classNames({ [style.listItems]: true })}
         >
           {classes &&
@@ -329,7 +326,7 @@ export default class Search extends Component {
                           className={style.instructorAvatar}
                           alt={item.instructors[0].name}
                           src={
-                            item.instructors[0].avatar ||
+                            item.instructors[0].profile.profile_image_url ||
                             `https://api.adorable.io/avatars/60/${item.instructors[0].email}.png`
                           }
                         />
@@ -356,7 +353,6 @@ export default class Search extends Component {
           onDone={this.onDone}
           active={this.props.path.indexOf('/search/:date/filters') === 0}
         />
-
         <div className={style.filtersButtonWrapper}>
           <div className={style.filtersButtonContainer}>
             <a
@@ -377,10 +373,10 @@ export default class Search extends Component {
             >
               <div
                 className={`${style.filterIcon} ${
-                  this.isMapView() ? style.listIcon : style.mapIcon
+                  this.state.isMapView ? style.listIcon : style.mapIcon
                 }`}
               />
-              {this.isMapView() ? 'List View' : 'Map View'}
+              {this.state.isMapView ? 'List View' : 'Map View'}
             </a>
           </div>
         </div>

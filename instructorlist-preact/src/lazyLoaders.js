@@ -18,12 +18,11 @@ const loaded = {
 
 export async function loadMapBox() {
   if (!loading.mapbox && !loaded.mapbox) {
-    addLink('https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.css')
+    addLink('/assets/mapbox-gl-js/v1.3.2/mapbox-gl.css')
     loading.mapbox = true
-    await loadjs(
-      'https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.js',
-      { returnPromise: true },
-    )
+    await loadjs('/assets/mapbox-gl-js/v1.3.2/mapbox-gl.js', {
+      returnPromise: true,
+    })
     loading.mapbox = false
     loaded.mapbox = true
   }

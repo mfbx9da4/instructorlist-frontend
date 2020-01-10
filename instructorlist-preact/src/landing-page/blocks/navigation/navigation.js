@@ -42,12 +42,12 @@ const Navigation = props => {
             <Box>
               <Row>
                 <StyledButton primary>
-                  <a href="mailto:instructors@instructorlist.org?Subject=I'm%20a%20teacher">
-                    {primaryButton}
-                  </a>
+                  <a href="mailto:instructors@instructorlist.org?Subject=I'm%20a%20teacher"></a>
+                  {primaryButton}
                 </StyledButton>
                 <StyledButton>
-                  <Link href="/search">{secondaryButton}</Link>
+                  <Link href="/search"></Link>
+                  {secondaryButton}
                 </StyledButton>
               </Row>
             </Box>
