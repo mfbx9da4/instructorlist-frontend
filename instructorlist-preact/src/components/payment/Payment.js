@@ -36,7 +36,9 @@ export default class Payment extends Component {
       () => {
         const errors = this.validateValues()
         const error = errors.phone_number
-        if (errors.phone_number) return this.setState({ errors, error })
+        const isShowingError = Object.keys(this.state.errors).length > 0
+        if (errors.phone_number || isShowingError)
+          return this.setState({ errors, error })
       },
     )
   }
@@ -76,15 +78,17 @@ export default class Payment extends Component {
     if (errors.phone_number)
       return this.setState({ isSubmitting: false, errors, error })
 
-    if (!this.state.paymentMethod) {
+    let { paymentMethod } = this.state
+    if (!paymentMethod) {
       let res = await this.stripeSubmit(e)
+      paymentMethod = res.paymentMethod
       if (res.error) {
         return this.setState({ isSubmitting: false, error: res.error.message })
       }
-      this.setState({ paymentMethod: res.paymentMethod })
+      this.setState({ paymentMethod })
     }
     let data = {
-      payment_method_id: this.state.paymentMethod.id,
+      payment_method_id: paymentMethod.id,
       date: this.state.date.format('YYYY-MM-DD'),
       start_time: this.props.item.start_time,
       end_time: this.props.item.end_time,

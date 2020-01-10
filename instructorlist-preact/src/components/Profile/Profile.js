@@ -44,6 +44,7 @@ export default class Profile extends Component {
       user,
       facebook_url,
       website_url,
+      twitter_url,
       youtube_url,
       instagram_url,
     } = profile
@@ -88,6 +89,16 @@ export default class Profile extends Component {
               className={style.ProfileLink}
             >
               <i className="fa-youtube"></i> youtube
+            </a>
+          )}
+          {twitter_url && (
+            <a
+              target="_blank"
+              rel="nofollow"
+              href={twitter_url}
+              className={style.ProfileLink}
+            >
+              <i className="fa-twitter"></i> twitter
             </a>
           )}
           {website_url && (

@@ -7,8 +7,8 @@ import { loadMapBox } from '../../lazyLoaders'
 class LngLatCalculator {
   constructor() {
     this.count = {}
-    this.lngConstant = 1.000001
-    this.latConstant = 1.000001
+    this.lngConstant = 0.0001
+    this.latConstant = 0.0001
   }
 
   calc(lngLat) {
@@ -20,13 +20,10 @@ class LngLatCalculator {
       count = this.count[str]
     }
     this.count[str] = count + 1
-    console.log('this.count[str]', str, this.count[str])
-    if (this.count[str] === 0) return lngLat
     const newCoord = [
-      lngLat[0] * this.lngConstant * this.count[str],
-      lngLat[1] * this.latConstant * this.count[str],
+      parseFloat(lngLat[0]) + this.lngConstant * this.count[str],
+      parseFloat(lngLat[1]) + this.latConstant * this.count[str],
     ]
-    console.log('newCoord', newCoord)
     return newCoord
   }
 }
@@ -134,9 +131,10 @@ export default class Map extends Component {
       var el = document.createElement('i')
       el.className = 'marker'
       const lngLat = [item.venue.lon, item.venue.lat]
+      const coord = lngLatCalculator.calc(lngLat)
       this.markers.push(
         new mapboxgl.Marker(el)
-          .setLngLat(lngLatCalculator.calc(lngLat))
+          .setLngLat(coord)
           .setPopup(
             new mapboxgl.Popup({
               offset: 37,
