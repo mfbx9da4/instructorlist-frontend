@@ -42,5 +42,5 @@ Which minifies and moves all assets to the landing-page folder
 ## Deploy
 
 ```
-yarn build && git add frontend-build-copy && gam 'deploy' ; git push
+cd ../instructorlist-preact && yarn build && git add ../instructorlist-express/frontend-build-copy/ && gam 'deploy' ; git push
 ```
