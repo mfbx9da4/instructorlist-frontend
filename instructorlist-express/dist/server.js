@@ -36,13 +36,12 @@ const BUILD_LOCATION = path_1.default.resolve('./frontend-build-copy');
 const { PORT = 8686 } = process.env;
 const rgxAmpScripts = /<script id="start-amp-scripts"[^>]*>.*?(?=<script id="end-amp-scripts")/i;
 const rgxHeaderStyle = /<style amp-custom><\/style>/i;
-const rgxContent = /<div id="app"[^>]*>.*?(?=<script id="end-amp-content")/i;
+const rgxContent = /<div class="main-app"[^>]*>.*?(?=<script id="end-amp-content")/i;
 const home = fs_1.readFileSync(`${BUILD_LOCATION}/index.html`, 'utf8');
 const search = fs_1.readFileSync(`${BUILD_LOCATION}/search/index.html`, 'utf8');
 const shell = fs_1.readFileSync(`${BUILD_LOCATION}/shell/index.html`, 'utf8');
 console.log('InstructorListExpressVersion', Version);
 function setHeaders(res, file) {
-    console.log('build file served', file);
     let cache = path_2.basename(file) === 'sw.js' || path_2.basename(file) === 'sw-esm.js'
         ? 'private,no-cache,no-store,must-revalidate'
         : 'public,max-age=31536000,immutable';
@@ -82,15 +81,16 @@ const app = express_1.default()
 })
     .get('/', ssr(home))
     .get('/search/', ssr(search))
+    .get('/search/*', ssr(search))
     .get('/classes/', ssr(search))
     .get('/classes/:id', ssr(search))
     .get('/shell/index.html', ssr(shell, false))
     .use(serve_static_1.default(BUILD_LOCATION, { setHeaders }))
     .get('/:slug', ssr(search))
-    .get('*', (req, res) => {
+    .get('*', async (req, res) => {
     console.log('ERROR: should_not_be_here', req.url);
     res.setHeader('Content-Type', 'text/html');
-    res.end(ssr(home, false)(req, res));
+    res.end(await ssr(home, false)(req, res));
 });
 app.set('trust proxy', true);
 const httpServer = http_1.default.createServer(app);

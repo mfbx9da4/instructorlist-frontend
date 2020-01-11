@@ -1,4 +1,4 @@
-import { h, Component } from 'preact'
+import { h, Component, createRef } from 'preact'
 import { route } from 'preact-router'
 import style from './style'
 import classNames from '../../utils/classNames'
@@ -31,6 +31,7 @@ class LngLatCalculator {
 export default class Map extends Component {
   constructor(props) {
     super(props)
+    this.mapContainer = createRef()
     this.markers = []
     this.state = {
       libLoaded: false,
@@ -45,8 +46,7 @@ export default class Map extends Component {
     if (!this.state.libLoaded && !this.state.libLoading) {
       this.setState({ libLoading: true })
       await loadMapBox()
-      this.setState({ libLoading: false, libLoaded: true })
-      await this.onLibLoaded()
+      this.setState({ libLoading: false, libLoaded: true }, this.onLibLoaded)
     }
   }
 
@@ -109,8 +109,10 @@ export default class Map extends Component {
     mapboxgl.accessToken =
       'pk.eyJ1IjoibWZieDlkIiwiYSI6ImNrMG8xd2NocTAzcDUzZ242bmJxemRhcmoifQ.-MmxtOUW0-Dz9rgGZTLTDw'
     if (!this.state.map) {
+      console.log('mapContainer', this.mapContainer)
       const map = new mapboxgl.Map({
-        container: this.mapContainer,
+        container: this.mapContainer.current,
+        // container: '#map',
         style: 'mapbox://styles/mapbox/streets-v10?optimize=true',
         center: [-0.120624, 51.513322],
         zoom: 10,
@@ -158,7 +160,11 @@ export default class Map extends Component {
         <div key="MapInner" className={style.Map}>
           <div
             id="map"
-            ref={el => (this.mapContainer = el)}
+            // ref={el => {
+            //   console.log('el', el)
+            //   this.mapContainer = el
+            // }}
+            ref={this.mapContainer}
             style={{ width: '100%', height: '100%' }}
           ></div>{' '}
           <div className="mapboxgl-ctrl"></div>

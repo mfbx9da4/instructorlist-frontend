@@ -8,6 +8,7 @@
   z-index: 100;
   justify-content: center;
   border: 1px solid var(--off-white);
+  min-height: 800px;
   &.close {
     position: absolute;
     right: 10000px;

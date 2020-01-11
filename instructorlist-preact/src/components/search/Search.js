@@ -43,6 +43,7 @@ export default class Search extends Component {
     const day = parseDate(props.date)
     const allClasses = props.data.state.classes
     const state = {
+      isMapView: true,
       day,
       filters,
       filterCount,
@@ -68,12 +69,13 @@ export default class Search extends Component {
     let res
     try {
       res = await this.props.data.getSearch(filters)
+      console.log('res', res)
     } catch (err) {
-      this.setState({ isOffline: true })
+      console.log('err', err)
+      return this.setState({ isOffline: true, isLoading: false })
     }
     this.setState(
       {
-        isLoading: false,
         day: day || parseDate(this.props.date),
         allClasses: res.results,
       },
