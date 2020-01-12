@@ -109,10 +109,8 @@ export default class Map extends Component {
     mapboxgl.accessToken =
       'pk.eyJ1IjoibWZieDlkIiwiYSI6ImNrMG8xd2NocTAzcDUzZ242bmJxemRhcmoifQ.-MmxtOUW0-Dz9rgGZTLTDw'
     if (!this.state.map) {
-      console.log('mapContainer', this.mapContainer)
       const map = new mapboxgl.Map({
         container: this.mapContainer.current,
-        // container: '#map',
         style: 'mapbox://styles/mapbox/streets-v10?optimize=true',
         center: [-0.120624, 51.513322],
         zoom: 10,
@@ -133,10 +131,9 @@ export default class Map extends Component {
       var el = document.createElement('i')
       el.className = 'marker'
       const lngLat = [item.venue.lon, item.venue.lat]
-      const coord = lngLatCalculator.calc(lngLat)
       this.markers.push(
         new mapboxgl.Marker(el)
-          .setLngLat(coord)
+          .setLngLat(lngLatCalculator.calc(lngLat))
           .setPopup(
             new mapboxgl.Popup({
               offset: 37,
@@ -160,10 +157,6 @@ export default class Map extends Component {
         <div key="MapInner" className={style.Map}>
           <div
             id="map"
-            // ref={el => {
-            //   console.log('el', el)
-            //   this.mapContainer = el
-            // }}
             ref={this.mapContainer}
             style={{ width: '100%', height: '100%' }}
           ></div>{' '}

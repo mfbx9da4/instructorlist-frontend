@@ -47,16 +47,11 @@ class MainTemplate extends Component {
   }
 }
 
-const withMainTemplate = Page => {
-  const Wrapped = props => <MainTemplate Page={Page} {...props}></MainTemplate>
-  Wrapped.getInitialProps = Page.getInitialProps
-  return Wrapped
-}
-
 class LandingPageTemplate extends Component {
   componentDidMount() {
     document.body.style.fontSize = 'unset'
     document.documentElement.style.fontSize = 'unset'
+    this.props.data.getSearch()
   }
   render() {
     return (
@@ -65,6 +60,12 @@ class LandingPageTemplate extends Component {
       </div>
     )
   }
+}
+
+const withMainTemplate = Page => {
+  const Wrapped = props => <MainTemplate Page={Page} {...props}></MainTemplate>
+  Wrapped.getInitialProps = Page.getInitialProps
+  return Wrapped
 }
 
 const withLandingPageTemplate = Page => props => (

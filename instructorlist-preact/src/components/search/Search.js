@@ -43,7 +43,7 @@ export default class Search extends Component {
     const day = parseDate(props.date)
     const allClasses = props.data.state.classes
     const state = {
-      isMapView: true,
+      isMapView: false,
       day,
       filters,
       filterCount,

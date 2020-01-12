@@ -75,7 +75,7 @@ export default class DataService {
   }
 
   getSearch = async (filters = {}) => {
-    if (!this.hasPrerenderData || this.state.search) return this.state.search
+    if (!this.hasPrerenderData && this.state.search) return this.state.search
     const url = `${BASE_URL}/api/search/?i=${JSON.stringify(filters)}`
     let res
     try {
