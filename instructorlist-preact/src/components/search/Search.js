@@ -9,7 +9,8 @@ import { getFiltersFromUrl } from '../../utils/getFiltersFromUrl'
 import { classNames } from '../../utils/classNames'
 import { loadMapBox } from '../../lazyLoaders'
 
-if (!isSSR()) setTimeout(loadMapBox, 6000)
+const oneSecond = 1000
+if (!isSSR()) setTimeout(loadMapBox, 10 * oneSecond)
 
 const timeToMinutes = time => {
   const [a, b] = time.split(':')
@@ -69,9 +70,7 @@ export default class Search extends Component {
     let res
     try {
       res = await this.props.data.getSearch(filters)
-      console.log('res', res)
     } catch (err) {
-      console.log('err', err)
       return this.setState({ isOffline: true, isLoading: false })
     }
     this.setState(

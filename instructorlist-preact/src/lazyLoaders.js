@@ -18,13 +18,11 @@ const loaded = {
 
 export async function loadMapBox() {
   if (!loading.mapbox && !loaded.mapbox) {
-    // addLink('/assets/mapbox-gl-js/v1.3.2/mapbox-gl.css')
     addLink(
       'https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/1.4.1/mapbox-gl.css',
     )
     loading.mapbox = true
     await loadjs(
-      // '/assets/mapbox-gl-js/v1.3.2/mapbox-gl.js',
       'https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/1.4.1/mapbox-gl.js',
       {
         returnPromise: true,
