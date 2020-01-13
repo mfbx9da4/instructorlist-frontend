@@ -9,7 +9,8 @@ import { getFiltersFromUrl } from '../../utils/getFiltersFromUrl'
 import { classNames } from '../../utils/classNames'
 import { loadMapBox } from '../../lazyLoaders'
 
-if (!isSSR()) setTimeout(loadMapBox, 6000)
+const oneSecond = 1000
+if (!isSSR()) setTimeout(loadMapBox, 10 * oneSecond)
 
 const timeToMinutes = time => {
   const [a, b] = time.split(':')
@@ -43,6 +44,7 @@ export default class Search extends Component {
     const day = parseDate(props.date)
     const allClasses = props.data.state.classes
     const state = {
+      isMapView: false,
       day,
       filters,
       filterCount,
@@ -69,11 +71,10 @@ export default class Search extends Component {
     try {
       res = await this.props.data.getSearch(filters)
     } catch (err) {
-      this.setState({ isOffline: true })
+      return this.setState({ isOffline: true, isLoading: false })
     }
     this.setState(
       {
-        isLoading: false,
         day: day || parseDate(this.props.date),
         allClasses: res.results,
       },

@@ -3,7 +3,6 @@ import style from './style'
 
 const linkify = text => {
   if (!text || !text.length) return text
-  console.log('text', text)
   const linkPrefixPairs = [
     ['http://', 'http://'],
     ['https://', 'https://'],
@@ -32,7 +31,6 @@ const linkify = text => {
 export default class Profile extends Component {
   async componentDidMount() {
     let res = await this.props.data.getProfile(this.props.matches.slug)
-    console.log('res', res)
     this.setState({
       profile: res,
     })

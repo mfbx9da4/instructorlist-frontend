@@ -1,5 +1,6 @@
 import { convertArrayToObject } from './utils/convertArrayToObject'
 import isDev from './utils/is-dev'
+import isSSR from './utils/is-ssr'
 
 // ? 'https://instructorlist-django.herokuapp.com'
 export const BASE_URL = isDev()
@@ -33,11 +34,13 @@ const prerenderState = {
 
 export default class DataService {
   constructor(initialState) {
-    console.log('initializedata', initialState)
+    console.log('initialize data', initialState ? 'supplied data' : 'no data')
     // TODO: include flag for is this prerendered data or not
     // add data fetch time
     if (initialState) {
       this.state = initialState
+    } else if (!isSSR() && window.ssrData) {
+      this.state = window.ssrData
     } else {
       this.hasPrerenderData = true
       this.state = prerenderState
@@ -72,7 +75,7 @@ export default class DataService {
   }
 
   getSearch = async (filters = {}) => {
-    if (!this.hasPrerenderData || this.state.search) return this.state.search
+    if (!this.hasPrerenderData && this.state.search) return this.state.search
     const url = `${BASE_URL}/api/search/?i=${JSON.stringify(filters)}`
     let res
     try {
