@@ -66,6 +66,7 @@ const ssr = (template, isAmp = true) => async (req, res) => {
     }
     let body = await preact_render_to_string_1.render(preact_1.h(ssr_bundle_1.default, { url, ssrData }));
     res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Cache-Control', 'public,max-age=86400');
     let out = template.replace(rgxContent, body);
     if (!isAmp) {
         out = out.replace(rgxAmpScripts, '');

@@ -61,6 +61,7 @@ const ssr = (template: string, isAmp: boolean = true) => async (
   }
   let body = await render(h(App, { url, ssrData }))
   res.setHeader('Content-Type', 'text/html')
+  res.setHeader('Cache-Control', 'public,max-age=86400')
   let out = template.replace(rgxContent, body)
   if (!isAmp) {
     out = out.replace(rgxAmpScripts, '')
