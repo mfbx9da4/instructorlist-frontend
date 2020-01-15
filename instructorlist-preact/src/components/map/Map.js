@@ -43,6 +43,10 @@ export default class Map extends Component {
   onReset = event => {}
 
   async componentDidMount() {
+    if (this.props.active) await this.loadMapBox()
+  }
+
+  async loadMapBox() {
     if (!this.state.libLoaded && !this.state.libLoading) {
       this.setState({ libLoading: true })
       await loadMapBox()
@@ -51,6 +55,7 @@ export default class Map extends Component {
   }
 
   async componentDidUpdate(prevProps, prevState) {
+    if (!prevProps.active && this.props.active) await this.loadMapBox()
     const ids1 = this.props.items.map(x => x.id)
     const ids2 = prevProps.items.map(x => x.id)
     const idsEqual = ids1.reduce((prev, cur, i) => prev && cur == ids2[i], true)
