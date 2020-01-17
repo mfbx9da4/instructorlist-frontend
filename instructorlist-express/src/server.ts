@@ -1,3 +1,4 @@
+import { timer } from './utils/timer'
 import serve from 'serve-static'
 import express, { Request, Response } from 'express'
 import path from 'path'
@@ -15,7 +16,7 @@ import 'isomorphic-fetch' // PolyFill Fetch for SSR
 import App from '../frontend-build-copy/ssr-build/ssr-bundle'
 import { keepAlive } from './keepAlive'
 
-const Version = 5
+const Version = 7
 const criticalCssStyledComponents = getCriticalCssStyledComponents()
 const compression = createCompression()
 const BUILD_LOCATION = path.resolve('./frontend-build-copy')
@@ -51,27 +52,34 @@ const ssr = (template: string, isAmp: boolean = true) => async (
   req: Request,
   res: Response,
 ) => {
-  let ssrData = {}
-  const url = req.url
-  let matched = matchPage(url, App.pages)
+  let total = await timer(async () => {
+    let ssrData = {}
+    const url = req.url
+    let matched = matchPage(url, App.pages)
 
-  // Inject Data
-  if (matched && matched.page.component.getInitialProps) {
-    ssrData = await matched.page.component.getInitialProps(matched.match)
-  }
-  let body = await render(h(App, { url, ssrData }))
-  res.setHeader('Content-Type', 'text/html')
-  res.setHeader('Cache-Control', 'public,max-age=86400')
-  let out = template.replace(rgxContent, body)
-  if (!isAmp) {
-    out = out.replace(rgxAmpScripts, '')
-  }
-  out = out.replace(
-    rgxHeaderStyle,
-    `<style amp-custom ${criticalCssStyledComponents.substring(6)}`,
-  )
-  console.log('is AMP', url, out.indexOf('src="/bundle.') === -1)
-  res.end(out)
+    // Inject Data
+    let time1 = await timer(async () => {
+      if (matched && matched.page.component.getInitialProps) {
+        ssrData = await matched.page.component.getInitialProps(matched.match)
+      }
+    })
+    console.log('time1', time1)
+
+    let body = await render(h(App, { url, ssrData }))
+    res.setHeader('Content-Type', 'text/html')
+    res.setHeader('Cache-Control', 'public,max-age=86400')
+    let out = template.replace(rgxContent, body)
+    if (!isAmp) {
+      out = out.replace(rgxAmpScripts, '')
+    }
+    out = out.replace(
+      rgxHeaderStyle,
+      `<style amp-custom ${criticalCssStyledComponents.substring(6)}`,
+    )
+    console.log('is AMP', url, out.indexOf('src="/bundle.') === -1)
+    res.end(out)
+  })
+  console.log('total', total)
 }
 
 const app = express()

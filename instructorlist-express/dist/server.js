@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const timer_1 = require("./utils/timer");
 const serve_static_1 = __importDefault(require("serve-static"));
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
@@ -29,7 +30,7 @@ require("isomorphic-fetch"); // PolyFill Fetch for SSR
 // @ts-ignore
 const ssr_bundle_1 = __importDefault(require("../frontend-build-copy/ssr-build/ssr-bundle"));
 const keepAlive_1 = require("./keepAlive");
-const Version = 5;
+const Version = 7;
 const criticalCssStyledComponents = getCriticalCssStyledComponents_1.getCriticalCssStyledComponents();
 const compression = compression_1.default();
 const BUILD_LOCATION = path_1.default.resolve('./frontend-build-copy');
@@ -57,23 +58,29 @@ function matchPage(url, pages) {
     }
 }
 const ssr = (template, isAmp = true) => async (req, res) => {
-    let ssrData = {};
-    const url = req.url;
-    let matched = matchPage(url, ssr_bundle_1.default.pages);
-    // Inject Data
-    if (matched && matched.page.component.getInitialProps) {
-        ssrData = await matched.page.component.getInitialProps(matched.match);
-    }
-    let body = await preact_render_to_string_1.render(preact_1.h(ssr_bundle_1.default, { url, ssrData }));
-    res.setHeader('Content-Type', 'text/html');
-    res.setHeader('Cache-Control', 'public,max-age=86400');
-    let out = template.replace(rgxContent, body);
-    if (!isAmp) {
-        out = out.replace(rgxAmpScripts, '');
-    }
-    out = out.replace(rgxHeaderStyle, `<style amp-custom ${criticalCssStyledComponents.substring(6)}`);
-    console.log('is AMP', url, out.indexOf('src="/bundle.') === -1);
-    res.end(out);
+    let total = await timer_1.timer(async () => {
+        let ssrData = {};
+        const url = req.url;
+        let matched = matchPage(url, ssr_bundle_1.default.pages);
+        // Inject Data
+        let time1 = await timer_1.timer(async () => {
+            if (matched && matched.page.component.getInitialProps) {
+                ssrData = await matched.page.component.getInitialProps(matched.match);
+            }
+        });
+        console.log('time1', time1);
+        let body = await preact_render_to_string_1.render(preact_1.h(ssr_bundle_1.default, { url, ssrData }));
+        res.setHeader('Content-Type', 'text/html');
+        res.setHeader('Cache-Control', 'public,max-age=86400');
+        let out = template.replace(rgxContent, body);
+        if (!isAmp) {
+            out = out.replace(rgxAmpScripts, '');
+        }
+        out = out.replace(rgxHeaderStyle, `<style amp-custom ${criticalCssStyledComponents.substring(6)}`);
+        console.log('is AMP', url, out.indexOf('src="/bundle.') === -1);
+        res.end(out);
+    });
+    console.log('total', total);
 };
 const app = express_1.default()
     .use(compression)
