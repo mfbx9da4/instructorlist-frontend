@@ -42,18 +42,5 @@ Which minifies and moves all assets to the landing-page folder
 ## Deploy
 
 ```
-gcloud app deploy --version 20190831t105002
+cd ../instructorlist-preact && yarn build && git add ../instructorlist-express/frontend-build-copy/ && gam 'deploy' ; git push
 ```
-
-Todo:
-
-- Day url filter [done]
-- Backend filter by url params [done] ish
-- Connect ENV to backend [done]
-- Map view
-- AMP ready
-- Class view
-- Add classes
-- Menu
-- Home page
-- Post Ad

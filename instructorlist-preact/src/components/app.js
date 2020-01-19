@@ -20,6 +20,7 @@ class MainTemplate extends Component {
   }
   render() {
     const props = this.props
+    const stringified = JSON.stringify(props.ssrData)
     return (
       <div className="main-app">
         <Header />
@@ -34,6 +35,11 @@ class MainTemplate extends Component {
                 {JSON.stringify(props.ssrData, null, 2)}
               </pre>
             </details>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.ssrData = JSON.parse('${stringified}')`,
+              }}
+            ></script>
           </div>
         )}
       </div>
@@ -41,14 +47,11 @@ class MainTemplate extends Component {
   }
 }
 
-const withMainTemplate = Page => props => (
-  <MainTemplate Page={Page} {...props}></MainTemplate>
-)
-
 class LandingPageTemplate extends Component {
   componentDidMount() {
     document.body.style.fontSize = 'unset'
     document.documentElement.style.fontSize = 'unset'
+    this.props.data.getSearch()
   }
   render() {
     return (
@@ -57,6 +60,12 @@ class LandingPageTemplate extends Component {
       </div>
     )
   }
+}
+
+const withMainTemplate = Page => {
+  const Wrapped = props => <MainTemplate Page={Page} {...props}></MainTemplate>
+  Wrapped.getInitialProps = Page.getInitialProps
+  return Wrapped
 }
 
 const withLandingPageTemplate = Page => props => (

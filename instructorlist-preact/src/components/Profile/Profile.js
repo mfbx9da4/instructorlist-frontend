@@ -3,7 +3,6 @@ import style from './style'
 
 const linkify = text => {
   if (!text || !text.length) return text
-  console.log('text', text)
   const linkPrefixPairs = [
     ['http://', 'http://'],
     ['https://', 'https://'],
@@ -32,7 +31,6 @@ const linkify = text => {
 export default class Profile extends Component {
   async componentDidMount() {
     let res = await this.props.data.getProfile(this.props.matches.slug)
-    console.log('res', res)
     this.setState({
       profile: res,
     })
@@ -44,6 +42,7 @@ export default class Profile extends Component {
       user,
       facebook_url,
       website_url,
+      twitter_url,
       youtube_url,
       instagram_url,
     } = profile
@@ -88,6 +87,16 @@ export default class Profile extends Component {
               className={style.ProfileLink}
             >
               <i className="fa-youtube"></i> youtube
+            </a>
+          )}
+          {twitter_url && (
+            <a
+              target="_blank"
+              rel="nofollow"
+              href={twitter_url}
+              className={style.ProfileLink}
+            >
+              <i className="fa-twitter"></i> twitter
             </a>
           )}
           {website_url && (

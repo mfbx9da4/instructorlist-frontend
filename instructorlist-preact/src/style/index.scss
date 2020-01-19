@@ -215,8 +215,19 @@ body {
   background: url('../assets/images/youtube-brands.svg') no-repeat;
   background-position: center;
   cursor: pointer;
-  background-size: 1.2rem;
   display: block;
+  background-size: 3rem;
+  height: 5rem;
+  width: 5rem;
+}
+
+.fa-twitter {
+  opacity: 0.5;
+  background: url('../assets/images/twitter-brands.svg') no-repeat;
+  background-position: center;
+  cursor: pointer;
+  display: block;
+  background-size: 3rem;
   height: 5rem;
   width: 5rem;
 }
