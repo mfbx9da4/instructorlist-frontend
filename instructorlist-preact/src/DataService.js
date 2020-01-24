@@ -48,7 +48,12 @@ export default class DataService {
   }
 
   getProfile = async slug => {
-    if (slug in this.state.profiles) return this.state.profiles[slug]
+    if (
+      !this.hasPrerenderData &&
+      this.state.profiles &&
+      slug in this.state.profiles
+    )
+      return this.state.profiles[slug]
     const url = `${BASE_URL}/api/profiles/?slug=${slug}`
     let res
     try {

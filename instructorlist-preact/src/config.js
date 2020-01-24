@@ -1,5 +1,5 @@
 export const config = {
-  Version: 15,
+  Version: 16,
 }
 
 export default config
