@@ -68,7 +68,7 @@ export default class Map extends Component {
     const categories = item.categories
       .map(
         (x, i) => `<a class="popup-content--category"
-            href=''
+            href='#'
         >
           #${x.name.toLowerCase()}
         </a>`,

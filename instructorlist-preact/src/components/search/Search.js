@@ -310,7 +310,8 @@ export default class Search extends Component {
                         <a
                           className={style.category}
                           key={i}
-                          href={`/search/category/${x.normalized_name}`}
+                          // href={`/search/category/${x.normalized_name}`}
+                          href={`#`}
                         >
                           #{x.name.toLowerCase()}
                         </a>
