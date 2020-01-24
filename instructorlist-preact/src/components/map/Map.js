@@ -128,7 +128,8 @@ export default class Map extends Component {
     }
   }
 
-  updatePins(map = this.state.map) {
+  async updatePins(map = this.state.map) {
+    await this.loadMapBox()
     this.markers.map(x => x.remove())
     const lngLatCalculator = new LngLatCalculator()
     this.props.items.forEach(item => {
