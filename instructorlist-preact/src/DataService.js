@@ -93,6 +93,7 @@ export default class DataService {
     }
     if (res.ok) {
       const json = await res.json()
+      console.log('json', json)
       this.state.search = json
       this.state.classes = convertArrayToObject(json.classes, 'id')
       this.state.categories = json.categories
