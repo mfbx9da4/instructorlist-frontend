@@ -8,7 +8,6 @@
   },
   "scripts": {
     "dev": "nodemon dist/server",
-    "build": "cd ../instructorlist-preact && yarn build && cd ../instructorlist-express",
     "start": "node dist/server"
   },
   "devDependencies": {
