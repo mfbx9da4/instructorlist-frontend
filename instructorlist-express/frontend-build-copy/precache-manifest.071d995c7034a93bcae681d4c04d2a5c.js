@@ -213,20 +213,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/assets/images/landing-page/twitter.png"
   },
   {
-    "revision": "93324584606cdac8adf4396bf3c8f9af",
-    "url": "/assets/mapbox-gl-js/v1.3.2/mapbox-gl.css"
+    "revision": "547c75403bfd496e8c86",
+    "url": "/bundle.547c7.js"
   },
   {
-    "revision": "d2b6738e05e98fe69546e5ca4be42211",
-    "url": "/assets/mapbox-gl-js/v1.3.2/mapbox-gl.js"
-  },
-  {
-    "revision": "d94e68d9117771137541",
+    "revision": "547c75403bfd496e8c86",
     "url": "/bundle.90447.css"
-  },
-  {
-    "revision": "d94e68d9117771137541",
-    "url": "/bundle.d94e6.js"
   },
   {
     "url": "/cd52c65f6e9b436815c145528d64c613.png"
@@ -235,7 +227,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fdc249a946c4f6db8c32166b7615272c.png"
   },
   {
-    "revision": "335af5febe938ad4daed280fe727ef9c",
+    "revision": "666372539a73c0ff6b04c2118a256d81",
     "url": "/index.html"
   },
   {
@@ -267,11 +259,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/route-search.chunk.bba84.css"
   },
   {
-    "revision": "8499e7678d52d8eb19369000c89d9b2f",
+    "revision": "1a9ca549cbe73d67948348209ff4f367",
     "url": "/search/index.html"
   },
   {
-    "revision": "4bdcdc73e8e97c115044f5612f6d07d7",
+    "revision": "2ae80872062bbad01cae592ccdac9d42",
     "url": "/shell/index.html"
   },
   {
@@ -279,7 +271,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/sw-debug.js"
   },
   {
-    "revision": "9ec0c56c0afb7ecdaa2a812b892ab9ca",
+    "revision": "b488b195dbd294373e772b8736bded0f",
     "url": "/sw-esm.js"
   },
   {

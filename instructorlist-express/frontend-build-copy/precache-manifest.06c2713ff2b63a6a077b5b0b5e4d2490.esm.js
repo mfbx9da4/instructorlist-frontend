@@ -213,16 +213,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/assets/images/landing-page/twitter.png"
   },
   {
-    "revision": "93324584606cdac8adf4396bf3c8f9af",
-    "url": "/assets/mapbox-gl-js/v1.3.2/mapbox-gl.css"
-  },
-  {
-    "revision": "d94e68d9117771137541",
+    "revision": "547c75403bfd496e8c86",
     "url": "/bundle.90447.css"
   },
   {
-    "revision": "f69534fa6751a226d42ae70a0b2aba53",
-    "url": "/bundle.ba39c.esm.js"
+    "revision": "92c1675e1f425167f184fe46c393ecc1",
+    "url": "/bundle.a9122.esm.js"
   },
   {
     "url": "/cd52c65f6e9b436815c145528d64c613.png"
@@ -231,7 +227,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fdc249a946c4f6db8c32166b7615272c.png"
   },
   {
-    "revision": "335af5febe938ad4daed280fe727ef9c",
+    "revision": "666372539a73c0ff6b04c2118a256d81",
     "url": "/index.html"
   },
   {
