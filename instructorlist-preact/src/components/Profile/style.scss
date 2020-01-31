@@ -30,6 +30,8 @@
   }
 }
 .ProfileLinks {
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .ProfileLink {
   padding: 2rem;
