@@ -12,9 +12,9 @@ const SearchPage = props => (
 export default SearchPage
 
 SearchPage.getInitialProps = async () => {
-  let res = await fetch(`${BASE_URL}/api/classes`)
+  let res = await fetch(`${BASE_URL}/api/search`)
   let result = await res.json()
   return {
-    classes: result,
+    classes: result.classes,
   }
 }
