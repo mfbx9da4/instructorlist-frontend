@@ -63,12 +63,12 @@ const ssr = (template, isAmp = true) => async (req, res) => {
         const url = req.url;
         let matched = matchPage(url, ssr_bundle_1.default.pages);
         // Inject Data
-        let time1 = await timer_1.timer(async () => {
+        let injectDataTook = await timer_1.timer(async () => {
             if (matched && matched.page.component.getInitialProps) {
                 ssrData = await matched.page.component.getInitialProps(matched.match);
             }
         });
-        console.log('time1', time1);
+        console.log('injectDataTook', injectDataTook.took);
         let body = await preact_render_to_string_1.render(preact_1.h(ssr_bundle_1.default, { url, ssrData }));
         res.setHeader('Content-Type', 'text/html');
         res.setHeader('Cache-Control', 'public,max-age=86400');
@@ -80,7 +80,7 @@ const ssr = (template, isAmp = true) => async (req, res) => {
         console.log('is AMP', url, out.indexOf('src="/bundle.') === -1);
         res.end(out);
     });
-    console.log('total', total);
+    console.log('total', total.took);
 };
 const app = express_1.default()
     .use(compression)

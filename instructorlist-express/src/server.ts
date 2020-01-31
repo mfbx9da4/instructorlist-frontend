@@ -58,12 +58,12 @@ const ssr = (template: string, isAmp: boolean = true) => async (
     let matched = matchPage(url, App.pages)
 
     // Inject Data
-    let time1 = await timer(async () => {
+    let injectDataTook = await timer(async () => {
       if (matched && matched.page.component.getInitialProps) {
         ssrData = await matched.page.component.getInitialProps(matched.match)
       }
     })
-    console.log('time1', time1)
+    console.log('injectDataTook', injectDataTook.took)
 
     let body = await render(h(App, { url, ssrData }))
     res.setHeader('Content-Type', 'text/html')
@@ -79,7 +79,7 @@ const ssr = (template: string, isAmp: boolean = true) => async (
     console.log('is AMP', url, out.indexOf('src="/bundle.') === -1)
     res.end(out)
   })
-  console.log('total', total)
+  console.log('total', total.took)
 }
 
 const app = express()
