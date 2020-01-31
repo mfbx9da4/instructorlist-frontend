@@ -49,9 +49,9 @@ const Footer = props => {
                       placeholder="name@email.com"
                     />
                     {/* BEGIN--- This keeps the bots away!---BEGIN */}
-                    <div id="mce-responses">
+                    <div id="mce-responses-1">
                       <div
-                        id="mce-error-response"
+                        id="mce-error-response-1"
                         style={{ display: 'none' }}
                       />
                       <div

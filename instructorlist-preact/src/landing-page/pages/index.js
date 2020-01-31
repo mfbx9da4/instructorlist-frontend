@@ -18,6 +18,7 @@ const IndexPage = () => (
   <Layout>
     <SEO
       title="Instructorlist"
+      description="The best dance teachers across London. Handpicked."
       keywords={[`instructorlist`, `dance teachers`, `london`]}
     />
     <Navigation

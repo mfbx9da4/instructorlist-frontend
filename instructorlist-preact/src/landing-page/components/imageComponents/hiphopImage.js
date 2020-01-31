@@ -15,7 +15,9 @@ const HiphopImage = () => (
         }
       }
     `}
-    render={data => <Img fluid={data.HiphopImage.childImageSharp.fluid} />}
+    render={data => (
+      <Img alt="dancer" fluid={data.HiphopImage.childImageSharp.fluid} />
+    )}
   />
 )
 export default HiphopImage

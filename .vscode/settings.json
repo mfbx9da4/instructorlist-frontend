@@ -1,3 +1,4 @@
 {
-    "eslint.enable": true
+    "eslint.enable": true,
+    "python.pythonPath": "/Users/davidadler/.pyenv/versions/3.7.4/bin/python"
 }

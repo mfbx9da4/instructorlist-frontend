@@ -12,7 +12,7 @@ class Header extends Component {
     return (
       <header className={`${style.header} `}>
         <h1>
-          <Link activeClassName={style.active} href="/">
+          <Link activeClassName={style.active} href="/search">
             instructorlist {isSSR() && '⚡'}
           </Link>
         </h1>

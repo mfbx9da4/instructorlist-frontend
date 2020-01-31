@@ -15,7 +15,9 @@ const BalletImage = () => (
         }
       }
     `}
-    render={data => <Img fluid={data.BalletImage.childImageSharp.fluid} />}
+    render={data => (
+      <Img alt="Ballet image" fluid={data.BalletImage.childImageSharp.fluid} />
+    )}
   />
 )
 export default BalletImage

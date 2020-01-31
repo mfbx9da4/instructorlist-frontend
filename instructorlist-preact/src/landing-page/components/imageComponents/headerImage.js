@@ -12,6 +12,6 @@ import React from 'react'
  */
 
 const HeaderImage = () => (
-  <img src="/assets/images/landing-page/header-image.jpg" />
+  <img src="/assets/images/landing-page/header-image.jpg" alt="header" />
 )
 export default HeaderImage

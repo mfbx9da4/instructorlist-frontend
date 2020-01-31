@@ -230,7 +230,7 @@ export default class Search extends Component {
             onClick={this.addDay(-1)}
             className="leftArrow"
           />
-          <div>{this.formatCurrentDay()}</div>
+          <div className={style.day}>{this.formatCurrentDay()}</div>
           <a
             href={(this.simulateAddDayUrl(1), day, filters).url}
             onClick={this.addDay(1)}

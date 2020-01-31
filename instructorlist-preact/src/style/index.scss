@@ -5,25 +5,28 @@
     /* Super Modern Browsers */
       url('../assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff')
       format('woff'); /* Pretty Modern Browsers */
+  font-display: swap;
 }
 
-@font-face {
-  font-family: mynewfont;
-  src: url('../assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff2')
-      format('woff2'),
-    /* Super Modern Browsers */
-      url('../assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff')
-      format('woff'); /* Pretty Modern Browsers */
-}
+// @font-face {
+//   font-family: mynewfont;
+//   src: url('../assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff2')
+//       format('woff2'),
+//     /* Super Modern Browsers */
+//       url('../assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff')
+//       format('woff'); /* Pretty Modern Browsers */
+//   font-display: swap;
+// }
 
-@font-face {
-  font-family: proximanova;
-  src: url('/assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff2')
-      format('woff2'),
-    /* Super Modern Browsers */
-      url('/assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff')
-      format('woff'); /* Pretty Modern Browsers */
-}
+// @font-face {
+//   font-family: proximanova;
+//   src: url('/assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff2')
+//       format('woff2'),
+//     /* Super Modern Browsers */
+//       url('/assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff')
+//       format('woff'); /* Pretty Modern Browsers */
+//   font-display: swap;
+// }
 
 :root {
   --light-blue: hsla(228, 100%, 95%, 1);

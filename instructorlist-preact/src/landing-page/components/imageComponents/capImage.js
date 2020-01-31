@@ -15,7 +15,9 @@ const CapImage = () => (
         }
       }
     `}
-    render={data => <Img fluid={data.CapImage.childImageSharp.fluid} />}
+    render={data => (
+      <Img alt="dancer" fluid={data.CapImage.childImageSharp.fluid} />
+    )}
   />
 )
 export default CapImage
