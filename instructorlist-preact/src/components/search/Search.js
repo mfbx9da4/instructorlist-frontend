@@ -76,9 +76,9 @@ export default class Search extends Component {
     this.setState(
       {
         day: day || parseDate(this.props.date),
-        allClasses: res.results,
+        allClasses: res.classes,
       },
-      () => res.results && this.doLocalSearch(),
+      () => res.classes && this.doLocalSearch(),
     )
   }
 
