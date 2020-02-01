@@ -35,6 +35,7 @@ function setHeaders(res: Response, file: string) {
     basename(file) === 'sw.js' || basename(file) === 'sw-esm.js'
       ? 'private,no-cache,no-store,must-revalidate'
       : 'public,max-age=31536000,immutable'
+  console.log('Serve build file', basename(file))
   return res.setHeader('Cache-Control', cache) // don't cache service worker file
 }
 
