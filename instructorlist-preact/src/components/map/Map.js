@@ -50,7 +50,12 @@ export default class Map extends Component {
     if (!this.state.libLoaded && !this.state.libLoading) {
       this.setState({ libLoading: true })
       await loadMapBox()
-      this.setState({ libLoading: false, libLoaded: true }, this.onLibLoaded)
+      await new Promise(async r => {
+        this.setState({ libLoading: false, libLoaded: true }, async () => {
+          await this.onLibLoaded()
+          r()
+        })
+      })
     }
   }
 
