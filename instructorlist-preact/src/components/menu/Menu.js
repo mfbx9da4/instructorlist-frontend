@@ -1,5 +1,5 @@
 import { h, Component } from 'preact'
-import { route } from 'preact-router'
+import { route, Link } from 'preact-router'
 import style from './style'
 
 export default class Menu extends Component {
@@ -14,18 +14,18 @@ export default class Menu extends Component {
           </div>
           <div className={style.section}>
             <div className={style.sectionHeader}>
-              <a className={style.sectionTitle} onClick={onClose} href="/">
+              <Link className={style.sectionTitle} onClick={onClose} href="/">
                 HOME
-              </a>
+              </Link>
             </div>
             <div className={style.sectionHeader}>
-              <a
+              <Link
                 className={style.sectionTitle}
                 onClick={onClose}
                 href="/search"
               >
                 CLASSES
-              </a>
+              </Link>
             </div>
           </div>
         </div>

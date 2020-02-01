@@ -9,7 +9,7 @@
     "start:development": "npm run -s dev",
     "_build": "./node_modules/.bin/preact build --verbose --prerenderUrls prerender-urls.js --template template.html --preload ",
     "build": "find . -name '.DS_Store' -type f -delete && rm -rf build/ ; yarn _build && yarn copy_build",
-    "copy_build": "rm -rf ../instructorlist-express/frontend-build-copy/* && cp -r ./build/* ../instructorlist-express/frontend-build-copy/",
+    "copy_build": "find ../instructorlist-express/frontend-build-copy/* -type f -mtime +30 -exec rm {} \\; && cp -r ./build/* ../instructorlist-express/frontend-build-copy/",
     "serve": "yarn _build && ./node_modules/.bin/preact serve",
     "dev": "./node_modules/.bin/preact watch --https --template template.ejs ",
     "lint": "eslint src",
