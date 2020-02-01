@@ -116,7 +116,7 @@ Header.propTypes = {
 
 Header.defaultProps = {
   alert: `We&#39;re launching soon!`,
-  title: `The Best Dance Teachers Across London.Handpicked.`,
+  title: `The Best Dance Teachers Across London. Handpicked.`,
   subtext: `Attend hundreds of dance classes from the best teachers across London with a single membership.`,
 }
 

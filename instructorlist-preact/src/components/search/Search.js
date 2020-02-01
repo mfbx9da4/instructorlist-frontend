@@ -375,9 +375,12 @@ export default class Search extends Component {
               onClick={this.toggleMapView}
             >
               <div
-                className={`${style.filterIcon} ${
-                  this.state.isMapView ? style.listIcon : style.mapIcon
-                }`}
+                className={`${style.filterIcon} ${style.listIcon}`}
+                style={!this.state.isMapView && { width: 0 }}
+              />
+              <div
+                className={`${style.filterIcon} ${style.mapIcon}`}
+                style={this.state.isMapView && { width: 0 }}
               />
               {this.state.isMapView ? 'List View' : 'Map View'}
             </a>
