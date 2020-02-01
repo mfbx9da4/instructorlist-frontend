@@ -46,6 +46,7 @@ function setHeaders(res, file) {
     let cache = path_2.basename(file) === 'sw.js' || path_2.basename(file) === 'sw-esm.js'
         ? 'private,no-cache,no-store,must-revalidate'
         : 'public,max-age=31536000,immutable';
+    console.log('Serve build file', path_2.basename(file));
     return res.setHeader('Cache-Control', cache); // don't cache service worker file
 }
 function matchPage(url, pages) {

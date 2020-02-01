@@ -213,12 +213,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/assets/images/landing-page/twitter.png"
   },
   {
-    "revision": "f72134768ce43cb0f432",
+    "revision": "317cadc65521e5646fa3",
     "url": "/bundle.20518.css"
   },
   {
-    "revision": "f72134768ce43cb0f432",
-    "url": "/bundle.f7213.js"
+    "revision": "317cadc65521e5646fa3",
+    "url": "/bundle.317ca.js"
   },
   {
     "url": "/cd52c65f6e9b436815c145528d64c613.png"
@@ -227,7 +227,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fdc249a946c4f6db8c32166b7615272c.png"
   },
   {
-    "revision": "1f82d506e10014a1654904dffcdd6d8d",
+    "revision": "acb710f0e281706178b5b84407278f74",
     "url": "/index.html"
   },
   {
@@ -259,11 +259,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/route-search.chunk.28222.js"
   },
   {
-    "revision": "f8587932954a63f006ccbab8a1f7f8ec",
+    "revision": "c32c2dc13981efe450cc1fabea02708a",
     "url": "/search/index.html"
   },
   {
-    "revision": "1f9f65adc7d1ce10eb3cd0a2bc68e21c",
+    "revision": "c9b66c54a3c4fdcdb9039a6efc0f2e44",
     "url": "/shell/index.html"
   },
   {
@@ -271,7 +271,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/sw-debug.js"
   },
   {
-    "revision": "ad0b74bdcb824354d42c76ba7b79f35a",
+    "revision": "2c4b1b27b71b3824f05e15bdda2d4b1f",
     "url": "/sw-esm.js"
   },
   {
