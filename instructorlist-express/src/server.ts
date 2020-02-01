@@ -83,6 +83,7 @@ const ssr = (template: string, isAmp: boolean = true) => async (
 }
 
 const app = express()
+  .disable('x-powered-by')
   .use(compression)
   .use((req, res, next) => {
     next()

@@ -83,6 +83,7 @@ const ssr = (template, isAmp = true) => async (req, res) => {
     console.log('total', total.took);
 };
 const app = express_1.default()
+    .disable('x-powered-by')
     .use(compression)
     .use((req, res, next) => {
     next();
