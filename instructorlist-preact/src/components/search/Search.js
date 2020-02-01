@@ -67,10 +67,11 @@ export default class Search extends Component {
   doSearch = async () => {
     let { filters, day } = this.state
     await this.setState({ isLoading: true })
-    let res
+    let res = {}
     try {
       res = await this.props.data.getSearch(filters)
     } catch (err) {
+      console.error(err)
       return this.setState({ isOffline: true, isLoading: false })
     }
     this.setState(
