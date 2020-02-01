@@ -213,12 +213,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/assets/images/landing-page/twitter.png"
   },
   {
-    "revision": "1179f68733d1b751d293",
+    "revision": "f72134768ce43cb0f432",
     "url": "/bundle.20518.css"
   },
   {
-    "revision": "40beea827c80005c918437e8c20ff078",
-    "url": "/bundle.a51a4.esm.js"
+    "revision": "4f294704e780ff219d3182888b821ec5",
+    "url": "/bundle.44d07.esm.js"
   },
   {
     "url": "/cd52c65f6e9b436815c145528d64c613.png"
@@ -227,7 +227,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fdc249a946c4f6db8c32166b7615272c.png"
   },
   {
-    "revision": "800f255693e59644c05a9634f6294c83",
+    "revision": "1f82d506e10014a1654904dffcdd6d8d",
     "url": "/index.html"
   },
   {
