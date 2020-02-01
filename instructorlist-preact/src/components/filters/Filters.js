@@ -18,9 +18,9 @@ let activities = {
     label: 'Ballet',
     type: 'category',
   },
-  hip_hop: {
-    name: 'hip_hop',
-    label: 'Hip Hop',
+  commercial: {
+    name: 'commercial',
+    label: 'Commerical',
     type: 'category',
   },
   breaking: {
@@ -33,9 +33,9 @@ let activities = {
     label: 'Salsa',
     type: 'category',
   },
-  tap: {
-    name: 'tap',
-    label: 'Tap',
+  beginners: {
+    name: 'beginners',
+    label: 'Beginners',
     type: 'category',
   },
 }
