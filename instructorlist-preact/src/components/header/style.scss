@@ -8,6 +8,11 @@
   background: white;
   border-bottom: 1px solid var(--off-white);
   z-index: 50;
+  .headerContainer {
+    max-width: 86rem;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
 }
 
 .header h1 {

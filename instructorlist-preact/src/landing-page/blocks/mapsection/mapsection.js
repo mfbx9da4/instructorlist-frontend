@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'preact-router'
 
-import Layout from '../../components/layout'
 import { Row, Col } from '../../components/grid/index'
 import {
   SectionHeader,
@@ -10,6 +10,7 @@ import {
   PaddingContainer,
 } from '../../components/globalStyles/styles'
 import MapImage from '../../components/imageComponents/mapImage'
+import { StyledButton } from '../header/styles'
 
 import { Container } from '../../components/grid/index'
 
@@ -37,6 +38,14 @@ const Mapsection = props => {
           <Col width={ColBreakPoints}>
             <MapImage scr="/assets/images/landing-page/map.jpg" />
           </Col>
+        </Row>
+        <Row>
+          <Link
+            href="/search"
+            style={{ width: '100%', justifyContent: 'center', display: 'flex' }}
+          >
+            <StyledButton>Browse Classes</StyledButton>
+          </Link>
         </Row>
       </Container>
     </SectionMargin>

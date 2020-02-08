@@ -54,8 +54,12 @@ const CarouselStatic = props => {
                 <Info
                   flags="🇪🇬🇬🇷🇲🇽🇦🇷🇪🇸"
                   title="Hundreds more…"
-                  description="Salsa, Bachata, Commercial, Gwoka,
-                  Indian dance, African dance, Tap,…"
+                  description={
+                    <a href="/search" style={{ color: 'white' }}>
+                      Salsa, Bachata, Commercial, Gwoka, Indian dance, African
+                      dance, Tap …
+                    </a>
+                  }
                 />
               </Row>
             </Container>

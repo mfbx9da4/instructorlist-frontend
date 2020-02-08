@@ -6,6 +6,8 @@ import { Row, Col } from '../../components/grid/index'
 import { StyledSection, StyledDiv, StyledSectionHeader } from './styles'
 import { SectionMargin } from '../../components/globalStyles/styles'
 import { Container } from '../../components/grid/index'
+import { Link } from 'preact-router'
+import { StyledButton } from '../header/styles'
 
 import Bullet from './bullet/bullet'
 import Icon1 from '../../../assets/images/landing-page/icon-1.png'
@@ -55,6 +57,19 @@ const Howitworks = props => {
                   description="Attend any class of your choice using your credits."
                 />
               </Col>
+            </Row>
+            <Row>
+              <Link
+                href="/search"
+                style={{
+                  width: '100%',
+                  justifyContent: 'center',
+                  display: 'flex',
+                  marginTop: '2rem',
+                }}
+              >
+                <StyledButton>Browse Classes</StyledButton>
+              </Link>
             </Row>
           </StyledDiv>
         </Container>

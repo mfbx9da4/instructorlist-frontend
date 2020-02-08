@@ -6,6 +6,7 @@ import FooterButton from '../footerbutton/FooterButton'
 import { dayToDayString } from '../../constants'
 import isDev from '../../utils/is-dev'
 import Directions from '../directions/Directions'
+import DancingGif from '../dancing-gif/DancingGif'
 
 export default class ClassDetail extends Component {
   constructor(props) {
@@ -17,9 +18,23 @@ export default class ClassDetail extends Component {
   }
 
   async componentDidMount() {
+    const { item } = this.state
+    // We have all the data we need
+    if (
+      item &&
+      item.venue &&
+      item.instructors &&
+      item.instructors.length ===
+        item.instructors.filter(x => !!x.profile).length
+    )
+      return
+    this.setState({
+      loading: true,
+    })
     let res = await this.props.data.getClass(this.props.matches.id)
     this.setState({
       item: res,
+      loading: false,
     })
   }
 
@@ -36,29 +51,26 @@ export default class ClassDetail extends Component {
     this.setState({ showPayment: false })
   }
 
-  render({}, { item, showPayment }) {
-    if (!item)
+  render({}, { item, showPayment, isLoading }) {
+    if (!item || isLoading)
       return (
-        <div column flex jc="center" ai="center" style={{ marginTop: '120px' }}>
-          <img
-            width="85"
-            height="119"
-            src="/assets/images/dancing.gif"
-            alt="loading"
-          />
-          <div>Loading</div>
+        <div style={{ marginTop: '120px' }}>
+          <DancingGif></DancingGif>
         </div>
       )
     const instructor = item.instructors[0]
     const profile = instructor.profile || { bio: '' }
     const day =
       dayToDayString[item.day] && dayToDayString[item.day].toUpperCase()
+
+    const { venue } = item
     return (
       <div>
         <Payment
           show={showPayment}
           onClose={this.hidePayment}
           item={item}
+          venue={venue}
         ></Payment>
         <div className={style.classDetailWrapper}>
           <div className={style.classHero}>
@@ -82,9 +94,9 @@ export default class ClassDetail extends Component {
           <div className={style.main}>
             <div className={style.mainTitle}>{item.title}</div>
             <div className={style.address}>
-              {item.venue.name} {item.venue.area}
+              {venue.name} {venue.area}
             </div>
-            <Directions venue={item.venue}></Directions>
+            <Directions venue={venue}></Directions>
             <Link className={style.well} href={`/${profile.slug}`}>
               <div className={style.wellIcon}>
                 <img
@@ -99,7 +111,12 @@ export default class ClassDetail extends Component {
               <div className={style.wellMain}>
                 <div className={style.wellName}>{instructor.name}</div>
                 <div className={style.wellDescription}>
-                  {profile.bio.substring(0, 50)}
+                  {profile.bio && (
+                    <>
+                      {profile.bio.substring(0, 50)}{' '}
+                      {profile.bio.length > 50 ? '...' : ''}
+                    </>
+                  )}
                 </div>
               </div>
               <div className={style.wellAction}>

@@ -93,7 +93,7 @@ export default class Payment extends Component {
       start_time: this.props.item.start_time,
       end_time: this.props.item.end_time,
       class_attended: this.props.item.id,
-      venue: this.props.item.venue.id,
+      venue: this.props.venue.id,
       email: `${this.state.values.phone_number}@example.com`,
       ...this.state.values,
     }
@@ -119,7 +119,7 @@ export default class Payment extends Component {
   }
 
   render(
-    { item, show, onClose },
+    { item, show, onClose, venue },
     { error, values, booking, isSubmitting, paymentMethod, success },
   ) {
     if (!item) return <div>Class not found</div>
@@ -158,7 +158,7 @@ export default class Payment extends Component {
                 {dayToDayString[item.day]} {item.start_time} - {item.end_time}
               </div>
               <div className={style.location}>
-                {item.venue.name} - {item.venue.area}
+                {venue.name} - {venue.area}
               </div>
             </div>
 
@@ -171,14 +171,16 @@ export default class Payment extends Component {
                   £{parseFloat(item.price).toFixed(2)}
                 </div>
               </div>
-              {item.extra_fee && (
-                <div key="extra_fee" className={style.extra}>
+              {venue.entry_fee && (
+                <span key="entry_fee" className={style.extra}>
                   Please note this studio will charge you an additional
-                  <div className={style.strong}>
-                    £{item.extra_fee} studio entry fee
-                  </div>
+                  <strong className={style.strong}>
+                    {` £${(venue.entry_fee / 100).toFixed(
+                      2,
+                    )} studio entry fee `}
+                  </strong>
                   upon arrival.
-                </div>
+                </span>
               )}
             </div>
 

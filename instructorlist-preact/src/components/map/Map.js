@@ -136,6 +136,30 @@ export default class Map extends Component {
   async updatePins(map = this.state.map) {
     await this.loadMapBox()
     this.markers.map(x => x.remove())
+
+    // map.addLayer({
+    //   id: 'clusters',
+    //   type: 'circle',
+    //   filter: ['has', 'point_count'],
+    //   paint: {
+    //     // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
+    //     // with three steps to implement three types of circles:
+    //     //   * Blue, 20px circles when point count is less than 100
+    //     //   * Yellow, 30px circles when point count is between 100 and 750
+    //     //   * Pink, 40px circles when point count is greater than or equal to 750
+    //     'circle-color': [
+    //       'step',
+    //       ['get', 'point_count'],
+    //       '#51bbd6',
+    //       100,
+    //       '#f1f075',
+    //       750,
+    //       '#f28cb1',
+    //     ],
+    //     'circle-radius': ['step', ['get', 'point_count'], 20, 100, 30, 750, 40],
+    //   },
+    // })
+
     const lngLatCalculator = new LngLatCalculator()
     this.props.items.forEach(item => {
       // create a HTML element for each feature
@@ -154,6 +178,13 @@ export default class Map extends Component {
           .addTo(map),
       )
     })
+    console.log('Object.keys(mapboxgl)', Object.keys(mapboxgl))
+    // TODO:
+    // var clusterGroup = new mapboxgl.MarkerClusterGroup()
+    // map.eachLayer(function(layer) {
+    //   clusterGroup.addLayer(layer)
+    // })
+    // mapCluster.addLayer(clusterGroup)
   }
 
   render({ active }, {}) {

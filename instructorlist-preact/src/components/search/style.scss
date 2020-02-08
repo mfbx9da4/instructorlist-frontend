@@ -125,7 +125,7 @@
   justify-content: center;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9999;
+  z-index: 20;
 
   .filtersButtonContainer {
     border: 1px solid var(--off-white);
@@ -186,6 +186,10 @@
   align-items: center;
   font-weight: 600;
   border-bottom: 1px solid var(--off-white);
+  position: sticky;
+  top: var(--header-height);
+  background: white;
+  z-index: 1;
   .day {
     min-width: 11.5rem;
     justify-content: center;

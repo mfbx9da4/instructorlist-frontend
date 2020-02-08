@@ -8,6 +8,7 @@ import isSSR from '../../utils/is-ssr'
 import { getFiltersFromUrl } from '../../utils/getFiltersFromUrl'
 import { classNames } from '../../utils/classNames'
 import { loadMapBox } from '../../lazyLoaders'
+import DancingGif from '../dancing-gif/DancingGif'
 
 const oneSecond = 1000
 if (!isSSR()) setTimeout(loadMapBox, 10 * oneSecond)
@@ -270,13 +271,7 @@ export default class Search extends Component {
             hide: !this.state.isLoading || classes.length !== 0,
           })}
         >
-          <img
-            width="85"
-            height="119"
-            src="/assets/images/dancing.gif"
-            alt="loading"
-          />
-          <div>Loading</div>
+          <DancingGif></DancingGif>
         </div>
         <Map
           key="Map"
