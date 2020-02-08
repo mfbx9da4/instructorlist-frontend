@@ -125,7 +125,7 @@
   justify-content: center;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 20;
+  z-index: 999;
 
   .filtersButtonContainer {
     border: 1px solid var(--off-white);
