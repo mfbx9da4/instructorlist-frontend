@@ -143,11 +143,12 @@ export default class Payment extends Component {
           <div className={style.paymentMain}>
             <div className={style.paymentHeader}>
               <div
+                style={{ flexBasis: '3rem' }}
                 className={`leftArrow ${style.back}`}
                 onClick={onClose}
               ></div>
               <div className={style.title}>Checkout</div>
-              <div style={{ width: '1rem', height: '1rem' }}></div>
+              <div style={{ flexBasis: '3rem', height: '1rem' }}></div>
             </div>
 
             <div className={'hr'} />
