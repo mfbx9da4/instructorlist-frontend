@@ -3,7 +3,7 @@ const imageminJpegtran = require('imagemin-jpegtran')
 const imageminPngquant = require('imagemin-pngquant')
 
 async function main() {
-  const files = await imagemin(['raw-images/*.{jpg,png}'], {
+  const files = await imagemin(['raw-images-resized/*.{jpg,png}'], {
     destination: './src/assets/images/landing-page/',
     plugins: [
       imageminJpegtran(),
