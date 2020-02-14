@@ -3,6 +3,14 @@ import { route } from 'preact-router'
 import style from './style'
 import classNames from '../../utils/classNames'
 import { loadMapBox } from '../../lazyLoaders'
+import isSSR from '../../utils/is-ssr'
+
+if (!isSSR())
+  window.Route = (e, x) => {
+    e.preventDefault()
+    route(x)
+    return false
+  }
 
 class LngLatCalculator {
   constructor() {
@@ -83,7 +91,7 @@ export default class Map extends Component {
     return `<div class="popup-content" >
         <a class="popup-content--link" target='_blank' href='/classes/${
           item.id
-        }/?i=1'></a>
+        }/?i=1' onclick="Route(event, '/classes/${item.id}/?i=1')"></a>
         <div class="popup-content--aside">
           <div class="popup-content--startTime">${item.start_time}</div>
           <div class="popup-content--price">£${item.price}</div>
@@ -137,38 +145,16 @@ export default class Map extends Component {
     await this.loadMapBox()
     this.markers.map(x => x.remove())
 
-    // map.addLayer({
-    //   id: 'clusters',
-    //   type: 'circle',
-    //   filter: ['has', 'point_count'],
-    //   paint: {
-    //     // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
-    //     // with three steps to implement three types of circles:
-    //     //   * Blue, 20px circles when point count is less than 100
-    //     //   * Yellow, 30px circles when point count is between 100 and 750
-    //     //   * Pink, 40px circles when point count is greater than or equal to 750
-    //     'circle-color': [
-    //       'step',
-    //       ['get', 'point_count'],
-    //       '#51bbd6',
-    //       100,
-    //       '#f1f075',
-    //       750,
-    //       '#f28cb1',
-    //     ],
-    //     'circle-radius': ['step', ['get', 'point_count'], 20, 100, 30, 750, 40],
-    //   },
-    // })
-
     const lngLatCalculator = new LngLatCalculator()
     this.props.items.forEach(item => {
       // create a HTML element for each feature
       var el = document.createElement('i')
       el.className = 'marker'
-      const lngLat = [item.venue.lon, item.venue.lat]
+      const lngLat = lngLatCalculator.calc([item.venue.lon, item.venue.lat])
+      el.addEventListener('click', () => map.panTo(lngLat))
       this.markers.push(
         new mapboxgl.Marker(el)
-          .setLngLat(lngLatCalculator.calc(lngLat))
+          .setLngLat(lngLat)
           .setPopup(
             new mapboxgl.Popup({
               offset: 37,
@@ -178,7 +164,6 @@ export default class Map extends Component {
           .addTo(map),
       )
     })
-    console.log('Object.keys(mapboxgl)', Object.keys(mapboxgl))
     // TODO:
     // var clusterGroup = new mapboxgl.MarkerClusterGroup()
     // map.eachLayer(function(layer) {

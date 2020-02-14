@@ -79,10 +79,10 @@ export default class Search extends Component {
       this.setState(
         {
           day: day || parseDate(this.props.date),
-          allClasses: res.classes,
+          allClasses: res.data.classes,
           isLoading: false,
         },
-        () => res.classes && this.doLocalSearch(),
+        () => res.data.classes && this.doLocalSearch(),
       )
     } else {
       this.setState({ isLoading: false })

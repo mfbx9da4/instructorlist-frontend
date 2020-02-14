@@ -93,7 +93,7 @@ export default class DataService {
       this.state.venues = json.venues
       this.state.profiles = json.profiles
       this.hasPrerenderData = false
-      return json
+      return { ok: true, data: json }
     }
     return res
   }
