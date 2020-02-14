@@ -103,7 +103,7 @@ export default class ClassDetail extends Component {
                   className={style.instructorAvatar}
                   src={
                     profile.profile_image_url ||
-                    `https://api.adorable.io/avatars/60/${instructor.email}.png`
+                    `https://api.adorable.io/avatars/60/${instructor.id}.png`
                   }
                   alt={instructor.name}
                 />

@@ -22,9 +22,17 @@
 				<link rel="preload" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>" <%= file.match(/bundle\.\w{5}\.esm\.js$/)?'crossorigin="anonymous"':'' %>>
 			<% } %>
 		<% } %>
-		<script type="template">
-			<%= JSON.stringify(htmlWebpackPlugin, null, 2) %>
-		</script>
+		<meta name="description" content="The best dance teachers across London. Handpicked." >
+		<meta property="og:title" content="Instructorlist" >
+		<meta property="og:description" content="The best dance teachers across London. Handpicked." >
+		<meta property="og:type" content="website" >
+		<meta property="og:image" content="/assets/images/advert.jpg" >
+		<meta name="twitter:card" content="summary" >
+		<meta name="twitter:creator" content="David Alberto Adler" >
+		<meta name="twitter:title" content="Instructorlist" >
+		<meta name="twitter:description" content="The best dance teachers across London. Handpicked." >
+		<meta name="keywords" content="instructorlist, dance teachers, london" >
+
 		<%if (htmlWebpackPlugin.options.url !== '/shell' && htmlWebpackPlugin.options.config.production) { %>
             <script id="start-amp-scripts" type="application/ld+json"></script>
             <!--  Commenting out amp for the meantime as it was breaking map initilization

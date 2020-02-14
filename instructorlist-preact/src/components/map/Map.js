@@ -100,7 +100,7 @@ export default class Map extends Component {
               class="popup-content--instructor-avatar"
               alt='${item.instructors[0].name}'
               src='${item.instructors[0].profile.profile_image_url ||
-                `https://api.adorable.io/avatars/60/${item.instructors[0].email}.png`}'
+                `https://api.adorable.io/avatars/60/${item.instructors[0].id}.png`}'
             />
             <div class="popup-content--instructorName">
               ${item.instructors[0].name}

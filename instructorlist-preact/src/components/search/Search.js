@@ -75,14 +75,18 @@ export default class Search extends Component {
       console.error(err)
       return this.setState({ isOffline: true, isLoading: false })
     }
-    this.setState(
-      {
-        day: day || parseDate(this.props.date),
-        allClasses: res.classes,
-        isLoading: false,
-      },
-      () => res.classes && this.doLocalSearch(),
-    )
+    if (res.ok) {
+      this.setState(
+        {
+          day: day || parseDate(this.props.date),
+          allClasses: res.classes,
+          isLoading: false,
+        },
+        () => res.classes && this.doLocalSearch(),
+      )
+    } else {
+      this.setState({ isLoading: false })
+    }
   }
 
   doLocalSearchInner = (allClasses, day, filters) => {
@@ -224,7 +228,10 @@ export default class Search extends Component {
     return day.format('dddd D MMM').toUpperCase()
   }
 
-  render({}, { day, filters, filterCount, classes }) {
+  render(
+    {},
+    { day, filters, filterCount, classes, isMapView, isLoading, isOffline },
+  ) {
     return (
       <div className={style.search}>
         <div className={style.dayWrapper}>
@@ -243,10 +250,7 @@ export default class Search extends Component {
         <div
           className={classNames({
             [style.infoWrapper]: true,
-            hide:
-              this.state.isLoading ||
-              classes.length !== 0 ||
-              this.state.isOffline,
+            hide: isLoading || classes.length !== 0 || isOffline,
           })}
         >
           <div className={style.infoMessage}>
@@ -257,18 +261,18 @@ export default class Search extends Component {
         <div
           className={classNames({
             [style.infoWrapper]: true,
-            hide: !this.state.isOffline,
+            hide: !isOffline,
           })}
         >
           <div className={style.infoMessage}>
             <div className={`shrug ${style.infoIcon}`}></div>
-            <div className={style.title}>You are offline</div>
+            <div className={style.title}>You are Offline</div>
           </div>
         </div>
         <div
           className={classNames({
             [style.infoWrapper]: true,
-            hide: !this.state.isLoading || classes.length !== 0,
+            hide: !isLoading || classes.length !== 0,
           })}
         >
           <DancingGif></DancingGif>
@@ -277,10 +281,10 @@ export default class Search extends Component {
           key="Map"
           items={classes}
           onDone={this.onDone}
-          active={this.state.isMapView}
+          active={isMapView}
         />
         <div
-          style={{ display: this.state.isMapView ? 'none' : 'flex' }}
+          style={{ display: isMapView ? 'none' : 'flex' }}
           // style={{ display: 'none' }}
           className={classNames({ [style.listItems]: true })}
         >
@@ -326,7 +330,7 @@ export default class Search extends Component {
                           alt={item.instructors[0].name}
                           src={
                             item.instructors[0].profile.profile_image_url ||
-                            `https://api.adorable.io/avatars/60/${item.instructors[0].email}.png`
+                            `https://api.adorable.io/avatars/60/${item.instructors[0].id}.png`
                           }
                         />
                         <div className={style.instructorName}>
@@ -372,13 +376,13 @@ export default class Search extends Component {
             >
               <div
                 className={`${style.filterIcon} ${style.listIcon}`}
-                style={!this.state.isMapView && { width: 0 }}
+                style={!isMapView && { width: 0 }}
               />
               <div
                 className={`${style.filterIcon} ${style.mapIcon}`}
-                style={this.state.isMapView && { width: 0 }}
+                style={isMapView && { width: 0 }}
               />
-              {this.state.isMapView ? 'List View' : 'Map View'}
+              {isMapView ? 'List View' : 'Map View'}
             </a>
           </div>
         </div>

@@ -83,14 +83,7 @@ export default class DataService {
     if (!this.hasPrerenderData && this.state.search) return this.state.search
     const url = `${BASE_URL}/api/search/?i=${JSON.stringify(filters)}`
     let res
-    try {
-      res = await fetch(url)
-    } catch (e) {
-      res = {
-        ok: false,
-        data: { message: 'You are offline' },
-      }
-    }
+    res = await fetch(url)
     if (res.ok) {
       const json = await res.json()
       console.log('json', json)

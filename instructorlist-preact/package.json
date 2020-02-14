@@ -11,7 +11,7 @@
     "build": "find . -name '.DS_Store' -type f -delete && rm -rf build/ ; yarn _build && yarn copy_build",
     "copy_build": "find ../instructorlist-express/frontend-build-copy/* -type f -mtime +30 -exec rm {} \\; && cp -r ./build/* ../instructorlist-express/frontend-build-copy/",
     "serve": "yarn _build && ./node_modules/.bin/preact serve",
-    "dev": "./node_modules/.bin/preact watch --https --template template.ejs ",
+    "dev": "./node_modules/.bin/preact watch --https --template template.html ",
     "lint": "eslint src",
     "test": "jest"
   },
@@ -68,6 +68,7 @@
     "preact": "10.0.0",
     "preact-cli": "3.0.0-rc.7",
     "preact-compat": "gist:developit/eeebf4c2449c9848dc95aff847d2454d",
+    "preact-helmet": "^4.0.0-alpha-3",
     "preact-render-to-string": "^5.0.7",
     "preact-router": "3.0.1",
     "react-helmet": "^5.2.1",

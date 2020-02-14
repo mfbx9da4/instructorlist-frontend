@@ -7,7 +7,7 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
+import Helmet from 'preact-helmet'
 
 function SEO({ description, lang, meta, keywords, title }) {
   return (
@@ -33,6 +33,10 @@ function SEO({ description, lang, meta, keywords, title }) {
         {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          property: `og:image`,
+          content: `http://ia.media-imdb.com/images/rock.jpg`,
         },
         {
           name: `twitter:card`,
