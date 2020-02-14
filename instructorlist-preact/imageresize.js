@@ -3,6 +3,11 @@ const sharp = require('sharp')
 async function main() {
   const sources = [
     {
+      file: 'capoeira.jpg',
+      destFileName: 'capoeira.jpg',
+      resize: [400],
+    },
+    {
       file: 'dancer-1.jpg',
       destFileName: 'dancer-1.jpg',
       resize: [400],

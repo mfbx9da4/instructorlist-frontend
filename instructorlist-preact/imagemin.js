@@ -16,3 +16,8 @@ async function main() {
   console.log(files)
 }
 main()
+  .then(x => x)
+  .catch(e => {
+    console.log('e', e)
+    throw e
+  })

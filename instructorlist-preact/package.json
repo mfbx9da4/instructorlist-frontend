@@ -54,15 +54,15 @@
     "preact-cli-plugin-critical-css": "^0.1.0",
     "preact-cli-plugin-styled-components": "^1.0.0",
     "sass-loader": "^7.2.0",
-    "typings-for-css-modules-loader": "^1.7.0"
+    "typings-for-css-modules-loader": "^1.7.0",
+    "imagemin": "^7.0.1",
+    "imagemin-jpegtran": "^6.0.0",
+    "imagemin-pngquant": "^8.0.0"
   },
   "dependencies": {
     "@quickbaseoss/babel-plugin-styled-components-css-namespace": "^1.0.0-rc3",
     "cli": "^1.0.1",
     "dayjs": "^1.8.16",
-    "imagemin": "^7.0.0",
-    "imagemin-jpegtran": "^6.0.0",
-    "imagemin-pngquant": "^8.0.0",
     "loadjs": "^3.6.1",
     "mapbox-gl": "^1.3.2",
     "preact": "10.0.0",

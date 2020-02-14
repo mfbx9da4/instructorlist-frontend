@@ -8,7 +8,7 @@ import left from '../../../assets/images/landing-page/left.png'
 import right from '../../../assets/images/landing-page/right.png'
 import dancer1 from '../../../assets/images/landing-page/dancer-1.jpg'
 import dancer2 from '../../../assets/images/landing-page/dancer-2.jpg'
-import dancer3 from '../../../assets/images/landing-page/dancer-3.jpg'
+import dancer3 from '../../../assets/images/landing-page/capoeira.jpg'
 
 import {
   SectionMargin,
