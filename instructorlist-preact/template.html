@@ -22,13 +22,16 @@
 				<link rel="preload" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>" <%= file.match(/bundle\.\w{5}\.esm\.js$/)?'crossorigin="anonymous"':'' %>>
 			<% } %>
 		<% } %>
+		<meta property="og:site_name" content="Instructorlist"/>
 		<meta name="description" content="The best dance teachers across London. Handpicked." >
 		<meta property="og:title" content="Instructorlist" >
 		<meta property="og:description" content="The best dance teachers across London. Handpicked." >
 		<meta property="og:type" content="website" >
 		<meta property="og:image" content="/assets/images/advert.jpg" >
-		<meta name="twitter:card" content="summary" >
-		<meta name="twitter:creator" content="David Alberto Adler" >
+		<meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="533" />
+		<meta property="og:url" content="https://instructorlist.org/"/>
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content="Instructorlist" >
 		<meta name="twitter:description" content="The best dance teachers across London. Handpicked." >
 		<meta name="keywords" content="instructorlist, dance teachers, london" >
