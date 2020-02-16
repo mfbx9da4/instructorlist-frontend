@@ -2,7 +2,7 @@ import { h, Component } from 'preact'
 import classNames from '../../utils/classNames'
 
 export default class Loading extends Component {
-  render({}, {}) {
+  render({ text }, {}) {
     return (
       <div column flex jc="center" ai="center">
         <img
@@ -11,7 +11,7 @@ export default class Loading extends Component {
           src="/assets/images/dancing.gif"
           alt="loading"
         />
-        <div>Loading</div>
+        <div>{text || 'Loading'}</div>
       </div>
     )
   }

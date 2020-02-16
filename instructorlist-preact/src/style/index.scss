@@ -8,26 +8,6 @@
   font-display: swap;
 }
 
-// @font-face {
-//   font-family: mynewfont;
-//   src: url('../assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff2')
-//       format('woff2'),
-//     /* Super Modern Browsers */
-//       url('../assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff')
-//       format('woff'); /* Pretty Modern Browsers */
-//   font-display: swap;
-// }
-
-// @font-face {
-//   font-family: proximanova;
-//   src: url('/assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff2')
-//       format('woff2'),
-//     /* Super Modern Browsers */
-//       url('/assets/fonts/ProximaNova/mark_simonson_-_proxima_nova_regular-webfont.woff')
-//       format('woff'); /* Pretty Modern Browsers */
-//   font-display: swap;
-// }
-
 :root {
   --light-blue: hsla(228, 100%, 95%, 1);
   --brand-blue: rgba(25, 72, 255, 1);
@@ -43,6 +23,7 @@
 
   --header-height: 7.5rem;
   --mobile-width: 37.5rem;
+  --container-width: 86rem;
   /*
   --red0: #fbe5e2;
   --red1: #f29f97;

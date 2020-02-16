@@ -4,6 +4,7 @@ import style from './style'
 import classNames from '../../utils/classNames'
 import { loadMapBox } from '../../lazyLoaders'
 import isSSR from '../../utils/is-ssr'
+import DancingGif from '../dancing-gif/DancingGif'
 
 if (!isSSR())
   window.Route = (e, x) => {
@@ -135,9 +136,57 @@ export default class Map extends Component {
       })
       this.setState({ map })
       map.on('load', () => {
+        console.log('loaded')
         this.setState({ mapLoaded: true })
         this.updatePins(map)
       })
+      // map.addSource('points', {
+      //   type: 'geojson',
+      //   data: {
+      //     type: 'FeatureCollection',
+      //     features: [
+      //       {
+      //         // feature for Mapbox DC
+      //         type: 'Feature',
+      //         geometry: {
+      //           type: 'Point',
+      //           coordinates: [-0.120624, 51.513322],
+      //         },
+      //         properties: {
+      //           title: 'Mapbox DC',
+      //           icon: 'monument',
+      //         },
+      //       },
+      //       {
+      //         // feature for Mapbox SF
+      //         type: 'Feature',
+      //         geometry: {
+      //           type: 'Point',
+      //           coordinates: [-0.120634, 51.513322],
+      //         },
+      //         properties: {
+      //           title: 'Mapbox SF',
+      //           icon: 'harbor',
+      //         },
+      //       },
+      //     ],
+      //   },
+      // })
+      // map.addLayer({
+      //   id: 'points',
+      //   type: 'symbol',
+      //   source: 'points',
+      //   layout: {
+      //     // get the icon name from the source's "icon" property
+      //     // concatenate the name to get an icon from the style's sprite sheet
+      //     'icon-image': ['concat', ['get', 'icon'], '-15'],
+      //     // get the title name from the source's "title" property
+      //     'text-field': ['get', 'title'],
+      //     'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+      //     'text-offset': [0, 0.6],
+      //     'text-anchor': 'top',
+      //   },
+      // })
     }
   }
 
@@ -172,7 +221,7 @@ export default class Map extends Component {
     // mapCluster.addLayer(clusterGroup)
   }
 
-  render({ active }, {}) {
+  render({ active }, { mapLoaded }) {
     return (
       <div
         key="MapOuter"
@@ -181,7 +230,16 @@ export default class Map extends Component {
           [style.close]: !active,
         })}
       >
-        <div key="MapInner" className={style.Map}>
+        {!mapLoaded && (
+          <div style={{ position: 'absolute', top: '25%' }}>
+            <DancingGif text={'Loading Map'}></DancingGif>
+          </div>
+        )}
+        <div
+          key="MapInner"
+          className={style.Map}
+          style={{ opacity: mapLoaded ? 1 : 0 }}
+        >
           <div
             id="map"
             ref={this.mapContainer}

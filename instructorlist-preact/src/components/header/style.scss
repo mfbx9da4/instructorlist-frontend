@@ -9,7 +9,7 @@
   border-bottom: 1px solid var(--off-white);
   z-index: 9999;
   .headerContainer {
-    max-width: 86rem;
+    max-width: var(--container-width);
     justify-content: space-between;
     margin: 0 auto;
   }
