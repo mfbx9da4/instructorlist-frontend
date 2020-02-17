@@ -1,76 +1,17 @@
 import { h, Component } from 'preact'
-import { Router, Link } from 'preact-router'
-
-import Header from './header/header'
+import { Router } from 'preact-router'
+import { withLandingPageTemplate } from './withLandingPageTemplate'
+import { withMainTemplate } from './withMainTemplate'
 
 // Code-splitting is automated for routes
 import Search from '../routes/search'
 import ClassPage from '../routes/class.page'
 import Profile from '../routes/profile'
-import isSSR from '../utils/is-ssr'
+import Terms from '../routes/terms'
+import Privacy from '../routes/privacy'
 import DataService from '../DataService'
-import Redirect from './redirect/Redirect'
 import LandingPage from '../landing-page/pages/index'
 import Home from './TestHome'
-
-class MainTemplate extends Component {
-  componentDidMount() {
-    document.body.style.fontSize = '10px'
-    document.documentElement.style.fontSize = '10px'
-  }
-  render() {
-    const props = this.props
-    const stringified = JSON.stringify(props.ssrData)
-    return (
-      <div className="main-app">
-        <Header />
-
-        <props.Page data={props.data} {...props} />
-
-        {isSSR() && (
-          <div>
-            <details style={{ padding: '2rem' }}>
-              <summary>ssrData</summary>
-              <pre style={{ whiteSpace: 'pre-wrap' }}>
-                {JSON.stringify(props.ssrData, null, 2)}
-              </pre>
-            </details>
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `window.ssrData = JSON.parse('${stringified}')`,
-              }}
-            ></script>
-          </div>
-        )}
-      </div>
-    )
-  }
-}
-
-class LandingPageTemplate extends Component {
-  componentDidMount() {
-    document.body.style.fontSize = 'unset'
-    document.documentElement.style.fontSize = 'unset'
-    this.props.data.getSearch()
-  }
-  render() {
-    return (
-      <div className="landing-page">
-        <this.props.Page {...this.props} />
-      </div>
-    )
-  }
-}
-
-const withMainTemplate = Page => {
-  const Wrapped = props => <MainTemplate Page={Page} {...props}></MainTemplate>
-  Wrapped.getInitialProps = Page.getInitialProps
-  return Wrapped
-}
-
-const withLandingPageTemplate = Page => props => (
-  <LandingPageTemplate Page={Page} {...props} />
-)
 
 const pages = [
   {
@@ -100,6 +41,14 @@ const pages = [
   {
     component: withMainTemplate(ClassPage),
     path: '/classes/:id',
+  },
+  {
+    component: withMainTemplate(Terms),
+    path: '/terms',
+  },
+  {
+    component: withMainTemplate(Privacy),
+    path: '/privacy',
   },
   {
     component: withMainTemplate(Profile),
