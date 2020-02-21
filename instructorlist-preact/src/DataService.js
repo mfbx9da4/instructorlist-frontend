@@ -57,7 +57,7 @@ export default class DataService {
     const url = `${BASE_URL}/api/profiles/?slug=${slug}`
     let res
     try {
-      res = await fetch(url)
+      res = await fetch(url, { keepalive: true })
     } catch (e) {
       res = {
         ok: false,
@@ -83,7 +83,7 @@ export default class DataService {
     if (!this.hasPrerenderData && this.state.search) return this.state.search
     const url = `${BASE_URL}/api/search/?i=${JSON.stringify(filters)}`
     let res
-    res = await fetch(url)
+    res = await fetch(url, { keepalive: true })
     if (res.ok) {
       const json = await res.json()
       console.log('json', json)
@@ -104,7 +104,7 @@ export default class DataService {
       console.log('hit class')
       return this.state.classes[id]
     }
-    let res = await fetch(`${BASE_URL}/api/classes/${id}`)
+    let res = await fetch(`${BASE_URL}/api/classes/${id}`, { keepalive: true })
     console.log('got class')
     if (res.ok) {
       const json = await res.json()

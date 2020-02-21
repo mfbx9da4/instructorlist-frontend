@@ -13,6 +13,16 @@ if (!isSSR())
     return false
   }
 
+const loadImage = (map, url, name) =>
+  new Promise((resolve, reject) =>
+    map.loadImage(url, (err, image) => {
+      if (err) reject(err)
+      map.addImage(name, image)
+      console.log('add image', name)
+      resolve()
+    }),
+  )
+
 class LngLatCalculator {
   constructor() {
     this.count = {}
@@ -52,24 +62,55 @@ export default class Map extends Component {
   onReset = event => {}
 
   async componentDidMount() {
-    if (this.props.active) await this.loadMapBox()
+    if (this.props.active) await this.loadMapBoxLibAndMap()
   }
 
-  async loadMapBox() {
+  async loadMapBoxLib() {
     if (!this.state.libLoaded && !this.state.libLoading) {
       this.setState({ libLoading: true })
       await loadMapBox()
-      await new Promise(async r => {
-        this.setState({ libLoading: false, libLoaded: true }, async () => {
-          await this.onLibLoaded()
-          r()
-        })
-      })
+      await new Promise(r =>
+        this.setState({ libLoading: false, libLoaded: true }, r),
+      )
     }
   }
 
+  loadMapBoxMap = async () => {
+    if (!this.state.map) {
+      mapboxgl.accessToken =
+        'pk.eyJ1IjoibWZieDlkIiwiYSI6ImNrMG8xd2NocTAzcDUzZ242bmJxemRhcmoifQ.-MmxtOUW0-Dz9rgGZTLTDw'
+      const map = new mapboxgl.Map({
+        container: this.mapContainer.current,
+        style: 'mapbox://styles/mapbox/streets-v10?optimize=true',
+        minzoom: 5,
+        maxzoom: 10,
+        center: [-0.120624, 51.513322],
+        zoom: 10,
+      })
+      await new Promise(r =>
+        this.setState({ map }, () =>
+          map.on('load', () => {
+            this.setState({ mapLoaded: true }, r)
+          }),
+        ),
+      )
+      return Promise.all([
+        loadImage(map, '/assets/images/pin-2.png', 'pin-2'),
+        loadImage(map, '/assets/images/pin-3.png', 'pin-3'),
+        loadImage(map, '/assets/images/pin-4.png', 'pin-4'),
+        loadImage(map, '/assets/images/pin-5+.png', 'pin-5+'),
+      ])
+    }
+    await new Promise(r => this.state.map.on('load', r))
+  }
+
+  loadMapBoxLibAndMap = async () => {
+    await this.loadMapBoxLib()
+    await this.loadMapBoxMap()
+  }
+
   async componentDidUpdate(prevProps, prevState) {
-    if (!prevProps.active && this.props.active) await this.loadMapBox()
+    if (!prevProps.active && this.props.active) await this.loadMapBoxLibAndMap()
     const ids1 = this.props.items.map(x => x.id)
     const ids2 = prevProps.items.map(x => x.id)
     const idsEqual = ids1.reduce((prev, cur, i) => prev && cur == ids2[i], true)
@@ -139,61 +180,190 @@ export default class Map extends Component {
         console.log('loaded')
         this.setState({ mapLoaded: true })
         this.updatePins(map)
+        // map.loadImage('/assets/images/pin.png', function(error, image) {
+        //   if (error) throw error
+        //   map.addImage('pin', image)
+        //   map.addSource('pinsSource', {
+        //     type: 'geojson',
+        //     data: {
+        //       type: 'FeatureCollection',
+        //       features: [
+        //         {
+        //           type: 'Feature',
+        //           geometry: {
+        //             type: 'Point',
+        //             coordinates: [-0.120625, 51.5133],
+        //             properties: {
+        //               title: 'Hey',
+        //             },
+        //           },
+        //         },
+        //         {
+        //           type: 'Feature',
+        //           geometry: {
+        //             type: 'Point',
+        //             coordinates: [-0.120625, 51.513],
+        //             properties: {
+        //               title: 'Ho',
+        //             },
+        //           },
+        //         },
+        //       ],
+        //     },
+        //   })
+        //   map.addLayer({
+        //     id: 'pinsLayer',
+        //     type: 'symbol',
+        //     source: 'pinsSource',
+        //     layout: {
+        //       'icon-image': 'pin',
+        //       'icon-size': 1,
+        //       'text-field': ['get', 'title'],
+        //       'text-offset': [0, 0.6],
+        //       'text-anchor': 'top',
+        //     },
+        //   })
+        // })
+        // This works!
       })
-      // map.addSource('points', {
-      //   type: 'geojson',
-      //   data: {
-      //     type: 'FeatureCollection',
-      //     features: [
-      //       {
-      //         // feature for Mapbox DC
-      //         type: 'Feature',
-      //         geometry: {
-      //           type: 'Point',
-      //           coordinates: [-0.120624, 51.513322],
-      //         },
-      //         properties: {
-      //           title: 'Mapbox DC',
-      //           icon: 'monument',
-      //         },
-      //       },
-      //       {
-      //         // feature for Mapbox SF
-      //         type: 'Feature',
-      //         geometry: {
-      //           type: 'Point',
-      //           coordinates: [-0.120634, 51.513322],
-      //         },
-      //         properties: {
-      //           title: 'Mapbox SF',
-      //           icon: 'harbor',
-      //         },
-      //       },
-      //     ],
-      //   },
-      // })
-      // map.addLayer({
-      //   id: 'points',
-      //   type: 'symbol',
-      //   source: 'points',
-      //   layout: {
-      //     // get the icon name from the source's "icon" property
-      //     // concatenate the name to get an icon from the style's sprite sheet
-      //     'icon-image': ['concat', ['get', 'icon'], '-15'],
-      //     // get the title name from the source's "title" property
-      //     'text-field': ['get', 'title'],
-      //     'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-      //     'text-offset': [0, 0.6],
-      //     'text-anchor': 'top',
-      //   },
-      // })
     }
   }
 
   async updatePins(map = this.state.map) {
-    await this.loadMapBox()
-    this.markers.map(x => x.remove())
+    await this.loadMapBoxLibAndMap()
 
+    map.addSource('demoSource', {
+      cluster: true,
+      clusterMaxZoom: 14, // Max zoom to cluster points on
+      clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
+      type: 'geojson',
+      data: {
+        type: 'FeatureCollection',
+        features: [
+          {
+            // feature for Mapbox DC
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-0.120624, 51.513322],
+            },
+            properties: {
+              title: 'Mapbox DC',
+              icon: 'monument',
+            },
+          },
+          {
+            // feature for Mapbox SF
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-0.12, 51.51],
+            },
+            properties: {
+              title: 'Mapbox SF',
+              icon: 'bicycle',
+            },
+          },
+          {
+            // feature for Mapbox SF
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-0.13, 51.51],
+            },
+            properties: {
+              title: 'Mapbox SF',
+              icon: 'bicycle',
+            },
+          },
+          {
+            // feature for Mapbox SF
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-0.14, 51.51],
+            },
+            properties: {
+              title: 'Mapbox SF',
+              icon: 'bicycle',
+            },
+          },
+        ],
+      },
+    })
+    map.addLayer({
+      id: 'demoLayer',
+      type: 'symbol',
+      source: 'demoSource',
+      layout: {
+        // get the icon name from the source's "icon" property
+        // concatenate the name to get an icon from the style's sprite sheet
+        'icon-image': ['concat', ['get', 'icon'], '-15'],
+        // get the title name from the source's "title" property
+        'text-field': ['get', 'title'],
+        'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+        'text-offset': [0, 0.6],
+        'text-anchor': 'top',
+      },
+    })
+    map.addLayer({
+      id: 'clusters',
+      type: 'symbol',
+      source: 'demoSource',
+      filter: ['has', 'point_count'],
+      layout: {
+        // 'icon-image': 'pin',
+        'icon-image': [
+          'step',
+          ['get', 'point_count'],
+          'pin-2',
+          3,
+          'pin-3',
+          4,
+          'pin-4',
+          5,
+          'pin-5+',
+        ],
+      },
+    })
+    // map.addLayer({
+    //   id: 'unclustered-point',
+    //   type: 'circle',
+    //   source: 'demoSource',
+    //   filter: ['!', ['has', 'point_count']],
+    //   paint: {
+    //     'circle-color': '#11b4da',
+    //     'circle-radius': 4,
+    //     'circle-stroke-width': 1,
+    //     'circle-stroke-color': '#fff',
+    //   },
+    // })
+    // inspect a cluster on click
+    map.on('click', 'clusters', function(e) {
+      var features = map.queryRenderedFeatures(e.point, {
+        layers: ['clusters'],
+      })
+      var clusterId = features[0].properties.cluster_id
+      map
+        .getSource('demoSource')
+        .getClusterExpansionZoom(clusterId, function(err, zoom) {
+          if (err) return
+
+          map.easeTo({
+            center: features[0].geometry.coordinates,
+            zoom: zoom,
+          })
+        })
+    })
+
+    map.on('mouseenter', 'clusters', function() {
+      map.getCanvas().style.cursor = 'pointer'
+    })
+    map.on('mouseleave', 'clusters', function() {
+      map.getCanvas().style.cursor = ''
+    })
+    return
+    this.markers.map(x => x.remove())
     const lngLatCalculator = new LngLatCalculator()
     this.props.items.forEach(item => {
       // create a HTML element for each feature
