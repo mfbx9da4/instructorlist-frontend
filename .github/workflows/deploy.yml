@@ -1,0 +1,35 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Change directory
+        run: cd instructorlist-preact
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Build
+        run: yarn build
+
+      - name: Build
+        run: yarn build
+
+      - name: Publish app to Google App Engine
+        run: |
+          gcloud config set project ${{ secrets.PROJECT_ID }}
+          gcloud -q app deploy app.yaml --promote
