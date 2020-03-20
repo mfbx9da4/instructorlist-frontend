@@ -172,7 +172,7 @@ export default class Payment extends Component {
                   £{parseFloat(item.price).toFixed(2)}
                 </div>
               </div>
-              {venue.entry_fee && (
+              {venue.entry_fee ? (
                 <span key="entry_fee" className={style.extra}>
                   Please note this studio will charge you an additional
                   <strong className={style.strong}>
@@ -182,7 +182,7 @@ export default class Payment extends Component {
                   </strong>
                   upon arrival.
                 </span>
-              )}
+              ) : null}
             </div>
 
             <div className={'hr'} />

@@ -118,11 +118,18 @@ export default class PaymentSuccess extends Component {
                   <div className={style.title}>
                     {this.mainCategory(item.categories)}
                   </div>
+                  <a
+                    style={{ color: 'white', textDecoration: 'underline' }}
+                    target="_blank"
+                    href={booking.video_url}
+                  >
+                    {booking.video_url}
+                  </a>
                 </div>
               </div>
             </div>
             <div className={style.main}>
-              <Directions venue={item.venue}></Directions>
+              {/* <Directions venue={item.venue}></Directions> */}
               <div className={style.mainTitle}>{item.title}</div>
               <div className={style.timeLabel}>
                 {this.formatDay(item.day)} {item.start_time} - {item.end_time}
@@ -135,8 +142,18 @@ export default class PaymentSuccess extends Component {
                 <div className={style.bookingReceived}>
                   I didn't receive the confirmation message.
                 </div>
-                <div className={style.bookingCode}>
-                  Booking ID: <strong>{booking.code}</strong>
+                <div column className={style.bookingCode}>
+                  <div>
+                    Go to:{' '}
+                    <strong>
+                      <a target="_blank" href={booking.video_url}>
+                        {booking.video_url}
+                      </a>
+                    </strong>
+                  </div>
+                  <div>
+                    Booking ID: <strong>{booking.code}</strong>
+                  </div>
                 </div>
               </div>
             </div>
