@@ -29,14 +29,13 @@ const IndexPage = () => (
       }
     />
     <Header
-      alert="We&#39;re launching very soon!"
       title={
         <span>
-          Online Video Classes with the
+          Online Video Classes with
           <br />
-          best dance and fitness teachers
+          the best dance and fitness
           <br />
-          <StyledSpan>around the world.</StyledSpan>
+          <StyledSpan>teachers around the world.</StyledSpan>
         </span>
       }
       subtext="Our instructors have local classes in locations all over the world. In these unprecedented times they are moving their classes online."
@@ -50,7 +49,7 @@ const IndexPage = () => (
       title="Learn from the best"
       subtext="Learn from passionate individuals about their art form"
       teacher="Oliver V"
-      quote="“Find meaning in movement. Meaning will inspire you and bring you motivation and physically.”"
+      quote="“Find meaning in movement. Meaning will inspire you and motivate you.”"
       dt1="Teaches"
       dd1="Commercial and Hip Hop Dance"
       dt2="Experience"

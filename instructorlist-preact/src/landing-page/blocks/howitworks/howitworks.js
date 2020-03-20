@@ -45,7 +45,7 @@ const Howitworks = props => {
                   number="02"
                   image={Icon2}
                   title="Pay"
-                  description="Pay for the class directly on this website to reserve your place in the class."
+                  description="Pay for the class online to reserve your place in the class."
                 />
               </Col>
 

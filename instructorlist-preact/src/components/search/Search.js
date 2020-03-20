@@ -320,8 +320,7 @@ export default class Search extends Component {
                     </div>
                     <div className={style.title}>{item.title}</div>
                     <div className={style.venue}>
-                      <div>{item.venue.name}</div>
-                      <div>{item.venue.area}</div>
+                      <div>{item.venue.city}</div>
                     </div>
                     {item.instructors[0] && (
                       <div className={style.instructor}>
