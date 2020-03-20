@@ -32,31 +32,31 @@ const IndexPage = () => (
       alert="We&#39;re launching very soon!"
       title={
         <span>
-          The Best Dance Teachers
+          Online Video Classes with the
           <br />
-          Across London.
+          best dance and fitness teachers
           <br />
-          <StyledSpan>Handpicked.</StyledSpan>
+          <StyledSpan>around the world.</StyledSpan>
         </span>
       }
-      subtext="Attend hundreds of dance classes from the best teachers across London with a single membership."
+      subtext="Our instructors have local classes in locations all over the world. In these unprecedented times they are moving their classes online."
     />
     <CarouselStatic />
     <Mapsection
-      title="Discover new classes all over the city."
-      subtext="Our instructors have classes in locations all over the city. It’s up to you where you decide to attend."
+      title="Discover new classes all over the world."
+      subtext="Our instructors are giving classes all over the world. It’s up to you where you decide to attend."
     />
     <Testimonial
       title="Learn from the best"
       subtext="Learn from passionate individuals about their art form"
       teacher="Oliver V"
-      quote="“Nobody cares if you can’t dance well. Just get up and dance.”"
+      quote="“Find meaning in movement. Meaning will inspire you and bring you motivation and physically.”"
       dt1="Teaches"
       dd1="Commercial and Hip Hop Dance"
       dt2="Experience"
       dd2="11+ years"
       dt3="Location"
-      dd3="Independent studio, Shoreditch"
+      dd3="Shoreditch, London"
       dt4="About"
       dd4="Oliver is a London native who got into contact with dancing
       at a very young age. His constant need for improvement has

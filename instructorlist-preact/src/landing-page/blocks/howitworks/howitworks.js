@@ -36,7 +36,7 @@ const Howitworks = props => {
                   number="01"
                   image={Icon1}
                   title="Discover"
-                  description="Browse videos of teachers and classes in your area."
+                  description="Browse class times, videos and descriptions."
                 />
               </Col>
 
@@ -44,8 +44,8 @@ const Howitworks = props => {
                 <Bullet
                   number="02"
                   image={Icon2}
-                  title="Credit"
-                  description="Book classes using credits at a discount to full class price."
+                  title="Pay"
+                  description="Pay for the class directly on this website to reserve your place in the class."
                 />
               </Col>
 
@@ -53,8 +53,8 @@ const Howitworks = props => {
                 <Bullet
                   number="03"
                   image={Icon3}
-                  title="Dance"
-                  description="Attend any class of your choice using your credits."
+                  title="Move"
+                  description="You will receive a google hangouts link to the class. Login and move!"
                 />
               </Col>
             </Row>

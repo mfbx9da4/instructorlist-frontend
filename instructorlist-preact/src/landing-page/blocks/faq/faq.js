@@ -1,13 +1,13 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { StyledHr, StyledQuestion } from "./styles"
+import { StyledHr, StyledQuestion } from './styles'
 import {
   SectionHeader,
   SectionMargin,
   PaddingContainer,
-} from "../../components/globalStyles/styles"
-import { Container } from "../../components/grid/index"
+} from '../../components/globalStyles/styles'
+import { Container } from '../../components/grid/index'
 
 const Faq = props => {
   const { title } = props
@@ -18,7 +18,7 @@ const Faq = props => {
           <SectionHeader>{title}</SectionHeader>
           <StyledQuestion
             question="About"
-            answer="We are founded by a group of dancers and dance instructors passionate about improving the quality of life of individuals in London. We recognize that instructors are the backbone of a great class. We are committed to recognizing, supporting and celebrating these great instructors. Living in a big city can sometimes be overwhelming but there is a strong culture of dance and fun. We’re here to support that culture and connect people who would like to be part of it."
+            answer="We are founded by a group of dancers and movers passionate about improving the quality of life of individuals. In these unprecedented times keeping active is super important."
           />
           <StyledHr />
           <StyledQuestion
@@ -27,13 +27,13 @@ const Faq = props => {
           />
           <StyledHr />
           <StyledQuestion
-            question="Why not just pay the teacher directly?"
-            answer="We negotiate fair discounts with instructors so that it works out cheaper to come through us."
+            question="What is a typical class like?"
+            answer="Classes typically have between 5 and 20 users. Teachers will be able to see you and give you feedback on your movement directly. Generally best if you mute yourself during class unless you need to say something."
           />
           <StyledHr />
           <StyledQuestion
-            question="How do we make money?"
-            answer="We take a fixed and fair fee on the class price so that instructors end up with more compared to other platforms. "
+            question="Can I book one to one classes?"
+            answer="Currently we only support group classes but one to one booking will be coming soon!"
           />
         </PaddingContainer>
       </SectionMargin>
