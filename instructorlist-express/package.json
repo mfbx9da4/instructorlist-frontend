@@ -27,7 +27,7 @@
     "isomorphic-fetch": "^2.2.1",
     "module-alias": "^2.2.2",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.27",
+    "moment-timezone": "^0.5.35",
     "preact": "^10.0.1",
     "preact-render-to-string": "^5.0.7",
     "preact-router": "^2.6.1",
